@@ -1,6 +1,6 @@
 # Figure 1 (Study setting, section 2.1): study area and rainfall regimes of Ghana.
-# Main map: 261 districts shaded by rainfall regime, 16 regions outlined and named; locator of Ghana in West Africa;
-# mean monthly rainfall (NASA POWER, 2020-2024) for each regime.
+# Main map: 261 districts shaded by rainfall regime, 16 regions outlined and named; locator of Ghana in West Africa.
+# No title or source note on the image: these are given in the figure caption in the manuscript.
 # Sources: district/region boundaries geoBoundaries gbOpen GHA ADM2/ADM1 (Runfola et al. 2020; CC BY 4.0;
 # USAID Ghana HPNO / Ghana Statistical Service); country outlines Natural Earth 1:50m (public domain).
 # Usage: python3 analysis/fig1_map.py data_snake.csv data/geo figures
@@ -52,20 +52,14 @@ dist.to_csv(f"{out_dir}/../analysis/district_crosswalk.csv", index=False)
 unmatched = dist[dist.shapeName.isna()].district.tolist()
 print("districts:", len(dist), "| mapped to a polygon:", dist.shapeName.notna().sum(), "| no polygon:", unmatched)
 
-# mean monthly rainfall (mm/month) by regime, complete years 2020-2024
-d["regime"] = np.where(d.region.isin(NORTH), "Unimodal (north)", "Bimodal (south)")
-full = d[d.year <= 2024].copy()
-full["mm"] = full.Rainfall * pd.to_datetime(dict(year=full.year, month=full.month, day=1)).dt.days_in_month
-clim = full.groupby(["regime", "month"]).mm.mean().unstack(0)
-
 SURFACE, INK, MUTED = "#fcfcfb", "#0b0b0b", "#52514e"
 COL = {"Unimodal (north)": "#eb6834", "Bimodal (south)": "#2a78d6"}
 halo = [pe.withStroke(linewidth=2.4, foreground="white")]
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "text.color": INK})
-fig = plt.figure(figsize=(9.6, 8.6), facecolor=SURFACE)
+fig = plt.figure(figsize=(9.0, 7.0), facecolor=SURFACE)
 
 # main map
-ax = fig.add_axes([0.01, 0.16, 0.58, 0.80])
+ax = fig.add_axes([0.0, 0.01, 0.66, 0.98])
 pp, cc = [], []
 for _, r in dist.dropna(subset=["shapeName"]).iterrows():
     for pg in polys(geo[r.shapeName]):
@@ -79,7 +73,6 @@ for f in adm1:
     pt = shape(f["geometry"]).representative_point(); dx, dy = NUDGE.get(nm, (0, 0))
     ax.text(pt.x + dx, pt.y + dy, nm, fontsize=7.4, fontweight="bold", ha="center", va="center", color=INK, path_effects=halo)
 ax.set_xlim(-3.45, 1.35); ax.set_ylim(4.6, 11.25); ax.set_aspect("equal"); ax.axis("off")
-ax.set_title("Study area: Ghana's 261 districts by rainfall regime", loc="left", fontsize=11, fontweight="bold")
 # scale bar (100 km at ~6°N) and north arrow
 km_per_deg = 111.32 * np.cos(np.radians(6.0))
 x0, y0 = 0.15, 4.85
@@ -88,9 +81,9 @@ ax.text(x0 + 50 / km_per_deg, y0 + 0.12, "100 km", ha="center", fontsize=7.5)
 ax.annotate("N", xy=(1.05, 10.95), xytext=(1.05, 10.55), ha="center", fontsize=9, fontweight="bold",
             arrowprops=dict(arrowstyle="-|>", color=INK, lw=1.2))
 n = dist.regime.value_counts()
-ax.legend(handles=[Patch(facecolor=COL[k], edgecolor="none", label=f"{k}: {n[k]} districts") for k in COL],
-          loc="upper left", bbox_to_anchor=(0.0, 0.02), frameon=False, fontsize=8.5, title="Rainfall regime",
-          title_fontsize=8.5, alignment="left")
+fig.legend(handles=[Patch(facecolor=COL[k], edgecolor="none", label=f"{k}: {n[k]} districts") for k in COL],
+           loc="upper left", bbox_to_anchor=(0.63, 0.62), frameon=False, fontsize=9, title="Rainfall regime",
+           title_fontsize=9.5, alignment="left")
 
 # locator
 lx = fig.add_axes([0.62, 0.68, 0.36, 0.27])
@@ -101,8 +94,8 @@ for f in world:
     is_gh = f["properties"].get("ADM0_A3") == "GHA"
     lx.add_collection(PatchCollection(polys(g), facecolor=INK if is_gh else "#e4e3df", edgecolor="#9a9893", linewidth=0.4))
     if f["properties"].get("ADM0_A3") in ("CIV", "BFA", "NGA", "MLI"):
-        c = g.representative_point()
-        lx.text(c.x, c.y, f["properties"]["NAME"], fontsize=6.2, ha="center", va="center", color=MUTED)
+        c = g.representative_point(); dx = -2.2 if f["properties"].get("ADM0_A3") == "CIV" else 0
+        lx.text(c.x + dx, c.y, f["properties"]["NAME"], fontsize=6.2, ha="center", va="center", color=MUTED)
 lx.annotate("GHANA", xy=(-1.2, 7.6), xytext=(-4.5, 3.2), fontsize=7, fontweight="bold", ha="center", color=INK,
             arrowprops=dict(arrowstyle="-", color=INK, lw=0.8))
 lx.set_xlim(-18, 15); lx.set_ylim(1, 21); lx.set_aspect("equal"); lx.set_xticks([]); lx.set_yticks([])
@@ -110,25 +103,6 @@ lx.set_facecolor("#ffffff")
 for sp in lx.spines.values(): sp.set_edgecolor(MUTED); sp.set_linewidth(0.6)
 lx.set_title("Location in West Africa", loc="left", fontsize=8.5, fontweight="bold")
 
-# rainfall regimes
-ymax = np.ceil(clim.values.max() / 50) * 50
-for i, k in enumerate(["Unimodal (north)", "Bimodal (south)"]):
-    a = fig.add_axes([0.66, 0.42 - i * 0.25, 0.31, 0.16])
-    a.bar(clim.index, clim[k], color=COL[k], width=0.75)
-    a.set_xticks(range(1, 13)); a.set_xticklabels(list("JFMAMJJASOND"), fontsize=7.5)
-    a.set_ylim(0, ymax); a.set_yticks(np.arange(0, ymax + 1, 100)); a.tick_params(axis="y", labelsize=7.5)
-    a.set_ylabel("mm per month", fontsize=7.5)
-    for sp in ("top", "right"): a.spines[sp].set_visible(False)
-    a.spines["left"].set_color(MUTED); a.spines["bottom"].set_color(MUTED)
-    a.grid(axis="y", color="#e4e3df", linewidth=0.6); a.set_axisbelow(True)
-    a.set_title(f"{k}: mean monthly rainfall", loc="left", fontsize=8.5, fontweight="bold")
-
-note = ("Rainfall: district-mean NASA POWER precipitation, 2020–2024. Boundaries: geoBoundaries gbOpen GHA ADM2/ADM1 "
-        "(Runfola et al. 2020; CC BY 4.0), source USAID Ghana HPNO / Ghana Statistical Service; Guan district has no "
-        "polygon in the 260-district file. Country outlines: Natural Earth 1:50m (public domain). "
-        "Drawn in Python with matplotlib and shapely (analysis/fig1_map.py).")
-fig.text(0.015, 0.012, textwrap.fill(note, 175), fontsize=6.6, color=MUTED)
 for ext in ("png", "pdf"):
     fig.savefig(f"{out_dir}/Fig1.{ext}", dpi=300, facecolor=SURFACE)
 print("saved", f"{out_dir}/Fig1.png")
-print(clim.round(0))

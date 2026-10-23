@@ -1,11 +1,10 @@
 # Unified snakebite dataset
 
-These files are built by `analysis/build_unified_dataset.py` from four source files, which are left unchanged:
+These files are built by `analysis/build_unified_dataset.py` from three source files, which are left unchanged:
 
 * `Snake Bite Data 2020 - 2025.xlsx`: monthly DHIMS-2 snakebite cases by district and sex, January 2020 to December 2025.
 * `data_snake.csv`: district-month cases, population and climate, January 2020 to November 2025.
 * `Snake Bite Data.xlsx`: annual totals by region, district and facility for 2023, 2024 and January–June 2025. It is used only to cross-check the monthly counts.
-* `data/Snake Bite Data-1.xlsx`: monthly cases by district and age group, January 2024 to November 2025. The export stops at 256 columns, so November 2025 is incomplete.
 
 Case counts come from the monthly sex-disaggregated file, which is the later and more complete extraction. Population and climate come from `data_snake.csv`. The checks are listed in `data_quality_checks.txt`.
 
@@ -14,8 +13,6 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 **`snakebite_unified_district_month.csv`** has one row per district and month: 261 districts × 72 months = 18,792 rows. Use it for models of total cases, with sex shares available as a district-month covariate if needed.
 
 **`snakebite_unified_district_month_sex.csv`** has one row per district, month and sex: 37,584 rows. Use it for models with sex as a covariate, for example `cases ~ sex + climate terms + (1 | region/district) + offset(log(population_sex))`.
-
-**`snakebite_unified_district_month_age.csv`** has one row per district, month and age group for January 2024 to November 2025: 72,036 rows. Use it for models with age as a covariate. The age groups add up exactly to `cases_total` in every district-month from January 2024 to October 2025. November 2025 is flagged `age_complete_month = 0`. Use `age_group` (0–14, 15–34, 35–59, 60+) as the covariate; `age_group_dhims` keeps the twelve DHIMS-2 groups. Age-specific populations are not yet available, so fit `cases ~ age_group + climate terms + (1 | region/district) + offset(log(population))`. With this offset, the age coefficients describe each group's share of cases rather than incidence rate ratios. Interactions between climate and age group, which test whether climate effects differ by age, are valid. Add district age-group populations from the 2021 census (General Report Volume 3B) to estimate age-specific incidence.
 
 **`district_points.csv`** gives one point per district, inside its boundary polygon, for extracting climate. Guan has no polygon and uses the point of Afadjato South, which shares Guan's NASA POWER grid cell.
 
@@ -43,10 +40,4 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 
 ## Age
 
-| Variable | Meaning |
-|---|---|
-| `age_group_dhims` | DHIMS-2 group: <28 days, 1–11 months, 1–4, 5–9, 10–14, 15–17, 18–19, 20–34, 35–49, 50–59, 60–69, 70+ |
-| `age_group` | Broad group used as the covariate: 0–14, 15–34, 35–59, 60+ |
-| `age_complete_month` | 0 for November 2025, which the export cut off |
-
-From January 2024 to October 2025 the cases were 4,259 aged 0–14, 7,652 aged 15–34, 4,700 aged 35–59 and 1,340 aged 60 and over. Age data for 2020–2023 and for November–December 2025 are not in the file. Re-exporting from DHIMS-2 with periods as rows instead of columns avoids the 256-column limit. Age and sex come from separate exports, so there are no counts by age and sex together.
+Age is not included. The age-group export (`data/Snake Bite Data-1.xlsx`, kept unchanged) covers January 2024 to October 2025 only. Age data for 2020–2023 are not available, and the export stops partway through November 2025 at Excel's 256-column limit. A complete age export for all of 2020–2025, with months as rows, would allow age to be added in the same way as sex.
