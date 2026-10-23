@@ -196,58 +196,61 @@ As a check on the lag shape that does not depend on the grid, we fitted a penali
 
 #### 2.4.5 Primary analysis: is seasonality lagged climate?
 
-We compared four nested NB GLMMs, all including district and region random intercepts, year effects and the population offset, fitted to identical observations:
+The primary analysis tested whether the seasonal cycle of snakebite is itself explained by lagged local climate. *Theoretical:* when an exposure generates the seasonal pattern of an outcome, adjusting for season removes part of the exposure's effect. The same holds when the pathway runs through behaviour timed by the exposure, such as rain-fed farming [[5](https://doi.org/10.1155/2024/8357312),[6](https://doi.org/10.1371/journal.pntd.0007221)]. This is over-adjustment, which biases the estimated effect towards the null [[41](https://doi.org/10.1097/EDE.0b013e3181a819a1)], and it may explain why recent analyses that adjusted for season found weak or null effects of rainfall and temperature [[12](https://doi.org/10.1016/j.sste.2025.100738),[13](https://www.medrxiv.org/content/10.64898/2026.07.12.26357875v1.full)]. *Descriptive:* snakebite and climate shared a strong seasonal cycle, whose shape differed between rainfall regimes (Section 3.2). This made it possible to test whether each district's season follows its own climate.
 
-| Model | Seasonality represented by |
-|---|---|
-| M0 | none |
-| M1 | zone-specific calendar-month terms (the conventional adjustment) |
-| M2 | own lagged climate cross-bases (rainfall, RH, Tmin, Tmax, NDVI; lags 0–L), no month terms |
-| M3 | M1 + M2 |
+We fitted four nested negative-binomial mixed models to the same observations, each with the district and region random intercepts, year effects and population offset of the base model. Model M0 had no seasonal terms. M1 added the calendar-month effects by rainfall regime, the conventional adjustment [[29](https://doi.org/10.1093/ije/dyt092)]. M2 replaced them with cross-bases of the district's own lagged rainfall, relative humidity, maximum and minimum temperature and NDVI. M3 contained both. With $D_k$ the deviance of model $k$, we measured the share of the seasonal signal reproduced by climate, $S_{\text{clim}}$, and the share of seasonality not explained by climate, $S_{\text{res}}$:
 
-1. **Share of seasonality reproduced by climate:** $(D_{M0} - D_{M2}) / (D_{M0} - D_{M1})$, where $D$ is the deviance. We also compared AIC and leave-one-year-out cross-validated scores, so that models with different numbers of parameters are compared fairly.
-2. **Residual non-climatic seasonality:** the deviance gain of M3 over M2, as a share of the seasonal deviance. This captures factors such as school holidays, market and harvest events, and reporting cycles.
-3. **Placebo (falsification) test.**
-   * Each district's climate series was replaced by that of a randomly chosen district from the *other* rainfall regime, keeping calendar time aligned, and M2 was refitted. This was repeated 100 (final: 1,000) times.
-   * If climate explains seasonality only because any seasonal series would, placebo climate should fit as well as own climate.
-   * The permutation p-value is the proportion of placebo fits with deviance ≤ the own-climate fit.
-4. **Temporal placebo.** Each district's climate was replaced by its own climate from a different year, which preserves the seasonal shape but breaks year-to-year alignment. This tests whether inter-annual climate variation adds to explaining snakebite beyond the average seasonal cycle.
+$$S_{\text{clim}} = \frac{D_{M0} - D_{M2}}{D_{M0} - D_{M1}}, \qquad S_{\text{res}} = \frac{D_{M2} - D_{M3}}{D_{M0} - D_{M1}}.$$
 
-Because rain-fed farming is timed by rainfall, the farming calendar lies on the causal pathway from climate to bites (a mediator, not a confounder). The climate effect estimated here is therefore the total effect, including behavioural responses to climate.
+$S_{\text{res}}$ captures seasonal influences unrelated to climate, such as school holidays, market and harvest events and reporting cycles. Because M1 and M2 differ in their number of parameters, we also compared them with AIC and leave-one-year-out cross-validated scores [[37](https://doi.org/10.1111/ecog.02881),[38](https://doi.org/10.1198/016214506000001437)].
+
+A good fit of M2 could arise simply because any smooth seasonal series resembles the snakebite season. To exclude this, we used a placebo test. We replaced each district's climate series with that of a randomly chosen district from a different rainfall regime, keeping calendar months aligned, refitted M2, and repeated this $m$ = 1,000 times. If climate explains snakebite only through its general seasonality, placebo climate should fit as well as the district's own climate. With $b$ the number of placebo fits whose deviance was no greater than that of the own-climate fit, we calculated the permutation p-value as $p = (b+1)/(m+1)$, which avoids reporting a p-value of zero [[42](https://doi.org/10.2202/1544-6115.1585)]. In a temporal placebo, we replaced each district's climate with its own climate from a different year. This keeps the seasonal shape but breaks the alignment between years, and tests whether year-to-year variation in climate explains snakebite beyond the average seasonal cycle.
+
+Because the farming calendar lies on the causal pathway from rainfall to snakebite, it is a mediator rather than a confounder, so we did not adjust for it. The climate effects estimated here are therefore total effects, including human behavioural responses to climate.
 
 #### 2.4.6 Climatology versus anomaly decomposition
 
-* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [33].
-* The anomaly terms estimate the delayed effect of unusual weather independently of normal seasonality.
-* The climatology term captures the seasonal and spatial climate gradient.
+To separate the influence of the normal season from that of unusual weather, we split each climate variable into its climatology $\bar{x}_{i,m(t)}$ and its standardised anomaly $a_{it}$ (Section 2.3) and entered both as separate cross-bases:
+
+$$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + \sum_{\ell=0}^{L} f\cdot w_{\text{clim}}(\bar{x}_{i,m(t-\ell)},\ell) + \sum_{\ell=0}^{L} f\cdot w_{\text{anom}}(a_{i,t-\ell},\ell) + \gamma_{y(t)} + u_{r(i)} + v_i.$$
+
+*Theoretical:* this is a within–between decomposition. A variable that varies both between and within units is split into a component that is constant within units and a deviation from it, so that the two effects are estimated separately rather than as one blended coefficient [[43](https://www.jstor.org/stable/1913646),[33](https://eprints.ncrm.ac.uk/id/eprint/3317/)]. Here the climatology carries the expected seasonal and spatial climate signal, and the anomaly carries weather that departs from it. The anomaly effects are free of seasonal confounding by construction, so they estimate the delayed effect of unusual weather, which is the effect relevant to early warning. *Descriptive:* anomalies were also less strongly correlated with one another than the raw variables; for example, the correlation of relative humidity with maximum temperature fell from −0.80 to −0.66. This eases the collinearity that limited the raw-variable models.
 
 #### 2.4.7 Heterogeneity by rainfall regime
 
-* Lag structures were compared between unimodal, transition and bimodal districts (Section 2.1).
-* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [41].
-* Heterogeneity was summarised with Cochran's Q and I².
-* A likelihood-ratio test of a zone × cross-basis interaction gave a complementary test.
+We tested whether the lag structure differs between unimodal, transition and bimodal districts. *Descriptive:* the three regimes differed in the number and timing of rainy seasons and in incidence, at 65.8, 35.1 and 25.7 cases per 100,000 per year (Section 3.1). *Theoretical:* the delays between rain and snakebite may also differ, for example if the vegetation and prey response after a single long dry season is slower than in areas with two rainy seasons.
+
+We used a two-stage approach. In the first stage, we fitted the DLNM separately in each regime. We reduced each fit to two sets of coefficients, those of the overall cumulative exposure–response curve and those of the lag curve at a fixed exposure (the 90th percentile), together with their covariance matrices. In the second stage, we pooled these coefficient vectors with multivariate meta-analysis [[44](https://doi.org/10.1002/sim.5471)], implemented in the mixmeta package [[45](https://doi.org/10.1002/sim.8362)]. This gave pooled curves and tested whether the regime-specific curves differ more than expected by chance. We summarised heterogeneity with Cochran's $Q$ statistic and with
+
+$$I^2 = \max\left\{0,\; \frac{Q - \mathrm{df}}{Q}\right\} \times 100\%,$$
+
+the percentage of variation between regimes that is due to true differences rather than chance [[46](https://doi.org/10.1002/sim.1186)]. As a complementary one-stage test, we compared the pooled model with a model in which each cross-basis interacted with regime, using a likelihood-ratio test. The transition zone contains only 22 districts, so its curves are estimated less precisely; in a sensitivity analysis we merged it with the neighbouring regime.
 
 #### 2.4.8 Rainy-season onset
 
-* An event-study mixed model replaced calendar-month effects with months-since-onset indicators (−3 to +6; reference −3), estimated separately by zone, adjusting for year and district random effects.
-* In secondary analyses, onset month (and false start) predicted:
-  * the timing of the annual peak (linear mixed model); and
-  * the total seasonal count (negative-binomial GLMM).
+We examined how snakebite incidence changes relative to the start of the rains with an event-study model, fitted separately for each regime. In this model, indicators of the number of months since onset replaced the calendar-month effects:
+
+$$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + \sum_{k=-2}^{6} \tau_k\, \mathbf{1}(t - O_{i,y(t)} = k) + \gamma_{y(t)} + u_{r(i)} + v_i,$$
+
+where $O_{i,y}$ is the onset month in district $i$ and year $y$, and the reference period is three months before onset, so that $\exp(\tau_k)$ is the rate ratio $k$ months after onset. Months outside the window from −3 to +6 were grouped with the reference period. *Descriptive:* incidence relative to the district mean rose to between 1.25 and 1.73 two months after onset, depending on the regime (Section 3.2). *Theoretical:* aligning the data to onset rather than the calendar allows for onset falling in different months in different districts and years, and links the timing of bites to the agricultural activities that start with the rains [[5](https://doi.org/10.1155/2024/8357312),[6](https://doi.org/10.1371/journal.pntd.0007221)]. Because onset varied little from year to year within districts, this analysis describes the timing of risk around onset and is secondary to the DLNM.
+
+In further secondary analyses, we related the onset month and the occurrence of a false start to the month of the annual snakebite peak, using a linear mixed model with a district random intercept. We also related them to the total number of cases in the rainy season, using a negative-binomial mixed model.
 
 #### 2.4.9 Attributable burden
 
-* Attributable numbers and fractions of cases were computed from the final DLNM [42], relative to the minimum-risk value of each exposure.
-* Results are given by zone, region and year, with 95% empirical confidence intervals from 1,000 Monte-Carlo simulations.
+To express the climate effects as numbers of snakebites, we estimated the cases attributable to non-optimal climate from the final DLNM [[47](https://doi.org/10.1186/1471-2288-14-55)]. *Theoretical:* relative risks describe how strongly risk changes with exposure, but planning needs the number of cases involved, which also depends on how often each exposure level occurs. *Descriptive:* about 10,000 snakebites were reported each year, so even a modest attributable fraction implies a substantial number of cases. With the backward perspective, which attributes the cases in month $t$ to the exposures in the preceding $L$ months, the attributable fraction and number for district-month $(i,t)$ are
+
+$$\mathrm{AF}_{it} = 1 - \exp\Big\{-\sum_{\ell=0}^{L} \big[f\cdot w(x_{i,t-\ell},\ell) - f\cdot w(x_0,\ell)\big]\Big\}, \qquad \mathrm{AN}_{it} = \mathrm{AF}_{it}\, n_{it},$$
+
+where $x_0$ is the minimum-risk value and $n_{it}$ the observed number of cases [[47](https://doi.org/10.1186/1471-2288-14-55)]. The total attributable number is $\sum_{i,t} \mathrm{AN}_{it}$, and the attributable fraction is this total divided by the total number of cases. We report results by exposure, rainfall regime, region and year. We obtained 95% empirical confidence intervals from 1,000 Monte Carlo samples of the cross-basis coefficients drawn from their estimated multivariate normal distribution [[47](https://doi.org/10.1186/1471-2288-14-55)].
 
 #### 2.4.10 Predictive validation
 
-* Models were trained on 2020–2024 and evaluated on January–November 2025, and in rolling-origin cross-validation.
-* Three nested models were compared:
-  * (A) seasonal terms + random effects;
-  * (B) A + lagged climate restricted to lags ≥ 1, to mimic real-time use;
-  * (C) B + onset terms.
-* Metrics: mean absolute error, CRPS, 90% prediction-interval coverage, PIT histograms, and sensitivity and specificity for high-incidence months (above the district's 75th percentile).
+We assessed whether lagged climate improves the prediction of snakebite in data not used to fit the model, which is the test relevant to early warning and the timely distribution of antivenom [[3](https://www.who.int/publications/i/item/9789241515641)]. *Descriptive:* routine surveillance in Ghana has missed snakebite outbreaks [[4](https://doi.org/10.11604/pamj.2021.40.131.28217)], and the seasonal peak varies in size and timing between years and districts (Section 3.2). *Theoretical:* a model can fit past data well yet predict poorly, so predictive skill must be judged on held-out data. With temporally dependent data, the held-out set should be separated in time rather than chosen at random [[37](https://doi.org/10.1111/ecog.02881)].
+
+We trained the models on January 2020 to December 2024 and predicted January to December 2025. We also used rolling-origin validation, in which each year from 2022 onwards was predicted from all earlier years. We compared three nested models. Model A contained the seasonal terms and random effects of the base model. Model B added lagged climate restricted to lags of one month or more, so that every prediction uses only climate already observed, as in real-time use. Model C added the onset terms. Because December 2025 climate was estimated rather than observed (Section 2.2), we repeated the evaluation excluding that month.
+
+We assessed the predictions with the mean absolute error and the continuous ranked probability score (Section 2.4.4) [[38](https://doi.org/10.1198/016214506000001437)], and the calibration of the predictive distributions with the coverage of 90% prediction intervals and non-randomised probability integral transform (PIT) histograms for count data [[48](https://doi.org/10.1111/j.1541-0420.2009.01191.x)]. A flat PIT histogram indicates a well-calibrated model. To judge usefulness for early warning, we defined a high-incidence month as one in which a district exceeded its own 75th percentile of monthly cases. We calculated the sensitivity and specificity with which each model, predicting one month ahead, identified such months.
 
 #### 2.4.11 Sensitivity analyses
 
@@ -419,7 +422,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [43].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [49].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -571,6 +574,12 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 38. Gneiting T, Raftery AE. Strictly proper scoring rules, prediction, and estimation. J Am Stat Assoc. 2007;102(477):359–378. doi:10.1198/016214506000001437
 39. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
 40. Lipsitch M, Tchetgen Tchetgen E, Cohen T. Negative controls: a tool for detecting confounding and bias in observational studies. Epidemiology. 2010;21(3):383–388. doi:10.1097/EDE.0b013e3181d61eeb
-41. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
-42. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
-43. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+41. Schisterman EF, Cole SR, Platt RW. Overadjustment bias and unnecessary adjustment in epidemiologic studies. Epidemiology. 2009;20(4):488–495. doi:10.1097/EDE.0b013e3181a819a1
+42. Phipson B, Smyth GK. Permutation P-values should never be zero: calculating exact P-values when permutations are randomly drawn. Stat Appl Genet Mol Biol. 2010;9(1):Article 39. doi:10.2202/1544-6115.1585
+43. Mundlak Y. On the pooling of time series and cross section data. Econometrica. 1978;46(1):69–85.
+44. Gasparrini A, Armstrong B, Kenward MG. Multivariate meta-analysis for non-linear and other multi-parameter associations. Stat Med. 2012;31(29):3821–3839. doi:10.1002/sim.5471
+45. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
+46. Higgins JPT, Thompson SG. Quantifying heterogeneity in a meta-analysis. Stat Med. 2002;21(11):1539–1558. doi:10.1002/sim.1186
+47. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
+48. Czado C, Gneiting T, Held L. Predictive model assessment for count data. Biometrics. 2009;65(4):1254–1261. doi:10.1111/j.1541-0420.2009.01191.x
+49. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
