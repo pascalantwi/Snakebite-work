@@ -2,7 +2,8 @@
 
 > **Draft v0.2, 23 October 2026.** v0.2 reframes the central gap as "is snakebite seasonality climate?" (see the box under the title).
 > * Target journal: *PLoS Neglected Tropical Diseases*, research article.
-> * Reporting guideline: RECORD (STROBE extension for routinely collected health data).
+> * Reporting guideline: RECORD (STROBE extension for routinely collected health data). The checklist is uploaded as the journal's required reporting file.
+> * **No supplementary material:** every analysis, table and figure is in the main text (8 figures, 8 tables).
 > * Companion document: `REVIEW_DRAFT.md` (literature review, gap analysis, methods rationale, references).
 > * **[RESULT]** = fill from the final models.
 > * **[verify]** = check the citation against the full text.
@@ -145,6 +146,14 @@ Rainy-season onset is examined as a secondary, descriptive exposure.
 * Two districts (Ayawaso East, Ledzokuku) have data for 2020–2023 only. We retained their available months.
 * One district reported no cases in any month and was excluded from models, because its district effect is not estimable.
 * We flagged 24 district-months with more than 20 cases and more than 10 times the district median. [AUTHOR: verified with reporting units?] These were retained in the main analysis and excluded in a sensitivity analysis.
+* **Data-cleaning log (reported here in full).**
+  * 18,485 district-months were received for 261 districts.
+  * There were no missing values and no duplicate district-months.
+  * Each district's monthly series was continuous, with no gaps.
+  * 2025 covers January–November.
+  * Exclusions from models: 1 all-zero district (71 district-months).
+  * Lag history: the first 6 months per district lack lags unless climate is extended to 2019.
+  * The 24 flagged extreme values are listed in Table 8 notes. [AUTHOR: final counts after verification]
 
 **Population.** Annual district population estimates [AUTHOR: source, e.g. Ghana Statistical Service projections from the 2021 Population and Housing Census] served as the offset.
 
@@ -300,7 +309,16 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 * Software: R [version] with `glmmTMB`, `dlnm`, `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
 * Code will be available at [AUTHOR: GitHub/Zenodo DOI].
 
-### 2.5 Ethics
+### 2.5 Evidence search (novelty check)
+
+* **Databases:** PubMed, Scopus, Web of Science, medRxiv, bioRxiv, SSRN and African Journals Online.
+* **Search string:** `(snakebite OR "snake bite" OR envenom* OR ophidism) AND (lag* OR "distributed lag" OR DLNM OR delay* OR "time series" OR seasonal*) AND (rain* OR precipitation OR humidity OR temperature OR climat* OR weather)`.
+* **Date of search:** [AUTHOR: date].
+* **Inclusion:** studies relating climate to snakebite incidence or mortality over time.
+* **Report:** records identified, screened and included in one sentence, with the included studies summarised in the Introduction.
+* [AUTHOR: n identified / n screened / n included.]
+
+### 2.6 Ethics
 
 * This study used aggregated, anonymised routine surveillance data. No individual-level data were accessed.
 * [AUTHOR: Ghana Health Service Ethics Review Committee approval/waiver number; DHIMS-2 data-use permission.]
@@ -341,6 +359,32 @@ Climate summary (mean ± SD across district-months):
 
 [AUTHOR: add a by-zone climate column.]
 
+**Table 2. Snakebite cases and incidence by region, Ghana**
+
+Cases are for January 2020 – November 2025. Rates are per 100,000 per year for 2020–2024. Regions are ordered by rate.
+
+| Region | Rainfall regime | Districts | Cases | Rate |
+|---|---|---|---|---|
+| Upper West | Unimodal (north) | 11 | 5,977 | 111.9 |
+| Savannah | Unimodal (north) | 7 | 4,428 | 108.7 |
+| North East | Unimodal (north) | 6 | 2,884 | 73.0 |
+| Western North | Bimodal (south) | 9 | 3,422 | 61.7 |
+| Upper East | Unimodal (north) | 15 | 3,729 | 47.1 |
+| Western | Bimodal (south) | 14 | 5,228 | 41.9 |
+| Oti | Bimodal (south) | 9 | 1,969 | 41.0 |
+| Ahafo | Bimodal (south) | 6 | 1,299 | 37.8 |
+| Bono | Bimodal (south) | 12 | 2,665 | 37.3 |
+| Eastern | Bimodal (south) | 33 | 5,944 | 34.0 |
+| Northern | Unimodal (north) | 16 | 4,862 | 33.3 |
+| Central | Bimodal (south) | 22 | 4,611 | 27.4 |
+| Bono East | Bimodal (south) | 11 | 1,982 | 27.2 |
+| Ashanti | Bimodal (south) | 43 | 8,351 | 25.3 |
+| Volta | Bimodal (south) | 18 | 1,440 | 14.8 |
+| Greater Accra | Bimodal (south) | 29 | 1,724 | 5.4 |
+| **Ghana** | | **261** | **60,515** | **32.4** |
+
+Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at district level; Oti and Bono East are transitional.] The full 261-district list with zone assignment is in the public repository.
+
 ### 3.2 Seasonality
 
 * **North.** Cases rose from March, with the first rains, and peaked in July (2,666 cases), two months *before* the rainfall peak in September (8.3 mm/day).
@@ -350,7 +394,7 @@ Climate summary (mean ± SD across district-months):
 
 ### 3.3 Seasonality is largely lagged local climate (primary result)
 
-* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo. **Fig 3**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
+* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 3**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
 
 <!-- Screening result (Poisson GLM, district-rate offset, lags 0-3 quadratic; analysis/seasonality_climate_placebo.py):
      seasonal deviance (M0-M1) 2,736; own lagged climate reproduced 108% of it (scaled deviance gain over month terms 88 on 17 extra df);
@@ -361,11 +405,11 @@ Climate summary (mean ± SD across district-months):
 
 ### 3.4 Lag selection
 
-* [RESULT: grid of AIC and CV scores (Table 2 / S2 Table); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1.]
+* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 8B).]
 
 ### 3.5 Exposure–lag–response associations
 
-* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 4; Table 3.]
+* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 4; Table 5.]
 
 <!-- Preliminary single-lag anomaly screen (REVIEW_DRAFT.md §6.4), for orientation only:
      RH lag0 RR 1.033/SD; Tmin lag0–1 1.031, 1.025; Tmax lag0 south 0.979;
@@ -381,19 +425,19 @@ Climate summary (mean ± SD across district-months):
 
 ### 3.8 Rainy-season onset
 
-* [RESULT: event-study RRs by months since onset (S6 Fig); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
+* [RESULT: event-study RRs by months since onset (Fig 6); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
 
 ### 3.9 Climate-attributable burden
 
-* [RESULT: attributable number and fraction (95% eCI) by exposure, zone and region (Table 4).]
+* [RESULT: attributable number and fraction (95% eCI) by exposure, zone and region (Table 6).]
 
 ### 3.10 Predictive performance
 
-* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 6); gain from lagged climate; detection of high-incidence months; lead time.]
+* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 7; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
 
 ### 3.11 Sensitivity analyses
 
-* [RESULT: one paragraph summarising robustness (S3–S6 Tables).]
+* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 8A); sensitivity to the climate product (Fig 8C).]
 
 ---
 
@@ -479,48 +523,51 @@ Climate summary (mean ± SD across district-months):
 
 ---
 
-## Figures and tables (planned)
+## Figures and tables (all in the main text, no supplementary material)
 
-| Item | Content |
-|---|---|
-| **Fig 1** | (A) Map of districts by rainfall regime; (B) district incidence map, with regional rates inset |
-| **Fig 2** | Monthly cases vs rainfall, RH and temperature by zone (north/south) |
-| **Fig 3** | **Primary:** observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; histogram of placebo deviances with the own-climate value marked |
-| **Fig 4** | Exposure–lag–response contour plots and overall cumulative curves (rainfall, RH or Tmax, Tmin) |
-| **Fig 5** | (A) Anomaly lag curves; (B) north vs south lag curves |
-| **Fig 6** | 2025 observed vs predicted (example districts) and skill comparison of models A–C |
-| S6 Fig | Event-study RR by months since rainy-season onset, by zone (secondary) |
-| **Table 1** | Cases and incidence by year and zone (above) |
-| **Table 2** | Lag-selection grid summary (AIC, CV) |
-| **Table 3** | Lag-specific and cumulative RRs |
-| **Table 4** | Climate-attributable cases and fractions |
+Every analysis is reported in the main paper. The only separate files are (a) the RECORD reporting checklist, which journals require as an upload for reviewers rather than as paper content, and (b) the code and district-level data in the public repository cited in Data availability.
 
-## Supplementary material (planned)
+PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are acceptable there. If the target journal changes (e.g. *Lancet Planet Health*), the journal may require some items to move to an appendix.
 
-* S1 Text: RECORD checklist.
-* S2 Text: data-cleaning log.
-* S3 Text: novelty search protocol (PRISMA-style).
-* S1 Table: districts and zone assignment.
-* S2 Table: full lag-selection grid.
-* S3–S6 Tables: sensitivity analyses.
-* S1 Fig: DHARMa diagnostics.
-* S2 Fig: climate product comparison.
-* S3 Fig: falsification (future lags).
-* S4 Fig: 3-D exposure–lag–response surfaces by zone.
-* S5 Fig: district-level 2025 predictions.
+**Figures**
+
+| Item | Content | Results section |
+|---|---|---|
+| **Fig 1** | (A) Districts by rainfall regime; (B) district incidence map, with regional rates inset | 3.1 |
+| **Fig 2** | Monthly cases vs rainfall, RH and temperature by zone (north/south) | 3.2 |
+| **Fig 3** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
+| **Fig 4** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
+| **Fig 5** | (A) Anomaly lag curves; (B) north vs south lag curves | 3.6–3.7 |
+| **Fig 6** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
+| **Fig 7** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
+| **Fig 8** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
+
+**Tables**
+
+| Item | Content | Results section |
+|---|---|---|
+| **Table 1** | Cases and incidence by year and zone (filled in below) | 3.1 |
+| **Table 2** | Regions: rainfall regime, number of districts, cases, rate per 100,000. Lists all 16 regions; the full 261-district list and zone assignments are in the public repository | 3.1 |
+| **Table 3** | Lag-selection grid: ΔAIC and cross-validated score for every candidate (maximum lag 3/6/9/12 × exposure df 2–4 × lag df 2–4, as a compact 4 × 9 matrix), plus penalized DLNM agreement | 3.4 |
+| **Table 4** | Seasonality models M0–M3: deviance, AIC, CV score, share of seasonality reproduced by climate, residual non-climatic share; placebo and temporal-placebo results with permutation p-values | 3.3 |
+| **Table 5** | Lag-specific and cumulative RRs (90th and 99th percentiles vs reference), by exposure and zone | 3.5–3.7 |
+| **Table 6** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
+| **Table 7** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |
+| **Table 8** | Sensitivity analyses: cumulative RRs and the seasonality share under each alternative (max lag; NB1/ZINB/hurdle; outliers excluded; 2020 excluded; Fourier seasonality; CHIRPS/ERA5-Land; grid-cell clustering; monthly population; BYM2 spatial model) | 3.11 |
 
 ## Writing order (suggested)
 
-1. Finalise Methods 2.1–2.3 (data details).
-2. Descriptive results → Table 1 and Figs 1–2.
-3. Lag selection (2.4.4) → Table 2.
-4. Main DLNM-GLMM → Fig 3 and Table 3.
-5. Decomposition, regime and onset analyses → Figs 4–5.
-6. Attribution and prediction → Table 4 and Fig 6.
-7. Results text.
-8. Discussion.
-9. Re-check the Introduction against the full text of Nyarko et al. 2026 and a fresh novelty search.
-10. Abstract, author summary and title last.
+1. Finalise Methods 2.1–2.3 (data details, cleaning log).
+2. Descriptive results → Tables 1–2 and Figs 1–2.
+3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 3.**
+4. Lag selection (2.4.4) → Table 3.
+5. Main DLNM-GLMM → Fig 4 and Table 5.
+6. Decomposition, regime and onset analyses → Figs 5–6.
+7. Attribution and prediction → Tables 6–7 and Fig 7.
+8. Sensitivity analyses and diagnostics → Table 8 and Fig 8.
+9. Results text, then Discussion.
+10. Evidence search (2.5) and a re-check of the Introduction against the full texts of Nyarko et al. 2026 and Huang et al. 2025.
+11. Abstract, author summary and title last.
 
 ## References
 

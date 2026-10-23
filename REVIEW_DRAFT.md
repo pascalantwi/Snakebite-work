@@ -546,13 +546,13 @@ res <- simulateResiduals(m1); plot(res); testZeroInflation(res)
 5. **Pará State, Brazil (PubMed 42269650):** "Climatic and social drivers of snakebite incidence", 2007–2023; precipitation, river levels and large-scale climate phenomena. Lag method unknown; check it.
 6. **Formal search before submission.** Suggested string for PubMed/Scopus/Web of Science (also screen medRxiv, bioRxiv, SSRN and the African Journals Online database):
    `(snakebite OR "snake bite" OR envenom* OR ophidism) AND (lag* OR "distributed lag" OR DLNM OR delay* OR "time series") AND (rain* OR precipitation OR humidity OR temperature OR climat* OR weather)`
-   Record the date, hits and screening in a PRISMA-style appendix. Reviewers respond well to a documented novelty search.
+   Record the date, hits and screening in the manuscript Methods (section 2.5, Evidence search) rather than an appendix. Reviewers respond well to a documented novelty search.
 
 ---
 
 ## 10. Manuscript draft
 
-The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. It contains the title, abstract, author summary, Introduction and Methods in prose (including the pre-specified lag-selection strategy), Results with the descriptive numbers filled in and placeholders for model results, Discussion, Conclusions, and the figure, table and supplement plan.
+The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. It contains the title, abstract, author summary, Introduction and Methods in prose (including the pre-specified lag-selection strategy), Results with the descriptive numbers filled in and placeholders for model results, Discussion, Conclusions, and the figure and table plan (everything in the main text; no supplementary material).
 
 ---
 
