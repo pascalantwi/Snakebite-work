@@ -136,16 +136,23 @@ The distribution of monthly counts was examined to choose the count model. We ca
 
 #### 2.4.2 Base model
 
-Counts $Y_{it}$ were modelled as negative binomial (NB2) with mean $\mu_{it}$:
+All models were built on a common base model for the monthly count of snakebite cases $Y_{it}$ in district $i$ and month $t$. The counts were modelled with a negative-binomial distribution, with mean $\mu_{it}$ and variance $\mu_{it} + \mu_{it}^2/\theta$ (the NB2 parameterisation), and a log link:
 
-$$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + s_{z(i)}(m_t) + \gamma_{y(t)} + u_{r(i)} + v_i,$$
+$$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + s_{g(i)}(m_t) + \gamma_{y(t)} + u_{r(i)} + v_i, \qquad u_r \sim N(0,\sigma_u^2), \quad v_i \sim N(0,\sigma_v^2).$$
 
-where:
-* $s_{z(i)}(m_t)$ is zone-specific seasonality (calendar-month effects interacted with rainfall regime);
-* $\gamma_{y(t)}$ are year effects capturing secular trends and reporting changes, including the COVID-19 period;
-* $u_{r} \sim N(0,\sigma_u^2)$ and $v_i \sim N(0,\sigma_v^2)$ are region and district random intercepts.
+The negative-binomial distribution was chosen because monthly district counts were strongly overdispersed, with a variance several times larger than the mean (Section 3.1). A Poisson model assumes that the variance equals the mean. Applied to these data, it would understate the uncertainty of every estimate and overstate the significance of climate effects. Quasi-Poisson models correct the standard errors but have no likelihood, which rules out comparison by information criteria and the likelihood-based lag selection described below. The NB2 form, in which the variance grows with the square of the mean, suits data in which most district-months have few cases but some reach high counts. The NB1 form, with variance proportional to the mean, was assessed in a sensitivity analysis. The same applies to zero-inflated and hurdle versions, in case the many months without cases reflect non-reporting rather than true absence.
 
-Residual temporal autocorrelation was assessed. Where present, it was addressed with a district-level AR(1) random effect.
+The logarithm of the district population, $\log(\text{Pop}_{it})$, enters as an offset, a term with its coefficient fixed at one. The model therefore describes the incidence rate per person rather than the raw number of cases. This is necessary because district populations differ more than tenfold, so differences in counts would otherwise mostly reflect population size.
+
+Seasonality is represented by calendar-month effects that differ between the unimodal, transition and bimodal rainfall regimes, $s_{g(i)}(m_t)$. A single national seasonal curve would average a one-peaked northern season with a two-peaked southern one and fit neither. This regime-specific adjustment is the conventional way of removing seasonality before estimating climate effects. It therefore serves as the reference against which the primary analysis tests whether lagged climate can reproduce the seasonal cycle on its own (Section 2.4.5). Year effects, $\gamma_{y(t)}$, absorb changes common to all districts from year to year. These include secular trends in snakebite, changes in reporting and care-seeking, and the disruption of health services during the COVID-19 pandemic in 2020–2021. Without them, such changes could be mistaken for the effects of climate.
+
+District and region random intercepts, $v_i$ and $u_{r(i)}$, account for the repeated measurements on the same districts over 72 months and for persistent differences between districts. Such differences include their snake fauna, land use, farming systems, access to health facilities and completeness of reporting, which are not measured but strongly affect the number of bites recorded. Treating these differences as random rather than fixed effects has several advantages. It borrows strength across districts, so that districts with few cases are not estimated in isolation. It also separates variation between regions from variation between districts within a region, and it keeps the number of parameters manageable compared with 260 district indicators. With 72 months per district, the climate effects are identified mainly from variation over time within districts, so the random intercepts also reduce confounding by stable district characteristics.
+
+Monthly counts within a district may be correlated beyond what the covariates explain, for example because of outbreaks or changes in reporting that last several months. Ignoring such correlation would make the standard errors too small. We therefore examined the autocorrelation of the residuals within districts, and where it remained, added a first-order autoregressive (AR(1)) random effect for each district over time. Spatial correlation between neighbouring districts was assessed in the residuals and addressed in a sensitivity analysis with a spatial model (Section 2.4.11).
+
+For the analyses by sex, the data were arranged with one row per district, month and sex. The model then included a fixed effect for sex, and the offset was the logarithm of the sex-specific population, so that the sex coefficient estimates the ratio of incidence rates in males and females. Interactions between sex and the climate terms tested whether the effects of climate differ between males and females, as might be expected if their exposure during farming and other outdoor work differs.
+
+Models were fitted to the 18,636 district-months that remained after excluding district-months in which reporting appeared to have failed rather than cases to have been absent. These were one district with no reported cases in any month, one district with no reports after 2023 and five district-years with no reports in districts that otherwise averaged at least 10 cases a year. All excluded months had zero recorded cases. Parameters were estimated by maximum likelihood, with the random effects integrated out by the Laplace approximation (Section 2.4.12).
 
 #### 2.4.3 Distributed-lag non-linear models
 
