@@ -7,4 +7,6 @@ Possible non-reporting district-years (zero cases, other years mean >= 10): [{'d
 Ledzokuku and Ayawaso East: absent from data_snake.csv for 2024-2025 and zero in every 2024-2025 month of the xlsx; set include_main = 0 for those years (likely non-reporting after boundary changes).
 Output district-month: 18792 rows (18636 with include_main = 1); climate available for 18485 rows (December 2025 climate not yet extracted).
 Output district-month-sex: 37584 rows. population_sex uses the national 2021 PHC share (49.3% male); replace with district census counts by sex when available.
-Age is not present in either source file; it cannot be added as a covariate from these data.
+Age file: 23 months ((2024, 1) to (2025, 11)); age groups sum to cases_total in 5742 of 5742 district-months for Jan 2024 - Oct 2025. November 2025 is incomplete (export cut at 256 columns: 98 of 654 cases; only 3 age groups) and is flagged age_complete_month = 0. December 2025 and 2020-2023 are not in the age file.
+Output district-month-age: 72036 rows; cases by broad age group (Jan 2024 - Oct 2025): {'0-14': 4259, '15-34': 7652, '35-59': 4700, '60+': 1340}
+Age and sex come from separate DHIMS-2 exports and are not cross-classified (no age-by-sex counts).

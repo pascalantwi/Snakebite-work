@@ -2,9 +2,11 @@
 #   "Snake Bite Data 2020 - 2025.xlsx"  monthly DHIMS-2 snakebite cases by district and sex, Jan 2020 - Dec 2025
 #   data_snake.csv                      district-month cases, population and climate (NASA POWER, NDVI), Jan 2020 - Nov 2025
 #   "Snake Bite Data.xlsx"              annual totals by region/district/facility (2023, 2024, Jan-Jun 2025), used for cross-checks only
+#   "data/Snake Bite Data-1.xlsx"       monthly cases by district and age group, Jan 2024 - Nov 2025 (export cut at 256 columns)
 # Outputs (in data/):
 #   snakebite_unified_district_month.csv      one row per district x month (cases_male, cases_female, cases_total + covariates)
 #   snakebite_unified_district_month_sex.csv  one row per district x month x sex (for sex as a covariate)
+#   snakebite_unified_district_month_age.csv  one row per district x month x age group, Jan 2024 - Nov 2025 (for age as a covariate)
 #   data_quality_checks.txt
 # Usage: python3 analysis/build_unified_dataset.py
 import re
@@ -77,6 +79,17 @@ for c in ["y2023", "y2024", "h1_2025"]:
     bad = chk.index[chk[c] != ann.loc[chk.index, c]]
     log.append(f"Annual facility file vs monthly file, {c}: {len(bad)} district mismatches {list(bad)}")
 
+# 3b. December 2025 climate, if extracted with analysis/extract_dec2025_climate.R
+import os
+if os.path.exists("data/climate_dec2025.csv"):
+    dec = pd.read_csv("data/climate_dec2025.csv").rename(columns={"rainfall": "Rainfall", "rel_humidity": "Relative Humidity",
+          "t2m": "T2M", "tmax": "Maximum Temperature", "tmin": "Minimum Temperature"})
+    isdec = (u.year == 2025) & (u.month == 12)
+    dd = u.loc[isdec, ["district"]].merge(dec, on="district", how="left")
+    for c in CLIMATE:
+        u.loc[isdec, c] = dd[c].values
+    log.append(f"December 2025 climate filled from data/climate_dec2025.csv for {dd[CLIMATE].notna().all(axis=1).sum()} districts.")
+
 # 4. Fill population for rows absent from the csv (Dec 2025; two districts 2024-25) from the same/last district-year
 pop_y = s.groupby(["district", "year"]).population.first()
 def pop_for(d, y):
@@ -131,6 +144,52 @@ log.append(f"Output district-month: {len(u)} rows ({u.include_main.sum()} with i
            f"climate available for {u.climate_available.sum()} rows (December 2025 climate not yet extracted).")
 log.append(f"Output district-month-sex: {len(lg)} rows. population_sex uses the national 2021 PHC share "
            f"({MALE_SHARE:.1%} male); replace with district census counts by sex when available.")
-log.append("Age is not present in either source file; it cannot be added as a covariate from these data.")
+# 6. Age groups (Jan 2024 - Nov 2025)
+AGE_XLSX = "data/Snake Bite Data-1.xlsx"
+AGE_ORDER = ["<28days", "1-11mths", "1-4", "5-9", "10-14", "15-17", "18-19", "20-34", "35-49", "50-59", "60-69", "70+"]
+BROAD = {"<28days": "0-14", "1-11mths": "0-14", "1-4": "0-14", "5-9": "0-14", "10-14": "0-14", "15-17": "15-34",
+         "18-19": "15-34", "20-34": "15-34", "35-49": "35-59", "50-59": "35-59", "60-69": "60+", "70+": "60+"}
+rows = list(openpyxl.load_workbook(AGE_XLSX, read_only=True).worksheets[0].iter_rows(values_only=True))
+acols = []
+for c in rows[1][1:]:
+    m = re.match(r"Snake Bite (\w+) (\d{4}) (.+)$", str(c).strip())
+    acols.append((int(m.group(2)), MONTHS.index(m.group(1)) + 1, m.group(3).strip()))
+recs, region = [], None
+for r in rows[2:]:
+    name = str(r[0]).strip()
+    if name in REGIONS:
+        continue
+    for (y, mo, ag), v in zip(acols, r[1:]):
+        recs.append((norm(name), y, mo, ag, 0 if v in ("", None) else int(v)))
+age = pd.DataFrame(recs, columns=["district", "year", "month", "age_group_dhims", "cases"])
+age["district"] = age.district.replace(NAME_FIX)
+# DHIMS-2 exports omit age groups with no cases in any district that month: complete the grid with zeros
+months_age = sorted(set(zip(age.year, age.month)))
+grid = pd.MultiIndex.from_product([sorted(u.district.unique()), months_age, AGE_ORDER], names=["district", "ym", "age_group_dhims"]).to_frame(index=False)
+grid["year"] = grid.ym.str[0]; grid["month"] = grid.ym.str[1]; grid = grid.drop(columns="ym")
+age = grid.merge(age, on=["district", "year", "month", "age_group_dhims"], how="left").fillna({"cases": 0})
+age["cases"] = age.cases.astype(int)
+age["age_group"] = age.age_group_dhims.map(BROAD)
+age["age_complete_month"] = (~((age.year == 2025) & (age.month == 11))).astype(int)
+chk = age.groupby(["district", "year", "month"]).cases.sum().rename("age_sum").reset_index().merge(
+    u[["district", "year", "month", "cases_total"]], on=["district", "year", "month"])
+ok = chk[(chk.year < 2025) | (chk.month < 11)]
+log.append(f"Age file: {len(months_age)} months ({months_age[0]} to {months_age[-1]}); age groups sum to cases_total in "
+           f"{(ok.age_sum == ok.cases_total).sum()} of {len(ok)} district-months for Jan 2024 - Oct 2025. November 2025 is "
+           f"incomplete (export cut at 256 columns: {int(chk[(chk.year == 2025) & (chk.month == 11)].age_sum.sum())} of "
+           f"{int(chk[(chk.year == 2025) & (chk.month == 11)].cases_total.sum())} cases; only 3 age groups) and is flagged "
+           "age_complete_month = 0. December 2025 and 2020-2023 are not in the age file.")
+keep = [c for c in order if c not in ("cases_total", "cases_male", "cases_female")]
+age = age.merge(u[keep], on=["district", "year", "month"], how="left")
+age["include_main"] = age.include_main * age.age_complete_month
+age = age[["district", "region", "regime", "year", "month", "date", "t", "age_group_dhims", "age_group", "cases",
+           "population"] + [c for c in keep if c not in ("district", "region", "regime", "year", "month", "date", "t",
+                                                          "population")] + ["age_complete_month"]]
+age["age_group_dhims"] = pd.Categorical(age.age_group_dhims, AGE_ORDER, ordered=True)
+age = age.sort_values(["district", "year", "month", "age_group_dhims"]).reset_index(drop=True)
+age.to_csv("data/snakebite_unified_district_month_age.csv", index=False)
+tot = age[age.age_complete_month == 1].groupby("age_group").cases.sum()
+log.append(f"Output district-month-age: {len(age)} rows; cases by broad age group (Jan 2024 - Oct 2025): {tot.to_dict()}")
+log.append("Age and sex come from separate DHIMS-2 exports and are not cross-classified (no age-by-sex counts).")
 open("data/data_quality_checks.txt", "w").write("\n".join(log) + "\n")
 print("\n".join(log))
