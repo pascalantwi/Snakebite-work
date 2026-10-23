@@ -3,9 +3,10 @@ District-months in both sources: 18485; totals differ in 146 (all in [(2025, 11)
 Annual facility file vs monthly file, y2023: 0 district mismatches []
 Annual facility file vs monthly file, y2024: 0 district mismatches []
 Annual facility file vs monthly file, h1_2025: 1 district mismatches ['saboba']
+December 2025 climate imputed (no extraction available). Rainfall: December climatology, backtest MAE 0.374; Relative Humidity: December climatology, backtest MAE 4.555; T2M: climatology + 0.50 x November anomaly, backtest MAE 0.603; Maximum Temperature: climatology + 1.26 x November anomaly, backtest MAE 0.800; Minimum Temperature: climatology + 0.39 x November anomaly, backtest MAE 1.264; ndvi: December climatology, backtest MAE 0.032.
 Rainfall regime from district rainfall 2020-2024: {'bimodal': 192, 'unimodal': 47, 'transition': 22}; differs from the region-based split for 24 districts.
 Possible non-reporting district-years (zero cases, other years mean >= 10): [{'district': 'accra', 'year': 2025, 'other_mean': 42.0}, {'district': 'ada west', 'year': 2020, 'other_mean': 11.8}, {'district': 'jasikan', 'year': 2025, 'other_mean': 16.6}, {'district': 'saboba', 'year': 2024, 'other_mean': 54.4}, {'district': 'sagnarigu', 'year': 2021, 'other_mean': 11.4}]
 Ledzokuku and Ayawaso East: absent from data_snake.csv for 2024-2025 and zero in every 2024-2025 month of the xlsx; set include_main = 0 for those years (likely non-reporting after boundary changes).
-Output district-month: 18792 rows (18636 with include_main = 1); climate available for 18485 rows (December 2025 climate not yet extracted).
+Output district-month: 18792 rows (18636 with include_main = 1); climate available for 18746 rows; rows without climate: {'ayawaso east': 23, 'ledzokuku': 23} (all have include_main = 0).
 Output district-month-sex: 37584 rows. population_sex uses the national 2021 PHC share (49.3% male); replace with district census counts by sex when available.
 Age: the age-group export (data/Snake Bite Data-1.xlsx) covers January 2024 - October 2025 completely but not a full calendar year beyond 2024, and no age data exist for 2020-2023; age is therefore not included as a covariate.

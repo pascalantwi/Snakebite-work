@@ -88,6 +88,41 @@ if os.path.exists("data/climate_dec2025.csv"):
         u.loc[isdec, c] = dd[c].values
     log.append(f"December 2025 climate filled from data/climate_dec2025.csv for {dd[CLIMATE].notna().all(axis=1).sum()} districts.")
 
+# 3c. Otherwise impute December 2025 climate from the district's own record (backtested on Dec 2020-2024):
+#     rainfall, humidity, NDVI  -> district December mean 2020-2024 (climatology)
+#     t2m, tmax, tmin           -> climatology + lambda * November 2025 anomaly (lambda estimated from 2020-2024)
+u["climate_imputed"] = 0
+isdec = (u.year == 2025) & (u.month == 12)
+if u.loc[isdec, CLIMATE].isna().all(axis=None):
+    PERSIST = ["T2M", "Maximum Temperature", "Minimum Temperature"]
+    base = s[s.year <= 2024]
+    bt = []
+    for v in CLIMATE:
+        w = base.pivot_table(index="district", columns=["year", "month"], values=v)
+        climD = w[[(y, 12) for y in range(2020, 2025)]].mean(axis=1)
+        climN = w[[(y, 11) for y in range(2020, 2025)]].mean(axis=1)
+        nov25 = s[(s.year == 2025) & (s.month == 11)].set_index("district")[v]
+        lam = 0.0
+        if v in PERSIST:
+            xa = np.concatenate([(w[(y, 11)] - climN).values for y in range(2020, 2025)])
+            ya = np.concatenate([(w[(y, 12)] - climD).values for y in range(2020, 2025)])
+            ok = ~np.isnan(xa) & ~np.isnan(ya)
+            lam = (xa[ok] * ya[ok]).sum() / (xa[ok] ** 2).sum()
+        est = climD + lam * (nov25.reindex(climD.index) - climN).fillna(0)
+        if v == "Rainfall":
+            est = est.clip(lower=0)
+        # leave-one-year-out backtest of the chosen method
+        err = []
+        for y in range(2020, 2025):
+            oth = [yy for yy in range(2020, 2025) if yy != y]
+            cD = w[[(yy, 12) for yy in oth]].mean(axis=1); cN = w[[(yy, 11) for yy in oth]].mean(axis=1)
+            pred = cD + lam * (w[(y, 11)] - cN)
+            err.append(np.nanmean(np.abs(pred - w[(y, 12)])))
+        bt.append(f"{v}: {'climatology + %.2f x November anomaly' % lam if lam else 'December climatology'}, backtest MAE {np.mean(err):.3f}")
+        u.loc[isdec, v] = u.loc[isdec, "district"].map(est).values
+    u.loc[isdec, "climate_imputed"] = 1
+    log.append("December 2025 climate imputed (no extraction available). " + "; ".join(bt) + ".")
+
 # 4. Fill population for rows absent from the csv (Dec 2025; two districts 2024-25) from the same/last district-year
 pop_y = s.groupby(["district", "year"]).population.first()
 def pop_for(d, y):
@@ -134,7 +169,7 @@ u = u.rename(columns={"Relative Humidity": "rel_humidity", "Maximum Temperature"
                       "Rainfall": "rainfall", "T2M": "t2m"})
 order = ["district", "region", "regime", "regime_region", "n_bimodal_years", "year", "month", "date", "t", "cases_total", "cases_male", "cases_female",
          "population", "population_source", "rainfall", "rel_humidity", "t2m", "tmax", "tmin", "ndvi",
-         "climate_available", "in_original_csv", "cases_revised_nov2025", "all_zero_district",
+         "climate_available", "climate_imputed", "in_original_csv", "cases_revised_nov2025", "all_zero_district",
          "possible_nonreporting_year", "include_main"]
 u = u[order].sort_values(["district", "year", "month"]).reset_index(drop=True)
 u.to_csv("data/snakebite_unified_district_month.csv", index=False)
@@ -152,7 +187,8 @@ lg = lg[cols_long].sort_values(["district", "year", "month", "sex"]).reset_index
 lg.to_csv("data/snakebite_unified_district_month_sex.csv", index=False)
 
 log.append(f"Output district-month: {len(u)} rows ({u.include_main.sum()} with include_main = 1); "
-           f"climate available for {u.climate_available.sum()} rows (December 2025 climate not yet extracted).")
+           f"climate available for {u.climate_available.sum()} rows; rows without climate: "
+           f"{u[u.climate_available == 0].district.value_counts().to_dict()} (all have include_main = 0).")
 log.append(f"Output district-month-sex: {len(lg)} rows. population_sex uses the national 2021 PHC share "
            f"({MALE_SHARE:.1%} male); replace with district census counts by sex when available.")
 log.append("Age: the age-group export (data/Snake Bite Data-1.xlsx) covers January 2024 - October 2025 completely but not a full calendar year beyond 2024, and no age data exist for 2020-2023; age is therefore not included as a covariate.")

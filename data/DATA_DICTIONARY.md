@@ -33,7 +33,8 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 | `rel_humidity` | Relative humidity at 2 m, % |
 | `t2m`, `tmax`, `tmin` | Mean, maximum and minimum air temperature at 2 m, °C |
 | `ndvi` | District mean NDVI |
-| `climate_available` | 1 if all climate variables are present. December 2025 is filled by running `Rscript analysis/extract_dec2025_climate.R` |
+| `climate_available` | 1 if all climate variables are present. Only Ledzokuku and Ayawaso East in 2024–2025 (excluded from the main analysis) lack climate |
+| `climate_imputed` | 1 for December 2025, whose climate is estimated rather than extracted. Rainfall, relative humidity and NDVI are the district's December mean for 2020–2024. Mean, maximum and minimum temperature are that mean plus the November 2025 anomaly scaled by its average carry-over into December (0.50, 1.26 and 0.39). In leave-one-year-out tests on December 2020–2024 the typical (mean absolute) errors were 0.37 mm/day for rainfall, 4.6% for humidity, 0.60, 0.80 and 1.26 °C for mean, maximum and minimum temperature, and 0.03 for NDVI. If the extracted values become available (`analysis/extract_dec2025_climate.R`), they replace the estimates automatically when the build script is rerun. Run a sensitivity analysis that excludes December 2025 |
 | `in_original_csv` | 1 if the district-month was in `data_snake.csv` |
 | `cases_revised_nov2025` | 1 for the 146 November 2025 district-months whose counts rose in the later extraction (late reports, +556 cases) |
 | `all_zero_district` | 1 for Ayawaso East, which reports no cases in any month |
