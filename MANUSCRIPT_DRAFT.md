@@ -146,9 +146,9 @@ $$P(Y_{it}=y) = \int_0^\infty \frac{e^{-\lambda}\lambda^{y}}{y!}\,\frac{(\theta/
 
 By the laws of total expectation and variance,
 
-$$E(Y_{it}) = E(\lambda_{it}) = \mu_{it}, \qquad \operatorname{Var}(Y_{it}) = E(\lambda_{it}) + \operatorname{Var}(\lambda_{it}) = \mu_{it} + \frac{\mu_{it}^2}{\theta}.$$
+$$E(Y_{it}) = E(\lambda_{it}) = \mu_{it}, \qquad \mathrm{Var}(Y_{it}) = E(\lambda_{it}) + \mathrm{Var}(\lambda_{it}) = \mu_{it} + \frac{\mu_{it}^2}{\theta}.$$
 
-The extra-Poisson variation $\mu_{it}^2/\theta$ vanishes as $\theta \to \infty$, when the model reduces to the Poisson, so a small estimated $\theta$ quantifies the overdispersion. Quasi-Poisson models also correct for overdispersion, but they have no likelihood and so cannot be compared with information criteria such as AIC. They also assume that the variance increases in proportion to the mean, $\operatorname{Var}(Y_{it}) = \phi\,\mu_{it}$, whereas in NB2 it increases with the square of the mean, $\operatorname{Var}(Y_{it}) = \mu_{it} + \mu_{it}^2/\theta$. The two forms weight small and large counts differently and can lead to different conclusions [[26](https://pubmed.ncbi.nlm.nih.gov/18051645/)]. A quadratic mean–variance relationship suits data in which large counts are rare but much more variable than small ones, as here. The NB1 form, $\operatorname{Var}(Y_{it}) = \mu_{it}(1+\alpha)$, with variance proportional to the mean, was compared in a sensitivity analysis.
+The extra-Poisson variation $\mu_{it}^2/\theta$ vanishes as $\theta \to \infty$, when the model reduces to the Poisson, so a small estimated $\theta$ quantifies the overdispersion. Quasi-Poisson models also correct for overdispersion, but they have no likelihood and so cannot be compared with information criteria such as AIC. They also assume that the variance increases in proportion to the mean, $\mathrm{Var}(Y_{it}) = \phi\,\mu_{it}$, whereas in NB2 it increases with the square of the mean, $\mathrm{Var}(Y_{it}) = \mu_{it} + \mu_{it}^2/\theta$. The two forms weight small and large counts differently and can lead to different conclusions [[26](https://pubmed.ncbi.nlm.nih.gov/18051645/)]. A quadratic mean–variance relationship suits data in which large counts are rare but much more variable than small ones, as here. The NB1 form, $\mathrm{Var}(Y_{it}) = \mu_{it}(1+\alpha)$, with variance proportional to the mean, was compared in a sensitivity analysis.
 
 **Zero counts.** *Descriptive:* 31% of analysed district-months recorded no cases. *Theoretical:* a negative-binomial model already predicts many zeros when the mean is low, so a high share of zeros does not by itself require a different model [[25](https://cameron.econ.ucdavis.edu/racd2/)]. Setting $y=0$ in the probability function above gives
 
@@ -170,7 +170,7 @@ so the model describes the expected incidence rate. For a covariate $x$ with coe
 
 **Temporal autocorrelation.** *Descriptive:* after removing each district's mean, monthly counts were correlated with the previous month's counts (within-district lag-1 correlation 0.20). *Theoretical:* correlation between successive observations violates the assumption of independence given the model and makes standard errors too small [[27](https://experts.mcmaster.ca/scholarly-works/1146888)]. We therefore examined the autocorrelation of the model residuals within districts. Where it remained, a first-order autoregressive (AR(1)) random effect was added for each district, which models correlation that decays with the time between observations:
 
-$$\varepsilon_{it} = \rho\,\varepsilon_{i,t-1} + \xi_{it}, \qquad \xi_{it} \sim N\!\left(0, \sigma_\varepsilon^2(1-\rho^2)\right), \qquad \operatorname{Corr}(\varepsilon_{it}, \varepsilon_{i,t+k}) = \rho^{|k|},$$
+$$\varepsilon_{it} = \rho\,\varepsilon_{i,t-1} + \xi_{it}, \qquad \xi_{it} \sim N\!\left(0, \sigma_\varepsilon^2(1-\rho^2)\right), \qquad \mathrm{Corr}(\varepsilon_{it}, \varepsilon_{i,t+k}) = \rho^{|k|},$$
 
 where $\varepsilon_{it}$ is added to the linear predictor and $\rho$ is the correlation between consecutive months. Spatial correlation between neighbouring districts was assessed in the residuals and addressed in a sensitivity analysis with a spatial model (Section 2.4.11).
 
@@ -182,7 +182,7 @@ where $k$ indexes sex, $\text{male}_k$ equals 1 for males and 0 for females, and
 
 **Data analysed and estimation.** Models were fitted to the 18,636 district-months that remained after excluding district-months in which reporting appeared to have failed rather than cases to have been absent. These were one district with no reported cases in any month, one district with no reports after 2023 and five district-years with no reports in districts that otherwise averaged at least 10 cases a year. All excluded months had zero recorded cases, and including them as true zeros would have understated incidence. Parameters were estimated by maximum likelihood. Because the random effects are unobserved, the likelihood is obtained by integrating them out:
 
-$$L(\boldsymbol\beta, \theta, \sigma_u^2, \sigma_v^2) = \prod_{r}\int \left[\prod_{i \in r}\int \prod_{t} f_{\text{NB}}\!\left(y_{it} \mid u_r, v_i\right)\, \phi(v_i; 0, \sigma_v^2)\,dv_i\right] \phi(u_r; 0, \sigma_u^2)\,du_r,$$
+$$L(\beta, \theta, \sigma_u^2, \sigma_v^2) = \prod_{r}\int \left[\prod_{i \in r}\int \prod_{t} f_{\text{NB}}\!\left(y_{it} \mid u_r, v_i\right)\, \phi(v_i; 0, \sigma_v^2)\,dv_i\right] \phi(u_r; 0, \sigma_u^2)\,du_r,$$
 
 where $f_{\text{NB}}$ is the negative-binomial probability function above and $\phi$ the normal density. These integrals have no closed form and were evaluated with the Laplace approximation, which replaces each integrand by a normal approximation around its mode. This is the approach recommended for generalized linear mixed models with count outcomes [[27](https://experts.mcmaster.ca/scholarly-works/1146888)] (Section 2.4.12).
 
