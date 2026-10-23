@@ -254,20 +254,39 @@ We assessed the predictions with the mean absolute error and the continuous rank
 
 #### 2.4.11 Sensitivity analyses
 
-1. Maximum lag 3, 9 and 12, and alternative df.
-2. NB1, zero-inflated and hurdle negative-binomial models.
-3. Exclusion of the 24 flagged district-months, and of 2020 (COVID-19).
-4. Fourier seasonal terms instead of month effects.
-5. CHIRPS and ERA5-Land exposures.
-6. Climate-grid-cell random effect or cluster-robust SEs (for districts sharing NASA POWER cells).
-7. Monthly interpolated population offset.
-8. Bayesian spatial model with BYM2 district effects in R-INLA [35].
+We repeated the main analyses under alternative choices of exposure, data and model. For each alternative we report the cumulative rate ratios and the share of seasonality explained by climate, $S_{\text{clim}}$. *Theoretical:* every analysis rests on choices that could reasonably have been made differently, and a finding is credible only if it does not depend on them. *Descriptive:* we grouped the alternatives by the source of uncertainty that each addresses.
+
+*Lag structure.* We refitted the final model with maximum lags of 3, 9 and 12 months and with the neighbouring degrees of freedom from the selection grid (Section 2.4.4). This showed whether the conclusions rested on a single point of that grid.
+
+*Count distribution.* We replaced the quadratic NB2 variance with the linear NB1 form, $\mathrm{Var}(Y_{it}) = \mu_{it}(1+\phi)$ [[25](https://cameron.econ.ucdavis.edu/racd2/)], and fitted zero-inflated [[27](https://doi.org/10.2307/1269547)] and hurdle negative-binomial models [[25](https://cameron.econ.ucdavis.edu/racd2/)] in glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)]. Because 31% of district-months had no cases, these models test whether some zeros arise from a separate process, such as a month in which a facility did not report, rather than from low risk.
+
+*Unusual observations and periods.* Twenty-four district-months had more than 20 cases and more than ten times the district's median; the largest was 234 cases in Bawku West in July 2020. These may be true clusters or reporting errors, so we refitted the models without them. We also excluded 2020, when outpatient attendance in Ghana fell during the COVID-19 pandemic [[30](https://doi.org/10.1136/bmjopen-2022-061608)], and December 2025, whose climate was estimated (Section 2.2).
+
+*Seasonal adjustment.* Because $S_{\text{clim}}$ depends on how seasonality is represented in M1 and M3, we replaced the calendar-month effects with Fourier terms, $\sum_{k=1}^{2}\{\alpha_{gk}\sin(2\pi k m_t/12) + \beta_{gk}\cos(2\pi k m_t/12)\}$, for each regime $g$ [[29](https://doi.org/10.1093/ije/dyt092)]. Two harmonics allow either one or two peaks a year, as observed in the unimodal and bimodal regimes, with fewer parameters than twelve month effects.
+
+*Climate data.* NASA POWER is coarse, and the 261 districts drew on only 72 distinct climate series, so neighbouring districts often had identical exposures. We therefore repeated the analysis with rainfall from CHIRPS, at about 0.05° [[22](https://doi.org/10.1038/sdata.2015.66)], and with climate from ERA5-Land, at about 0.1° [[23](https://doi.org/10.5194/essd-13-4349-2021)], which distinguish neighbouring districts. Districts that share a grid cell do not contribute independent climate information, and treating them as independent makes the standard errors too small [[49](https://doi.org/10.3368/jhr.50.2.317)]. We therefore added a random intercept for the grid cell and, separately, calculated standard errors clustered by grid cell [[49](https://doi.org/10.3368/jhr.50.2.317)].
+
+*Population, classification and definitions.* Annual population figures change in steps from December to January, so we interpolated them linearly to monthly values. We changed the threshold of the rainfall-regime classification from 0.8 to 0.75 and 0.9, which reclassified between 3 and 15 districts. We also merged the transition zone with the neighbouring regime (Section 2.4.7) and used the alternative onset definitions (Section 2.3).
+
+*Spatial dependence.* Neighbouring districts share habitats, snake fauna and health services, so their residual risks may be correlated, and ignoring this overstates precision. We therefore fitted a Bayesian model in which the district random effect followed the BYM2 model [[35](https://arxiv.org/abs/1601.01180)]:
+
+$$v_i = \sigma\left(\sqrt{1-\varphi}\,\theta_i + \sqrt{\varphi}\,u_i^{*}\right),$$
+
+where $\theta_i$ is an unstructured effect, $u_i^{*}$ an intrinsic conditional autoregressive effect over neighbouring districts scaled to unit variance, $\sigma$ the total standard deviation and $\varphi$ the proportion of that variance that is spatially structured. The scaling gives $\sigma$ and $\varphi$ the same meaning in any map, so their priors are interpretable [[35](https://arxiv.org/abs/1601.01180)]. We fitted this model with integrated nested Laplace approximations (INLA) [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)].
 
 #### 2.4.12 Diagnostics and software
 
-* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [28]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [34], `dlnm` [36,39], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
-* Code will be available at [AUTHOR: GitHub/Zenodo DOI].
+We checked the fit of each final model with simulation-based quantile residuals, using the DHARMa package [[28](https://CRAN.R-project.org/package=DHARMa)]. *Theoretical:* for count data, Pearson and deviance residuals are not normally distributed even when the model is correct, which makes them hard to interpret. Quantile residuals are uniformly distributed under a correct model, whatever the distribution of the outcome [[51](https://doi.org/10.1080/10618600.1996.10474708)]. For each district-month we simulated $S$ = 1,000 counts $y^{*}_{s}$ from the fitted model and calculated
+
+$$r_{it} = \frac{1}{S}\sum_{s=1}^{S}\mathbf{1}(y^{*}_{s} < y_{it}) + U_{it}\,\frac{1}{S}\sum_{s=1}^{S}\mathbf{1}(y^{*}_{s} = y_{it}), \qquad U_{it}\sim \mathrm{Uniform}(0,1),$$
+
+where the random term $U_{it}$ spreads ties between equal counts [[51](https://doi.org/10.1080/10618600.1996.10474708)]. We tested the residuals for uniformity, for remaining overdispersion and for excess zeros, comparing the observed share of zeros (31%) with the simulated share. *Descriptive:* monthly counts were correlated within districts (lag-1 correlation 0.20), and neighbouring districts shared climate series, so we also tested the residuals for temporal and spatial autocorrelation. For temporal autocorrelation, we examined the autocorrelation function of the residuals within each district. For spatial autocorrelation, we averaged the residuals over time in each district, giving $\bar{r}_i$, and calculated Moran's $I$ [[52](https://doi.org/10.1093/biomet/37.1-2.17)],
+
+$$I = \frac{n}{\sum_{i}\sum_{j} w_{ij}}\;\frac{\sum_{i}\sum_{j} w_{ij}\,(\bar{r}_i - \bar{r})(\bar{r}_j - \bar{r})}{\sum_{i}(\bar{r}_i - \bar{r})^2},$$
+
+where $n$ is the number of districts, $\bar{r}$ the mean of the $\bar{r}_i$, and $w_{ij} = 1$ if districts $i$ and $j$ share a boundary and 0 otherwise. We derived the neighbours from the geoBoundaries district boundaries [[16](https://doi.org/10.1371/journal.pone.0231866)]. A value of $I$ near zero indicates no remaining spatial pattern. If spatial autocorrelation remained, the BYM2 model (Section 2.4.11) became the preferred model.
+
+We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew Fig 1 in Python with matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
 
@@ -422,7 +441,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [49].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [56].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -582,4 +601,11 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 46. Higgins JPT, Thompson SG. Quantifying heterogeneity in a meta-analysis. Stat Med. 2002;21(11):1539–1558. doi:10.1002/sim.1186
 47. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
 48. Czado C, Gneiting T, Held L. Predictive model assessment for count data. Biometrics. 2009;65(4):1254–1261. doi:10.1111/j.1541-0420.2009.01191.x
-49. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+49. Cameron AC, Miller DL. A practitioner's guide to cluster-robust inference. J Hum Resour. 2015;50(2):317–372. doi:10.3368/jhr.50.2.317
+50. Rue H, Martino S, Chopin N. Approximate Bayesian inference for latent Gaussian models by using integrated nested Laplace approximations. J R Stat Soc Series B Stat Methodol. 2009;71(2):319–392. doi:10.1111/j.1467-9868.2008.00700.x
+51. Dunn PK, Smyth GK. Randomized quantile residuals. J Comput Graph Stat. 1996;5(3):236–244. doi:10.1080/10618600.1996.10474708
+52. Moran PAP. Notes on continuous stochastic phenomena. Biometrika. 1950;37(1–2):17–23. doi:10.1093/biomet/37.1-2.17
+53. R Core Team. R: a language and environment for statistical computing. Vienna: R Foundation for Statistical Computing; [AUTHOR: year of the version used]. https://www.R-project.org/
+54. Wood SN. Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models. J R Stat Soc Series B Stat Methodol. 2011;73(1):3–36. doi:10.1111/j.1467-9868.2010.00749.x
+55. Pebesma E. Simple features for R: standardized support for spatial vector data. R J. 2018;10(1):439–446. doi:10.32614/RJ-2018-009
+56. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
