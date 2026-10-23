@@ -13,7 +13,8 @@
 > * Section 7 is the gap analysis.
 > * Section 8 is the proposed novel study (objectives, hypotheses, model specification, R code skeleton, sensitivity analyses).
 > * Section 9 lists threats to novelty that must be checked before submission.
-> * Section 10 lists references.
+> * Section 10 is the **paper outline**: a section-by-section manuscript plan with the lag-selection strategy.
+> * Section 11 lists references.
 >
 > **Verification note:** this review was compiled from web-search abstracts and summaries. Full-text access to PubMed Central, medRxiv and Crossref was blocked from the environment used to write it. Every reference marked **[verify]** must be checked against the full text (exact numbers, lags, authors, volume and pages) before citing. Novelty claims are worded as "to our knowledge". Re-run a formal PubMed/Scopus/Web of Science search before submission (Section 9 gives a search string).
 
@@ -526,7 +527,221 @@ res <- simulateResiduals(m1); plot(res); testZeroInflation(res)
 
 ---
 
-## 10. References (verify each before citing)
+## 10. Paper outline
+
+**Target:** *PLoS Neglected Tropical Diseases*, research article. PLoS NTD sets no strict word limit, but aim for about 4,000–4,500 words of main text with ≤ 6 figures and ≤ 4 tables. The fallbacks are *Lancet Planet Health* (≈ 3,500 words, structured abstract) and *IJE*; adjust the headings to the chosen journal.
+
+**Reporting guideline:** RECORD (the STROBE extension for routinely collected health data). Put the checklist in the supplement.
+
+### 10.1 Title (choose one)
+
+1. *Rain first, bites later: lagged and non-linear effects of climate on snakebite incidence across 261 districts of Ghana, 2020–2025*
+2. *Seasonal climate, weather anomalies and rainy-season onset as drivers of snakebite in Ghana: a nationwide distributed-lag mixed-model study*
+
+**Running title:** Lagged climate effects on snakebite in Ghana
+
+### 10.2 Abstract (≈ 300 words; PLoS NTD structure)
+
+* **Background** (2–3 sentences). Snakebite is a climate-sensitive NTD, and sub-Saharan Africa bears about 45% of the global burden. The *timing* of climate effects has not been quantified, and a nationwide Ghanaian analysis found no concurrent rainfall effect despite clear rainy-season peaks.
+* **Methodology** (3–4 sentences):
+  * monthly DHIMS-2 snakebite cases for 261 districts, 2020–2025
+  * NASA POWER (± CHIRPS/ERA5) climate and MODIS NDVI
+  * negative-binomial GLMM, population offset, district-within-region random effects
+  * DLNM cross-bases (lags 0–6 months)
+  * climatology/anomaly decomposition
+  * rainy-season onset event study
+  * north (unimodal) vs south (bimodal) comparison
+  * attributable fractions
+  * out-of-sample validation on 2025
+* **Principal findings** (4–5 sentences, filled from results):
+  * N cases and the crude rate
+  * the rainfall lag curve and its peak lag by zone
+  * the humidity and temperature effects (shape and lag)
+  * the onset effect
+  * the % of cases attributable to climate
+  * the gain in forecast skill
+* **Conclusions/Significance** (2 sentences). Climate acts on snakebite with zone-specific delays of 1–3 months. This gives a usable lead time for antivenom pre-positioning in Ghana and similar West African settings.
+* **Author summary** (≈ 150–200 words, plain language; required by PLoS NTD).
+
+### 10.3 Introduction (≈ 700–800 words, 5 paragraphs)
+
+| ¶ | Content | Key citations |
+|---|---|---|
+| 1 | Burden: global estimates, the sub-Saharan Africa share, WHO 2017 NTD listing and 2030 roadmap; Ghana about 10,000 facility-reported bites per year, a lower bound | Ediriweera/Kasturiratne 2026; Kasturiratne 2008; WHO 2019; Section 2 Ghana sources |
+| 2 | Why climate matters: snake thermal ecology, prey/vegetation dynamics, the agricultural calendar, displacement; each implies a *different delay* | Section 3 table; Chaves 2015; Phillips 2019; Musah 2019 |
+| 3 | What is known: mostly concurrent or single-lag analyses from Latin America and Asia; effects differ by climatic regime; SSA under-represented; no DLNM applications | Collinson 2025; Bravo-Vega 2022; Vilhena Neto; Ediriweera 2018 |
+| 4 | The Ghana gap: descriptive regional studies show rainy-season peaks, but the nationwide model (concurrent covariates) found no rainfall effect. This tension motivates a lagged, seasonally-decomposed analysis | Nyarko 2026; Volta/Oti, Savannah studies |
+| 5 | Aim and objectives: (1) exposure–lag–response; (2) climatology vs anomaly; (3) onset; (4) north vs south lag heterogeneity; (5) attributable burden; (6) predictive value. End with the novelty sentence (Section 8.10) | — |
+
+### 10.4 Methods (≈ 1,500–1,800 words)
+
+**2.1 Study setting.**
+* Ghana: 16 regions and 261 districts (MMDAs).
+* Agro-ecological zones (Sudan and Guinea savanna, transition, forest, coastal).
+* Unimodal rainfall in the north (May–Oct) and bimodal in the south (Mar–Jul, Sep–Oct); the Harmattan dry season.
+* Main medically important snakes (*E. ocellatus*, *B. arietans*, *Naja* spp.).
+* Include a map (Fig 1A).
+
+**2.2 Study design.** Ecological, nationwide district-month panel (time-series cross-sectional) study, January 2020 – November 2025.
+
+**2.3 Outcome data.**
+* DHIMS-2 monthly snakebite cases by district: case definition, reporting facilities and completeness.
+* District boundary harmonisation (2018 re-demarcation).
+* Handling of:
+  * districts with incomplete series (Ayawaso East, Ledzokuku: 2020–2023)
+  * the all-zero district
+  * extreme values (24 flagged district-months, verified with the reporting units)
+
+**2.4 Population denominators.** Ghana Statistical Service 2021 census-based district projections; annual values (monthly interpolation as sensitivity analysis).
+
+**2.5 Climate and environmental exposures.**
+* NASA POWER monthly rainfall (mm/day → mm/month), RH2M, T2M, Tmax and Tmin. State the native ~0.5° grid and the 71 unique cells.
+* MODIS NDVI, district-averaged.
+* Derived variables: diurnal temperature range and vapour-pressure deficit.
+* Extraction method: centroid vs area-weighted.
+* Climate series extended back to January 2019 so that 2020 cases have full lag history.
+* Sensitivity products: CHIRPS (rainfall) and ERA5-Land (T, RH).
+
+**2.6 Derived exposures.**
+* (a) **Climatology:** the district × calendar-month mean.
+* (b) **Anomaly:** observed minus climatology, standardised.
+* (c) **Rainy-season onset:**
+  * definition: the first month from February with ≥ 2 mm/day; alternative thresholds 1.5 and 3 mm/day
+  * "false start" flag
+  * months-since-onset index
+
+**2.7 Statistical analysis.**
+
+* **2.7.1 Descriptive analysis.** Rates per 100,000 by region, zone, year and month; seasonal profiles; spatial distribution; overdispersion and zero diagnostics.
+* **2.7.2 Base model.**
+  * Model: NB2 GLMM, $\log \mu_{it} = \log \text{Pop}_{it} + \beta_0 + s_{z(i)}(\text{month}) + \gamma_{\text{year}} + u_{r(i)} + v_i$.
+  * Zone-specific seasonality: month × zone effects or Fourier terms.
+  * Random intercepts: district nested in region.
+  * Residual autocorrelation: AR(1) district random effect if needed.
+  * Software: `glmmTMB`, with an R-INLA BYM2 spatial version as a sensitivity analysis.
+* **2.7.3 Exposure–lag–response (DLNM).**
+  * One cross-basis per climate variable, lags 0 to L.
+  * Natural spline on the exposure dimension; natural spline on lag with log-spaced knots.
+  * Collinearity strategy: rainfall + one temperature metric in the main model; RH in an alternative model; report VIFs.
+* **2.7.4 Lag selection strategy (pre-specified).**
+  * (i) Set the maximum lag from mechanism (main L = 6; sensitivity 3, 9, 12).
+  * (ii) Estimate all lags jointly in the cross-basis, not as separate single-lag models, and not by cross-correlation or stepwise selection.
+  * (iii) Choose L and the spline df from a small pre-set grid (L ∈ {3, 6, 9, 12} × df_var ∈ {2, 3, 4} × df_lag ∈ {2, 3, 4}). Use AIC/BIC fitted on identical rows, and leave-one-year-out cross-validation (log score, CRPS). Select the simplest model within 2 AIC units or 1 SE of the best CV score.
+  * (iv) As a confirmatory alternative, fit a penalized DLNM (`mgcv` `"cb"` smooth, REML) with L = 12.
+  * (v) Report the full lag curve and the cumulative RR, not a single "best lag".
+  * (vi) Falsification test: future climate (lags −1, −2) should show no association.
+  * (vii) Use the same L and df for all variables and zones so that lag curves are comparable.
+* **2.7.5 Climatology vs anomaly decomposition.** The anomaly enters the cross-basis (within-district, weather effect); the climatology enters as a between term (seasonal/spatial effect). Compare with the raw-exposure model.
+* **2.7.6 Heterogeneity by rainfall regime.** Use either:
+  * a zone × cross-basis interaction (likelihood-ratio test); or
+  * zone-specific models reduced to cumulative and lag curves, then pooled with `mixmeta` (Cochran Q, I²).
+* **2.7.7 Rainy-season onset.**
+  * An event-study GLMM with months-since-onset indicators (−3 to +6; reference −3).
+  * A model of the peak timing and season total against onset month.
+* **2.7.8 Attributable burden.** `attrdl` forward/backward attributable numbers and fractions relative to the minimum-risk exposure, by zone, region and year; Monte-Carlo 95% eCI.
+* **2.7.9 Predictive validation.**
+  * Train 2020–2024; test January–November 2025; rolling-origin CV.
+  * Compare models: (A) seasonal + random effects, (B) + lagged climate (lags ≥ 1 only), (C) + onset.
+  * Metrics: MAE, RMSE, CRPS, 90% PI coverage, PIT histograms, outbreak-month detection (sensitivity, specificity).
+* **2.7.10 Sensitivity analyses** (Section 8.7 list):
+  * alternative maximum lags and df
+  * NB1, ZINB and hurdle models
+  * excluding outliers or 2020 (COVID-19)
+  * alternative climate products
+  * clustered SEs by grid cell
+  * monthly population offset
+  * the spatial BYM2 model
+* **2.7.11 Model diagnostics.** DHARMa simulated residuals (dispersion, zero-inflation, temporal and spatial autocorrelation, Moran's I).
+* **2.7.12 Software and reproducibility.** R version and packages (`dlnm`, `glmmTMB`, `mgcv`, `mixmeta`, `DHARMa`, `INLA`/`GHRmodel`, `sf`). Code on GitHub/Zenodo with a DOI.
+
+**2.8 Ethics.**
+* Secondary analysis of aggregated, anonymised surveillance data.
+* Ghana Health Service ERC approval or waiver (state the number).
+* Data-use permission from GHS/DHIMS-2.
+
+### 10.5 Results (≈ 1,200–1,500 words)
+
+| Subsection | Content | Display item |
+|---|---|---|
+| 3.1 Descriptive epidemiology | Total cases (60,515), crude rate (32.4/100,000/yr), regional range (Greater Accra 5.4 → Upper West 111.9), trend by year, zero share, overdispersion | **Table 1**; **Fig 1** (A: incidence map, B: regional rates) |
+| 3.2 Seasonality and climate | North vs south seasonal profiles; cases lead the rainfall peak in the north; bimodal echo in the south | **Fig 2** (monthly cases vs rainfall/RH/T by zone) |
+| 3.3 Model selection | Lag-selection grid (AIC, CV); chosen L and df; penalized DLNM agreement; falsification test result | **Table 2**; Supp Table S2 |
+| 3.4 Exposure–lag–response | Rainfall, RH and temperature: lag-specific RR curves, cumulative RR at the 10th/90th/99th percentiles vs reference; shape (hump, threshold) | **Fig 3** (contour + overall cumulative curves); **Table 3** |
+| 3.5 Climatology vs anomaly | Share of the effect that is seasonal vs anomaly; anomaly lag curves | **Fig 4A** |
+| 3.6 North vs south | Zone-specific lag curves; peak lag (e.g. rainfall lag 3 north vs lag 1 south); heterogeneity tests | **Fig 4B** |
+| 3.7 Rainy-season onset | Event-study RRs by months since onset; peak at +1/+2; false-start effect | **Fig 5** |
+| 3.8 Attributable burden | Cases and % attributable to non-optimal rainfall, RH and temperature by zone/region | **Table 4** |
+| 3.9 Predictive performance | Skill gain of models B and C over A on 2025; lead time; outbreak detection | **Fig 6** (observed vs predicted for example districts + skill bars) |
+| 3.10 Sensitivity analyses | Robustness summary (one paragraph) | Supp Tables S3–S6 |
+
+### 10.6 Discussion (≈ 1,200–1,500 words, 6–7 paragraphs)
+
+1. **Principal findings.** One paragraph answering each objective in order.
+2. **Interpretation of the lags by mechanism.**
+   * Short lags (RH, Tmin) → snake activity and refuge-seeking.
+   * Rainfall lag 1–3 → farming calendar and vegetation/prey.
+   * The longer northern lag fits a savanna prey pulse after a single long dry season.
+   * Thermal avoidance at high Tmax.
+3. **Comparison with the literature.**
+   * Agreement and disagreement with Costa Rica (temperature lag 1, rainfall lag 11), Sri Lanka (low RH), Colombia (rainfall matters where dry seasons are marked; Ghana's north is the analogue), Brazil (regime-specific effects) and California (lagged precipitation).
+   * Explain the difference from Nyarko 2026: concurrent vs lagged and decomposed exposures.
+4. **Methodological contribution.** First DLNM application to snakebite (to our knowledge). Value of separating climatology from anomaly; onset as an exposure; a lag-selection strategy that avoids the seasonal-confounding trap.
+5. **Public-health implications.**
+   * The lead time for antivenom pre-positioning and health-worker alerts.
+   * Zone-specific timing: the north needs stock ready about 2–3 months after onset; the south earlier, with a second smaller window in Sep–Oct.
+   * Integration with Ghana Meteorological Agency seasonal forecasts.
+   * Relevance to the WHO 2030 roadmap.
+6. **Strengths and limitations.**
+   * Strengths: nationwide coverage, 71 months, all districts, a robust modelling framework, out-of-sample validation.
+   * Limitations:
+     * facility-based under-reporting (traditional healers) and possible differential reporting
+     * an ecological design (no individual exposure)
+     * coarse climate grid
+     * 6 years is short for inter-annual (ENSO) signals
+     * no species or envenomation-severity data
+     * COVID-19 period
+     * population projections
+7. **Future research.** Species-specific and severity outcomes; linking to antivenom stock data; longer series; ENSO/Atlantic teleconnections; operational early-warning pilot; extension to other West African countries.
+
+### 10.7 Conclusions (≈ 100–150 words)
+
+Climate affects snakebite in Ghana with measurable, zone-specific delays. Rainfall acts 1–3 months ahead and through rainy-season onset; humidity and night-time temperature act within the same month. These delays provide an evidence base and lead time for climate-informed snakebite preparedness.
+
+### 10.8 Declarations and back matter
+
+* **Data availability:** DHIMS-2 data via GHS request. Climate data are public; give the URLs. Analysis code on GitHub/Zenodo.
+* Funding; competing interests; author contributions (CRediT); acknowledgements (GHS, district health directorates).
+
+### 10.9 Supplementary material plan
+
+* S1 Text: RECORD checklist.
+* S2 Text: data cleaning log (outliers, boundary changes, incomplete series).
+* S1 Table: district list with zone assignment.
+* S2 Table: full lag-selection grid (AIC, CV).
+* S3–S6 Tables: sensitivity analyses.
+* S1 Fig: DHARMa diagnostics.
+* S2 Fig: climate product comparison (NASA POWER vs CHIRPS/ERA5).
+* S3 Fig: falsification (future lags).
+* S4 Fig: zone-specific 3-D exposure–lag–response surfaces.
+* S5 Fig: district-level predicted vs observed 2025.
+* S3 Text: novelty search protocol and results (PRISMA-style, Section 9.4).
+
+### 10.10 Writing order (suggested)
+
+1. Methods 2.1–2.6 (data are ready).
+2. Run the descriptive analysis → Table 1 and Figs 1–2.
+3. Lag selection (2.7.4) → Table 2.
+4. Main DLNM-GLMM → Fig 3 and Table 3.
+5. Decomposition, zone and onset analyses → Figs 4–5.
+6. Attribution and forecasting → Table 4 and Fig 6.
+7. Results text.
+8. Discussion.
+9. Introduction (re-check novelty against the Nyarko 2026 full text and a fresh search).
+10. Abstract, author summary and title last.
+
+---
+
+## 11. References (verify each before citing)
 
 1. Collinson S, Lamb T, Cardoso…, Diggle PJ, Lalloo DG. A systematic review of variables associated with snakebite risk in spatial and temporal analyses. *Trans R Soc Trop Med Hyg* 2025; doi:10.1093/trstmh/trae131. [verify issue/pages]
 2. Nyarko E, et al. Temporal and spatial patterns of snakebite envenoming in Ghana, 2020–2025: a nationwide surveillance analysis. *medRxiv* 2026; doi:10.64898/2026.07.12.26357875. [verify authors]
