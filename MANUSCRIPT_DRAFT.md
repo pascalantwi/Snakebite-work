@@ -136,27 +136,31 @@ The distribution of monthly counts was examined to choose the count model. We ca
 
 #### 2.4.2 Base model
 
-All models were built on a common base model for the monthly count of snakebite cases $Y_{it}$ in district $i$ and month $t$. The counts were modelled with a negative-binomial distribution, with mean $\mu_{it}$ and variance $\mu_{it} + \mu_{it}^2/\theta$ (the NB2 parameterisation), and a log link:
+All models were built on a common base model for the monthly count of snakebite cases $Y_{it}$ in district $i$ and month $t$. Each component of the model was chosen on two grounds: what the data showed (descriptive justification) and what statistical theory and methodological guidance recommend for data with those features (theoretical justification). The counts were modelled with a negative-binomial distribution, with mean $\mu_{it}$ and variance $\mu_{it} + \mu_{it}^2/\theta$ (the NB2 parameterisation), and a log link:
 
 $$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + s_{g(i)}(m_t) + \gamma_{y(t)} + u_{r(i)} + v_i, \qquad u_r \sim N(0,\sigma_u^2), \quad v_i \sim N(0,\sigma_v^2).$$
 
-The negative-binomial distribution was chosen because monthly district counts were strongly overdispersed, with a variance several times larger than the mean (Section 3.1). A Poisson model assumes that the variance equals the mean. Applied to these data, it would understate the uncertainty of every estimate and overstate the significance of climate effects. Quasi-Poisson models correct the standard errors but have no likelihood, which rules out comparison by information criteria and the likelihood-based lag selection described below. The NB2 form, in which the variance grows with the square of the mean, suits data in which most district-months have few cases but some reach high counts. The NB1 form, with variance proportional to the mean, was assessed in a sensitivity analysis. The same applies to zero-inflated and hurdle versions, in case the many months without cases reflect non-reporting rather than true absence.
+**Negative-binomial distribution.** *Descriptive:* the analysed district-month counts had a mean of 3.31 and a variance of 29.0, a variance-to-mean ratio of 8.8, and ranged from 0 to 234. Most district-months had a few cases, while a small number had very many. *Theoretical:* the Poisson model, the standard model for counts, assumes that the variance equals the mean. When the variance is larger, a Poisson model gives standard errors that are too small and overstates the significance of every effect, including those of climate [[25](https://cameron.econ.ucdavis.edu/racd2/)]. The negative-binomial model adds a dispersion parameter $\theta$ that allows the variance to exceed the mean. It can be derived as a Poisson model whose rate varies between observations according to a gamma distribution, which fits snakebite counts that vary for reasons not captured by the covariates [[25](https://cameron.econ.ucdavis.edu/racd2/)]. Quasi-Poisson models also correct for overdispersion, but they have no likelihood and so cannot be compared with information criteria such as AIC. They also assume that the variance increases in proportion to the mean, whereas in NB2 it increases with the square of the mean. The two forms weight small and large counts differently and can lead to different conclusions [[26](https://pubmed.ncbi.nlm.nih.gov/18051645/)]. A quadratic mean–variance relationship suits data in which large counts are rare but much more variable than small ones, as here. The NB1 form, with variance proportional to the mean, was compared in a sensitivity analysis.
 
-The logarithm of the district population, $\log(\text{Pop}_{it})$, enters as an offset, a term with its coefficient fixed at one. The model therefore describes the incidence rate per person rather than the raw number of cases. This is necessary because district populations differ more than tenfold, so differences in counts would otherwise mostly reflect population size.
+**Zero counts.** *Descriptive:* 31% of analysed district-months recorded no cases. *Theoretical:* a negative-binomial model already predicts many zeros when the mean is low, so a high share of zeros does not by itself require a different model [[25](https://cameron.econ.ucdavis.edu/racd2/)]. Zero-inflated and hurdle models are needed only when there are more zeros than the fitted negative-binomial model predicts, for example because some facilities fail to report. This was checked by comparing observed and simulated zero counts from the fitted model (Section 2.4.12), and the zero-inflated and hurdle alternatives were fitted in a sensitivity analysis.
 
-Seasonality is represented by calendar-month effects that differ between the unimodal, transition and bimodal rainfall regimes, $s_{g(i)}(m_t)$. A single national seasonal curve would average a one-peaked northern season with a two-peaked southern one and fit neither. This regime-specific adjustment is the conventional way of removing seasonality before estimating climate effects. It therefore serves as the reference against which the primary analysis tests whether lagged climate can reproduce the seasonal cycle on its own (Section 2.4.5). Year effects, $\gamma_{y(t)}$, absorb changes common to all districts from year to year. These include secular trends in snakebite, changes in reporting and care-seeking, and the disruption of health services during the COVID-19 pandemic in 2020–2021. Without them, such changes could be mistaken for the effects of climate.
+**Population offset.** *Descriptive:* district populations ranged from about 32,000 to 509,000, a 16-fold difference, and grew each year. *Theoretical:* entering the logarithm of the population as an offset, a term whose coefficient is fixed at one, converts the model for counts into a model for incidence rates. All coefficients can then be read as rate ratios [[25](https://cameron.econ.ucdavis.edu/racd2/)]. Without it, differences between districts would mostly reflect population size rather than risk, and population growth over time could be mistaken for a trend in risk.
 
-District and region random intercepts, $v_i$ and $u_{r(i)}$, account for the repeated measurements on the same districts over 72 months and for persistent differences between districts. Such differences include their snake fauna, land use, farming systems, access to health facilities and completeness of reporting, which are not measured but strongly affect the number of bites recorded. Treating these differences as random rather than fixed effects has several advantages. It borrows strength across districts, so that districts with few cases are not estimated in isolation. It also separates variation between regions from variation between districts within a region, and it keeps the number of parameters manageable compared with 260 district indicators. With 72 months per district, the climate effects are identified mainly from variation over time within districts, so the random intercepts also reduce confounding by stable district characteristics.
+**Seasonality by rainfall regime.** *Descriptive:* in unimodal districts, cases peaked in July after a single rainy season. In bimodal districts the main peak came in May, with a second rise in September–October, and the transition zone was intermediate (Section 3.2). *Theoretical:* a single national seasonal curve would average these different shapes and fit none of them, leaving seasonal variation in the residuals that could then be wrongly attributed to climate. Calendar-month effects that differ by rainfall regime are the conventional way of adjusting for seasonality in studies of climate and health. They are therefore the reference against which the primary analysis tests whether lagged climate can reproduce the seasonal cycle on its own (Section 2.4.5).
 
-Monthly counts within a district may be correlated beyond what the covariates explain, for example because of outbreaks or changes in reporting that last several months. Ignoring such correlation would make the standard errors too small. We therefore examined the autocorrelation of the residuals within districts, and where it remained, added a first-order autoregressive (AR(1)) random effect for each district over time. Spatial correlation between neighbouring districts was assessed in the residuals and addressed in a sensitivity analysis with a spatial model (Section 2.4.11).
+**Year effects.** *Descriptive:* annual case totals ranged from 10,054 to 11,084 in 2020–2024 and fell to 8,696 in 2025. The 2020–2021 period coincided with the COVID-19 pandemic, which disrupted health services and care-seeking. *Theoretical:* changes that affect all districts in a given year can be correlated with year-to-year differences in climate. Examples are reporting practice, health-system disruption and long-term trends in exposure. Left unadjusted, they would confound the climate effects. Year fixed effects remove such national changes, so the climate effects are estimated from variation within years.
 
-For the analyses by sex, the data were arranged with one row per district, month and sex. The model then included a fixed effect for sex, and the offset was the logarithm of the sex-specific population, so that the sex coefficient estimates the ratio of incidence rates in males and females. Interactions between sex and the climate terms tested whether the effects of climate differ between males and females, as might be expected if their exposure during farming and other outdoor work differs.
+**District and region random intercepts.** *Descriptive:* incidence differed widely between districts, from no cases to 277.5 per 100,000 per year, with a median of 26.2 (interquartile range 12.0–50.7). Regional rates ranged from 5.4 per 100,000 in Greater Accra to 111.9 in Upper West (Section 3.1). Each district contributed up to 72 monthly observations. *Theoretical:* repeated observations from the same district are not independent, and the large, persistent differences between districts reflect characteristics that were not measured. These include snake fauna, land use, farming systems, access to health facilities and completeness of reporting. Ignoring them would bias the standard errors and could confound the climate effects. Generalized linear mixed models handle this with random effects, which allow each district its own baseline rate while estimating the common effects of the covariates [[27](https://experts.mcmaster.ca/scholarly-works/1146888)]. Random rather than fixed district effects were preferred for three reasons. They borrow strength across districts, so that districts with few cases are not estimated in isolation. They separate variation between regions from variation between districts within regions. And they need two variance parameters rather than 260 district indicators [[27](https://experts.mcmaster.ca/scholarly-works/1146888)]. Because each district is observed over 72 months, the climate effects are identified mainly from changes over time within districts, which protects them against confounding by stable district characteristics.
 
-Models were fitted to the 18,636 district-months that remained after excluding district-months in which reporting appeared to have failed rather than cases to have been absent. These were one district with no reported cases in any month, one district with no reports after 2023 and five district-years with no reports in districts that otherwise averaged at least 10 cases a year. All excluded months had zero recorded cases. Parameters were estimated by maximum likelihood, with the random effects integrated out by the Laplace approximation (Section 2.4.12).
+**Temporal autocorrelation.** *Descriptive:* after removing each district's mean, monthly counts were correlated with the previous month's counts (within-district lag-1 correlation 0.20). *Theoretical:* correlation between successive observations violates the assumption of independence given the model and makes standard errors too small [[27](https://experts.mcmaster.ca/scholarly-works/1146888)]. We therefore examined the autocorrelation of the model residuals within districts. Where it remained, a first-order autoregressive (AR(1)) random effect was added for each district, which models correlation that decays with the time between observations. Spatial correlation between neighbouring districts was assessed in the residuals and addressed in a sensitivity analysis with a spatial model (Section 2.4.11).
+
+**Sex.** *Descriptive:* 58% of cases were in males, although males make up about half of the population. *Theoretical:* a difference of this size suggests that males and females differ in exposure, for example through farm work and other outdoor activities, and so may respond differently to climate. For the analyses by sex, the data were arranged with one row per district, month and sex. The model then included a fixed effect for sex and used the logarithm of the sex-specific population as the offset, so that the sex coefficient estimates the ratio of incidence rates in males and females. Interactions between sex and the climate terms tested whether the effects of climate differ between the sexes.
+
+**Data analysed and estimation.** Models were fitted to the 18,636 district-months that remained after excluding district-months in which reporting appeared to have failed rather than cases to have been absent. These were one district with no reported cases in any month, one district with no reports after 2023 and five district-years with no reports in districts that otherwise averaged at least 10 cases a year. All excluded months had zero recorded cases, and including them as true zeros would have understated incidence. Parameters were estimated by maximum likelihood, with the random effects integrated out by the Laplace approximation, as recommended for generalized linear mixed models with count outcomes [[27](https://experts.mcmaster.ca/scholarly-works/1146888)] (Section 2.4.12).
 
 #### 2.4.3 Distributed-lag non-linear models
 
-* Each climate variable entered the base model as a cross-basis [25].
+* Each climate variable entered the base model as a cross-basis [28].
 * The cross-basis is the tensor product of:
   * a natural cubic spline over the exposure range; and
   * a natural cubic spline over lags 0 to $L$ months, with knots equally spaced on the log scale, which allows more flexibility at short lags.
@@ -181,7 +185,7 @@ To avoid the biases of single-lag testing and cross-correlation in strongly seas
    * leave-one-year-out cross-validation scored by the logarithmic score and continuous ranked probability score (CRPS).
 
    The most parsimonious model within 2 AIC units, or within 1 SE of the best cross-validated score, was retained.
-4. **Penalized confirmation.** A penalized DLNM [26] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
+4. **Penalized confirmation.** A penalized DLNM [29] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
 5. **Common specification.** The same $L$ and df were applied to all variables and zones, so lag curves are directly comparable.
 6. **Falsification.** Future climate (lags −1 and −2) was added to the final model. No association was expected.
 
@@ -210,14 +214,14 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.6 Climatology versus anomaly decomposition
 
-* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [27].
+* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [30].
 * The anomaly terms estimate the delayed effect of unusual weather independently of normal seasonality.
 * The climatology term captures the seasonal and spatial climate gradient.
 
 #### 2.4.7 Heterogeneity by rainfall regime
 
 * Lag structures were compared between unimodal, transition and bimodal districts (Section 2.1).
-* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [28].
+* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [31].
 * Heterogeneity was summarised with Cochran's Q and I².
 * A likelihood-ratio test of a zone × cross-basis interaction gave a complementary test.
 
@@ -230,7 +234,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.9 Attributable burden
 
-* Attributable numbers and fractions of cases were computed from the final DLNM [29], relative to the minimum-risk value of each exposure.
+* Attributable numbers and fractions of cases were computed from the final DLNM [32], relative to the minimum-risk value of each exposure.
 * Results are given by zone, region and year, with 95% empirical confidence intervals from 1,000 Monte-Carlo simulations.
 
 #### 2.4.10 Predictive validation
@@ -251,12 +255,12 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 5. CHIRPS and ERA5-Land exposures.
 6. Climate-grid-cell random effect or cluster-robust SEs (for districts sharing NASA POWER cells).
 7. Monthly interpolated population offset.
-8. Bayesian spatial model with BYM2 district effects in R-INLA [31].
+8. Bayesian spatial model with BYM2 district effects in R-INLA [34].
 
 #### 2.4.12 Diagnostics and software
 
-* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [32]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [30], `dlnm` [25,26], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
+* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [35]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
+* Software: R [version] with `glmmTMB` [33], `dlnm` [28,29], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
 * Code will be available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
@@ -412,7 +416,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [33].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [36].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -548,12 +552,15 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 22. Funk C, Peterson P, Landsfeld M, Pedreros D, Verdin J, Shukla S, et al. The climate hazards infrared precipitation with stations—a new environmental record for monitoring extremes. Sci Data. 2015;2:150066. doi:10.1038/sdata.2015.66
 23. Muñoz-Sabater J, et al. ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth Syst Sci Data. 2021;13(9):4349–4383. doi:10.5194/essd-13-4349-2021 *Complete the author list.*
 24. Allen RG, Pereira LS, Raes D, Smith M. Crop evapotranspiration: guidelines for computing crop water requirements. FAO Irrigation and Drainage Paper 56. Rome: Food and Agriculture Organization of the United Nations; 1998.
-25. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
-26. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
-27. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
-28. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
-29. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
-30. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
-31. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
-32. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
-33. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+25. Cameron AC, Trivedi PK. Regression analysis of count data. 2nd ed. Econometric Society Monographs 53. Cambridge: Cambridge University Press; 2013.
+26. Ver Hoef JM, Boveng PL. Quasi-Poisson vs. negative binomial regression: how should we model overdispersed count data? Ecology. 2007;88(11):2766–2772. PubMed PMID: 18051645.
+27. Bolker BM, Brooks ME, Clark CJ, Geange SW, Poulsen JR, Stevens MHH, White JSS. Generalized linear mixed models: a practical guide for ecology and evolution. Trends Ecol Evol. 2009;24(3):127–135.
+28. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
+29. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
+30. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
+31. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
+32. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
+33. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
+34. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
+35. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
+36. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
