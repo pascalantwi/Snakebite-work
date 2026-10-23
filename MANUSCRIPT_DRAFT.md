@@ -118,18 +118,13 @@ This was a nationwide ecological panel study, with a time-series cross-sectional
 
 ### 2.3 Derived exposures
 
-**Climatology and anomaly.** For each climate variable $x$ in district $i$ and month $t$ with calendar month $m(t)$:
-* the climatology $\bar{x}_{i,m(t)}$ is the district-specific mean for that calendar month over the study period;
-* the anomaly is $a_{it} = x_{it} - \bar{x}_{i,m(t)}$, standardised by its SD.
+Several exposures were derived from the monthly climate data to separate the regular seasonal cycle from unusual weather, to describe the timing of the rains and to capture the combined effect of heat and moisture.
 
-The climatology captures the expected seasonal and spatial climate signal; the anomaly captures unusual weather.
+For each climate variable $x$ in district $i$ and month $t$, with calendar month $m(t)$, the climatology $\bar{x}_{i,m(t)}$ was defined as the mean of that variable in that district and calendar month over the study period. It describes the conditions a district normally experiences at that time of year, and therefore carries both the seasonal cycle and the differences in climate between districts. The anomaly, $a_{it} = (x_{it} - \bar{x}_{i,m(t)})/s_x$, where $s_x$ is the standard deviation of $x_{it} - \bar{x}_{i,m(t)}$ across all district-months, measures how much wetter, more humid or hotter a given month was than usual for that district. Because the anomalies are centred within each district and calendar month, they are free of the seasonal cycle by construction. Comparing the effects of climatology and anomaly therefore distinguishes the influence of the normal season from that of unusual weather.
 
-**Rainy-season onset.** For each district-year, onset was the first month from February onward with mean rainfall ≥ 2 mm/day (≈ 60 mm/month).
-* Alternative definitions: thresholds of 1.5 and 3 mm/day, and a cumulative-rainfall definition.
-* A "false start" was an onset followed within two months by a month with < 1 mm/day.
-* Each district-month was indexed by months since onset (−3 to +6).
+The onset of the rainy season was defined, for each district and year, as the first month from February onwards in which mean rainfall reached at least 2 mm/day, roughly 60 mm in the month. February was used as the starting point so that rain falling late in the previous rainy season was not counted as a new onset. Because any threshold is to some extent arbitrary, onset was also defined with thresholds of 1.5 and 3 mm/day and with a cumulative-rainfall criterion in sensitivity analyses. A false start was recorded when onset was followed within two months by a month with less than 1 mm/day of rain, a pattern that can disrupt planting and prolong land preparation. Each district-month was then indexed by the number of months since onset in that district and year, from three months before onset to six months after, so that snakebite incidence could be aligned to the start of the rains rather than to the calendar.
 
-**Derived thermal-moisture variables.** We derived the diurnal temperature range (Tmax − Tmin) and the vapour-pressure deficit (from T2M and RH) for secondary analyses.
+Two further variables were derived for secondary analyses. The diurnal temperature range, the difference between the monthly mean maximum and minimum temperatures, describes how much a district cools at night relative to the heat of the day, which affects the hours during which snakes are active. The vapour-pressure deficit summarises the drying power of the air by combining temperature and humidity. It was calculated as $\mathrm{VPD} = e_s(T)\,(1 - \mathrm{RH}/100)$, where $T$ is the monthly mean temperature in °C, $\mathrm{RH}$ the relative humidity in per cent and $e_s(T) = 0.6108\,\exp\{17.27\,T/(T + 237.3)\}$ the saturation vapour pressure in kPa [[24](https://www.fao.org/4/x0490e/x0490e00.htm)]. The vapour-pressure deficit also offers a single measure of heat and moisture, which is useful because relative humidity and maximum temperature are strongly correlated in these data and are difficult to separate in the same model.
 
 ### 2.4 Statistical analysis
 
@@ -154,7 +149,7 @@ Residual temporal autocorrelation was assessed. Where present, it was addressed 
 
 #### 2.4.3 Distributed-lag non-linear models
 
-* Each climate variable entered the base model as a cross-basis [24].
+* Each climate variable entered the base model as a cross-basis [25].
 * The cross-basis is the tensor product of:
   * a natural cubic spline over the exposure range; and
   * a natural cubic spline over lags 0 to $L$ months, with knots equally spaced on the log scale, which allows more flexibility at short lags.
@@ -179,7 +174,7 @@ To avoid the biases of single-lag testing and cross-correlation in strongly seas
    * leave-one-year-out cross-validation scored by the logarithmic score and continuous ranked probability score (CRPS).
 
    The most parsimonious model within 2 AIC units, or within 1 SE of the best cross-validated score, was retained.
-4. **Penalized confirmation.** A penalized DLNM [25] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
+4. **Penalized confirmation.** A penalized DLNM [26] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
 5. **Common specification.** The same $L$ and df were applied to all variables and zones, so lag curves are directly comparable.
 6. **Falsification.** Future climate (lags −1 and −2) was added to the final model. No association was expected.
 
@@ -208,14 +203,14 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.6 Climatology versus anomaly decomposition
 
-* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [26].
+* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [27].
 * The anomaly terms estimate the delayed effect of unusual weather independently of normal seasonality.
 * The climatology term captures the seasonal and spatial climate gradient.
 
 #### 2.4.7 Heterogeneity by rainfall regime
 
 * Lag structures were compared between unimodal, transition and bimodal districts (Section 2.1).
-* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [27].
+* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [28].
 * Heterogeneity was summarised with Cochran's Q and I².
 * A likelihood-ratio test of a zone × cross-basis interaction gave a complementary test.
 
@@ -228,7 +223,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.9 Attributable burden
 
-* Attributable numbers and fractions of cases were computed from the final DLNM [28], relative to the minimum-risk value of each exposure.
+* Attributable numbers and fractions of cases were computed from the final DLNM [29], relative to the minimum-risk value of each exposure.
 * Results are given by zone, region and year, with 95% empirical confidence intervals from 1,000 Monte-Carlo simulations.
 
 #### 2.4.10 Predictive validation
@@ -249,12 +244,12 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 5. CHIRPS and ERA5-Land exposures.
 6. Climate-grid-cell random effect or cluster-robust SEs (for districts sharing NASA POWER cells).
 7. Monthly interpolated population offset.
-8. Bayesian spatial model with BYM2 district effects in R-INLA [30].
+8. Bayesian spatial model with BYM2 district effects in R-INLA [31].
 
 #### 2.4.12 Diagnostics and software
 
-* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [31]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [29], `dlnm` [24,25], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
+* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [32]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
+* Software: R [version] with `glmmTMB` [30], `dlnm` [25,26], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
 * Code will be available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
@@ -410,7 +405,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [32].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [33].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -545,12 +540,13 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 21. Gelaro R, et al. The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2). J Clim. 2017;30:5419–5454. doi:10.1175/JCLI-D-16-0758.1 *Complete the author list.*
 22. Funk C, Peterson P, Landsfeld M, Pedreros D, Verdin J, Shukla S, et al. The climate hazards infrared precipitation with stations—a new environmental record for monitoring extremes. Sci Data. 2015;2:150066. doi:10.1038/sdata.2015.66
 23. Muñoz-Sabater J, et al. ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth Syst Sci Data. 2021;13(9):4349–4383. doi:10.5194/essd-13-4349-2021 *Complete the author list.*
-24. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
-25. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
-26. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
-27. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
-28. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
-29. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
-30. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
-31. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
-32. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+24. Allen RG, Pereira LS, Raes D, Smith M. Crop evapotranspiration: guidelines for computing crop water requirements. FAO Irrigation and Drainage Paper 56. Rome: Food and Agriculture Organization of the United Nations; 1998.
+25. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
+26. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
+27. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
+28. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
+29. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
+30. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
+31. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
+32. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
+33. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
