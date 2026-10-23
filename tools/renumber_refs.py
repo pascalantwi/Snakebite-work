@@ -8,11 +8,16 @@ LINK = re.compile(r'\[(\d+)\]\(([^)\s]+)\)')
 PLAIN = re.compile(r'(?<![\w\]])\[(\d+(?:\s*,\s*\d+)*)\](?!\()')
 order = []
 tokens = []
-for m in re.finditer(LINK_GROUP.pattern + '|' + PLAIN.pattern, body):
+start = body.index('## 1. Introduction') if '## 1. Introduction' in body else 0  # editorial notes above the Introduction do not set the order
+for m in re.finditer(LINK_GROUP.pattern + '|' + PLAIN.pattern, body[start:]):
     if m.group(1):
         nums = [int(x) for x, _ in LINK.findall(m.group(1))]
     else:
         nums = [int(x) for x in re.split(r'\s*,\s*', m.group(2))]
+    for n in nums:
+        if n not in order: order.append(n)
+for m in re.finditer(LINK_GROUP.pattern + '|' + PLAIN.pattern, body[:start]):  # anything cited only above the Introduction goes last
+    nums = [int(x) for x, _ in LINK.findall(m.group(1))] if m.group(1) else [int(x) for x in re.split(r'\s*,\s*', m.group(2))]
     for n in nums:
         if n not in order: order.append(n)
 mapping = {old: i + 1 for i, old in enumerate(order)}
