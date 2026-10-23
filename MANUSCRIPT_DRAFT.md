@@ -98,15 +98,15 @@ In this study we used 71 months of surveillance data from all 261 districts of G
 
 ### 2.1 Study setting
 
-Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. The country spans two rainfall regimes [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna zones of the north comprise the Northern, Savannah, North East, Upper East and Upper West Regions, with 55 districts. They have a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The transition, forest and coastal zones of the south, made up of the remaining eleven regions and 206 districts, have two rainy seasons. In the rainfall data used here, the major season peaks around June and the minor season around October (Fig 2). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. Fig 1 shows the 261 districts classified by rainfall regime (Fig 1A) and the district incidence of reported snakebite for 2020–2024 (Fig 1B). District boundaries were taken from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. The remaining district, Guan, was created after that file was compiled and therefore has no polygon. Its data are nonetheless included in every analysis.
+Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. The country spans two rainfall regimes [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna zones of the north comprise the Northern, Savannah, North East, Upper East and Upper West Regions, with 55 districts. They have a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The transition, forest and coastal zones of the south, made up of the remaining eleven regions and 206 districts, have two rainy seasons. In the rainfall data used here, the major season peaks around June and the minor season around October (Fig 2). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. Fig 1 shows the 261 districts classified by rainfall regime (Fig 1A) and the district incidence of reported snakebite for 2020–2024 (Fig 1B). District boundaries were taken from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. The remaining district, Guan, was created after that file was compiled and therefore has no polygon. Its data are nonetheless included in every analysis. The boundaries were matched to the surveillance districts by name, with 30 spellings reconciled by hand; the crosswalk is in the public repository. The maps were drawn in Python with the matplotlib library [[17](https://doi.org/10.1109/MCSE.2007.55)] and the shapely geometry package (https://shapely.readthedocs.io), using the script `analysis/fig1_map.py`. Fig 1B names the ten districts with the highest incidence. A reference map in which every district is numbered, with enlarged insets for Kumasi, Greater Accra and central Accra and an alphabetical index by region, is given as Fig 1C.
 
 ### 2.2 Study design and data
 
-This was a nationwide ecological panel study, with a time-series cross-sectional design, of monthly snakebite counts in every district of Ghana from January 2020 to November 2025, a period of 71 months. The outcome was the number of snakebite cases recorded each month for each district in the District Health Information Management System (DHIMS-2). DHIMS-2 is the national electronic database through which Ghana's health facilities report routine service data in aggregated form, and earlier regional analyses have also used it [[4](https://doi.org/10.11604/pamj.2021.40.131.28217),[17](https://doi.org/10.1093/trstmh/trae113)]. Within DHIMS-2, new outpatient snakebite cases are entered through the monthly outpatient department (OPD) morbidity form. Admitted cases are reported through the in-patient morbidity and mortality form, and snakebite deaths are held in a separate cause-of-death database managed by the Centre for Health Information Management of the Ghana Health Service [[17](https://doi.org/10.1093/trstmh/trae113)]. A case is therefore a new attendance at a reporting health facility that was recorded as snakebite. Because the data are aggregated, they carry no individual identifiers and record neither the snake species, the presence or severity of envenoming, nor any diagnostic code beyond the snakebite category of the morbidity form [[15](https://doi.org/10.1371/journal.pntd.0011050)]. The counts analysed here are the monthly snakebite totals extracted for each district [AUTHOR: confirm whether the extraction combined the OPD and in-patient forms or used the OPD form alone, and give the DHIMS-2 reporting rate, the percentage of expected monthly facility reports received, for 2020–2025]. Bites treated only by traditional healers, or at facilities that do not report to DHIMS-2, are not captured [[5](https://doi.org/10.1155/2024/8357312)].
+This was a nationwide ecological panel study, with a time-series cross-sectional design, of monthly snakebite counts in every district of Ghana from January 2020 to November 2025, a period of 71 months. The outcome was the number of snakebite cases recorded each month for each district in the District Health Information Management System (DHIMS-2). DHIMS-2 is the national electronic database through which Ghana's health facilities report routine service data in aggregated form, and earlier regional analyses have also used it [[4](https://doi.org/10.11604/pamj.2021.40.131.28217),[18](https://doi.org/10.1093/trstmh/trae113)]. Within DHIMS-2, new outpatient snakebite cases are entered through the monthly outpatient department (OPD) morbidity form. Admitted cases are reported through the in-patient morbidity and mortality form, and snakebite deaths are held in a separate cause-of-death database managed by the Centre for Health Information Management of the Ghana Health Service [[18](https://doi.org/10.1093/trstmh/trae113)]. A case is therefore a new attendance at a reporting health facility that was recorded as snakebite. Because the data are aggregated, they carry no individual identifiers and record neither the snake species, the presence or severity of envenoming, nor any diagnostic code beyond the snakebite category of the morbidity form [[15](https://doi.org/10.1371/journal.pntd.0011050)]. The counts analysed here are the monthly snakebite totals extracted for each district [AUTHOR: confirm whether the extraction combined the OPD and in-patient forms or used the OPD form alone, and give the DHIMS-2 reporting rate, the percentage of expected monthly facility reports received, for 2020–2025]. Bites treated only by traditional healers, or at facilities that do not report to DHIMS-2, are not captured [[5](https://doi.org/10.1155/2024/8357312)].
 
 District boundaries follow the 2018 re-demarcation. We received 18,485 district-months for the 261 districts, with no missing values and no duplicate district-months, and each district's monthly series was continuous. The data for 2025 cover January to November. Two districts, Ayawaso East and Ledzokuku, contributed data for 2020–2023 only, and their available months were retained, since mixed models accommodate unbalanced panels. One district reported no cases in any month. It was excluded from the models together with its 71 district-months, because its district effect cannot be estimated. We flagged 24 district-months with more than 20 cases and more than ten times the district median as possible reporting artefacts [AUTHOR: state whether these were verified with the reporting units]. These were retained in the main analysis and excluded in a sensitivity analysis.
 
-Annual district population estimates served as the offset, so that the models describe incidence rates rather than counts [AUTHOR: state the source, for example the Ghana Statistical Service projections from the 2021 Population and Housing Census]. Monthly climate for each district was obtained from the NASA Prediction of Worldwide Energy Resources (POWER) project [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]. Its meteorological fields derive from the MERRA-2 reanalysis [[19](https://doi.org/10.1175/JCLI-D-16-0758.1)] on a native grid of about 0.5° × 0.625°. The variables were precipitation (monthly mean, mm/day), relative humidity at 2 m (%), and mean, maximum and minimum air temperature at 2 m (°C) [AUTHOR: state whether values were extracted at district centroids or area-weighted]. Because of this native resolution, the 261 districts share 71 distinct climate values in any given month, so neighbouring districts often receive identical climate. NDVI was obtained from [AUTHOR: product, for example MODIS MOD13A3, with a verified reference] and averaged over each district, giving a district-specific measure of vegetation greenness. To provide a full lag history for cases in 2020, the climate series were extended back to January 2019 [AUTHOR: confirm extraction]. For sensitivity analyses at finer resolution, rainfall was also taken from CHIRPS version 2.0 at 0.05° [[20](https://doi.org/10.1038/sdata.2015.66)], and temperature and humidity from ERA5-Land at 0.1° [[21](https://doi.org/10.5194/essd-13-4349-2021)].
+Annual district population estimates served as the offset, so that the models describe incidence rates rather than counts [AUTHOR: state the source, for example the Ghana Statistical Service projections from the 2021 Population and Housing Census]. Monthly climate for each district was obtained from the NASA Prediction of Worldwide Energy Resources (POWER) project [[19](https://power.larc.nasa.gov/docs/methodology/meteorology/)]. Its meteorological fields derive from the MERRA-2 reanalysis [[20](https://doi.org/10.1175/JCLI-D-16-0758.1)] on a native grid of about 0.5° × 0.625°. The variables were precipitation (monthly mean, mm/day), relative humidity at 2 m (%), and mean, maximum and minimum air temperature at 2 m (°C) [AUTHOR: state whether values were extracted at district centroids or area-weighted]. Because of this native resolution, the 261 districts share 71 distinct climate values in any given month, so neighbouring districts often receive identical climate. NDVI was obtained from [AUTHOR: product, for example MODIS MOD13A3, with a verified reference] and averaged over each district, giving a district-specific measure of vegetation greenness. To provide a full lag history for cases in 2020, the climate series were extended back to January 2019 [AUTHOR: confirm extraction]. For sensitivity analyses at finer resolution, rainfall was also taken from CHIRPS version 2.0 at 0.05° [[21](https://doi.org/10.1038/sdata.2015.66)], and temperature and humidity from ERA5-Land at 0.1° [[22](https://doi.org/10.5194/essd-13-4349-2021)].
 
 ### 2.3 Derived exposures
 
@@ -146,7 +146,7 @@ Residual temporal autocorrelation was assessed. Where present, it was addressed 
 
 #### 2.4.3 Distributed-lag non-linear models
 
-* Each climate variable entered the base model as a cross-basis [22].
+* Each climate variable entered the base model as a cross-basis [23].
 * The cross-basis is the tensor product of:
   * a natural cubic spline over the exposure range; and
   * a natural cubic spline over lags 0 to $L$ months, with knots equally spaced on the log scale, which allows more flexibility at short lags.
@@ -171,7 +171,7 @@ To avoid the biases of single-lag testing and cross-correlation in strongly seas
    * leave-one-year-out cross-validation scored by the logarithmic score and continuous ranked probability score (CRPS).
 
    The most parsimonious model within 2 AIC units, or within 1 SE of the best cross-validated score, was retained.
-4. **Penalized confirmation.** A penalized DLNM [23] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
+4. **Penalized confirmation.** A penalized DLNM [24] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
 5. **Common specification.** The same $L$ and df were applied to all variables and zones, so lag curves are directly comparable.
 6. **Falsification.** Future climate (lags −1 and −2) was added to the final model. No association was expected.
 
@@ -200,14 +200,14 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.6 Climatology versus anomaly decomposition
 
-* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [24].
+* We refitted the DLNM with the standardised anomaly $a_{it}$ in the cross-basis and the climatology $\bar{x}_{i,m(t)}$ as a separate term. This is a within–between decomposition [25].
 * The anomaly terms estimate the delayed effect of unusual weather independently of normal seasonality.
 * The climatology term captures the seasonal and spatial climate gradient.
 
 #### 2.4.7 Heterogeneity by rainfall regime
 
 * Lag structures were compared between the north (unimodal) and the south (bimodal).
-* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [25].
+* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [26].
 * Heterogeneity was summarised with Cochran's Q and I².
 * A likelihood-ratio test of a zone × cross-basis interaction gave a complementary test.
 
@@ -220,7 +220,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.9 Attributable burden
 
-* Attributable numbers and fractions of cases were computed from the final DLNM [26], relative to the minimum-risk value of each exposure.
+* Attributable numbers and fractions of cases were computed from the final DLNM [27], relative to the minimum-risk value of each exposure.
 * Results are given by zone, region and year, with 95% empirical confidence intervals from 1,000 Monte-Carlo simulations.
 
 #### 2.4.10 Predictive validation
@@ -241,12 +241,12 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 5. CHIRPS and ERA5-Land exposures.
 6. Climate-grid-cell random effect or cluster-robust SEs (for districts sharing NASA POWER cells).
 7. Monthly interpolated population offset.
-8. Bayesian spatial model with BYM2 district effects in R-INLA [28].
+8. Bayesian spatial model with BYM2 district effects in R-INLA [29].
 
 #### 2.4.12 Diagnostics and software
 
-* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [29]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [27], `dlnm` [22,23], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
+* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [30]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
+* Software: R [version] with `glmmTMB` [28], `dlnm` [23,24], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
 * Code will be available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
@@ -400,7 +400,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [30].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [31].
 * *Colombia:* rainfall mattered where dry seasons are marked; the Ghanaian north is the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -472,11 +472,15 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 
 ![Figure 1. (A) Districts of Ghana by rainfall regime. (B) District snakebite incidence, 2020–2024.](figures/Fig1.png)
 
-*Figure 1. (A) The 261 districts of Ghana classified by rainfall regime: unimodal north, 55 districts; bimodal south, 206 districts. (B) Reported snakebite incidence by district, 2020–2024, in cases per 100,000 per year. Guan district has no polygon in the boundary file [16] but is included in all analyses.*
+*Figure 1. (A) The 261 districts of Ghana classified by rainfall regime: unimodal north, 55 districts; bimodal south, 206 districts. (B) Reported snakebite incidence by district, 2020–2024, in cases per 100,000 per year, with the ten highest-incidence districts named. District and regional boundaries are from geoBoundaries (gbOpen, Ghana ADM2 and ADM1; source USAID Ghana HPNO and Ghana Statistical Service; CC BY 4.0) [16]. Guan district has no polygon in the boundary file but is included in all analyses. Maps drawn in Python with matplotlib [17] and shapely (`analysis/fig1_map.py`).*
+
+![Figure 1C. District reference map.](figures/Fig1C_district_reference_map.png)
+
+*Figure 1C. District reference map. Every district is numbered alphabetically within its region, with enlarged insets for Kumasi, Greater Accra and central Accra and the full name index. Boundary source and software as for Figure 1. The index is also provided as `analysis/district_reference_index.csv`.*
 
 | Item | Content | Results section |
 |---|---|---|
-| **Fig 1** | (A) Districts by rainfall regime; (B) district snakebite incidence 2020–2024, in five classes of cases per 100,000 per year. **Done:** `figures/Fig1.png` (script `analysis/fig1_map.py`) | 2.1, 3.1 |
+| **Fig 1** | (A) Districts by rainfall regime; (B) district snakebite incidence 2020–2024, in five classes of cases per 100,000 per year, top ten districts named; (C) numbered district reference map with insets and name index. **Done:** `figures/Fig1.png`, `figures/Fig1C_district_reference_map.png` (script `analysis/fig1_map.py`) | 2.1, 3.1 |
 | **Fig 2** | Monthly cases vs rainfall, RH and temperature by zone (north/south) | 3.2 |
 | **Fig 3** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
 | **Fig 4** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
@@ -532,17 +536,18 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 14. Owusu K, Waylen P. Trends in spatio-temporal variability in annual rainfall in Ghana (1951–2000). Weather. 2009. *Add volume, pages and DOI from the Royal Meteorological Society/Wiley record.*
 15. Deikumah JP, Biney RP, Awoonor-Williams JK, Gyakobo MK. Compendium of medically important snakes, venom activity and clinical presentations in Ghana. PLoS Negl Trop Dis. 2023;17(7):e0011050. doi:10.1371/journal.pntd.0011050
 16. Runfola D, et al. geoBoundaries: a global database of political administrative boundaries. PLoS One. 2020;15(4):e0231866. doi:10.1371/journal.pone.0231866 *Complete the author list.*
-17. Bosoka SA, et al. Snakebites, a neglected public health concern: an analysis of distribution, trends and incidence of snakebite cases reported to health facilities in the Volta Region of Ghana, 2018–2023. Trans R Soc Trop Med Hyg. 2025;119:443–452. doi:10.1093/trstmh/trae113 *Complete the author list.*
-18. NASA Langley Research Center. Prediction of Worldwide Energy Resources (POWER) Project: meteorology methodology. https://power.larc.nasa.gov/docs/methodology/meteorology/
-19. Gelaro R, et al. The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2). J Clim. 2017;30:5419–5454. doi:10.1175/JCLI-D-16-0758.1 *Complete the author list.*
-20. Funk C, Peterson P, Landsfeld M, Pedreros D, Verdin J, Shukla S, et al. The climate hazards infrared precipitation with stations—a new environmental record for monitoring extremes. Sci Data. 2015;2:150066. doi:10.1038/sdata.2015.66
-21. Muñoz-Sabater J, et al. ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth Syst Sci Data. 2021;13(9):4349–4383. doi:10.5194/essd-13-4349-2021 *Complete the author list.*
-22. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
-23. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
-24. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
-25. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
-26. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
-27. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
-28. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
-29. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
-30. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+17. Hunter JD. Matplotlib: a 2D graphics environment. Comput Sci Eng. 2007;9(3):90–95. doi:10.1109/MCSE.2007.55
+18. Bosoka SA, et al. Snakebites, a neglected public health concern: an analysis of distribution, trends and incidence of snakebite cases reported to health facilities in the Volta Region of Ghana, 2018–2023. Trans R Soc Trop Med Hyg. 2025;119:443–452. doi:10.1093/trstmh/trae113 *Complete the author list.*
+19. NASA Langley Research Center. Prediction of Worldwide Energy Resources (POWER) Project: meteorology methodology. https://power.larc.nasa.gov/docs/methodology/meteorology/
+20. Gelaro R, et al. The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2). J Clim. 2017;30:5419–5454. doi:10.1175/JCLI-D-16-0758.1 *Complete the author list.*
+21. Funk C, Peterson P, Landsfeld M, Pedreros D, Verdin J, Shukla S, et al. The climate hazards infrared precipitation with stations—a new environmental record for monitoring extremes. Sci Data. 2015;2:150066. doi:10.1038/sdata.2015.66
+22. Muñoz-Sabater J, et al. ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth Syst Sci Data. 2021;13(9):4349–4383. doi:10.5194/essd-13-4349-2021 *Complete the author list.*
+23. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
+24. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
+25. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. Political Sci Res Methods. 2015;3(1):133–153.
+26. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
+27. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
+28. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
+29. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
+30. Hartig F. DHARMa: residual diagnostics for hierarchical (multi-level/mixed) regression models. R package version 0.4.7. CRAN. *Use the output of `citation("DHARMa")` for the version you run.*
+31. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
