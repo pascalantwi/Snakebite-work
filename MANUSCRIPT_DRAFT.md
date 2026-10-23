@@ -80,47 +80,31 @@ These findings could help Ghana and neighbouring countries plan antivenom suppli
 
 ## 1. Introduction
 
-**¶1 Burden.**
-* Snakebite envenoming causes an estimated 2.1–7 million envenomings and 274,000–513,000 deaths each year once under-reporting is accounted for. Sub-Saharan Africa accounts for about 45% of envenomings and deaths [Ediriweera, Kasturiratne et al. 2026, verify; Kasturiratne et al. 2008].
-* WHO re-listed snakebite as a category A neglected tropical disease in 2017. Its 2019 strategy aims to halve deaths and disability by 2030 [WHO 2019].
-* In Ghana, about 10,000 snakebites are reported to health facilities each year. This is a lower bound, because many victims are treated by traditional healers [Graphic/KCCR, verify; Volta/Oti 2021].
-* The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the savanna [Musah et al. 2019, verify].
+Snakebite envenoming is one of the most neglected causes of death and disability in the tropics. Recent geostatistical estimates suggest that at least 2.1 million, and possibly up to 7 million, envenomings occur each year. After adjustment for under-reporting, these cause between 274,000 and 513,000 deaths, and sub-Saharan Africa accounts for about 45% of both [Ediriweera, Kasturiratne et al. 2026, verify; Kasturiratne et al. 2008]. In 2017 the World Health Organization re-listed snakebite as a category A neglected tropical disease. Its 2019 strategy aims to halve snakebite deaths and disability by 2030, a goal that depends on getting antivenom, trained staff and community awareness to the right places at the right times [WHO 2019]. In Ghana, about 10,000 snakebites are reported to health facilities each year. This is almost certainly an underestimate, because many victims first seek, or only seek, care from traditional healers [Graphic/KCCR, verify; Volta/Oti 2021]. In the savanna north, the West African carpet viper (*Echis ocellatus*) causes most severe envenoming, and bites are concentrated among young men working on farms [Musah et al. 2019, verify].
 
-**¶2 Why climate should act with a delay.**
-* Snakes are ectotherms, so their activity, foraging and dispersal depend on temperature and moisture.
-* Rainfall drives vegetation growth, then seed and insect pulses, then rodent prey, over weeks to months [Sahel rodents 2018].
-* Human exposure follows the agricultural calendar: land clearing, planting and weeding begin with the rains and expose barefoot farmers [Benin review 2024; Musah et al. 2019].
-* Flooding and humidity extremes may push snakes into dwellings.
-* Each pathway implies a different delay, from weeks (activity) to months (prey dynamics). Pathways may even act in opposite directions at different lags.
-* Studies that relate snakebite to *same-month* climate can therefore miss or mis-sign real effects.
+Snakebite is widely described as seasonal, and there are good biological and social reasons to expect its seasonality to be driven by climate. Snakes are ectotherms whose surface activity, foraging and dispersal depend on ambient temperature and moisture. Rainfall triggers vegetation growth, followed by pulses of seeds, insects and rodents, the main prey of many medically important vipers, over weeks to months [Sahel rodents 2018]. Human exposure follows the same clock. In rain-fed farming systems, land clearing, planting and weeding begin with the onset of the rains, placing barefoot or poorly protected farmers in contact with snakes [Benin review 2024; Musah et al. 2019]. Heavy rain and humidity extremes may also drive snakes into houses and compounds. Each of these pathways implies a different delay between a climatic event and a bite, from days for snake activity to months for prey dynamics, and pathways may act in opposite directions at different lags. Any analysis that relates snakebite only to same-month climate is therefore likely to miss, or even reverse the sign of, real climatic effects.
 
-**¶3 What is known.**
-* A 2025 systematic review identified temperature and humidity as the climate variables most often associated with snakebite risk. It also noted inconsistent directions and few studies from sub-Saharan Africa [Collinson et al. 2025].
-* Lagged effects have been examined only sporadically:
-  * In Costa Rica, incidence rose 24% per °C one month after warm anomalies, and was associated with rainfall 11 months earlier [Chaves et al. 2015].
-  * In California, bites fell after drought (6-month lag) and rose after wetter 18-month periods [Phillips et al. 2019].
-  * In Colombia, rainfall drove incidence only where the dry season is marked [Bravo-Vega et al. 2022].
-  * In Brazil, temperature effects differed between climatic regimes [Vilhena Neto et al., preprint].
-* In India, a spatial case-crossover analysis of lagged precipitation and temperature concluded that snakebite deaths are "primarily influenced by seasonality rather than precipitation or temperature" [Huang, Brown & Blangiardo 2025, *Spat Spatiotemporal Epidemiol* 54].
-* These studies share a design choice: seasonality is treated as a confounder, adjusted separately through calendar-month terms, harmonics, case-crossover time strata or temporal random effects, and climate is then assessed *after* seasonality is removed.
-* This is appropriate when seasonality reflects non-climatic factors. In a rain-fed, ectotherm-driven system, however, the seasonal cycle may itself be produced by lagged climate, directly through snake activity and prey and indirectly through the rain-timed farming calendar. Adjusting for seasonality then removes much of the effect of interest (over-adjustment). "Seasonality rather than climate" may then be an artefact of the model rather than a finding.
-* To our knowledge, no study has tested whether snakebite seasonality is explained by lagged local climate.
+The empirical evidence is limited and inconsistent. A 2025 systematic review of spatial and temporal analyses found that temperature and humidity were the climate variables most often associated with snakebite risk. However, the directions of association varied between settings, and very few studies came from sub-Saharan Africa [Collinson et al. 2025]. Delayed effects have been examined only occasionally:
 
-**¶4 The Ghana gap.**
-* Regional analyses of Ghanaian surveillance data consistently show rainy-season concentration of bites: about 81% in Volta/Oti and about 55% in Savannah Region [Volta/Oti 2021; Savannah 2025].
-* A recent nationwide Bayesian spatio-temporal analysis of the same district-month surveillance data modelled concurrent climate covariates. It found humidity and temperature, but not rainfall, associated with risk [Nyarko et al. 2026, verify].
-* This apparent contradiction (a strongly rain-seasonal disease with no rainfall effect) fits the over-adjustment explanation: the model's temporal and space-time random effects can absorb a seasonal signal generated by lagged rainfall.
-* Ghana offers an unusually good test case. Two rainfall regimes (a single season in the savanna north, two seasons in the south) produce different seasonal climate cycles within one surveillance system. If snakebite seasonality is climate, each district's seasonal cycle should be reproduced by its *own* lagged climate, and not by the climate of the other regime.
+* In Costa Rica, incidence rose by 24% for each degree Celsius of warming one month earlier, and was associated with rainfall eleven months earlier and with both phases of the El Niño–Southern Oscillation [Chaves et al. 2015].
+* In California, bites declined after drought and increased after wet 18-month periods [Phillips et al. 2019].
+* In Colombia, rainfall drove incidence only where the dry season was marked [Bravo-Vega et al. 2022].
+* In Brazil, temperature effects differed between climatic regimes [Vilhena Neto et al., preprint].
 
-**¶5 Aim.** We aimed to test whether the seasonality of snakebite in Ghana is explained by lagged local climate, and to quantify its delayed, non-linear effects. Specifically, we:
-1. **(primary)** tested whether lagged local rainfall, humidity, temperature and vegetation reproduce the seasonal cycle captured by calendar-month terms, using placebo climate from the other rainfall regime as a falsification test, and quantified the share of seasonality that is climatic;
-2. estimated exposure–lag–response associations using DLNMs within negative-binomial mixed models with a population offset;
-3. separated seasonal climatology from weather anomalies;
-4. compared lag structures between unimodal and bimodal rainfall regimes;
-5. estimated the climate-attributable burden;
-6. evaluated whether lagged climate improves out-of-sample prediction.
+Most recently, a spatial case-crossover analysis of lagged precipitation and temperature in India concluded that snakebite deaths were "primarily influenced by seasonality rather than precipitation or temperature" [Huang, Brown & Blangiardo 2025, verify].
 
-Rainy-season onset is examined as a secondary, descriptive exposure.
+These studies share an important design choice. Seasonality is treated as a confounder: it is removed through calendar-month terms, harmonic functions, case-crossover time strata or temporal random effects, and only then is the effect of climate assessed. This is appropriate when seasonal variation in snakebite arises from causes unrelated to climate. In a rain-fed, ectotherm-driven system, however, the seasonal cycle of snakebite may itself be generated by lagged climate, directly through snake ecology and indirectly through the rain-timed agricultural calendar. Adjusting for seasonality then removes most of the effect it is meant to isolate, and climate effects are biased towards the null by over-adjustment. On this view, a conclusion that snakebite is driven by "seasonality rather than climate" may describe the model rather than the disease. To our knowledge, no study has tested whether the seasonality of snakebite is itself explained by lagged local climate.
+
+Ghana illustrates the problem and offers an unusually good setting to test it. Regional analyses of surveillance data consistently show that bites cluster in the rainy season: about 81% of reported bites in the Volta and Oti Regions and about 55% in the Savannah Region [Volta/Oti 2021; Savannah 2025]. Yet a recent nationwide Bayesian spatio-temporal analysis of district-level surveillance data found humidity and temperature, but not rainfall, to be associated with risk, when climate was modelled in the same month as the bites alongside temporal and space–time random effects [Nyarko et al. 2026, verify]. A strongly rain-seasonal disease with no detectable rainfall effect is exactly what over-adjustment would produce. Ghana also contains two contrasting rainfall regimes within a single national surveillance system. The Guinea and Sudan savanna of the north has one rainy season, followed by a long dry season. The forest, transition and coastal zones of the south have two rainy seasons. If snakebite seasonality is climatic, each district's seasonal cycle should be reproduced by its own lagged climate, but not by the climate of a district in the other regime. This contrast provides a natural falsification test.
+
+In this study, we used 71 months of surveillance data from all 261 districts of Ghana to test whether the seasonality of snakebite is explained by lagged local climate, and to quantify the delayed and non-linear effects of rainfall, humidity, temperature and vegetation. Using negative-binomial generalized linear mixed models with a population offset, we:
+
+1. tested whether lagged local climate reproduces the seasonal cycle captured by conventional calendar-month adjustment, using climate reassigned from the other rainfall regime as a placebo, and quantified the share of seasonality that is climatic;
+2. estimated exposure–lag–response associations with distributed-lag non-linear models;
+3. separated the effects of normal seasonal climate from those of unusual weather;
+4. compared lag structures between the unimodal north and the bimodal south;
+5. estimated the number of snakebites attributable to climate;
+6. evaluated whether lagged climate improves out-of-sample prediction, and so gives lead time for antivenom planning.
 
 ---
 
