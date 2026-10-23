@@ -89,6 +89,7 @@ A lag hypothesis needs a mechanism. The literature supports at least four pathwa
 | Vilhena Neto et al., SSRN preprint (2025/26) | All Brazilian municipalities, 2007–2024 (~1.1M municipality-months) | Municipality-month | NB GAM, population offset | Temp, precipitation | [verify] | Effects differ **by climatic regime** ("one climate does not fit all") |
 | Mato Grosso do Sul, medRxiv 2025 | State, 2007–2023 | Monthly | STL, Poisson/NB | Land use, climate, biome | [verify] | Jan–Apr peaks |
 | Phillips, Lipman et al. 2019, *Clin Toxicol* 57(3) | California, 1997–2017 | County | Regression | Drought, precipitation, temperature | **Yes** (6 and 18 months) | −3.8% per 10% drought (6-month lag); +3.9% per 10% precipitation (18-month lag) |
+| **Huang, Brown, Blangiardo 2025, *Spat Spatiotemporal Epidemiol* 54 (PubMed 40935506)** | India, snakebite deaths [verify data source] | Small-area and continuous space | Spatial case-crossover, spatially varying coefficients, MCMC | Precipitation, temperature | **Yes**, short-term and different lagged exposures [verify lag windows; DLNM?] | Deaths "primarily influenced by seasonality rather than precipitation or temperature"; strong spatial heterogeneity. **Key paper to engage with (Section 7, G0)** |
 | Mohapatra et al. 2011, *PLoS NTD* 5(4):e1018 | India, Million Death Study | National monthly | Correlation | Rainfall, Tmin, Tmax | No | r = 0.93 rainfall, 0.80 Tmin |
 | Rahman et al. 2010, *PLoS NTD* 4(10):e860 | Rural Bangladesh | Monthly | Descriptive | Temp, rain | No | No association with monthly temperature or rain; harvest peak |
 | India "big four" climate suitability, *Sci Rep* 2025 | India | Spatial | **GLMM** | Bioclimatic suitability | No | Suitability is positively related to incidence; precipitation seasonality dominant |
@@ -315,9 +316,22 @@ The north Tmax row (no significant lags) and the zone-specific T2M and NDVI rows
 
 ## 7. Gap analysis: what has not been done
 
+> **Update (v0.2).** The central gap is now **G0**. G0 is solid for four reasons:
+> * **The signal is large.** It tests the seasonal cycle, which is the largest structure in the data, rather than small weather anomalies.
+> * **It has a built-in falsification test** (placebo climate).
+> * **It directly answers the two most recent and most similar studies** (India 2025, Ghana 2026).
+> * **It holds whatever the anomaly lag effects turn out to be.**
+>
+> G1–G10 become supporting objectives. **Strength ranking:**
+> 1. **Solid:** G0, G2, G5, G7.
+> 2. **Moderate:** G3, G6.
+> 3. **Weak (as headlines):** G1 (until Huang et al. and Vilhena Neto et al. are checked), G4 (onset varies too little between years: SD 0.46 months in the south, 0.8 in the north), G8, G9, G10.
+
+
 | # | Gap | Evidence it is a gap |
 |---|---|---|
-| G1 | **No exposure–lag–response (DLNM) analysis of snakebite** anywhere, to our knowledge | Searches for snakebite + DLNM / distributed lag found none. Lags in the literature are single lags chosen by cross-correlation (Costa Rica) or fixed windows (California) |
+| **G0 (central)** | **No study has tested whether snakebite seasonality is itself lagged climate.** All prior models adjust for seasonality (month terms, harmonics, case-crossover strata, temporal random effects) and then assess climate. This can over-adjust, producing "seasonality, not climate" (India 2025) and "no rainfall effect" (Ghana 2026) | Huang et al. 2025; Nyarko et al. 2026; Ediriweera et al. 2018 (harmonics); Rondônia (harmonics + AR). In this dataset, own lagged climate reproduces the full seasonal signal and beats all 100 placebo-climate series from the other rainfall regime (permutation p ≈ 0.01); about 11% of seasonality is non-climatic (`analysis/seasonality_climate_placebo.py`) |
+| G1 | **No exposure–lag–response (DLNM) analysis of snakebite** in Africa (globally: unconfirmed; Huang et al. 2025 studied lagged exposures in India, method to verify) | Searches for snakebite + DLNM / distributed lag found none. Lags in the literature are single lags chosen by cross-correlation (Costa Rica) or fixed windows (California) |
 | G2 | **No lagged climate analysis of snakebite in sub-Saharan Africa** | The systematic review flags SSA as under-represented. The Ghana nationwide preprint uses concurrent covariates |
 | G3 | **Seasonal confounding is rarely separated from weather anomalies** | Most studies regress on raw climate with or without harmonics. None, to our knowledge, decompose climate into climatology and anomaly to separate "season" from "unusual weather" |
 | G4 | **Rainy-season onset as an exposure** has not been modelled for snakebite | West African evidence links bites to farming at the start of the rains, but onset timing and false starts have never been used as a predictor |
@@ -520,16 +534,25 @@ res <- simulateResiduals(m1); plot(res); testZeroInflation(res)
    * Contact the authors if the data are shared (possible collaboration or co-authorship).
    * Make sure the claim "rainfall is not significant contemporaneously but significant at lag 1–2 and via onset" is shown directly. It is the headline result.
 2. **LSTM Ghana–Rwanda risk-mapping study (NCT06808789).** Primarily geostatistical and spatial (community surveys plus facility data). Check whether it includes time-varying climate; it probably targets spatial risk maps, not lag structure.
-3. **Brazilian nationwide Bothrops study (Vilhena Neto et al.).** If it uses DLNMs, G1 must be reworded as "first in Africa / first for Old-World vipers". Check its full text.
-4. **Formal search before submission.** Suggested string for PubMed/Scopus/Web of Science (also screen medRxiv, bioRxiv, SSRN and the African Journals Online database):
+3. **Huang, Brown & Blangiardo 2025 (India, *Spat Spatiotemporal Epidemiol* 54; PubMed 40935506).**
+   * It analysed lagged precipitation and temperature with spatially varying coefficients and concluded "seasonality rather than precipitation or temperature".
+   * Checked (abstract level, 23 Oct 2026): design, MCMC, spatial heterogeneity, and the conclusion.
+   * **Not yet confirmed:** the lag windows, whether a DLNM was used, and the data source (likely the Million Death Study).
+   * This paper is the foil for G0, and must be read in full.
+4. **Brazilian nationwide Bothrops study (Vilhena Neto et al.).**
+   * Checked (abstract level): NB GAM with a population offset, 1.12M municipality-months, 2007–2024; temperature RR 1.23 (temperate zone) vs 0.89 (tropical equatorial); likelihood-ratio test of zone heterogeneity p < 0.001; deviance explained 50.3%.
+   * **Not yet confirmed:** lag structure.
+   * If it uses DLNMs, G1 must be reworded as "first in Africa / first for Old-World vipers". Check its full text.
+5. **Pará State, Brazil (PubMed 42269650):** "Climatic and social drivers of snakebite incidence", 2007–2023; precipitation, river levels and large-scale climate phenomena. Lag method unknown; check it.
+6. **Formal search before submission.** Suggested string for PubMed/Scopus/Web of Science (also screen medRxiv, bioRxiv, SSRN and the African Journals Online database):
    `(snakebite OR "snake bite" OR envenom* OR ophidism) AND (lag* OR "distributed lag" OR DLNM OR delay* OR "time series") AND (rain* OR precipitation OR humidity OR temperature OR climat* OR weather)`
-   Record the date, hits and screening in a PRISMA-style appendix. Reviewers respond well to a documented novelty search.
+   Record the date, hits and screening in the manuscript Methods (section 2.5, Evidence search) rather than an appendix. Reviewers respond well to a documented novelty search.
 
 ---
 
 ## 10. Manuscript draft
 
-The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. It contains the title, abstract, author summary, Introduction and Methods in prose (including the pre-specified lag-selection strategy), Results with the descriptive numbers filled in and placeholders for model results, Discussion, Conclusions, and the figure, table and supplement plan.
+The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. It contains the title, abstract, author summary, Introduction and Methods in prose (including the pre-specified lag-selection strategy), Results with the descriptive numbers filled in and placeholders for model results, Discussion, Conclusions, and the figure and table plan (everything in the main text; no supplementary material).
 
 ---
 
@@ -574,3 +597,5 @@ The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. I
 37. Comparative analysis of satellite and reanalysis data with ground-based observations in Northern Ghana. *Meteorol Appl* 2024. [verify]
 38. Ghana Ministry of Food and Agriculture / FAO. Agro-ecological zones and rainfall regimes of Ghana (bimodal south; unimodal Guinea and Sudan savanna).
 39. Bell A, Jones K. Explaining fixed effects: random effects modeling of time-series cross-sectional and panel data. *Political Sci Res Methods* 2015;3(1):133–153 (within–between decomposition).
+40. Huang G, Brown PE, Blangiardo M. Investigating the impact of precipitation and temperature on snakebite mortality in India: a spatial case-crossover study. *Spat Spatiotemporal Epidemiol* 2025;54 (PubMed 40935506). [verify]
+41. Climatic and social drivers of snakebite incidence in Pará State, Brazilian Amazon (PubMed 42269650). [verify]

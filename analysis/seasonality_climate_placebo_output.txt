@@ -1,0 +1,17 @@
+n 17657
+A district+year                               deviance     47941  df 5
+B +zone x month                               deviance     45205  df 28
+C +own lagged climate (no month terms)        deviance     44982  df 45
+D +month +own climate                         deviance     44684  df 68
+P +PLACEBO climate (other-zone district)      deviance     45775  df 45
+
+Seasonal deviance (A-B): 2736
+Share of seasonal signal reproduced by own lagged climate (A-C)/(A-B): 1.08
+Share reproduced by placebo climate (A-P)/(A-B): 0.79
+Extra explained by climate beyond month terms (B-D): 521 on 40 df
+Extra explained by month terms beyond climate (C-D): 298 on 23 df
+Pearson-ish dispersion (dev/df) of model D: 2.54
+Own vs placebo, same df: scaled deviance gap 312.1
+Own climate (C) vs month terms (B): scaled deviance gain 87.9 for 17 extra df
+placebo deviance over 100 permutations: min 45644.0 median 45913.0 | own climate 44982
+permutation p-value (placebo <= own): 0.009900990099009901
