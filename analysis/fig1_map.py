@@ -1,4 +1,5 @@
-# Figure 1: (A) districts by rainfall regime; (B) district snakebite incidence, 2020-2024.
+# Figure 1 (Study setting): numbered districts by rainfall regime with insets and name index.
+# Figure 2 (Results 3.1): district snakebite incidence, 2020-2024.
 # Boundaries: geoBoundaries gbOpen GHA ADM2/ADM1 (CC BY 4.0; source USAID Ghana HPNO, Ghana Statistical Service).
 # Usage: python3 analysis/fig1_map.py data_snake.csv data/geo figures
 import sys, json, re, textwrap
@@ -71,39 +72,35 @@ def draw(ax, colour_of):
     ax.set_xlim(-3.4, 1.3); ax.set_ylim(4.6, 11.25); ax.set_aspect("equal"); ax.axis("off")
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "text.color": INK})
-fig, axes = plt.subplots(1, 2, figsize=(9.2, 7.4), facecolor=SURFACE)
-draw(axes[0], lambda r: REGIME_COL[r.regime])
-axes[0].set_title("A  Rainfall regime", loc="left", fontsize=11, fontweight="bold")
-n = dist.regime.value_counts()
-axes[0].legend(handles=[Patch(facecolor=REGIME_COL[k], edgecolor="none", label=f"{k}, {n[k]} districts") for k in REGIME_COL],
-               loc="upper left", bbox_to_anchor=(0.0, 0.0), frameon=False, fontsize=8.5)
-draw(axes[1], lambda r: SEQ[int(r.rbin)])
-axes[1].set_title("B  Snakebite incidence, 2020–2024", loc="left", fontsize=11, fontweight="bold")
+# ---- Figure 2 (Results 3.1): district snakebite incidence, 2020-2024 ----
+fig, ax = plt.subplots(figsize=(6.4, 8.4), facecolor=SURFACE)
+draw(ax, lambda r: SEQ[int(r.rbin)])
+ax.set_title("Snakebite incidence by district, 2020–2024", loc="left", fontsize=11, fontweight="bold")
 halo = [pe.withStroke(linewidth=2.2, foreground="white")]
 for _, r in dist.dropna(subset=["shapeName"]).nlargest(10, "rate").iterrows():
     pt = geo[r.shapeName].representative_point()
-    axes[1].annotate(f"{r.district.title()} ({r.rate:.0f})", (pt.x, pt.y), fontsize=6.2, ha="center", va="center",
-                     color=INK, path_effects=halo)
+    ax.annotate(f"{r.district.title()} ({r.rate:.0f})", (pt.x, pt.y), fontsize=6.4, ha="center", va="center",
+                color=INK, path_effects=halo)
 cnt = dist.rbin.value_counts().sort_index()
-axes[1].legend(handles=[Patch(facecolor=SEQ[i], edgecolor="none", label=f"{labels[i]} ({cnt.get(i,0)})") for i in range(5)],
-               title="Cases per 100,000 per year\n(number of districts)", title_fontsize=8.5,
-               loc="upper left", bbox_to_anchor=(0.0, 0.0), ncol=3, frameon=False, fontsize=8.5, alignment="left")
-note = ("Panel B names the ten districts with the highest incidence (rate in brackets). "
+ax.legend(handles=[Patch(facecolor=SEQ[i], edgecolor="none", label=f"{labels[i]} ({cnt.get(i,0)})") for i in range(5)],
+          title="Cases per 100,000 per year\n(number of districts)", title_fontsize=8.5,
+          loc="upper left", bbox_to_anchor=(0.0, 0.0), ncol=3, frameon=False, fontsize=8.5, alignment="left")
+note = ("The ten districts with the highest incidence are named (rate in brackets). "
         "Thin white lines: district boundaries; grey lines: regional boundaries. "
         f"{len(unmatched)} district ({', '.join(u.title() for u in unmatched)}) has no polygon in the 260-district boundary file. "
         "Boundaries: geoBoundaries gbOpen GHA ADM1/ADM2 (Runfola et al. 2020; CC BY 4.0), source USAID Ghana HPNO / Ghana Statistical Service. "
         "Map drawn in Python with matplotlib and shapely (analysis/fig1_map.py).")
-fig.text(0.02, 0.012, textwrap.fill(note, 175), fontsize=7, color=MUTED)
-fig.subplots_adjust(left=0.01, right=0.99, top=0.95, bottom=0.2, wspace=0.04)
+fig.text(0.03, 0.012, textwrap.fill(note, 118), fontsize=6.6, color=MUTED)
+fig.subplots_adjust(left=0.02, right=0.98, top=0.95, bottom=0.2)
 for ext in ("png", "pdf"):
-    fig.savefig(f"{out_dir}/Fig1.{ext}", dpi=300, facecolor=SURFACE)
-print("saved", f"{out_dir}/Fig1.png")
+    fig.savefig(f"{out_dir}/Fig2.{ext}", dpi=300, facecolor=SURFACE)
+print("saved", f"{out_dir}/Fig2.png")
 
 
-# ---- District reference map: every district numbered, with insets for Accra and Kumasi and a name index ----
+# ---- Figure 1 (Study setting 2.1): districts by rainfall regime, numbered, with insets and a name index ----
 ref = dist.sort_values(["region", "district"]).reset_index(drop=True)
 ref["no"] = np.arange(1, len(ref) + 1)
-TINT = {"Unimodal (north)": "#fbe0d6", "Bimodal (south)": "#e1edfc"}
+TINT = {"Unimodal (north)": "#f8c9b6", "Bimodal (south)": "#cde2fb"}
 INSETS = {"Central Accra": (-0.265, -0.155, 5.53, 5.635), "Greater Accra": (-0.40, 0.12, 5.52, 5.82), "Kumasi": (-1.78, -1.47, 6.58, 6.82)}
 def in_box(pt, b): return b[0] <= pt.x <= b[1] and b[2] <= pt.y <= b[3]
 def base(ax):
@@ -118,7 +115,7 @@ def base(ax):
 fig2 = plt.figure(figsize=(16, 12), facecolor=SURFACE)
 axm = fig2.add_axes([0.0, 0.03, 0.42, 0.94]); base(axm)
 axm.set_xlim(-3.4, 1.3); axm.set_ylim(4.6, 11.25); axm.axis("off")
-axm.set_title("District reference map", loc="left", fontsize=12, fontweight="bold")
+axm.set_title("Study area: districts of Ghana by rainfall regime", loc="left", fontsize=12, fontweight="bold")
 ins_axes = {"Kumasi": fig2.add_axes([0.425, 0.64, 0.125, 0.25]), "Greater Accra": fig2.add_axes([0.425, 0.38, 0.125, 0.22]),
             "Central Accra": fig2.add_axes([0.425, 0.08, 0.125, 0.25])}
 for nm, a in ins_axes.items():
@@ -145,12 +142,12 @@ for c in range(ncol):
         fig2.text(0.565 + c * 0.11, y, txt, fontsize=5.9 if not hdr else 6.4, fontweight="bold" if hdr else "normal",
                   family="DejaVu Sans Mono" if not hdr else "DejaVu Sans", color=INK, va="top")
         y -= 0.0128
-fig2.legend(handles=[Patch(facecolor=TINT[k], edgecolor="#9a9893", label=k) for k in TINT], loc="lower left",
+fig2.legend(handles=[Patch(facecolor=TINT[k], edgecolor="#9a9893", label=f"{k}, {(ref.regime == k).sum()} districts") for k in TINT], loc="lower left",
             bbox_to_anchor=(0.01, 0.06), frameon=False, fontsize=8, title="Rainfall regime", title_fontsize=8)
 fig2.text(0.01, 0.012, "Districts are numbered alphabetically within region. Boundaries: geoBoundaries gbOpen GHA ADM1/ADM2 "
           "(Runfola et al. 2020; CC BY 4.0), source USAID Ghana HPNO / Ghana Statistical Service; Guan district is not in the "
           "260-district boundary file. Drawn in Python with matplotlib and shapely (analysis/fig1_map.py).", fontsize=7, color=MUTED, wrap=True)
 for ext in ("png", "pdf"):
-    fig2.savefig(f"{out_dir}/Fig1C_district_reference_map.{ext}", dpi=300, facecolor=SURFACE)
+    fig2.savefig(f"{out_dir}/Fig1.{ext}", dpi=300, facecolor=SURFACE)
 ref[["no", "district", "region", "regime", "shapeName", "rate"]].to_csv(f"{out_dir}/../analysis/district_reference_index.csv", index=False)
-print("saved", f"{out_dir}/Fig1C_district_reference_map.png")
+print("saved", f"{out_dir}/Fig1.png")
