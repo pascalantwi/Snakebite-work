@@ -3,6 +3,7 @@ District-months in both sources: 18485; totals differ in 146 (all in [(2025, 11)
 Annual facility file vs monthly file, y2023: 0 district mismatches []
 Annual facility file vs monthly file, y2024: 0 district mismatches []
 Annual facility file vs monthly file, h1_2025: 1 district mismatches ['saboba']
+Rainfall regime from district rainfall 2020-2024: {'bimodal': 192, 'unimodal': 47, 'transition': 22}; differs from the region-based split for 24 districts.
 Possible non-reporting district-years (zero cases, other years mean >= 10): [{'district': 'accra', 'year': 2025, 'other_mean': 42.0}, {'district': 'ada west', 'year': 2020, 'other_mean': 11.8}, {'district': 'jasikan', 'year': 2025, 'other_mean': 16.6}, {'district': 'saboba', 'year': 2024, 'other_mean': 54.4}, {'district': 'sagnarigu', 'year': 2021, 'other_mean': 11.4}]
 Ledzokuku and Ayawaso East: absent from data_snake.csv for 2024-2025 and zero in every 2024-2025 month of the xlsx; set include_main = 0 for those years (likely non-reporting after boundary changes).
 Output district-month: 18792 rows (18636 with include_main = 1); climate available for 18485 rows (December 2025 climate not yet extracted).

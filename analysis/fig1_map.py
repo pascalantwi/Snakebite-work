@@ -1,5 +1,5 @@
 # Figure 1 (Study setting, section 2.1): study area and rainfall regimes of Ghana.
-# Main map: 261 districts shaded by rainfall regime, 16 regions outlined and named; locator of Ghana in West Africa.
+# Main map: 261 districts shaded by rainfall regime (unimodal / transition / bimodal, from district rainfall), 16 regions outlined and named; locator of Ghana in West Africa.
 # No title or source note on the image: these are given in the figure caption in the manuscript.
 # Sources: district/region boundaries geoBoundaries gbOpen GHA ADM2/ADM1 (Runfola et al. 2020; CC BY 4.0;
 # USAID Ghana HPNO / Ghana Statistical Service); country outlines Natural Earth 1:50m (public domain).
@@ -46,14 +46,18 @@ by_norm = {norm(k): k for k in geo}
 
 d = pd.read_csv(data_csv)
 dist = d.groupby("district").agg(region=("region", "first")).reset_index()
-dist["regime"] = np.where(dist.region.isin(NORTH), "Unimodal (north)", "Bimodal (south)")
+# rainfall regime from each district's own rainfall (see analysis/build_unified_dataset.py)
+reg = pd.read_csv("data/snakebite_unified_district_month.csv", usecols=["district", "regime", "n_bimodal_years"]).drop_duplicates("district")
+LAB = {"unimodal": "Unimodal", "transition": "Transition", "bimodal": "Bimodal"}
+dist = dist.merge(reg, on="district", how="left")
+dist["regime"] = dist.regime.map(LAB)
 dist["shapeName"] = [CROSSWALK.get(n, by_norm.get(norm(n))) for n in dist.district]
 dist.to_csv(f"{out_dir}/../analysis/district_crosswalk.csv", index=False)
 unmatched = dist[dist.shapeName.isna()].district.tolist()
 print("districts:", len(dist), "| mapped to a polygon:", dist.shapeName.notna().sum(), "| no polygon:", unmatched)
 
 SURFACE, INK, MUTED = "#fcfcfb", "#0b0b0b", "#52514e"
-COL = {"Unimodal (north)": "#eb6834", "Bimodal (south)": "#2a78d6"}
+COL = {"Unimodal": "#eb6834", "Transition": "#1baf7a", "Bimodal": "#2a78d6"}
 halo = [pe.withStroke(linewidth=2.4, foreground="white")]
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "text.color": INK})
 fig = plt.figure(figsize=(9.0, 7.0), facecolor=SURFACE)

@@ -98,7 +98,20 @@ u.loc[miss, "population"] = [pop_for(d, y) for d, y in zip(u.loc[miss, "district
 u["population_source"] = np.where(miss, "carried from latest available district-year", "data_snake.csv")
 
 # 5. Flags and derived fields
-u["regime"] = np.where(u.region.isin(NORTH), "north_unimodal", "south_bimodal")
+u["regime_region"] = np.where(u.region.isin(NORTH), "north_unimodal", "south_bimodal")
+# Rainfall regime from each district's own rainfall: a year is "bimodal" if the lowest of July-August rainfall is
+# below 80% of both the first peak (April-June) and the second peak (September-October). Districts bimodal in
+# 4-5 of 2020-2024 are bimodal, in 0-1 unimodal, and in 2-3 transition.
+def bimodal_year(df, thr=0.8):
+    m = df.groupby(["district", "month"]).Rainfall.mean().unstack()
+    first, dip, second = m[[4, 5, 6]].max(axis=1), m[[7, 8]].min(axis=1), m[[9, 10]].max(axis=1)
+    return (dip < thr * first) & (dip < thr * second)
+s5 = s[s.year <= 2024]
+nbim = pd.concat({y: bimodal_year(s5[s5.year == y]) for y in range(2020, 2025)}, axis=1).sum(axis=1).rename("n_bimodal_years")
+regime3 = pd.Series(np.where(nbim >= 4, "bimodal", np.where(nbim <= 1, "unimodal", "transition")), index=nbim.index, name="regime")
+u = u.merge(regime3, left_on="district", right_index=True, how="left").merge(nbim, left_on="district", right_index=True, how="left")
+log.append(f"Rainfall regime from district rainfall 2020-2024: {regime3.value_counts().to_dict()}; "
+           f"differs from the region-based split for {(regime3.reindex(u.drop_duplicates('district').set_index('district').index) != u.drop_duplicates('district').set_index('district').regime_region.map({'north_unimodal':'unimodal','south_bimodal':'bimodal'})).sum()} districts.")
 u["date"] = pd.to_datetime(dict(year=u.year, month=u.month, day=1)).dt.strftime("%Y-%m")
 u["t"] = (u.year - 2020) * 12 + u.month
 u["climate_available"] = u[CLIMATE].notna().all(axis=1).astype(int)
@@ -119,7 +132,7 @@ log.append("Ledzokuku and Ayawaso East: absent from data_snake.csv for 2024-2025
 
 u = u.rename(columns={"Relative Humidity": "rel_humidity", "Maximum Temperature": "tmax", "Minimum Temperature": "tmin",
                       "Rainfall": "rainfall", "T2M": "t2m"})
-order = ["district", "region", "regime", "year", "month", "date", "t", "cases_total", "cases_male", "cases_female",
+order = ["district", "region", "regime", "regime_region", "n_bimodal_years", "year", "month", "date", "t", "cases_total", "cases_male", "cases_female",
          "population", "population_source", "rainfall", "rel_humidity", "t2m", "tmax", "tmin", "ndvi",
          "climate_available", "in_original_csv", "cases_revised_nov2025", "all_zero_district",
          "possible_nonreporting_year", "include_main"]
@@ -132,8 +145,8 @@ lg = u.melt(id_vars=[c for c in order if c not in ("cases_male", "cases_female")
 lg["sex"] = lg.sex.str.replace("cases_", "")
 lg["population_sex"] = np.where(lg.sex == "male", lg.population * MALE_SHARE, lg.population * (1 - MALE_SHARE))
 lg = lg.drop(columns="cases_total")
-cols_long = ["district", "region", "regime", "year", "month", "date", "t", "sex", "cases", "population", "population_sex"] + \
-            [c for c in order if c not in ("district", "region", "regime", "year", "month", "date", "t", "cases_total",
+cols_long = ["district", "region", "regime", "regime_region", "n_bimodal_years", "year", "month", "date", "t", "sex", "cases", "population", "population_sex"] + \
+            [c for c in order if c not in ("district", "region", "regime", "regime_region", "n_bimodal_years", "year", "month", "date", "t", "cases_total",
                                            "cases_male", "cases_female", "population")]
 lg = lg[cols_long].sort_values(["district", "year", "month", "sex"]).reset_index(drop=True)
 lg.to_csv("data/snakebite_unified_district_month_sex.csv", index=False)

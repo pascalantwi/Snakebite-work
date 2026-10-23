@@ -21,7 +21,9 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 | Variable | Meaning |
 |---|---|
 | `district`, `region` | District (lower case, harmonised to `data_snake.csv` spelling) and region |
-| `regime` | Rainfall regime: `north_unimodal` (Northern, Savannah, North East, Upper East, Upper West) or `south_bimodal` |
+| `regime` | Rainfall regime from the district's own NASA POWER rainfall, 2020–2024: `bimodal` (two rainy seasons in 4–5 of the 5 years; 192 districts), `transition` (2–3 years; 22), `unimodal` (0–1 years; 47). A year counts as having two rainy seasons when the lowest of July–August rainfall is below 80% of both the April–June peak and the September–October peak |
+| `n_bimodal_years` | Number of years in 2020–2024 in which the district had two rainy seasons |
+| `regime_region` | The earlier region-based split, kept for comparison: `north_unimodal` (Northern, Savannah, North East, Upper East, Upper West) or `south_bimodal` |
 | `year`, `month`, `date`, `t` | Calendar year and month, `YYYY-MM`, and a time index from 1 (Jan 2020) to 72 (Dec 2025) |
 | `cases_total`, `cases_male`, `cases_female` | Reported snakebite cases (district-month file) |
 | `sex`, `cases` | Sex and the sex-specific case count (district-month-sex file) |
