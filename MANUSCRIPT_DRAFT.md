@@ -130,9 +130,9 @@ Two further variables were derived for secondary analyses. The diurnal temperatu
 
 #### 2.4.1 Descriptive analysis
 
-* Incidence rates per 100,000 person-years by region, zone, year and calendar month.
-* Seasonal profiles of cases and climate by zone.
-* Overdispersion (variance-to-mean ratio) and the proportion of zero counts.
+The seasonal profiles of snakebite and climate were described separately for unimodal, transition and bimodal districts. For each rainfall regime, we summed the reported cases in each calendar month across districts and years and plotted them alongside the mean monthly rainfall, relative humidity and temperature of the same districts. This shows when snakebite peaks relative to the rainy seasons and whether the timing differs between regimes. To relate the snakebite season to the start of the rains rather than to the calendar, we also plotted incidence by months since rainy-season onset, expressed relative to each district's mean.
+
+The distribution of monthly counts was examined to choose the count model. We calculated the mean and variance of district-month counts and their ratio. A ratio well above 1 indicates overdispersion, meaning more variation than a Poisson model allows, and supports a negative-binomial model. We also calculated the proportion of district-months with no reported cases, overall and for each district. A larger share of zeros than the negative-binomial model predicts would point to a zero-inflated or hurdle model, and these alternatives were assessed in the sensitivity analyses.
 
 #### 2.4.2 Base model
 
