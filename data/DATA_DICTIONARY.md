@@ -1,6 +1,6 @@
 # Unified snakebite dataset
 
-These files are built by `analysis/build_unified_dataset.py` from three sources in the repository root, which are left unchanged:
+These files are built by `analysis/build_unified_dataset.py` from four source files, which are left unchanged:
 
 * `Snake Bite Data 2020 - 2025.xlsx`: monthly DHIMS-2 snakebite cases by district and sex, January 2020 to December 2025.
 * `data_snake.csv`: district-month cases, population and climate, January 2020 to November 2025.
