@@ -164,36 +164,35 @@ so that $\exp(\delta)$ is the male-to-female incidence rate ratio. We added inte
 
 #### 2.4.3 Distributed-lag non-linear models
 
-* Each climate variable entered the base model as a cross-basis [36].
-* The cross-basis is the tensor product of:
-  * a natural cubic spline over the exposure range; and
-  * a natural cubic spline over lags 0 to $L$ months, with knots equally spaced on the log scale, which allows more flexibility at short lags.
-* Lags were computed within districts across year boundaries.
-* Because raw relative humidity and maximum temperature are strongly correlated (r = −0.80):
-  * the main model included rainfall and one temperature metric;
-  * humidity was assessed in an alternative model;
-  * variance inflation factors are reported.
-* We report:
-  * lag-specific relative risks (RR) at the 90th and 99th percentiles of exposure versus the median (or the minimum-risk value);
-  * the cumulative RR summed over all lags;
-  * the overall cumulative exposure–response curve.
+To estimate how snakebite risk depends on climate in the current and preceding months, we added each climate variable to the base model as a cross-basis, the core of a distributed-lag non-linear model (DLNM) [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)]. We chose this approach for two reasons. *Descriptive:* snakebite rose one to two months after the onset of the rains and returned to its usual level four to five months after onset (Section 3.2), so the effect of rainfall is spread over several months rather than confined to one. *Theoretical:* the mechanisms linking climate to snakebite act over different delays, from days for snake activity to weeks for land clearing and planting [[5](https://doi.org/10.1155/2024/8357312),[6](https://doi.org/10.1371/journal.pntd.0007221)] and months for vegetation and rodent prey [[7](https://doi.org/10.1007/s13364-018-0377-x)]. A model of same-month climate, or of a single chosen lag, would miss or misplace such effects. A DLNM estimates the whole pattern of effects across lags at once, and it also allows the effect to be non-linear in the size of the exposure [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)].
+
+For an exposure $x$, the DLNM describes the contribution of $x$ measured $\ell$ months earlier through a bi-dimensional function $f\cdot w(x,\ell)$, built as the tensor product of a basis for the exposure, $b_j(x)$, and a basis for the lag, $c_k(\ell)$ [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)]:
+
+$$f\cdot w(x,\ell) = \sum_{j=1}^{v_x}\sum_{k=1}^{v_\ell} b_j(x)\,c_k(\ell)\,\eta_{jk}, \qquad \sum_{\ell=0}^{L} f\cdot w(x_{i,t-\ell},\ell) = \mathbf{w}_{it}^{\top}\mathbf{h},$$
+
+where $\mathbf{w}_{it}$ is the vector of cross-basis variables computed from the district's climate history and $\mathbf{h}$ the vector of coefficients $\eta_{jk}$ estimated with the rest of the model. For $b_j(x)$ we used a natural cubic spline, which can capture curved relationships but is linear beyond the extreme knots, avoiding implausible behaviour at rare extreme values. A curved relationship is plausible for both rainfall, whose association with snakebite was hump-shaped in northern Ghana [[6](https://doi.org/10.1371/journal.pntd.0007221)], and temperature, since snake activity falls when conditions exceed the species' optimum [[8](https://doi.org/10.1093/trstmh/trae131)]. For $c_k(\ell)$ we used a natural cubic spline with knots equally spaced on the logarithmic scale, which allows more flexibility at short lags, where effects are expected to change fastest, and smoother curves at long lags [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)]. We computed lags within each district and across year boundaries. Because the climate series start in January 2019, every month from January 2020 has a complete history of up to 12 months.
+
+From the fitted cross-basis we report the relative risk (RR) at exposure $x$ and lag $\ell$ compared with a reference value $x_0$, and the cumulative RR over all lags:
+
+$$\mathrm{RR}(x,\ell) = \exp\{f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\}, \qquad \mathrm{RR}_{\text{cum}}(x) = \exp\Big\{\sum_{\ell=0}^{L} \big[f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\big]\Big\}.$$
+
+We set $x_0$ to the median of each exposure, or to the value of minimum risk where the exposure–response curve had a clear minimum, and report RRs at the 90th and 99th percentiles together with the full exposure–lag–response surface.
+
+The climate variables were correlated. *Descriptive:* relative humidity and maximum temperature had a correlation of −0.80, and rainfall and humidity 0.59, while the other pairs were weaker. *Theoretical:* strongly correlated exposures entered together inflate the variance of their coefficients and make their separate effects difficult to interpret. We therefore included rainfall, maximum and minimum temperature and NDVI in the main model and assessed relative humidity in an alternative model in which it replaced maximum temperature, and we report variance inflation factors. In the primary analysis of seasonality (Section 2.4.5), where the aim is to reproduce the seasonal cycle jointly rather than to separate the effects of single variables, all five variables were entered together.
 
 #### 2.4.4 Lag selection strategy (pre-specified)
 
-To avoid the biases of single-lag testing and cross-correlation in strongly seasonal data, we pre-specified the following strategy:
+We pre-specified how the maximum lag and the flexibility of the cross-basis would be chosen. *Theoretical:* climate and snakebite share a strong seasonal cycle, so the correlation between snakebite and climate several months earlier partly reflects the season itself. Choosing lags by cross-correlation, or by testing many single lags and keeping the significant ones, would therefore select lags that mirror the seasonal cycle and would inflate false-positive findings through multiple testing [[29](https://doi.org/10.1093/ije/dyt092)].
 
-1. **Maximum lag from mechanism.** The main analysis uses $L$ = 6 months, covering activity (0–1), agricultural-calendar (0–2) and vegetation–prey (1–4) pathways. Sensitivity analyses use 3, 9 and 12 months.
-2. **Joint estimation.** All lags were estimated jointly within the cross-basis. We did not use separate single-lag models, cross-correlation or stepwise selection.
-3. **Grid selection.** $L$ and the spline degrees of freedom were chosen from a pre-specified grid: $L \in \{3, 6, 9, 12\}$ × exposure df ∈ {2, 3, 4} × lag df ∈ {2, 3, 4}. Two criteria were used:
-   * the Akaike information criterion, with all candidates fitted to identical observations;
-   * leave-one-year-out cross-validation scored by the logarithmic score and continuous ranked probability score (CRPS).
+We set the main maximum lag at $L = 6$ months from the mechanisms above, which act within zero to four months. *Descriptive:* the post-onset rise in snakebite had subsided by five months after onset (Section 3.2). Because longer delays have been reported elsewhere, with rainfall effects at 11 months in Costa Rica [[9](https://doi.org/10.1126/sciadv.1500249)] and 18 months in California [[10](https://doi.org/10.1080/15563650.2018.1508690)], we repeated the analysis with $L$ = 3, 9 and 12 months.
 
-   The most parsimonious model within 2 AIC units, or within 1 SE of the best cross-validated score, was retained.
-4. **Penalized confirmation.** A penalized DLNM [37] with $L$ = 12, fitted by restricted maximum likelihood, served as a data-driven check of the lag shape.
-5. **Common specification.** The same $L$ and df were applied to all variables and zones, so lag curves are directly comparable.
-6. **Falsification.** Future climate (lags −1 and −2) was added to the final model. No association was expected.
+We estimated all lags jointly in the cross-basis and chose $L$ and the degrees of freedom of the exposure and lag splines from a pre-specified grid: $L \in \{3, 6, 9, 12\}$, with 2, 3 or 4 degrees of freedom for each spline (36 candidate models). We compared the candidates with two criteria. The first was the Akaike information criterion, $\mathrm{AIC} = -2\log \hat{L} + 2p$, where $\hat{L}$ is the maximised likelihood and $p$ the number of parameters; all candidates were fitted to the same observations so that their AIC values are comparable. The second was predictive performance in leave-one-year-out cross-validation. Leaving out whole years rather than random months keeps the temporal dependence of the data out of the validation set, which random cross-validation would ignore and so overstate performance [[37](https://doi.org/10.1111/ecog.02881)]. We scored the held-out predictions with two strictly proper scoring rules, the logarithmic score and the continuous ranked probability score [[38](https://doi.org/10.1198/016214506000001437)]:
 
-We report full lag curves and cumulative effects rather than a single "selected" lag.
+$$\mathrm{LogS} = -\log p(y_{it} \mid \hat{\psi}_{-y}), \qquad \mathrm{CRPS}(F_{it}, y_{it}) = \sum_{k=0}^{\infty} \big\{F_{it}(k) - \mathbf{1}(y_{it} \le k)\big\}^2,$$
+
+where $p$ and $F_{it}$ are the predictive probability and cumulative distribution function from the model fitted without year $y$, with parameters $\hat{\psi}_{-y}$. Lower values of both scores indicate better predictions. We retained the most parsimonious model within 2 AIC units of the best, or within one standard error of the best cross-validated score.
+
+As a check on the lag shape that does not depend on the grid, we fitted a penalized DLNM with $L$ = 12, in which a smoothing penalty estimated by restricted maximum likelihood shrinks unsupported lags towards zero [[39](https://doi.org/10.1111/biom.12645)]. We applied the same $L$ and degrees of freedom to all climate variables and rainfall regimes, so that their lag curves are directly comparable. Finally, as a falsification test, we added future climate (lags of −1 and −2 months) to the final model. Climate in the following month cannot cause snakebite in the current month, so any association with future climate would indicate residual seasonal confounding; such future exposures serve as negative control exposures [[40](https://doi.org/10.1097/EDE.0b013e3181d61eeb)]. We report the full lag curves and cumulative effects rather than a single selected lag.
 
 #### 2.4.5 Primary analysis: is seasonality lagged climate?
 
@@ -225,7 +224,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 #### 2.4.7 Heterogeneity by rainfall regime
 
 * Lag structures were compared between unimodal, transition and bimodal districts (Section 2.1).
-* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [38].
+* Method: fit zone-specific models, reduce each to its overall cumulative curve and its lag curve at a fixed exposure, and pool them by multivariate meta-analysis (`mixmeta`) [41].
 * Heterogeneity was summarised with Cochran's Q and I².
 * A likelihood-ratio test of a zone × cross-basis interaction gave a complementary test.
 
@@ -238,7 +237,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 
 #### 2.4.9 Attributable burden
 
-* Attributable numbers and fractions of cases were computed from the final DLNM [39], relative to the minimum-risk value of each exposure.
+* Attributable numbers and fractions of cases were computed from the final DLNM [42], relative to the minimum-risk value of each exposure.
 * Results are given by zone, region and year, with 95% empirical confidence intervals from 1,000 Monte-Carlo simulations.
 
 #### 2.4.10 Predictive validation
@@ -264,7 +263,7 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 #### 2.4.12 Diagnostics and software
 
 * Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [28]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [34], `dlnm` [36,37], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
+* Software: R [version] with `glmmTMB` [34], `dlnm` [36,39], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
 * Code will be available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
@@ -420,7 +419,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [40].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [43].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -568,7 +567,10 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 34. Brooks ME, Kristensen K, van Benthem KJ, Magnusson A, Berg CW, Nielsen A, et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 2017;9(2):378–400. doi:10.32614/RJ-2017-066
 35. Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145–1165. *Confirm the volume and issue.*
 36. Gasparrini A, Armstrong B, Kenward MG. Distributed lag non-linear models. Stat Med. 2010;29(21):2224–2234.
-37. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
-38. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
-39. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
-40. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+37. Roberts DR, Bahn V, Ciuti S, Boyce MS, Elith J, Guillera-Arroita G, et al. Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography. 2017;40(8):913–929. doi:10.1111/ecog.02881
+38. Gneiting T, Raftery AE. Strictly proper scoring rules, prediction, and estimation. J Am Stat Assoc. 2007;102(477):359–378. doi:10.1198/016214506000001437
+39. Gasparrini A, Scheipl F, Armstrong B, Kenward MG. A penalized framework for distributed lag non-linear models. Biometrics. 2017;73(3):938–948. doi:10.1111/biom.12645
+40. Lipsitch M, Tchetgen Tchetgen E, Cohen T. Negative controls: a tool for detecting confounding and bias in observational studies. Epidemiology. 2010;21(3):383–388. doi:10.1097/EDE.0b013e3181d61eeb
+41. Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-effects framework for meta-analysis. Stat Med. 2019;38(29):5429–5444. doi:10.1002/sim.8362
+42. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
+43. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
