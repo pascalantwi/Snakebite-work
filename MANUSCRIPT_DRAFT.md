@@ -98,13 +98,13 @@ In this study we used 71 months of surveillance data from all 261 districts of G
 
 ### 2.1 Study setting
 
-Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. The country spans two rainfall regimes [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna zones of the north comprise the Northern, Savannah, North East, Upper East and Upper West Regions, with 55 districts. They have a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The transition, forest and coastal zones of the south, made up of the remaining eleven regions and 206 districts, have two rainy seasons. In the rainfall data used here, the major season peaks around June and the minor season around October (Fig 3). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. [Fig 1](#fig1) shows the study area: each of the 261 districts is numbered and shaded by rainfall regime. Enlarged insets show Kumasi, Greater Accra and central Accra, and an index lists every district by region, so that districts named in the Results can be located. District boundaries were taken from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. The remaining district, Guan, was created after that file was compiled and therefore has no polygon. Its data are nonetheless included in every analysis. The boundaries were matched to the surveillance districts by name, with 30 spellings reconciled by hand; the crosswalk is in the public repository. The maps were drawn in Python with the matplotlib library [[17](https://doi.org/10.1109/MCSE.2007.55)] and the shapely geometry package (https://shapely.readthedocs.io), using the script `analysis/fig1_map.py`. The same boundaries and software were used for the map of district incidence in the Results ([Fig 2](#fig2)).
+Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. The country spans two rainfall regimes [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna zones of the north comprise the Northern, Savannah, North East, Upper East and Upper West Regions, with 55 districts. They have a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The transition, forest and coastal zones of the south, made up of the remaining eleven regions and 206 districts, have two rainy seasons. In the rainfall data used here, the major season peaks around June and the minor season around October (Fig 2). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. [Fig 1](#fig1) shows the study area, with the districts shaded by rainfall regime, the 16 regions named, the location of Ghana in West Africa and the mean monthly rainfall of each regime. District boundaries were taken from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. The remaining district, Guan, was created after that file was compiled and therefore has no polygon. Its data are nonetheless included in every analysis. The boundaries were matched to the surveillance districts by name, with 30 spellings reconciled by hand; the crosswalk is in the public repository. The maps were drawn in Python with the matplotlib library [[17](https://doi.org/10.1109/MCSE.2007.55)] and the shapely geometry package (https://shapely.readthedocs.io), using the script `analysis/fig1_map.py`.
 
 <a name="fig1"></a>
 
-![Fig 1. Study area: districts of Ghana by rainfall regime.](figures/Fig1.png)
+![Fig 1. Study area and rainfall regimes of Ghana.](figures/Fig1.png)
 
-**Fig 1. Study area: the 261 districts of Ghana by rainfall regime.** Districts are shaded by rainfall regime (unimodal north, 55 districts; bimodal south, 206 districts) and numbered alphabetically within their region; the index on the right lists every district. Insets enlarge Kumasi, Greater Accra and central Accra, whose locations are boxed on the main map. District and regional boundaries are from geoBoundaries (gbOpen, Ghana ADM2 and ADM1; source USAID Ghana HPNO and Ghana Statistical Service; CC BY 4.0) [[16](https://doi.org/10.1371/journal.pone.0231866)]. Guan district (number 180) has no polygon in the boundary file but is included in all analyses. Map drawn in Python with matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)] and shapely (`analysis/fig1_map.py`).
+**Fig 1. Study area and rainfall regimes of Ghana.** The 261 districts are shaded by rainfall regime: unimodal north, 55 districts; bimodal south, 206 districts. Thin white lines mark district boundaries and black lines the 16 named regions. The locator shows Ghana in West Africa, and the bar charts give mean monthly rainfall in each regime for 2020–2024 from district-level NASA POWER precipitation [[19](https://power.larc.nasa.gov/docs/methodology/meteorology/)], showing one rainy season in the north and two in the south. District and regional boundaries are from geoBoundaries (gbOpen, Ghana ADM2 and ADM1; source USAID Ghana HPNO and Ghana Statistical Service; CC BY 4.0) [[16](https://doi.org/10.1371/journal.pone.0231866)]; Guan district has no polygon in the boundary file but is included in all analyses. Country outlines are from Natural Earth at 1:50 million scale (public domain; https://www.naturalearthdata.com). Map drawn in Python with matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)] and shapely (`analysis/fig1_map.py`).
 
 ### 2.2 Study design and data
 
@@ -278,15 +278,9 @@ Because rain-fed farming is timed by rainfall, the farming calendar lies on the 
 * **Totals.** From January 2020 to November 2025, 60,515 snakebite cases were reported from 261 districts (18,485 district-months).
 * **Annual rates.** The national crude rate for 2020–2024 was 32.4 per 100,000 per year, declining from 35.2 in 2020 to 31.1 in 2024. The annualised rate for 2025 (11 months) was 24.1 (Table 1).
 * **North vs south.** Incidence was 2.4 times higher in the unimodal north (61.4 per 100,000; 55 districts) than in the bimodal south (25.6; 206 districts).
-* **Regional range.** Rates ranged from 5.4 per 100,000 (Greater Accra) to 111.9 (Upper West) and 108.7 (Savannah) ([Fig 2](#fig2)).
+* **Regional range.** Rates ranged from 5.4 per 100,000 (Greater Accra) to 111.9 (Upper West) and 108.7 (Savannah) (Table 2).
 * **District range.** The median district rate was 26.2 per 100,000 (IQR 12.0–50.7). The highest was 277.5, in Mamprugu Moagduri.
 * **Count distribution.** Monthly counts were overdispersed (mean 3.27, variance 29.1), and 31.9% of district-months had zero cases.
-
-<a name="fig2"></a>
-
-![Fig 2. Snakebite incidence by district, Ghana, 2020–2024.](figures/Fig2.png)
-
-**Fig 2. Reported snakebite incidence by district, Ghana, 2020–2024.** Cases per 100,000 population per year in five classes, with the number of districts in each class. The ten districts with the highest incidence are named, with their rates. Boundaries and software as for [Fig 1](#fig1).
 
 **Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
@@ -340,13 +334,13 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 ### 3.2 Seasonality
 
 * **North.** Cases rose from March, with the first rains, and peaked in July (2,666 cases), two months *before* the rainfall peak in September (8.3 mm/day).
-* **South.** The main peak was in May (4,077), during the major rainy season. A secondary rise in September–October coincided with the minor season (Fig 3).
+* **South.** The main peak was in May (4,077), during the major rainy season. A secondary rise in September–October coincided with the minor season (Fig 2).
 * **Onset timing.** The median onset of the rainy season was April in the north and March in the south.
 * **Post-onset surge.** Relative to the district mean, incidence rose to 1.23 one month after onset and 1.74 two months after onset in the north. In the south it rose to 1.22 and 1.25. In both zones it returned to about 1.0 by four to five months.
 
 ### 3.3 Seasonality is largely lagged local climate (primary result)
 
-* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 4**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
+* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 3**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
 
 <!-- Screening result (Poisson GLM, district-rate offset, lags 0-3 quadratic; analysis/seasonality_climate_placebo.py):
      seasonal deviance (M0-M1) 2,736; own lagged climate reproduced 108% of it (scaled deviance gain over month terms 88 on 17 extra df);
@@ -357,11 +351,11 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 ### 3.4 Lag selection
 
-* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 9B).]
+* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 8B).]
 
 ### 3.5 Exposure–lag–response associations
 
-* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 5; Table 5.]
+* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 4; Table 5.]
 
 <!-- Preliminary single-lag anomaly screen (REVIEW_DRAFT.md §6.4), for orientation only:
      RH lag0 RR 1.033/SD; Tmin lag0–1 1.031, 1.025; Tmax lag0 south 0.979;
@@ -369,15 +363,15 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 ### 3.6 Seasonal climatology versus weather anomalies
 
-* [RESULT: proportion of the climate effect explained by climatology vs anomaly; anomaly lag curves (Fig 6A); comparison with the concurrent-only model to show why rainfall appears null contemporaneously.]
+* [RESULT: proportion of the climate effect explained by climatology vs anomaly; anomaly lag curves (Fig 5A); comparison with the concurrent-only model to show why rainfall appears null contemporaneously.]
 
 ### 3.7 Differences between rainfall regimes
 
-* [RESULT: zone-specific lag curves (Fig 6B); peak lag north vs south; Cochran Q, I²; LRT p-value.]
+* [RESULT: zone-specific lag curves (Fig 5B); peak lag north vs south; Cochran Q, I²; LRT p-value.]
 
 ### 3.8 Rainy-season onset
 
-* [RESULT: event-study RRs by months since onset (Fig 7); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
+* [RESULT: event-study RRs by months since onset (Fig 6); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
 
 ### 3.9 Climate-attributable burden
 
@@ -385,11 +379,11 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 ### 3.10 Predictive performance
 
-* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 8; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
+* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 7; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
 
 ### 3.11 Sensitivity analyses
 
-* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 9A); sensitivity to the climate product (Fig 9C).]
+* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 8A); sensitivity to the climate product (Fig 8C).]
 
 ---
 
@@ -478,21 +472,20 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 Every analysis is reported in the main paper. The only separate files are (a) the RECORD reporting checklist, which journals require as an upload for reviewers rather than as paper content, and (b) the code and district-level data in the public repository cited in Data availability.
 
-PLoS NTD sets no limit on figures or tables. Nine figures and eight tables are acceptable there. Each figure is placed in the text directly after the paragraph that first cites it, as PLoS journals require, and in-text figure citations link to the figure. If the target journal changes (e.g. *Lancet Planet Health*), the journal may require some items to move to an appendix.
+PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are acceptable there. Each figure is placed in the text directly after the paragraph that first cites it, as PLoS journals require, and in-text figure citations link to the figure. If the target journal changes (e.g. *Lancet Planet Health*), the journal may require some items to move to an appendix.
 
 **Figures**
 
 | Item | Content | Section |
 |---|---|---|
-| **[Fig 1](#fig1)** | Study area: numbered districts shaded by rainfall regime, with insets and name index. **Done:** `figures/Fig1.png`, placed in 2.1 | 2.1 |
-| **[Fig 2](#fig2)** | District snakebite incidence 2020–2024, top ten districts named. **Done:** `figures/Fig2.png`, placed in 3.1 | 3.1 |
-| **Fig 3** | Monthly cases vs rainfall, RH and temperature by zone (north/south) | 3.2 |
-| **Fig 4** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
-| **Fig 5** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
-| **Fig 6** | (A) Anomaly lag curves; (B) north vs south lag curves | 3.6–3.7 |
-| **Fig 7** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
-| **Fig 8** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
-| **Fig 9** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
+| **[Fig 1](#fig1)** | Study area: districts shaded by rainfall regime, regions named, West Africa locator, mean monthly rainfall by regime. **Done:** `figures/Fig1.png`, placed in 2.1 | 2.1 |
+| **Fig 2** | Monthly cases vs rainfall, RH and temperature by zone (north/south) | 3.2 |
+| **Fig 3** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
+| **Fig 4** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
+| **Fig 5** | (A) Anomaly lag curves; (B) north vs south lag curves | 3.6–3.7 |
+| **Fig 6** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
+| **Fig 7** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
+| **Fig 8** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
 
 **Tables**
 
@@ -511,12 +504,12 @@ PLoS NTD sets no limit on figures or tables. Nine figures and eight tables are a
 
 1. Finalise Methods 2.1–2.3 (data details, cleaning log).
 2. Descriptive results → Tables 1–2 and Figs 1–2.
-3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 4.**
+3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 3.**
 4. Lag selection (2.4.4) → Table 3.
-5. Main DLNM-GLMM → Fig 5 and Table 5.
-6. Decomposition, regime and onset analyses → Figs 6–7.
-7. Attribution and prediction → Tables 6–7 and Fig 8.
-8. Sensitivity analyses and diagnostics → Table 8 and Fig 9.
+5. Main DLNM-GLMM → Fig 4 and Table 5.
+6. Decomposition, regime and onset analyses → Figs 5–6.
+7. Attribution and prediction → Tables 6–7 and Fig 7.
+8. Sensitivity analyses and diagnostics → Table 8 and Fig 8.
 9. Results text, then Discussion.
 10. Evidence search (2.5) and a re-check of the Introduction against the full texts of Nyarko et al. 2026 and Huang et al. 2025.
 11. Abstract, author summary and title last.
