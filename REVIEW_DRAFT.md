@@ -13,7 +13,8 @@
 > * Section 7 is the gap analysis.
 > * Section 8 is the proposed novel study (objectives, hypotheses, model specification, R code skeleton, sensitivity analyses).
 > * Section 9 lists threats to novelty that must be checked before submission.
-> * Section 10 lists references.
+> * Section 10 points to `MANUSCRIPT_DRAFT.md`, the paper draft.
+> * Section 11 lists references.
 >
 > **Verification note:** this review was compiled from web-search abstracts and summaries. Full-text access to PubMed Central, medRxiv and Crossref was blocked from the environment used to write it. Every reference marked **[verify]** must be checked against the full text (exact numbers, lags, authors, volume and pages) before citing. Novelty claims are worded as "to our knowledge". Re-run a formal PubMed/Scopus/Web of Science search before submission (Section 9 gives a search string).
 
@@ -526,7 +527,13 @@ res <- simulateResiduals(m1); plot(res); testZeroInflation(res)
 
 ---
 
-## 10. References (verify each before citing)
+## 10. Manuscript draft
+
+The paper outline is now a full manuscript draft in **`MANUSCRIPT_DRAFT.md`**. It contains the title, abstract, author summary, Introduction and Methods in prose (including the pre-specified lag-selection strategy), Results with the descriptive numbers filled in and placeholders for model results, Discussion, Conclusions, and the figure, table and supplement plan.
+
+---
+
+## 11. References (verify each before citing)
 
 1. Collinson S, Lamb T, Cardoso…, Diggle PJ, Lalloo DG. A systematic review of variables associated with snakebite risk in spatial and temporal analyses. *Trans R Soc Trop Med Hyg* 2025; doi:10.1093/trstmh/trae131. [verify issue/pages]
 2. Nyarko E, et al. Temporal and spatial patterns of snakebite envenoming in Ghana, 2020–2025: a nationwide surveillance analysis. *medRxiv* 2026; doi:10.64898/2026.07.12.26357875. [verify authors]
