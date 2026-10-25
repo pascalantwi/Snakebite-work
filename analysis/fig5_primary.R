@@ -15,7 +15,7 @@ cyc <- tibble(regime = REG[as.character(dd$regime)], month = dd$month, pop = dd$
   group_by(regime, month, series) |> summarise(inc = sum(n) / sum(pop) * 1e5, .groups = "drop") |>
   mutate(regime = factor(regime, levels = REG),
          series = factor(series, levels = c("Observed", "Calendar-month terms (M1)", "Own lagged climate (M2)", "Placebo climate")))
-SER_COL <- c("Observed" = "#000000", "Calendar-month terms (M1)" = "#7A7A7A", "Own lagged climate (M2)" = "#1F5F99", "Placebo climate" = "#D4541F")
+SER_COL <- c("Observed" = "#000000", "Calendar-month terms (M1)" = "#9A9A9A", "Own lagged climate (M2)" = "#1F5F99", "Placebo climate" = "#4D4D4D")
 SER_LT  <- c("Observed" = "blank", "Calendar-month terms (M1)" = "dashed", "Own lagged climate (M2)" = "solid", "Placebo climate" = "dotted")
 pA <- ggplot(cyc, aes(month, inc, colour = series, linetype = series)) +
   geom_line(data = ~ subset(.x, series != "Observed"), linewidth = 1) +
@@ -34,9 +34,9 @@ pA <- ggplot(cyc, aes(month, inc, colour = series, linetype = series)) +
 
 pl <- read_csv("analysis/output/placebo_deviances.csv", show_col_types = FALSE)
 pB <- ggplot(pl, aes(diff_vs_own)) +
-  geom_histogram(bins = 40, fill = "#7A7A7A", colour = "white", linewidth = 0.2) +
-  geom_vline(xintercept = 0, colour = "#1F5F99", linewidth = 1) +
-  annotate("text", x = 0, y = Inf, label = "Own climate", hjust = -0.08, vjust = 1.5, colour = "#1F5F99", size = 3.6) +
+  geom_histogram(bins = 40, fill = "#1F5F99", colour = "white", linewidth = 0.2) +
+  geom_vline(xintercept = 0, colour = "#000000", linewidth = 1) +
+  annotate("text", x = 0, y = Inf, label = "Own climate", hjust = -0.08, vjust = 1.5, colour = "#000000", size = 3.6) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
   labs(x = "Increase in -2 log-likelihood with placebo climate", y = "Number of placebo permutations", tag = "B") +
   theme_classic(base_size = 11)
