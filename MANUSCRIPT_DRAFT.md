@@ -168,7 +168,7 @@ For an exposure $`x`$, the DLNM describes the contribution of $`x`$ measured $`\
 f\cdot w(x,\ell) = \sum_{j=1}^{v_x}\sum_{k=1}^{v_\ell} b_j(x)\,c_k(\ell)\,\eta_{jk}, \qquad \sum_{\ell=0}^{L} f\cdot w(x_{i,t-\ell},\ell) = \mathbf{w}_{it}^{\top}\mathbf{h},
 ```
 
-where $`\mathbf{w}_{it}`$ is the vector of cross-basis variables computed from the district's climate history and $`\mathbf{h}`$ the vector of coefficients $`\eta_{jk}`$ estimated with the rest of the model. For $`b_j(x)`$ we used a natural cubic spline, which can capture curved relationships but is linear beyond the extreme knots, avoiding implausible behaviour at rare extreme values. A curved relationship is plausible for both rainfall, whose association with snakebite was hump-shaped in northern Ghana [[6](https://doi.org/10.1371/journal.pntd.0007221)], and temperature, since snake activity falls when conditions exceed the species' optimum [[8](https://doi.org/10.1093/trstmh/trae131)]. For $`c_k(\ell)`$ we used a natural cubic spline with knots equally spaced on the logarithmic scale, which allows more flexibility at short lags, where effects are expected to change fastest, and smoother curves at long lags [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)]. We computed lags within each district and across year boundaries. Because the climate series start in January 2019, every month from January 2020 has a complete history of up to 12 months.
+where $`\mathbf{w}_{it}`$ is the vector of cross-basis variables computed from the district's climate history and $`\mathbf{h}`$ the vector of coefficients $`\eta_{jk}`$ estimated with the rest of the model. For $`b_j(x)`$ we used a natural cubic spline, which can capture curved relationships but is linear beyond the extreme knots, avoiding implausible behaviour at rare extreme values. A curved relationship is plausible for both rainfall, whose association with snakebite was hump-shaped in northern Ghana [[6](https://doi.org/10.1371/journal.pntd.0007221)], and temperature, since snake activity falls when conditions exceed the species' optimum [[8](https://doi.org/10.1093/trstmh/trae131)]. For $`c_k(\ell)`$ we used a natural cubic spline with knots equally spaced on the logarithmic scale, which allows more flexibility at short lags, where effects are expected to change fastest, and smoother curves at long lags [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/)]. We computed lags within each district and across year boundaries. The climate series available to us begin in January 2020, so a model with a maximum lag of $`L`$ months uses outcomes from month $`L+1`$ onwards: July 2020 to December 2025 for the primary analysis, with $`L`$ = 6, and January 2021 to December 2025 for all candidates in the lag-selection grid, so that they are fitted to the same observations.
 
 From the fitted cross-basis we report the relative risk (RR) at exposure $`x`$ and lag $`\ell`$ compared with a reference value $`x_0`$, and the cumulative RR over all lags:
 
@@ -192,7 +192,7 @@ We estimated all lags jointly in the cross-basis and chose $`L`$ and the degrees
 \mathrm{LogS} = -\log p(y_{it} \mid \hat{\psi}_{-y}), \qquad \mathrm{CRPS}(F_{it}, y_{it}) = \sum_{k=0}^{\infty} \big\lbrace F_{it}(k) - \mathbf{1}(y_{it} \le k)\big\rbrace^2,
 ```
 
-where $`p`$ and $`F_{it}`$ are the predictive probability and cumulative distribution function from the model fitted without year $`y`$, with parameters $`\hat{\psi}_{-y}`$. Lower values of both scores indicate better predictions. We retained the most parsimonious model within 2 AIC units of the best, or within one standard error of the best cross-validated score.
+where $`p`$ and $`F_{it}`$ are the predictive probability and cumulative distribution function from the model fitted without year $`y`$, with parameters $`\hat{\psi}_{-y}`$. Lower values of both scores indicate better predictions. We retained the most parsimonious model within 2 AIC units of the best, or within one standard error of the best cross-validated log score, and ranked candidates with the same number of parameters by their cross-validated log score.
 
 As a check on the lag shape that does not depend on the grid, we fitted a penalized DLNM with $`L`$ = 12, in which a smoothing penalty estimated by restricted maximum likelihood shrinks unsupported lags towards zero [[39](https://doi.org/10.1111/biom.12645)]. We applied the same $`L`$ and degrees of freedom to all climate variables and rainfall regimes, so that their lag curves are directly comparable. Finally, as a falsification test, we added future climate (lags of −1 and −2 months) to the final model. Climate in the following month cannot cause snakebite in the current month, so any association with future climate would indicate residual seasonal confounding; such future exposures serve as negative control exposures [[40](https://doi.org/10.1097/EDE.0b013e3181d61eeb)]. We report the full lag curves and cumulative effects rather than a single selected lag.
 
@@ -208,7 +208,7 @@ S_{\text{clim}} = \frac{D_{M0} - D_{M2}}{D_{M0} - D_{M1}}, \qquad S_{\text{res}}
 
 $`S_{\text{res}}`$ captures seasonal influences unrelated to climate, such as school holidays, market and harvest events and reporting cycles. Because M1 and M2 differ in their number of parameters, we also compared them with AIC and leave-one-year-out cross-validated scores [[37](https://doi.org/10.1111/ecog.02881),[38](https://doi.org/10.1198/016214506000001437)].
 
-A good fit of M2 could arise simply because any smooth seasonal series resembles the snakebite season. To exclude this, we used a placebo test. We replaced each district's climate series with that of a randomly chosen district from a different rainfall regime, keeping calendar months aligned, refitted M2, and repeated this $`m`$ = 1,000 times. If climate explains snakebite only through its general seasonality, placebo climate should fit as well as the district's own climate. With $`b`$ the number of placebo fits whose deviance was no greater than that of the own-climate fit, we calculated the permutation p-value as $`p = (b+1)/(m+1)`$, which avoids reporting a p-value of zero [[42](https://doi.org/10.2202/1544-6115.1585)]. In a temporal placebo, we replaced each district's climate with its own climate from a different year. This keeps the seasonal shape but breaks the alignment between years, and tests whether year-to-year variation in climate explains snakebite beyond the average seasonal cycle.
+A good fit of M2 could arise simply because any smooth seasonal series resembles the snakebite season. To exclude this, we used a placebo test. We replaced each district's climate series with that of a randomly chosen district from a different rainfall regime, keeping calendar months aligned, refitted M2, and repeated this $`m`$ = 1,000 times. Because each fit of the mixed model took about a minute, we computed the statistic for each permutation, and for the district's own climate, from a negative-binomial model with the same climate cross-bases and year effects, district intercepts as fixed effects and the dispersion fixed at its estimate from M2; we refitted 20 permutations with the full mixed model to check that both statistics ranked the placebo and own-climate fits in the same way. If climate explains snakebite only through its general seasonality, placebo climate should fit as well as the district's own climate. With $`b`$ the number of placebo fits whose deviance was no greater than that of the own-climate fit, we calculated the permutation p-value as $`p = (b+1)/(m+1)`$, which avoids reporting a p-value of zero [[42](https://doi.org/10.2202/1544-6115.1585)]. In a temporal placebo, we replaced each district's climate with its own climate from a different year. This keeps the seasonal shape but breaks the alignment between years, and tests whether year-to-year variation in climate explains snakebite beyond the average seasonal cycle.
 
 Because the farming calendar lies on the causal pathway from rainfall to snakebite, it is a mediator rather than a confounder, so we did not adjust for it. The climate effects estimated here are therefore total effects, including human behavioural responses to climate.
 
@@ -344,20 +344,87 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 **Fig 4. Snakebite incidence relative to the district mean by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Lines show the mean over district-years and shaded bands the 95% confidence interval; the dashed vertical line marks onset and the horizontal line a relative incidence of 1. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
-### 3.3 Seasonality is largely lagged local climate (primary result)
+### 3.3 Seasonality is largely lagged local climate
 
-* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 5**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
+We fitted the four seasonality models to 17,082 district-months from 260 districts, from July 2020 to December 2025, which recorded 56,245 cases; this is the period in which every month had a complete six-month climate history. Calendar-month effects by rainfall regime (M1) reduced −2 log-likelihood by 800.1 compared with the model without seasonal terms (M0; 33 additional parameters; p < 0.001). The district's own lagged climate (M2) reduced it by 819.1 (45 additional parameters; p < 0.001), so that the share of the seasonal signal reproduced by climate was $`S_{\text{clim}}`$ = 1.02. Adding calendar-month effects to the climate model (M3) reduced −2 log-likelihood by a further 147.8 (33 parameters; p < 0.001), a residual seasonal share of $`S_{\text{res}}`$ = 0.18, and adding climate to the calendar-month model reduced it by 166.8 (45 parameters; p < 0.001). M3 had the lowest AIC (68,000.4), followed by M1 (68,077.2), M2 (68,082.2) and M0 (68,811.3). The negative-binomial dispersion parameter was 1.82–2.07 across the four models, and the standard deviations of the random intercepts on the log scale were 0.59–0.68 for regions and 0.81–0.86 for districts ([Table 4](#table4)).
 
-<!-- Screening result (Poisson GLM, district-rate offset, lags 0-3 quadratic; analysis/seasonality_climate_placebo.py):
-     seasonal deviance (M0-M1) 2,736; own lagged climate reproduced 108% of it (scaled deviance gain over month terms 88 on 17 extra df);
-     placebo climate from a different regime reproduced 79%; own climate beat all 100 placebo series
-     (own deviance 44,982 vs placebo min 45,644, median 45,913; permutation p = 0.0099);
-     month terms added 298 deviance beyond climate (~11% of seasonal deviance) -> residual non-climatic seasonality.
-     Climate added 521 deviance beyond month terms (inter-annual signal). -->
+In leave-one-year-out cross-validation, the mean log score was 2.053 for M0, 2.037 for M1, 2.041 for M2 and 2.040 for M3, and the mean CRPS was 1.553, 1.511, 1.513 and 1.511, respectively ([Table 4](#table4)). Relative to M0, the climate model achieved 77% of the improvement in log score and 94% of the improvement in CRPS obtained with calendar-month effects. The climate model had a lower log score than the calendar-month model in two of the six held-out years and a lower CRPS in three.
+
+None of the 1,000 placebo series, in which each district received the climate of a randomly chosen district from a different rainfall regime, fitted as well as the districts' own climate (permutation p = 0.001; [Fig 5B](#fig5)). The increase in −2 log-likelihood with placebo climate ranged from 29.7 to 230.5 (median 135.4). In the 20 permutations refitted with the full mixed model, all 20 placebo fits were worse than the own-climate fit, by 96.8 to 220.9; the statistics from the two models had a correlation of 0.98, and placebo climate reproduced 75–90% (median 83%) of the seasonal signal. When each district's climate was replaced by its own climate shifted by one to five whole years, −2 log-likelihood increased by 14.7 to 98.3 compared with the climate model with correctly aligned years.
+
+Observed and fitted seasonal cycles are shown by rainfall regime in [Fig 5A](#fig5). In unimodal districts, observed incidence in July was 7.93 cases per 100,000 per month, compared with 7.92 fitted by calendar-month effects and 6.83 fitted by own lagged climate.
+
+<a name="fig5"></a>
+
+![Fig 5. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate.](figures/Fig5.png)
+
+**Fig 5. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate, Ghana, July 2020 to December 2025.** (A) Observed incidence per 100,000 population per month by calendar month and rainfall regime (points), and incidence fitted by the model with calendar-month effects (M1, dashed line), the model with each district's own lagged climate (M2, solid line) and the model with placebo climate (dotted line; the median of 20 placebo fits with the full mixed model). (B) Increase in −2 log-likelihood when each district's climate was replaced by that of a randomly chosen district from a different rainfall regime, for 1,000 permutations, computed with the fixed-district negative-binomial model (Section 2.4.5); the vertical line marks the fit with the districts' own climate. Data are 17,082 district-months from 260 districts. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+
+<a name="table4"></a>
+
+**Table 4. Negative-binomial mixed models of monthly snakebite cases with and without seasonal terms and lagged climate, Ghana, July 2020 to December 2025.**
+
+| Model | Seasonal terms | Parameters | −2 log-likelihood | AIC | Log score | CRPS | θ | SD region | SD district |
+|---|---|---|---|---|---|---|---|---|---|
+| M0 | None | 11 | 68,789.3 | 68,811.3 | 2.053 | 1.553 | 1.82 | 0.68 | 0.86 |
+| M1 | Calendar month by regime | 44 | 67,989.2 | 68,077.2 | 2.037 | 1.511 | 2.03 | 0.68 | 0.86 |
+| M2 | Own lagged climate | 56 | 67,970.2 | 68,082.2 | 2.041 | 1.513 | 2.03 | 0.59 | 0.81 |
+| M3 | Calendar month by regime and own lagged climate | 89 | 67,822.4 | 68,000.4 | 2.040 | 1.511 | 2.07 | 0.59 | 0.82 |
+
+All models include year effects, a rainfall-regime effect, region and district random intercepts and a log(population) offset, and were fitted to 17,082 district-months from 260 districts. Lagged climate is the cross-bases of rainfall, relative humidity, maximum and minimum temperature and NDVI at lags of 0–6 months (natural splines with 3 degrees of freedom for exposure and lag). Log score and CRPS are means over held-out district-months in leave-one-year-out cross-validation; lower values indicate better prediction. θ is the negative-binomial dispersion parameter; SD region and SD district are the standard deviations of the random intercepts on the log scale. Share of seasonality reproduced by climate $`S_{\text{clim}}`$ = 1.02; residual seasonal share $`S_{\text{res}}`$ = 0.18.
 
 ### 3.4 Lag selection
 
-* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 10B).]
+We fitted the 36 candidate models of the lag-selection grid to the same 15,528 district-months from 260 districts, from January 2021 to December 2025, and all converged ([Table 3](#table3)). AIC was lowest for the most flexible candidate, with a maximum lag of 12 months and 4 degrees of freedom for both the exposure and the lag spline (64 cross-basis parameters), and no other candidate was within 2 AIC units of it. In leave-one-year-out cross-validation, the candidate with a maximum lag of 9 months and 2 degrees of freedom for both splines (16 cross-basis parameters) had the lowest log score (2.0273) and the lowest CRPS (1.4743). Seven candidates were within one standard error of this log score, with maximum lags of 3 or 9 months. Under the pre-specified rule, we selected the model with a maximum lag of 9 months and 2 degrees of freedom for both splines, whose AIC was 65.5 units above that of the most flexible candidate.
+
+In the penalized DLNM with a maximum lag of 12 months, the effective degrees of freedom of the cross-bases were 6.3 for rainfall, 4.1 for maximum temperature, 13.7 for minimum temperature and 10.1 for NDVI, out of 40 each. At the 90th percentile of each exposure compared with its median, the lag-specific rate ratio for rainfall was above 1 from lag 1 to lag 9 in the penalized model and peaked at lag 5 (1.056; 95% CI 1.026–1.086), whereas in the selected model it rose from 1.03 at lag 0 to 1.07 at lag 9. For maximum temperature, the rate ratio was highest at lag 0 in both models (penalized 1.035, 95% CI 0.991–1.081; selected 1.08, 1.04–1.13) and decreased with increasing lag. For NDVI, rate ratios were below 1 at lags 1–3 and above 1 at lags 5–11 in the penalized model (highest 1.042 at lags 8 and 9), and rose from 0.98 at lag 0 to 1.03 at lag 9 in the selected model. For minimum temperature, the 95% confidence intervals included 1 at every lag in both models. Over lags 0–9, the correlations between the log rate ratios of the two models were 0.32 for rainfall, 0.99 for maximum temperature, 0.71 for minimum temperature and 0.87 for NDVI.
+
+Adding climate one and two months ahead to the selected model, fitted to the 15,014 district-months from January 2021 to October 2025, improved the fit (likelihood-ratio χ² = 36.8, 8 df, p < 0.001). Per standard deviation, the rate ratio was 1.08 (95% CI 1.04–1.13) for NDVI one month ahead and 1.04 (1.01–1.07) for rainfall two months ahead. The 95% confidence intervals included 1 for rainfall one month ahead (1.01; 0.98–1.04), NDVI two months ahead (1.02; 0.98–1.06), maximum temperature one and two months ahead (1.03, 0.97–1.10; 0.98, 0.93–1.04) and minimum temperature one and two months ahead (1.01, 0.96–1.06; 1.01, 0.96–1.07).
+
+<a name="table3"></a>
+
+**Table 3. Lag-selection grid: AIC and leave-one-year-out cross-validated scores of the 36 candidate cross-basis specifications, Ghana, January 2021 to December 2025.**
+
+| Maximum lag (months) | Exposure df | Lag df | Cross-basis parameters | ΔAIC | Log score | CRPS | Within selection criterion |
+|---|---|---|---|---|---|---|---|
+| 3 | 2 | 2 | 16 | 91.2 | 2.0309 | 1.4793 | CV |
+| 3 | 2 | 3 | 24 | 85.3 | 2.0312 | 1.4799 | – |
+| 3 | 2 | 4 | 32 | 97.0 | 2.0320 | 1.4811 | – |
+| 3 | 3 | 2 | 24 | 77.7 | 2.0308 | 1.4805 | CV |
+| 3 | 3 | 3 | 36 | 70.5 | 2.0312 | 1.4830 | CV |
+| 3 | 3 | 4 | 48 | 89.4 | 2.0323 | 1.4841 | CV |
+| 3 | 4 | 2 | 32 | 60.6 | 2.0345 | 1.4823 | – |
+| 3 | 4 | 3 | 48 | 53.1 | 2.0351 | 1.4857 | – |
+| 3 | 4 | 4 | 64 | 79.8 | 2.0374 | 1.4880 | – |
+| 6 | 2 | 2 | 16 | 111.7 | 2.0330 | 1.4814 | – |
+| 6 | 2 | 3 | 24 | 81.4 | 2.0329 | 1.4810 | – |
+| 6 | 2 | 4 | 32 | 83.1 | 2.0340 | 1.4823 | – |
+| 6 | 3 | 2 | 24 | 107.5 | 2.0347 | 1.4834 | – |
+| 6 | 3 | 3 | 36 | 72.7 | 2.0343 | 1.4830 | – |
+| 6 | 3 | 4 | 48 | 76.9 | 2.0364 | 1.4864 | – |
+| 6 | 4 | 2 | 32 | 114.3 | 2.0378 | 1.4867 | – |
+| 6 | 4 | 3 | 48 | 60.2 | 2.0377 | 1.4849 | – |
+| 6 | 4 | 4 | 64 | 65.1 | 2.0403 | 1.4895 | – |
+| **9** | **2** | **2** | **16** | **65.5** | **2.0273** | **1.4743** | **CV** |
+| 9 | 2 | 3 | 24 | 48.0 | 2.0283 | 1.4767 | CV |
+| 9 | 2 | 4 | 32 | 44.2 | 2.0295 | 1.4772 | CV |
+| 9 | 3 | 2 | 24 | 65.8 | 2.0292 | 1.4748 | – |
+| 9 | 3 | 3 | 36 | 41.8 | 2.0297 | 1.4777 | – |
+| 9 | 3 | 4 | 48 | 36.0 | 2.0304 | 1.4773 | – |
+| 9 | 4 | 2 | 32 | 68.8 | 2.0319 | 1.4769 | – |
+| 9 | 4 | 3 | 48 | 34.0 | 2.0324 | 1.4802 | – |
+| 9 | 4 | 4 | 64 | 20.6 | 2.0345 | 1.4829 | – |
+| 12 | 2 | 2 | 16 | 81.1 | 2.0303 | 1.4781 | – |
+| 12 | 2 | 3 | 24 | 40.4 | 2.0299 | 1.4776 | – |
+| 12 | 2 | 4 | 32 | 29.9 | 2.0303 | 1.4768 | – |
+| 12 | 3 | 2 | 24 | 77.5 | 2.0343 | 1.4830 | – |
+| 12 | 3 | 3 | 36 | 33.8 | 2.0318 | 1.4823 | – |
+| 12 | 3 | 4 | 48 | 13.0 | 2.0320 | 1.4809 | – |
+| 12 | 4 | 2 | 32 | 73.5 | 2.0390 | 1.4903 | – |
+| 12 | 4 | 3 | 48 | 33.2 | 2.0360 | 1.4885 | – |
+| 12 | 4 | 4 | 64 | 0.0 | 2.0372 | 1.4881 | AIC |
+
+Each candidate contains cross-bases of rainfall, maximum and minimum temperature and NDVI with the stated maximum lag and degrees of freedom (df) of the natural-spline exposure and lag bases, together with year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset. All candidates were fitted to the same 15,528 district-months from 260 districts. ΔAIC is the difference from the lowest AIC. Log score and CRPS are means over held-out district-months in leave-one-year-out cross-validation; lower values indicate better prediction. AIC: within 2 units of the lowest AIC; CV: within one standard error of the lowest cross-validated log score. The selected specification is shown in bold.
 
 ### 3.5 Exposure–lag–response associations
 
@@ -488,7 +555,7 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **[Fig 2](#fig2)** | Monthly snakebite cases and mean rainfall, January 2020 to December 2025. **Done:** `figures/Fig2.png`, placed in 3.1 | 3.1 |
 | **[Fig 3](#fig3)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig2.png`, placed in 3.2 | 3.2 |
 | **[Fig 4](#fig4)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
-| **Fig 5** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
+| **[Fig 5](#fig5)** | Observed and fitted seasonal cycles by regime (M1, M2, placebo climate); placebo permutation distribution. **Done:** `figures/Fig5.png`, placed in 3.3 | 3.3 |
 | **Fig 6** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
 | **Fig 7** | (A) Anomaly lag curves; (B) lag curves by rainfall regime | 3.6–3.7 |
 | **Fig 8** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
@@ -501,8 +568,8 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 |---|---|---|
 | **Table 1** | Cases and incidence by year and zone (filled in below) | 3.1 |
 | **Table 2** | Regions: districts by rainfall regime (unimodal / transition / bimodal), number of districts, cases, rate per 100,000. Lists all 16 regions; the full 261-district list and zone assignments are in the public repository | 3.1 |
-| **Table 3** | Lag-selection grid: ΔAIC and cross-validated score for every candidate (maximum lag 3/6/9/12 × exposure df 2–4 × lag df 2–4, as a compact 4 × 9 matrix), plus penalized DLNM agreement | 3.4 |
-| **Table 4** | Seasonality models M0–M3: deviance, AIC, CV score, share of seasonality reproduced by climate, residual non-climatic share; placebo and temporal-placebo results with permutation p-values | 3.3 |
+| **[Table 3](#table3)** | Lag-selection grid: ΔAIC and cross-validated scores for all 36 candidates. **Done**, placed in 3.4 | 3.4 |
+| **[Table 4](#table4)** | Seasonality models M0–M3: −2 log-likelihood, AIC, cross-validated scores and parameter estimates. **Done**, placed in 3.3 | 3.3 |
 | **Table 5** | Lag-specific and cumulative RRs (90th and 99th percentiles vs reference), by exposure and zone | 3.5–3.7 |
 | **Table 6** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
 | **Table 7** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |
