@@ -32,11 +32,13 @@ st1 <- mclapply(names(groups), function(g) {
     ov <- crossreduce(cb[[paste0("cb_", v)]], coef = b, vcov = V, model.link = "log", type = "overall", cen = q["50%", v])
     lg <- crossreduce(cb[[paste0("cb_", v)]], coef = b, vcov = V, model.link = "log", type = "var", value = q["90%", v], cen = q["50%", v])
     rng <- quantile(d[[v]][r], c(0.01, 0.99)); xs <- seq(rng[1], rng[2], length.out = 60)
-    cp <- crosspred(cb[[paste0("cb_", v)]], coef = b, vcov = V, model.link = "log", at = c(q["90%", v], xs), cen = q["50%", v], bylag = 1)
+    # separate predictions: crosspred() sorts the values in 'at', so the 90th percentile is predicted on its own
+    p90 <- crosspred(cb[[paste0("cb_", v)]], coef = b, vcov = V, model.link = "log", at = q["90%", v], cen = q["50%", v], bylag = 1)
+    pc  <- crosspred(cb[[paste0("cb_", v)]], coef = b, vcov = V, model.link = "log", at = xs, cen = q["50%", v])
     list(ov = ov, lg = lg,
-         lag = tibble(group = g, variable = v, lag = 0:L, RR = cp$matRRfit[1, ], lo = cp$matRRlow[1, ], hi = cp$matRRhigh[1, ]),
-         cum = tibble(group = g, variable = v, x = xs, RR = cp$allRRfit[-1], lo = cp$allRRlow[-1], hi = cp$allRRhigh[-1]),
-         cum90 = tibble(group = g, variable = v, RR = cp$allRRfit[1], lo = cp$allRRlow[1], hi = cp$allRRhigh[1]))
+         lag = tibble(group = g, variable = v, lag = 0:L, RR = p90$matRRfit[1, ], lo = p90$matRRlow[1, ], hi = p90$matRRhigh[1, ]),
+         cum = tibble(group = g, variable = v, x = xs, RR = pc$allRRfit, lo = pc$allRRlow, hi = pc$allRRhigh),
+         cum90 = tibble(group = g, variable = v, RR = p90$allRRfit[1], lo = p90$allRRlow[1], hi = p90$allRRhigh[1]))
   })
   names(red) <- MAIN
   list(n = sum(r), districts = n_distinct(d$district[r]), cases = sum(d$cases_total[r]), red = red,
