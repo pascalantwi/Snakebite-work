@@ -13,9 +13,9 @@ d <- read_csv("data/snakebite_unified_district_month.csv", show_col_types = FALS
   filter(include_main == 1) |>
   mutate(date = as.Date(paste0(date, "-01")))
 
-REG_COL <- c(Unimodal = "#eb6834", Transition = "#1baf7a", Bimodal = "#2a78d6")   # as in the Fig 1 map
+REG_COL <- c(Unimodal = "#D4541F", Transition = "#138A5F", Bimodal = "#1C5DAF")   # deeper shades of the Fig 1 map hues
 REG_LAB <- c(Unimodal = "Unimodal (47 districts)", Transition = "Transition (22 districts)", Bimodal = "Bimodal (192 districts)")
-CASE_COL <- "#1A1A1A"; RAIN_COL <- "#2C7FB8"
+CASE_COL <- "#000000"; RAIN_COL <- "#1F5F99"
 d <- d |> mutate(regime = factor(tools::toTitleCase(regime), levels = names(REG_COL)))
 
 theme_pub <- function(base = 11) {
@@ -34,8 +34,8 @@ nat <- d |> group_by(date) |>
 K <- 140                                           # rainfall (mm/day) x K is drawn on the cases scale
 p2 <- ggplot(nat, aes(date)) +
   geom_col(aes(y = rainfall * K, fill = "Rainfall"), width = 24) +
-  geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 0.9) +
-  geom_point(aes(y = cases, colour = "Snakebite cases"), size = 1.6) +
+  geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 1.1) +
+  geom_point(aes(y = cases, colour = "Snakebite cases"), size = 1.9) +
   scale_fill_manual(values = c("Rainfall" = RAIN_COL), name = NULL) +
   scale_colour_manual(values = c("Snakebite cases" = CASE_COL), name = NULL) +
   scale_y_continuous(name = "Snakebite cases per month", labels = label_comma(), limits = c(0, 1400),
@@ -62,8 +62,8 @@ for (k in 0:3) cat(" lag", k, round(cor(nat$cases[(k + 1):nrow(nat)], nat$rainfa
 rs <- d |> group_by(regime, year, month) |> summarise(rain = mean(rainfall), .groups = "drop") |>
   group_by(regime, month) |> summarise(mean = mean(rain), lo = min(rain), hi = max(rain), .groups = "drop")
 p3 <- ggplot(rs, aes(month, mean, colour = regime, fill = regime)) +
-  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.12, colour = NA) +
-  geom_line(linewidth = 0.8) + geom_point(size = 1.8) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.22, colour = NA) +
+  geom_line(linewidth = 1.1) + geom_point(size = 2.2) +
   scale_colour_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_fill_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_x_continuous(breaks = 1:12, labels = month.abb, expand = expansion(mult = 0.02)) +
@@ -82,8 +82,8 @@ ev <- onset |> crossing(k = -3:6) |> mutate(t = t0 + k) |>
 p4 <- ggplot(ev, aes(k, m, colour = regime, fill = regime)) +
   geom_hline(yintercept = 1, colour = "grey40", linewidth = 0.4) +
   geom_vline(xintercept = 0, colour = "grey40", linewidth = 0.4, linetype = "dashed") +
-  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.12, colour = NA) +
-  geom_line(linewidth = 0.8) + geom_point(size = 1.8) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.22, colour = NA) +
+  geom_line(linewidth = 1.1) + geom_point(size = 2.2) +
   scale_colour_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_fill_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_x_continuous(breaks = -3:6) +
