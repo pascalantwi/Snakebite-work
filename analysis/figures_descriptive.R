@@ -1,6 +1,7 @@
 # Descriptive figures for Results sections 3.1 and 3.2, January 2020 - December 2025.
-#   Fig 2: national monthly snakebite cases (line, left axis) and mean district rainfall (bars, right axis)
-#   Fig 3: mean monthly rainfall by calendar month and rainfall regime (line = mean over years, band = range over years)
+#   Fig 2: national monthly snakebite cases (line, left axis) and monthly rainfall of the average district (bars, right axis)
+#   Fig 3: monthly rainfall by calendar month and rainfall regime (line = mean over years, band = range over years)
+#   Rainfall is the monthly total in mm (NASA POWER daily mean x days in the month), averaged over districts.
 #   Fig 4: incidence relative to the district mean by months since rainy-season onset (mean and 95% CI over district-years);
 #          onset = first month from February with mean rainfall >= 2 mm/day (section 2.3)
 # Regime colours match the Fig 1 map. No titles on the images: captions are in the manuscript.
@@ -11,7 +12,9 @@ suppressPackageStartupMessages({
 
 d <- read_csv("data/snakebite_unified_district_month.csv", show_col_types = FALSE) |>
   filter(include_main == 1) |>
-  mutate(date = as.Date(paste0(date, "-01")))
+  mutate(date = as.Date(paste0(date, "-01")),
+         days = as.integer(as.Date(format(date + 31, "%Y-%m-01")) - date),
+         rain_mm = rainfall * days)                      # monthly total rainfall (mm) from the daily mean (mm/day)
 
 REG_COL <- c(Unimodal = "#D4541F", Transition = "#138A5F", Bimodal = "#1C5DAF")   # deeper shades of the Fig 1 map hues
 REG_LAB <- c(Unimodal = "Unimodal (47 districts)", Transition = "Transition (22 districts)", Bimodal = "Bimodal (192 districts)")
@@ -30,8 +33,8 @@ save_fig <- function(p, name, w, h) {
 
 # ---- Fig 2: national monthly cases and rainfall --------------------------------------------------------
 nat <- d |> group_by(date) |>
-  summarise(cases = sum(cases_total), rainfall = mean(rainfall, na.rm = TRUE), .groups = "drop")
-K <- 140                                           # rainfall (mm/day) x K is drawn on the cases scale
+  summarise(cases = sum(cases_total), rainfall = mean(rain_mm, na.rm = TRUE), .groups = "drop")
+K <- 4                                             # rainfall (mm) x K is drawn on the cases scale
 p2 <- ggplot(nat, aes(date)) +
   geom_col(aes(y = rainfall * K, fill = "Rainfall"), width = 24) +
   geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 1.1) +
@@ -40,7 +43,7 @@ p2 <- ggplot(nat, aes(date)) +
   scale_colour_manual(values = c("Snakebite cases" = CASE_COL), name = NULL) +
   scale_y_continuous(name = "Snakebite cases per month", labels = label_comma(), limits = c(0, 1400),
                      breaks = seq(0, 1400, 200), expand = c(0, 0),
-                     sec.axis = sec_axis(~ . / K, name = "Mean rainfall (mm/day)", breaks = 0:10)) +
+                     sec.axis = sec_axis(~ . / K, name = "Rainfall (mm)", breaks = seq(0, 350, 50))) +
   scale_x_date(name = "Month", limits = as.Date(c("2019-12-10", "2025-12-22")),
                breaks = seq(as.Date("2020-01-01"), as.Date("2025-07-01"), by = "6 months"),
                date_labels = "%b\n%Y", expand = c(0, 0)) +
@@ -49,7 +52,7 @@ p2 <- ggplot(nat, aes(date)) +
 save_fig(p2, "Fig2", 8.0, 4.6)
 
 cat("\nNational monthly totals\n"); print(summary(nat$cases))
-cat("max:"); print(nat[which.max(nat$cases), ]); cat("min:"); print(nat[which.min(nat$cases), ])
+cat("max:"); print(nat[which.max(nat$cases), ]); cat("min:"); print(nat[which.min(nat$cases), ]); cat("rain range (mm):", range(nat$rainfall), "\n")
 pk <- nat |> mutate(year = format(date, "%Y")) |> group_by(year) |>
   summarise(total = sum(cases), peak_month = format(date[which.max(cases)], "%b"), peak = max(cases),
             low_month = format(date[which.min(cases)], "%b"), low = min(cases),
@@ -59,7 +62,7 @@ cat("correlation of cases with rainfall at lags 0-3 months:\n")
 for (k in 0:3) cat(" lag", k, round(cor(nat$cases[(k + 1):nrow(nat)], nat$rainfall[1:(nrow(nat) - k)]), 2), "\n")
 
 # ---- Fig 3: rainfall by calendar month and regime ------------------------------------------------------
-rs <- d |> group_by(regime, year, month) |> summarise(rain = mean(rainfall), .groups = "drop") |>
+rs <- d |> group_by(regime, year, month) |> summarise(rain = mean(rain_mm), .groups = "drop") |>
   group_by(regime, month) |> summarise(mean = mean(rain), lo = min(rain), hi = max(rain), .groups = "drop")
 p3 <- ggplot(rs, aes(month, mean, colour = regime, fill = regime)) +
   geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.22, colour = NA) +
@@ -68,8 +71,9 @@ p3 <- ggplot(rs, aes(month, mean, colour = regime, fill = regime)) +
   scale_fill_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_x_continuous(breaks = 1:12, labels = month.abb, expand = expansion(mult = 0.02)) +
   scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
-  labs(x = "Calendar month", y = "Mean rainfall (mm/day)") + theme_pub()
+  labs(x = "Calendar month", y = "Rainfall (mm)") + theme_pub()
 save_fig(p3, "Fig3", 7.0, 4.4)
+print(as.data.frame(rs |> mutate(across(c(mean, lo, hi), \(x) round(x)))))
 
 # ---- Fig 4: relative incidence by months since onset ---------------------------------------------------
 d <- d |> mutate(rate = cases_total / population) |> group_by(district) |> mutate(rr = rate / mean(rate)) |> ungroup()

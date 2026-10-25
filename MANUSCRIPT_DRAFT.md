@@ -342,13 +342,13 @@ We used anonymised routine surveillance data aggregated to monthly counts by dis
 * **District range.** The median district rate was 26.2 per 100,000 (IQR 12.0–50.7). The highest was 277.5, in Mamprugu Moagduri.
 * **Count distribution.** Monthly counts were overdispersed (mean 3.27, variance 29.1), and 31.9% of district-months had zero cases.
 
-Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Mean rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2](#fig2)).
+Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2](#fig2)).
 
 <a name="fig2"></a>
 
 ![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.png)
 
-**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the mean rainfall across districts in each month (right axis). Rainfall for December 2025 was estimated (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the monthly rainfall of the average district (right axis), calculated as the NASA POWER daily mean multiplied by the number of days in the month. Rainfall for December 2025 was estimated (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 **Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
@@ -402,13 +402,13 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 ### 3.2 Seasonality
 
-In unimodal districts, snakebite incidence was lowest in January (2.58 cases per 100,000 per month), more than doubled between February (2.74) and March (5.87) and peaked in July (7.98). Rainfall in these districts peaked in September (8.44 mm/day) and was below 0.1 mm/day from December to February ([Fig 3](#fig3)). In bimodal districts, incidence was lowest in February (1.39) and peaked in May (2.58), fell to 1.77 in August and rose again to 2.06–2.11 in September–October. Rainfall in these districts peaked in June (8.79 mm/day) and October (8.45 mm/day), with a dip in August (3.22 mm/day). In the transition zone, incidence peaked in May (4.15), and rainfall exceeded 6 mm/day from June to September.
+In unimodal districts, snakebite incidence was lowest in January (2.58 cases per 100,000 per month), more than doubled between February (2.74) and March (5.87) and peaked in July (7.98). Rainfall in these districts peaked in August and September (254 and 253 mm) and was below 3 mm a month from December to February ([Fig 3](#fig3)). In bimodal districts, incidence was lowest in February (1.39) and peaked in May (2.58), fell to 1.77 in August and rose again to 2.06–2.11 in September–October. Rainfall in these districts peaked in June (264 mm) and October (262 mm), with a dip in August (100 mm). In the transition zone, incidence peaked in May (4.15), and rainfall exceeded 180 mm a month from June to September.
 
 <a name="fig3"></a>
 
 ![Fig 3. Mean monthly rainfall by rainfall regime.](figures/Fig3.png)
 
-**Fig 3. Mean monthly rainfall by rainfall regime, Ghana, January 2020 to December 2025.** Lines show the mean over the six years of the regime's mean district rainfall in each calendar month, and shaded bands the range across years. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Rainfall for December 2025 was estimated (Section 2.2). Rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 3. Mean monthly rainfall by rainfall regime, Ghana, January 2020 to December 2025.** Lines show the mean over the six years of the monthly rainfall of the average district in each regime, and shaded bands the range across years. Monthly rainfall is the NASA POWER daily mean multiplied by the number of days in the month. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Rainfall for December 2025 was estimated (Section 2.2). Rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 The median month of rainy-season onset was April in unimodal districts (interquartile range April–May) and March in transition and bimodal districts (March–March). Within districts, the onset month varied from year to year with a mean standard deviation of 0.58 months in unimodal, 0.50 in transition and 0.38 in bimodal districts. False starts occurred in 4 of 281 unimodal district-years (1.4%) and in none elsewhere. Three months before onset, incidence relative to the district mean was 0.49 in unimodal, 0.77 in transition and 0.93 in bimodal districts. Two months after onset it reached 1.58 (95% CI 1.33–1.84), 1.47 (0.91–2.03) and 1.25 (1.16–1.34), respectively, and four months after onset it was 1.07, 1.00 and 1.07 ([Fig 4](#fig4)).
 
