@@ -64,8 +64,7 @@ cv_one <- function(job) {
 jobs <- apply(expand.grid(model = names(FORM), year = sort(unique(dd$year)), stringsAsFactors = FALSE), 1, as.list)
 jobs <- lapply(jobs, function(j) list(model = j$model, year = as.integer(j$year)))
 cv <- bind_rows(mclapply(jobs, cv_one, mc.cores = 4))
-cvs <- cv |> group_by(model) |> summarise(logS = weighted.mean(logS, n), CRPS = weighted.mean(CRPS, n),
-                                          se_logS = sd(logS) / sqrt(n()), .groups = "drop")
+cvs <- cv |> group_by(model) |> summarise(logS = weighted.mean(logS, n), CRPS = weighted.mean(CRPS, n), .groups = "drop")
 print(cv); print(cvs)
 write_csv(cv, "analysis/output/cv_by_year.csv"); write_csv(cvs, "analysis/output/cv_summary.csv")
 cat("done\n")
