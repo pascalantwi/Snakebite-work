@@ -8,8 +8,9 @@
 # Run after analysis/primary_models.R:  Rscript analysis/primary_placebo.R      (about 50 minutes on 4 cores)
 source("analysis/primary_common.R")
 suppressPackageStartupMessages({ library(MASS, warn.conflicts = FALSE); library(parallel) })
-RNGkind("L'Ecuyer-CMRG"); set.seed(20251231)
 M_PERM <- 1000; M_CHECK <- 20
+SEED <- 20251231                      # permutation r uses seed SEED + r, so results do not depend on the run order
+CK <- "analysis/output/placebo_progress"; dir.create(CK, showWarnings = FALSE)
 
 d <- load_panel(); cb <- make_cb(d); rows <- analysis_rows(d, cb); dd <- with_cb(d, cb, rows)
 fits <- readRDS("analysis/output/primary_fits.rds")
@@ -28,7 +29,15 @@ placebo_data <- function() {
 }
 
 own_fe <- dev_fe(dd)
-perm <- unlist(mclapply(seq_len(M_PERM), function(r) dev_fe(placebo_data()), mc.cores = 4, mc.set.seed = TRUE))
+# permutations in batches of 40, each batch saved so that an interrupted run resumes where it stopped
+for (b0 in seq(1, M_PERM, by = 40)) {
+  f <- file.path(CK, sprintf("perm_%04d.csv", b0)); if (file.exists(f)) next
+  r <- b0:min(b0 + 39, M_PERM)
+  v <- unlist(mclapply(r, function(k) { set.seed(SEED + k); dev_fe(placebo_data()) }, mc.cores = 4))
+  write_csv(tibble(replicate = r, minus2LL = v), f); cat("permutations done:", max(r), "\n")
+}
+perm <- bind_rows(lapply(list.files(CK, "^perm_", full.names = TRUE), read_csv, show_col_types = FALSE)) |> arrange(replicate)
+stopifnot(nrow(perm) == M_PERM); perm <- perm$minus2LL
 b <- sum(perm <= own_fe)
 res <- tibble(statistic = "-2 log-likelihood, fixed-district NB model", own = own_fe, m = M_PERM, b = b,
               p = (b + 1) / (M_PERM + 1), placebo_min = min(perm), placebo_median = median(perm), placebo_max = max(perm))
@@ -38,9 +47,9 @@ write_csv(tibble(replicate = seq_along(perm), minus2LL = perm, diff_vs_own = per
 
 # check against the full GLMM on a subset of permutations; keep the fits for Fig 5
 chk <- mclapply(seq_len(M_CHECK), function(r) {
-  pd <- placebo_data(); f <- fit_model("M2", pd)
+  set.seed(SEED + M_PERM + r); pd <- placebo_data(); f <- fit_model("M2", pd)
   list(fe = dev_fe(pd), glmm = -2 * as.numeric(logLik(f)), fit = f)
-}, mc.cores = 4, mc.set.seed = TRUE)
+}, mc.cores = 4)
 cc <- tibble(fe = sapply(chk, `[[`, "fe"), glmm = sapply(chk, `[[`, "glmm")) |>
   mutate(fe_diff = fe - own_fe, glmm_diff = glmm - (-2 * as.numeric(logLik(fits$M2))))
 print(cc); cat("correlation of FE and GLMM placebo statistics:", round(cor(cc$fe, cc$glmm), 3),
