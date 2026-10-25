@@ -430,7 +430,7 @@ Each candidate contains cross-bases of rainfall, maximum and minimum temperature
 
 We fitted the selected model, with a maximum lag of 9 months, to 16,305 district-months from 260 districts, from October 2020 to December 2025, which recorded 53,242 cases. The variance inflation factors of rainfall, maximum and minimum temperature and NDVI were 1.06–1.50; when relative humidity was added, they were 6.35 for relative humidity and 3.99 for maximum temperature.
 
-At the 90th percentile of rainfall (9.09 mm/day) compared with the median (3.77 mm/day), the lag-specific rate ratio increased from 1.026 (95% CI 0.995–1.058) at lag 0 to 1.061 (1.026–1.097) at lag 9, and its 95% confidence interval excluded 1 at lags 1–9 ([Fig 6A](#fig6)). The cumulative rate ratio over lags 0–9 was 1.53 (1.25–1.86) at the 90th percentile and 1.41 (0.99–2.01) at the 99th percentile (13.29 mm/day) ([Table 5](#table5)). Across the range of rainfall, the cumulative rate ratio rose from 0.52 (0.40–0.67) at 0 mm/day to 1.54 (1.23–1.94) at 10.1 mm/day and was lower at higher values ([Fig 6B](#fig6)).
+At the 90th percentile of rainfall (9.09 mm/day) compared with the median (3.77 mm/day), the lag-specific rate ratio increased from 1.026 (95% CI 0.995–1.058) at lag 0 to 1.061 (1.026–1.097) at lag 9, and its 95% confidence interval excluded 1 at lags 1–9 ([Fig 6](#fig6)). The cumulative rate ratio over lags 0–9 was 1.53 (1.25–1.86) at the 90th percentile and 1.41 (0.99–2.01) at the 99th percentile (13.29 mm/day) ([Table 5](#table5)). Across the range of rainfall, the cumulative rate ratio rose from 0.52 (0.40–0.67) at 0 mm/day to 1.54 (1.23–1.94) at 10.1 mm/day and was lower at higher values ([Fig 7](#fig7)).
 
 At the 90th percentile of maximum temperature (37.2 °C) compared with the median (31.9 °C), the lag-specific rate ratio was highest at lag 0 (1.074; 1.033–1.116), decreased with increasing lag and had a 95% confidence interval excluding 1 at lags 0–6. The cumulative rate ratio was 1.44 (1.17–1.78) at the 90th percentile and 1.60 (1.02–2.51) at the 99th percentile (42.1 °C), and 0.56 (0.40–0.78) at the 1st percentile (27.4 °C). For NDVI, the lag-specific rate ratio at the 90th percentile (0.70) was 0.981 (0.953–1.009) at lag 0 and 1.036 (1.006–1.067) at lag 9, with a confidence interval excluding 1 at lags 7–9; the cumulative rate ratio was 1.08 (0.89–1.32) at the 90th percentile and 0.39 (0.26–0.60) at the 1st percentile (0.16). For minimum temperature, the lag-specific confidence intervals included 1 at every lag at both the 90th and 99th percentiles; the cumulative rate ratio was 0.97 (0.81–1.17) at the 90th percentile and 2.90 (1.70–4.96) at the 1st percentile (12.8 °C).
 
@@ -438,9 +438,15 @@ In the alternative model in which relative humidity replaced maximum temperature
 
 <a name="fig6"></a>
 
-![Fig 6. Associations between climate and snakebite incidence over lags of 0–9 months.](figures/Fig6.png)
+![Fig 6. Lag-specific rate ratios of snakebite at the 90th percentile of each exposure.](figures/Fig6.png)
 
-**Fig 6. Associations between climate and snakebite incidence over lags of 0–9 months, Ghana, October 2020 to December 2025.** (A) Lag-specific rate ratios at the 90th percentile of each exposure compared with its median. (B) Cumulative rate ratios over lags 0–9 across the range of each exposure (1st to 99th percentile), relative to the median. Lines show the estimates and shaded bands the 95% confidence intervals. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 6. Lag-specific rate ratios of snakebite at the 90th percentile of each exposure compared with its median, Ghana, October 2020 to December 2025.** Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+
+<a name="fig7"></a>
+
+![Fig 7. Cumulative exposure–response curves for snakebite over lags of 0–9 months.](figures/Fig7.png)
+
+**Fig 7. Cumulative exposure–response curves for snakebite over lags of 0–9 months, Ghana, October 2020 to December 2025.** Cumulative rate ratios across the range of each exposure (1st to 99th percentile), relative to its median. Lines show the estimates and shaded bands the 95% confidence intervals. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 <a name="table5"></a>
 
@@ -460,35 +466,66 @@ Rate ratios (RR) compare each percentile with the median and are from the select
 
 In the model in which each climate variable entered as a climatology and a standardized anomaly, fitted to the same 16,305 district-months without calendar-month effects, the climate terms together reduced −2 log-likelihood by 686.1 compared with the model without climate (32 parameters; p < 0.001). Removing the climatology cross-bases increased −2 log-likelihood by 498.9 (16 parameters; p < 0.001), 73% of this total, and removing the anomaly cross-bases increased it by 46.0 (16 parameters; p < 0.001), 7% of the total. The correlation between relative humidity and maximum temperature was −0.65 for the anomalies and −0.80 for the raw series, and the variance inflation factors of the five anomalies were 1.02–2.23, compared with 1.29–6.35 for the raw series.
 
-Per 1-SD positive anomaly, the rate ratio for rainfall was 1.006 (0.996–1.016) at lag 0, had a 95% confidence interval excluding 1 at lags 3–8, and was 1.09 (1.02–1.16) cumulated over lags 0–9 ([Fig 7](#fig7)). For NDVI, the confidence interval excluded 1 at lags 4–9, and the cumulative rate ratio was 1.07 (1.01–1.13). For minimum temperature, the rate ratio was 1.014 (1.003–1.026) at lag 0 and 1.011 (1.002–1.021) at lag 1, and below 1 at lags 8 and 9 (0.985, 0.974–0.997 at lag 9), with a cumulative rate ratio of 1.00 (0.93–1.07). For maximum temperature, the confidence intervals included 1 at every lag, with a cumulative rate ratio of 1.02 (0.97–1.08).
+Per 1-SD positive anomaly, the rate ratio for rainfall was 1.006 (0.996–1.016) at lag 0, had a 95% confidence interval excluding 1 at lags 3–8, and was 1.09 (1.02–1.16) cumulated over lags 0–9 ([Fig 8](#fig8)). For NDVI, the confidence interval excluded 1 at lags 4–9, and the cumulative rate ratio was 1.07 (1.01–1.13). For minimum temperature, the rate ratio was 1.014 (1.003–1.026) at lag 0 and 1.011 (1.002–1.021) at lag 1, and below 1 at lags 8 and 9 (0.985, 0.974–0.997 at lag 9), with a cumulative rate ratio of 1.00 (0.93–1.07). For maximum temperature, the confidence intervals included 1 at every lag, with a cumulative rate ratio of 1.02 (0.97–1.08).
 
 In a model with same-month climate only, the rate ratio at the 90th percentile compared with the median was 0.99 (0.95–1.04) for rainfall, 1.04 (0.96–1.12) for maximum temperature, 1.07 (1.01–1.15) for minimum temperature and 1.06 (1.01–1.11) for NDVI. The AIC of this model was 31.1 units higher than that of the selected lagged model.
 
-<a name="fig7"></a>
+<a name="fig8"></a>
 
-![Fig 7. Lag-specific rate ratios of snakebite for a positive weather anomaly.](figures/Fig7.png)
+![Fig 8. Lag-specific rate ratios of snakebite for a positive weather anomaly.](figures/Fig8.png)
 
-**Fig 7. Lag-specific rate ratios of snakebite for a 1-SD positive weather anomaly, Ghana, October 2020 to December 2025.** Estimates are from the model with separate cross-bases for the climatology and the standardized anomaly of rainfall, maximum and minimum temperature and NDVI (Section 2.4.6; maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, a rainfall-regime effect, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 8. Lag-specific rate ratios of snakebite for a 1-SD positive weather anomaly, Ghana, October 2020 to December 2025.** Estimates are from the model with separate cross-bases for the climatology and the standardized anomaly of rainfall, maximum and minimum temperature and NDVI (Section 2.4.6; maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, a rainfall-regime effect, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 ### 3.7 Differences between rainfall regimes
 
-* [RESULT: regime-specific lag curves (Fig 8); peak lag in unimodal, transition and bimodal districts; Cochran Q, I²; LRT p-value.]
+We fitted the selected model separately to 2,949 district-months from 47 unimodal districts (15,837 cases), 1,362 from 22 transition districts (4,533 cases) and 11,994 from 191 bimodal districts (32,872 cases). At the national 90th percentile of rainfall compared with the national median, the lag-specific rate ratio in bimodal districts rose from 1.024 (95% CI 0.984–1.065) at lag 0 to 1.130 (1.083–1.180) at lag 9, with a confidence interval excluding 1 at lags 1–9, whereas in unimodal districts it fell from 1.014 (0.929–1.107) at lag 0 to 0.827 (0.745–0.919) at lag 9, with a confidence interval excluding 1 at lags 4–9; in the transition zone the confidence intervals included 1 at every lag ([Fig 9A](#fig9)). For maximum temperature, the rate ratio in bimodal districts was 1.118 (1.069–1.169) at lag 0 and decreased with increasing lag, with a confidence interval excluding 1 at lags 0–6, and the confidence intervals included 1 at every lag in the other two regimes. For minimum temperature, the rate ratio in the transition zone was 1.174 (1.026–1.342) at lag 0, with a confidence interval excluding 1 at lags 0–4, and in bimodal districts it was below 1 at lags 5–9 (0.933, 0.896–0.971 at lag 9). For NDVI, the confidence interval excluded 1 only in bimodal districts, at lags 7–9 (1.034, 1.002–1.068 at lag 9).
+
+The cumulative rate ratios over lags 0–9 at the national 90th percentile were 0.41 (0.21–0.83) in unimodal, 0.76 (0.28–2.07) in transition and 2.07 (1.63–2.64) in bimodal districts for rainfall, and 0.53 (0.23–1.23), 0.74 (0.26–2.11) and 1.75 (1.37–2.24), respectively, for maximum temperature ([Table 6](#table6); [Fig 9B](#fig9)). In the multivariate meta-analysis of the three regimes, the overall cumulative exposure–response curves differed between regimes for rainfall (Cochran Q = 22.8, 4 df, p < 0.001; I² = 82%) and maximum temperature (Q = 10.7, p = 0.031; I² = 63%), but not for minimum temperature (Q = 7.8, p = 0.098; I² = 49%) or NDVI (Q = 5.7, p = 0.22; I² = 30%). The lag curves at the 90th percentile showed the same pattern, with Q = 32.3 (p < 0.001; I² = 88%) for rainfall and 10.6 (p = 0.031; I² = 62%) for maximum temperature. In the one-stage model, allowing the cross-bases to differ by regime improved the fit (likelihood-ratio χ² = 113.6, 32 df, p < 0.001).
+
+When the transition zone was merged with the unimodal regime, the cumulative curves of the two resulting groups differed for rainfall (Q = 24.1, 2 df, p < 0.001; I² = 92%) and maximum temperature (Q = 12.1, p = 0.002; I² = 83%). When it was merged with the bimodal regime, they differed for rainfall (Q = 18.1, p < 0.001; I² = 89%) but not for maximum temperature (Q = 5.8, p = 0.056; I² = 65%). In both cases, there was no evidence of a difference for minimum temperature or NDVI (p = 0.08–0.23).
+
+<a name="fig9"></a>
+
+![Fig 9. Associations between climate and snakebite incidence by rainfall regime.](figures/Fig9.png)
+
+**Fig 9. Associations between climate and snakebite incidence by rainfall regime, Ghana, October 2020 to December 2025.** (A) Lag-specific rate ratios at the national 90th percentile of each exposure compared with the national median, by rainfall regime; points show the estimates and vertical bars the 95% confidence intervals, offset horizontally by regime. (B) Cumulative rate ratios over lags 0–9 across the range of each exposure in each regime (1st to 99th percentile within the regime), relative to the national median, on a logarithmic scale; shaded bands show the 95% confidence intervals. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag) fitted separately to unimodal (2,949 district-months, 47 districts), transition (1,362; 22) and bimodal districts (11,994; 191). Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+
+<a name="table6"></a>
+
+**Table 6. Cumulative rate ratios of snakebite over lags 0–9 months by rainfall regime, and tests of heterogeneity between regimes, Ghana, October 2020 to December 2025.**
+
+| Exposure | Unimodal RR (95% CI) | Transition RR (95% CI) | Bimodal RR (95% CI) | Pooled RR (95% CI) | Q, overall curve (p) | I² (%) | Q, lag curve (p) | I² (%) |
+|---|---|---|---|---|---|---|---|---|
+| Rainfall | 0.41 (0.21–0.83) | 0.76 (0.28–2.07) | 2.07 (1.63–2.64) | 0.95 (0.35–2.54) | 22.8 (<0.001) | 82 | 32.3 (<0.001) | 88 |
+| Maximum temperature | 0.53 (0.23–1.23) | 0.74 (0.26–2.11) | 1.75 (1.37–2.24) | 0.97 (0.45–2.09) | 10.7 (0.03) | 63 | 10.6 (0.03) | 62 |
+| Minimum temperature | 0.75 (0.42–1.33) | 2.14 (0.96–4.77) | 0.81 (0.64–1.02) | 1.00 (0.58–1.72) | 7.8 (0.10) | 49 | 8.9 (0.06) | 55 |
+| NDVI | 0.61 (0.26–1.44) | 1.00 (0.46–2.21) | 1.16 (0.94–1.43) | 1.08 (0.79–1.48) | 5.7 (0.22) | 30 | 5.2 (0.27) | 23 |
+
+Rate ratios (RR) compare the national 90th percentile of each exposure with the national median, cumulated over lags 0–9, from the selected model fitted separately in each regime. Pooled RRs are from the multivariate random-effects meta-analysis of the three regimes. Q is Cochran's Q statistic (4 degrees of freedom) for differences between regimes in the overall cumulative exposure–response curve and in the lag curve at the 90th percentile; I² is the percentage of variation between regimes beyond chance.
 
 ### 3.8 Rainy-season onset
 
-* [RESULT: event-study RRs by months since onset (Fig 9); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
+In the event-study models, which replaced calendar-month effects with months since rainy-season onset, incidence in unimodal districts compared with three months before onset was 1.38 (1.21–1.58) two months before onset and 1.76 (1.54–2.00) one month before, peaked at 2.66 (2.35–3.01) two months after onset, and was 1.57 (1.38–1.79) six months after onset ([Fig 10](#fig10)). In the transition zone, the confidence intervals included 1 before onset, and the rate ratios were 1.38 (1.12–1.70), 1.46 (1.19–1.79) and 1.32 (1.07–1.63) one, two and three months after onset. In bimodal districts, the rate ratios were 0.76 (0.70–0.82) two months and 0.77 (0.72–0.83) one month before onset, 1.06 (0.99–1.13) in the month of onset, 1.26 (1.18–1.34), 1.31 (1.22–1.39), 1.25 (1.17–1.34) and 1.12 (1.05–1.19) one to four months after onset, and 0.96 (0.90–1.03) and 1.01 (0.94–1.08) five and six months after onset.
+
+The analyses of onset timing included 1,553 district-years. The median onset month was April in unimodal districts and March in transition and bimodal districts, and the median month of the annual peak in cases was June in unimodal and transition districts and May in bimodal districts. All four false starts occurred in unimodal districts. Each month of later onset was associated with a change in the peak month of −0.14 months (95% CI −0.43 to 0.15) and a rate ratio for cases in the six months from onset of 1.03 (0.96–1.10). For false starts, the corresponding estimates were −1.62 months (−4.61 to 1.37) and 1.09 (0.59–2.01).
+
+<a name="fig10"></a>
+
+![Fig 10. Snakebite incidence by months since rainy-season onset, by rainfall regime.](figures/Fig10.png)
+
+**Fig 10. Snakebite incidence by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Rate ratios from event-study models fitted separately in each rainfall regime, in which indicators of months since onset replaced calendar-month effects; the reference is three months before onset, together with months outside the window from two months before to six months after onset. Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Models include year effects, region and district random intercepts and a log(population) offset, and were fitted to 3,372 district-months in unimodal, 1,560 in transition and 13,704 in bimodal districts. Points show the estimates and vertical bars the 95% confidence intervals, offset horizontally by regime; the dashed vertical line marks the month of onset. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 ### 3.9 Climate-attributable burden
 
-* [RESULT: attributable number and fraction (95% eCI) by exposure, zone and region (Table 6).]
+* [RESULT: attributable number and fraction (95% eCI) by exposure, zone and region (Table 7).]
 
 ### 3.10 Predictive performance
 
-* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 10; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
+* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 11; Table 8); gain from lagged climate; detection of high-incidence months; lead time.]
 
 ### 3.11 Sensitivity analyses
 
-* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 11A); sensitivity to the climate product (Fig 11C).]
+* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 9); residual diagnostics (Fig 12A); sensitivity to the climate product (Fig 12C).]
 
 ---
 
@@ -585,15 +622,16 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 |---|---|---|
 | **[Fig 1](#fig1)** | Study area: districts shaded by rainfall regime (unimodal, transition, bimodal), regions named, West Africa locator. **Done:** `figures/Fig1.png`, placed in 2.1 | 2.1 |
 | **[Fig 2](#fig2)** | Monthly snakebite cases and mean rainfall, January 2020 to December 2025. **Done:** `figures/Fig2.png`, placed in 3.1 | 3.1 |
-| **[Fig 3](#fig3)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig2.png`, placed in 3.2 | 3.2 |
-| **[Fig 4](#fig4)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
+| **[Fig 3](#fig3)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
+| **[Fig 4](#fig4)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig4.png`, placed in 3.2 | 3.2 |
 | **[Fig 5](#fig5)** | Observed and fitted seasonal cycles by regime (M1, M2, placebo climate); placebo permutation distribution. **Done:** `figures/Fig5.png`, placed in 3.3 | 3.3 |
-| **[Fig 6](#fig6)** | Lag-specific rate ratios at the 90th percentile and cumulative exposure–response curves. **Done:** `figures/Fig6.png`, placed in 3.5 | 3.5 |
-| **[Fig 7](#fig7)** | Lag-specific rate ratios for a 1-SD weather anomaly. **Done:** `figures/Fig7.png`, placed in 3.6 | 3.6 |
-| **Fig 8** | Lag curves by rainfall regime | 3.7 |
-| **Fig 9** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
-| **Fig 10** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
-| **Fig 11** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
+| **[Fig 6](#fig6)** | Lag-specific rate ratios at the 90th percentile, all exposures on one axis. **Done:** `figures/Fig6.png`, placed in 3.5 | 3.5 |
+| **[Fig 7](#fig7)** | Cumulative exposure–response curves. **Done:** `figures/Fig7.png`, placed in 3.5 | 3.5 |
+| **[Fig 8](#fig8)** | Lag-specific rate ratios for a 1-SD weather anomaly. **Done:** `figures/Fig8.png`, placed in 3.6 | 3.6 |
+| **[Fig 9](#fig9)** | Lag-specific and cumulative rate ratios by rainfall regime. **Done:** `figures/Fig9.png`, placed in 3.7 | 3.7 |
+| **[Fig 10](#fig10)** | Event-study rate ratios by months since rainy-season onset, by regime. **Done:** `figures/Fig10.png`, placed in 3.8 | 3.8 |
+| **Fig 11** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
+| **Fig 12** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
 
 **Tables**
 
@@ -604,9 +642,10 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **[Table 3](#table3)** | Lag-selection grid: ΔAIC and cross-validated scores for all 36 candidates. **Done**, placed in 3.4 | 3.4 |
 | **[Table 4](#table4)** | Seasonality models M0–M3: −2 log-likelihood, AIC, cross-validated scores and parameter estimates. **Done**, placed in 3.3 | 3.3 |
 | **[Table 5](#table5)** | Cumulative RRs at the 90th and 99th percentiles, with lags whose 95% CI excludes 1. **Done**, placed in 3.5 | 3.5 |
-| **Table 6** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
-| **Table 7** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |
-| **Table 8** | Sensitivity analyses: cumulative RRs and the seasonality share under each alternative (max lag; NB1/ZINB/hurdle; outliers excluded; 2020 excluded; Fourier seasonality; CHIRPS/ERA5-Land; grid-cell clustering; monthly population; BYM2 spatial model) | 3.11 |
+| **[Table 6](#table6)** | Cumulative RRs by rainfall regime and heterogeneity tests. **Done**, placed in 3.7 | 3.7 |
+| **Table 7** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
+| **Table 8** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |
+| **Table 9** | Sensitivity analyses: cumulative RRs and the seasonality share under each alternative (max lag; NB1/ZINB/hurdle; outliers excluded; 2020 excluded; Fourier seasonality; CHIRPS/ERA5-Land; grid-cell clustering; monthly population; BYM2 spatial model) | 3.11 |
 
 ## Writing order (suggested)
 
@@ -615,9 +654,9 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 5.**
 4. Lag selection (2.4.4) → Table 3.
 5. Main DLNM-GLMM → Fig 6 and Table 5.
-6. Decomposition, regime and onset analyses → Figs 7–9.
-7. Attribution and prediction → Tables 6–7 and Fig 10.
-8. Sensitivity analyses and diagnostics → Table 8 and Fig 11.
+6. Decomposition, regime and onset analyses → Figs 8–10.
+7. Attribution and prediction → Tables 6–7 and Fig 11.
+8. Sensitivity analyses and diagnostics → Table 9 and Fig 12.
 9. Results text, then Discussion.
 10. Evidence search (2.5) and a re-check of the Introduction against the full texts of Nyarko et al. 2026 and Huang et al. 2025.
 11. Abstract, author summary and title last.
