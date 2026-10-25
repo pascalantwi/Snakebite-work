@@ -124,7 +124,7 @@ For each climate variable $x$ in district $i$ and month $t$, with calendar month
 
 We defined the onset of the rainy season, for each district and year, as the first month from February onwards in which mean rainfall reached at least 2 mm/day, roughly 60 mm in the month. We used February as the starting point so that rain falling late in the previous rainy season was not counted as a new onset. Because any threshold is to some extent arbitrary, we also defined onset with thresholds of 1.5 and 3 mm/day and with a cumulative-rainfall criterion in sensitivity analyses. We recorded a false start when onset was followed within two months by a month with less than 1 mm/day of rain, a pattern that can disrupt planting and prolong land preparation. We then indexed each district-month by the number of months since onset in that district and year, from three months before onset to six months after, so that we could align snakebite incidence to the start of the rains rather than to the calendar.
 
-We derived two further variables for secondary analyses. The diurnal temperature range, the difference between the monthly mean maximum and minimum temperatures, describes how much a district cools at night relative to the heat of the day, which affects the hours during which snakes are active. The vapour-pressure deficit summarises the drying power of the air by combining temperature and humidity. We calculated it as $\mathrm{VPD} = e_s(T)\,(1 - \mathrm{RH}/100)$, where $T$ is the monthly mean temperature in °C, $\mathrm{RH}$ the relative humidity in per cent and $e_s(T) = 0.6108\,\exp\{17.27\,T/(T + 237.3)\}$ the saturation vapour pressure in kPa [[24](https://www.fao.org/4/x0490e/x0490e00.htm)]. The vapour-pressure deficit also offers a single measure of heat and moisture, which is useful because relative humidity and maximum temperature are strongly correlated in these data and are difficult to separate in the same model.
+We derived two further variables for secondary analyses. The diurnal temperature range, the difference between the monthly mean maximum and minimum temperatures, describes how much a district cools at night relative to the heat of the day, which affects the hours during which snakes are active. The vapour-pressure deficit summarises the drying power of the air by combining temperature and humidity. We calculated it as $\mathrm{VPD} = e_s(T)\,(1 - \mathrm{RH}/100)$, where $T$ is the monthly mean temperature in °C, $\mathrm{RH}$ the relative humidity in per cent and $e_s(T) = 0.6108\,\exp\lbrace 17.27\,T/(T + 237.3)\rbrace$ the saturation vapour pressure in kPa [[24](https://www.fao.org/4/x0490e/x0490e00.htm)]. The vapour-pressure deficit also offers a single measure of heat and moisture, which is useful because relative humidity and maximum temperature are strongly correlated in these data and are difficult to separate in the same model.
 
 ### 2.4 Statistical analysis
 
@@ -144,7 +144,7 @@ $$\log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + s_{g(i)}(m_t) + \gamma_{y(t)
 
 We chose each component both for what the data showed and for its statistical properties.
 
-*Negative-binomial distribution.* The counts were strongly overdispersed, with a variance 8.8 times the mean (Section 3.1). A Poisson model assumes that the variance equals the mean, and under overdispersion it understates standard errors and overstates the significance of every effect [[25](https://cameron.econ.ucdavis.edu/racd2/)]. The negative binomial arises as a Poisson model whose rate varies between observations according to a gamma distribution. This adds the term $\mu_{it}^2/\theta$ to the variance, and the model reduces to the Poisson as $\theta \to \infty$ [[25](https://cameron.econ.ucdavis.edu/racd2/)]. We preferred it to the quasi-Poisson model because it has a full likelihood, which we needed to compare models by AIC and to select lags. Its variance also grows with the square of the mean, which suits data in which large counts are rare but highly variable [[26](https://pubmed.ncbi.nlm.nih.gov/18051645/)]. Although 31% of district-months recorded no cases, the negative binomial already predicts many zeros at low means, $P(Y_{it}=0) = \{\theta/(\theta+\mu_{it})\}^{\theta}$, so zeros alone do not require a different model. We fitted zero-inflated [[27](https://doi.org/10.2307/1269547)], hurdle [[25](https://cameron.econ.ucdavis.edu/racd2/)] and NB1 alternatives in sensitivity analyses, and compared the observed zeros with zeros simulated from the fitted model [[28](https://CRAN.R-project.org/package=DHARMa)].
+*Negative-binomial distribution.* The counts were strongly overdispersed, with a variance 8.8 times the mean (Section 3.1). A Poisson model assumes that the variance equals the mean, and under overdispersion it understates standard errors and overstates the significance of every effect [[25](https://cameron.econ.ucdavis.edu/racd2/)]. The negative binomial arises as a Poisson model whose rate varies between observations according to a gamma distribution. This adds the term $\mu_{it}^2/\theta$ to the variance, and the model reduces to the Poisson as $\theta \to \infty$ [[25](https://cameron.econ.ucdavis.edu/racd2/)]. We preferred it to the quasi-Poisson model because it has a full likelihood, which we needed to compare models by AIC and to select lags. Its variance also grows with the square of the mean, which suits data in which large counts are rare but highly variable [[26](https://pubmed.ncbi.nlm.nih.gov/18051645/)]. Although 31% of district-months recorded no cases, the negative binomial already predicts many zeros at low means, $P(Y_{it}=0) = \lbrace \theta/(\theta+\mu_{it})\rbrace^{\theta}$, so zeros alone do not require a different model. We fitted zero-inflated [[27](https://doi.org/10.2307/1269547)], hurdle [[25](https://cameron.econ.ucdavis.edu/racd2/)] and NB1 alternatives in sensitivity analyses, and compared the observed zeros with zeros simulated from the fitted model [[28](https://CRAN.R-project.org/package=DHARMa)].
 
 *Population offset.* District populations differed 16-fold, so we entered $\log(\text{Pop}_{it})$ as an offset. Then $\mu_{it}/\text{Pop}_{it} = \exp(\eta_{it})$, where $\eta_{it}$ is the rest of the linear predictor. The model therefore describes incidence rates, and $\exp(\beta)$ is the incidence rate ratio for a covariate with coefficient $\beta$ [[25](https://cameron.econ.ucdavis.edu/racd2/)].
 
@@ -174,7 +174,7 @@ where $\mathbf{w}_{it}$ is the vector of cross-basis variables computed from the
 
 From the fitted cross-basis we report the relative risk (RR) at exposure $x$ and lag $\ell$ compared with a reference value $x_0$, and the cumulative RR over all lags:
 
-$$\mathrm{RR}(x,\ell) = \exp\{f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\}, \qquad \mathrm{RR}_{\text{cum}}(x) = \exp\Big\{\sum_{\ell=0}^{L} \big[f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\big]\Big\}.$$
+$$\mathrm{RR}(x,\ell) = \exp\lbrace f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\rbrace, \qquad \mathrm{RR}_{\text{cum}}(x) = \exp\Big\lbrace \sum_{\ell=0}^{L} \big[f\cdot w(x,\ell) - f\cdot w(x_0,\ell)\big]\Big\rbrace.$$
 
 We set $x_0$ to the median of each exposure, or to the value of minimum risk where the exposure–response curve had a clear minimum, and report RRs at the 90th and 99th percentiles together with the full exposure–lag–response surface.
 
@@ -186,9 +186,9 @@ We pre-specified how the maximum lag and the flexibility of the cross-basis woul
 
 We set the main maximum lag at $L = 6$ months from the mechanisms above, which act within zero to four months. *Descriptive:* the post-onset rise in snakebite had subsided by five months after onset (Section 3.2). Because longer delays have been reported elsewhere, with rainfall effects at 11 months in Costa Rica [[9](https://doi.org/10.1126/sciadv.1500249)] and 18 months in California [[10](https://doi.org/10.1080/15563650.2018.1508690)], we repeated the analysis with $L$ = 3, 9 and 12 months.
 
-We estimated all lags jointly in the cross-basis and chose $L$ and the degrees of freedom of the exposure and lag splines from a pre-specified grid: $L \in \{3, 6, 9, 12\}$, with 2, 3 or 4 degrees of freedom for each spline (36 candidate models). We compared the candidates with two criteria. The first was the Akaike information criterion, $\mathrm{AIC} = -2\log \hat{L} + 2p$, where $\hat{L}$ is the maximised likelihood and $p$ the number of parameters; all candidates were fitted to the same observations so that their AIC values are comparable. The second was predictive performance in leave-one-year-out cross-validation. Leaving out whole years rather than random months keeps the temporal dependence of the data out of the validation set, which random cross-validation would ignore and so overstate performance [[37](https://doi.org/10.1111/ecog.02881)]. We scored the held-out predictions with two strictly proper scoring rules, the logarithmic score and the continuous ranked probability score [[38](https://doi.org/10.1198/016214506000001437)]:
+We estimated all lags jointly in the cross-basis and chose $L$ and the degrees of freedom of the exposure and lag splines from a pre-specified grid: $L \in \lbrace 3, 6, 9, 12\rbrace$, with 2, 3 or 4 degrees of freedom for each spline (36 candidate models). We compared the candidates with two criteria. The first was the Akaike information criterion, $\mathrm{AIC} = -2\log \hat{L} + 2p$, where $\hat{L}$ is the maximised likelihood and $p$ the number of parameters; all candidates were fitted to the same observations so that their AIC values are comparable. The second was predictive performance in leave-one-year-out cross-validation. Leaving out whole years rather than random months keeps the temporal dependence of the data out of the validation set, which random cross-validation would ignore and so overstate performance [[37](https://doi.org/10.1111/ecog.02881)]. We scored the held-out predictions with two strictly proper scoring rules, the logarithmic score and the continuous ranked probability score [[38](https://doi.org/10.1198/016214506000001437)]:
 
-$$\mathrm{LogS} = -\log p(y_{it} \mid \hat{\psi}_{-y}), \qquad \mathrm{CRPS}(F_{it}, y_{it}) = \sum_{k=0}^{\infty} \big\{F_{it}(k) - \mathbf{1}(y_{it} \le k)\big\}^2,$$
+$$\mathrm{LogS} = -\log p(y_{it} \mid \hat{\psi}_{-y}), \qquad \mathrm{CRPS}(F_{it}, y_{it}) = \sum_{k=0}^{\infty} \big\lbrace F_{it}(k) - \mathbf{1}(y_{it} \le k)\big\rbrace^2,$$
 
 where $p$ and $F_{it}$ are the predictive probability and cumulative distribution function from the model fitted without year $y$, with parameters $\hat{\psi}_{-y}$. Lower values of both scores indicate better predictions. We retained the most parsimonious model within 2 AIC units of the best, or within one standard error of the best cross-validated score.
 
@@ -222,7 +222,7 @@ We tested whether the lag structure differs between unimodal, transition and bim
 
 We used a two-stage approach. In the first stage, we fitted the DLNM separately in each regime. We reduced each fit to two sets of coefficients, those of the overall cumulative exposure–response curve and those of the lag curve at a fixed exposure (the 90th percentile), together with their covariance matrices. In the second stage, we pooled these coefficient vectors with multivariate meta-analysis [[44](https://doi.org/10.1002/sim.5471)], implemented in the mixmeta package [[45](https://doi.org/10.1002/sim.8362)]. This gave pooled curves and tested whether the regime-specific curves differ more than expected by chance. We summarised heterogeneity with Cochran's $Q$ statistic and with
 
-$$I^2 = \max\left\{0,\; \frac{Q - \mathrm{df}}{Q}\right\} \times 100\%,$$
+$$I^2 = \max\left\lbrace 0,\; \frac{Q - \mathrm{df}}{Q}\right\rbrace \times 100\%,$$
 
 the percentage of variation between regimes that is due to true differences rather than chance [[46](https://doi.org/10.1002/sim.1186)]. As a complementary one-stage test, we compared the pooled model with a model in which each cross-basis interacted with regime, using a likelihood-ratio test. The transition zone contains only 22 districts, so its curves are estimated less precisely; in a sensitivity analysis we merged it with the neighbouring regime.
 
@@ -240,7 +240,7 @@ In further secondary analyses, we related the onset month and the occurrence of 
 
 To express the climate effects as numbers of snakebites, we estimated the cases attributable to non-optimal climate from the final DLNM [[47](https://doi.org/10.1186/1471-2288-14-55)]. *Theoretical:* relative risks describe how strongly risk changes with exposure, but planning needs the number of cases involved, which also depends on how often each exposure level occurs. *Descriptive:* about 10,000 snakebites were reported each year, so even a modest attributable fraction implies a substantial number of cases. With the backward perspective, which attributes the cases in month $t$ to the exposures in the preceding $L$ months, the attributable fraction and number for district-month $(i,t)$ are
 
-$$\mathrm{AF}_{it} = 1 - \exp\Big\{-\sum_{\ell=0}^{L} \big[f\cdot w(x_{i,t-\ell},\ell) - f\cdot w(x_0,\ell)\big]\Big\}, \qquad \mathrm{AN}_{it} = \mathrm{AF}_{it}\, n_{it},$$
+$$\mathrm{AF}_{it} = 1 - \exp\Big\lbrace -\sum_{\ell=0}^{L} \big[f\cdot w(x_{i,t-\ell},\ell) - f\cdot w(x_0,\ell)\big]\Big\rbrace, \qquad \mathrm{AN}_{it} = \mathrm{AF}_{it}\, n_{it},$$
 
 where $x_0$ is the minimum-risk value and $n_{it}$ the observed number of cases [[47](https://doi.org/10.1186/1471-2288-14-55)]. The total attributable number is $\sum_{i,t} \mathrm{AN}_{it}$, and the attributable fraction is this total divided by the total number of cases. We report results by exposure, rainfall regime, region and year. We obtained 95% empirical confidence intervals from 1,000 Monte Carlo samples of the cross-basis coefficients drawn from their estimated multivariate normal distribution [[47](https://doi.org/10.1186/1471-2288-14-55)].
 
@@ -254,20 +254,39 @@ We assessed the predictions with the mean absolute error and the continuous rank
 
 #### 2.4.11 Sensitivity analyses
 
-1. Maximum lag 3, 9 and 12, and alternative df.
-2. NB1, zero-inflated and hurdle negative-binomial models.
-3. Exclusion of the 24 flagged district-months, and of 2020 (COVID-19).
-4. Fourier seasonal terms instead of month effects.
-5. CHIRPS and ERA5-Land exposures.
-6. Climate-grid-cell random effect or cluster-robust SEs (for districts sharing NASA POWER cells).
-7. Monthly interpolated population offset.
-8. Bayesian spatial model with BYM2 district effects in R-INLA [35].
+We repeated the main analyses under alternative choices of exposure, data and model. For each alternative we report the cumulative rate ratios and the share of seasonality explained by climate, $S_{\text{clim}}$. *Theoretical:* every analysis rests on choices that could reasonably have been made differently, and a finding is credible only if it does not depend on them. *Descriptive:* we grouped the alternatives by the source of uncertainty that each addresses.
+
+*Lag structure.* We refitted the final model with maximum lags of 3, 9 and 12 months and with the neighbouring degrees of freedom from the selection grid (Section 2.4.4). This showed whether the conclusions rested on a single point of that grid.
+
+*Count distribution.* We replaced the quadratic NB2 variance with the linear NB1 form, $\mathrm{Var}(Y_{it}) = \mu_{it}(1+\phi)$ [[25](https://cameron.econ.ucdavis.edu/racd2/)], and fitted zero-inflated [[27](https://doi.org/10.2307/1269547)] and hurdle negative-binomial models [[25](https://cameron.econ.ucdavis.edu/racd2/)] in glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)]. Because 31% of district-months had no cases, these models test whether some zeros arise from a separate process, such as a month in which a facility did not report, rather than from low risk.
+
+*Unusual observations and periods.* Twenty-four district-months had more than 20 cases and more than ten times the district's median; the largest was 234 cases in Bawku West in July 2020. These may be true clusters or reporting errors, so we refitted the models without them. We also excluded 2020, when outpatient attendance in Ghana fell during the COVID-19 pandemic [[30](https://doi.org/10.1136/bmjopen-2022-061608)], and December 2025, whose climate was estimated (Section 2.2).
+
+*Seasonal adjustment.* Because $S_{\text{clim}}$ depends on how seasonality is represented in M1 and M3, we replaced the calendar-month effects with Fourier terms, $\sum_{k=1}^{2}\lbrace \alpha_{gk}\sin(2\pi k m_t/12) + \beta_{gk}\cos(2\pi k m_t/12)\rbrace$, for each regime $g$ [[29](https://doi.org/10.1093/ije/dyt092)]. Two harmonics allow either one or two peaks a year, as observed in the unimodal and bimodal regimes, with fewer parameters than twelve month effects.
+
+*Climate data.* NASA POWER is coarse, and the 261 districts drew on only 72 distinct climate series, so neighbouring districts often had identical exposures. We therefore repeated the analysis with rainfall from CHIRPS, at about 0.05° [[22](https://doi.org/10.1038/sdata.2015.66)], and with climate from ERA5-Land, at about 0.1° [[23](https://doi.org/10.5194/essd-13-4349-2021)], which distinguish neighbouring districts. Districts that share a grid cell do not contribute independent climate information, and treating them as independent makes the standard errors too small [[49](https://doi.org/10.3368/jhr.50.2.317)]. We therefore added a random intercept for the grid cell and, separately, calculated standard errors clustered by grid cell [[49](https://doi.org/10.3368/jhr.50.2.317)].
+
+*Population, classification and definitions.* Annual population figures change in steps from December to January, so we interpolated them linearly to monthly values. We changed the threshold of the rainfall-regime classification from 0.8 to 0.75 and 0.9, which reclassified between 3 and 15 districts. We also merged the transition zone with the neighbouring regime (Section 2.4.7) and used the alternative onset definitions (Section 2.3).
+
+*Spatial dependence.* Neighbouring districts share habitats, snake fauna and health services, so their residual risks may be correlated, and ignoring this overstates precision. We therefore fitted a Bayesian model in which the district random effect followed the BYM2 model [[35](https://arxiv.org/abs/1601.01180)]:
+
+$$v_i = \sigma\left(\sqrt{1-\varphi}\,\theta_i + \sqrt{\varphi}\,u_i^{*}\right),$$
+
+where $\theta_i$ is an unstructured effect, $u_i^{*}$ an intrinsic conditional autoregressive effect over neighbouring districts scaled to unit variance, $\sigma$ the total standard deviation and $\varphi$ the proportion of that variance that is spatially structured. The scaling gives $\sigma$ and $\varphi$ the same meaning in any map, so their priors are interpretable [[35](https://arxiv.org/abs/1601.01180)]. We fitted this model with integrated nested Laplace approximations (INLA) [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)].
 
 #### 2.4.12 Diagnostics and software
 
-* Model fit was checked with simulation-based randomized quantile residuals (DHARMa) [28]: dispersion, zero-inflation, temporal autocorrelation and spatial autocorrelation (Moran's I).
-* Software: R [version] with `glmmTMB` [34], `dlnm` [36,39], `mgcv`, `mixmeta`, `DHARMa`, `sf` and `INLA`.
-* Code will be available at [AUTHOR: GitHub/Zenodo DOI].
+We checked the fit of each final model with simulation-based quantile residuals, using the DHARMa package [[28](https://CRAN.R-project.org/package=DHARMa)]. *Theoretical:* for count data, Pearson and deviance residuals are not normally distributed even when the model is correct, which makes them hard to interpret. Quantile residuals are uniformly distributed under a correct model, whatever the distribution of the outcome [[51](https://doi.org/10.1080/10618600.1996.10474708)]. For each district-month we simulated $S$ = 1,000 counts $y^{*}_{s}$ from the fitted model and calculated
+
+$$r_{it} = \frac{1}{S}\sum_{s=1}^{S}\mathbf{1}(y^{*}_{s} < y_{it}) + U_{it}\,\frac{1}{S}\sum_{s=1}^{S}\mathbf{1}(y^{*}_{s} = y_{it}), \qquad U_{it}\sim \mathrm{Uniform}(0,1),$$
+
+where the random term $U_{it}$ spreads ties between equal counts [[51](https://doi.org/10.1080/10618600.1996.10474708)]. We tested the residuals for uniformity, for remaining overdispersion and for excess zeros, comparing the observed share of zeros (31%) with the simulated share. *Descriptive:* monthly counts were correlated within districts (lag-1 correlation 0.20), and neighbouring districts shared climate series, so we also tested the residuals for temporal and spatial autocorrelation. For temporal autocorrelation, we examined the autocorrelation function of the residuals within each district. For spatial autocorrelation, we averaged the residuals over time in each district, giving $\bar{r}_i$, and calculated Moran's $I$ [[52](https://doi.org/10.1093/biomet/37.1-2.17)],
+
+$$I = \frac{n}{\sum_{i}\sum_{j} w_{ij}}\;\frac{\sum_{i}\sum_{j} w_{ij}\,(\bar{r}_i - \bar{r})(\bar{r}_j - \bar{r})}{\sum_{i}(\bar{r}_i - \bar{r})^2},$$
+
+where $n$ is the number of districts, $\bar{r}$ the mean of the $\bar{r}_i$, and $w_{ij} = 1$ if districts $i$ and $j$ share a boundary and 0 otherwise. We derived the neighbours from the geoBoundaries district boundaries [[16](https://doi.org/10.1371/journal.pone.0231866)]. A value of $I$ near zero indicates no remaining spatial pattern. If spatial autocorrelation remained, the BYM2 model (Section 2.4.11) became the preferred model.
+
+We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew Fig 1 in Python with matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
 
@@ -422,7 +441,7 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [49].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [56].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -582,4 +601,11 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 46. Higgins JPT, Thompson SG. Quantifying heterogeneity in a meta-analysis. Stat Med. 2002;21(11):1539–1558. doi:10.1002/sim.1186
 47. Gasparrini A, Leone M. Attributable risk from distributed lag models. BMC Med Res Methodol. 2014;14:55. doi:10.1186/1471-2288-14-55
 48. Czado C, Gneiting T, Held L. Predictive model assessment for count data. Biometrics. 2009;65(4):1254–1261. doi:10.1111/j.1541-0420.2009.01191.x
-49. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+49. Cameron AC, Miller DL. A practitioner's guide to cluster-robust inference. J Hum Resour. 2015;50(2):317–372. doi:10.3368/jhr.50.2.317
+50. Rue H, Martino S, Chopin N. Approximate Bayesian inference for latent Gaussian models by using integrated nested Laplace approximations. J R Stat Soc Series B Stat Methodol. 2009;71(2):319–392. doi:10.1111/j.1467-9868.2008.00700.x
+51. Dunn PK, Smyth GK. Randomized quantile residuals. J Comput Graph Stat. 1996;5(3):236–244. doi:10.1080/10618600.1996.10474708
+52. Moran PAP. Notes on continuous stochastic phenomena. Biometrika. 1950;37(1–2):17–23. doi:10.1093/biomet/37.1-2.17
+53. R Core Team. R: a language and environment for statistical computing. Vienna: R Foundation for Statistical Computing; [AUTHOR: year of the version used]. https://www.R-project.org/
+54. Wood SN. Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models. J R Stat Soc Series B Stat Methodol. 2011;73(1):3–36. doi:10.1111/j.1467-9868.2010.00749.x
+55. Pebesma E. Simple features for R: standardized support for spatial vector data. R J. 2018;10(1):439–446. doi:10.32614/RJ-2018-009
+56. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
