@@ -1,16 +1,6 @@
 # MANUSCRIPT DRAFT
 
-> **Draft v0.2, 23 October 2026.** v0.2 reframes the central gap as "is snakebite seasonality climate?" (see the box under the title).
-> * Target journal: *PLoS Neglected Tropical Diseases*, research article.
-> * Reporting guideline: RECORD (STROBE extension for routinely collected health data). The checklist is uploaded as the journal's required reporting file.
-> * **No supplementary material:** every analysis, table and figure is in the main text (8 figures, 8 tables).
-> * Companion document: `REVIEW_DRAFT.md` (literature review, gap analysis, methods rationale, references).
-> * **[RESULT]** = fill from the final models.
-> * Citations are numbered [n] (Vancouver). Only verified sources are used; see the References.
-> * **[AUTHOR]** = author decision or information needed.
-> * Descriptive numbers already computed from `data_snake.csv` are filled in.
 
----
 
 ## Title
 
@@ -316,16 +306,8 @@ where $`n`$ is the number of districts, $`\bar{r}`$ the mean of the $`\bar{r}_i`
 
 We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew the map (Fig 1) in Python with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)], and the other figures in R with ggplot2 [[56](https://ggplot2.tidyverse.org)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
 
-### 2.5 Evidence search (novelty check)
 
-* **Databases:** PubMed, Scopus, Web of Science, medRxiv, bioRxiv, SSRN and African Journals Online.
-* **Search string:** `(snakebite OR "snake bite" OR envenom* OR ophidism) AND (lag* OR "distributed lag" OR DLNM OR delay* OR "time series" OR seasonal*) AND (rain* OR precipitation OR humidity OR temperature OR climat* OR weather)`.
-* **Date of search:** [AUTHOR: date].
-* **Inclusion:** studies relating climate to snakebite incidence or mortality over time.
-* **Report:** records identified, screened and included in one sentence, with the included studies summarised in the Introduction.
-* [AUTHOR: n identified / n screened / n included.]
-
-### 2.6 Ethics
+### 2.5 Ethics
 
 We used anonymised routine surveillance data aggregated to monthly counts by district and sex, with no personal identifiers and no contact with patients. The Ghana Health Service granted permission to use the DHIMS-2 data [AUTHOR: reference], and its Ethics Review Committee [AUTHOR: approved or exempted] the study [AUTHOR: number]. Because the data were secondary and anonymous, individual consent was not required. We followed the Declaration of Helsinki [[57](https://doi.org/10.1001/jama.2024.21972)]. The climate, vegetation and boundary data are publicly available [[16](https://doi.org/10.1371/journal.pone.0231866),[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
 
@@ -335,14 +317,6 @@ We used anonymised routine surveillance data aggregated to monthly counts by dis
 
 ### 3.1 Descriptive epidemiology
 
-* **Totals.** From January 2020 to November 2025, 60,515 snakebite cases were reported from 261 districts (18,485 district-months).
-* **Annual rates.** The national crude rate for 2020–2024 was 32.4 per 100,000 per year, declining from 35.2 in 2020 to 31.1 in 2024. The annualised rate for 2025 (11 months) was 24.1 (Table 1).
-* **Rainfall regime.** Incidence fell from 65.8 per 100,000 in unimodal districts (47 districts) to 35.1 in the transition zone (22 districts) and 25.7 in bimodal districts (192 districts); the unimodal rate was 2.6 times the bimodal rate.
-* **Regional range.** Rates ranged from 5.4 per 100,000 (Greater Accra) to 111.9 (Upper West) and 108.7 (Savannah) (Table 2).
-* **District range.** The median district rate was 26.2 per 100,000 (IQR 12.0–50.7). The highest was 277.5, in Mamprugu Moagduri.
-* **Count distribution.** Monthly counts were overdispersed (mean 3.27, variance 29.1), and 31.9% of district-months had zero cases.
-
-Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2](#fig2)).
 
 <a name="fig2"></a>
 
@@ -350,55 +324,7 @@ Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (Ju
 
 **Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the monthly rainfall of the average district (right axis), calculated as the NASA POWER daily mean multiplied by the number of days in the month. Rainfall for December 2025 was estimated (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
-**Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
-| | Cases | Population (sum of districts) | Rate per 100,000 per year |
-|---|---|---|---|
-| 2020 | 11,084 | 31.4 M | 35.2 |
-| 2021 | 10,783 | 32.1 M | 33.6 |
-| 2022 | 10,054 | 32.7 M | 30.7 |
-| 2023 | 10,545 | 33.3 M | 31.6 |
-| 2024 | 10,463 | 33.7 M | 31.1 |
-| 2025 (Jan–Nov) | 7,586 | 34.3 M | 24.1 (annualised) |
-| Unimodal districts (47), 2020–24 | 16,192 | — | 65.8 |
-| Transition districts (22), 2020–24 | 4,269 | — | 35.1 |
-| Bimodal districts (192), 2020–24 | 32,468 | — | 25.7 |
-| **Total** | **60,515** | — | **32.4 (2020–24)** |
-
-Climate summary (mean ± SD across district-months):
-* rainfall: 4.34 ± 3.34 mm/day
-* RH: 78.8 ± 12.9%
-* Tmax: 32.8 ± 3.2 °C
-* Tmin: 21.0 ± 2.9 °C
-* NDVI: 0.49 ± 0.17
-
-[AUTHOR: add a by-zone climate column.]
-
-**Table 2. Snakebite cases and incidence by region, Ghana**
-
-Cases are for January 2020 – November 2025. Rates are per 100,000 per year for 2020–2024. Regions are ordered by rate.
-
-| Region | Districts (unimodal / transition / bimodal) | Districts | Cases | Rate |
-|---|---|---|---|---|
-| Upper West | 11 / 0 / 0 | 11 | 5,977 | 111.9 |
-| Savannah | 2 / 4 / 1 | 7 | 4,428 | 108.7 |
-| North East | 6 / 0 / 0 | 6 | 2,884 | 73.0 |
-| Western North | 0 / 0 / 9 | 9 | 3,422 | 61.7 |
-| Upper East | 15 / 0 / 0 | 15 | 3,729 | 47.1 |
-| Western | 0 / 0 / 14 | 14 | 5,228 | 41.9 |
-| Oti | 1 / 8 / 0 | 9 | 1,969 | 41.0 |
-| Ahafo | 0 / 0 / 6 | 6 | 1,299 | 37.8 |
-| Bono | 0 / 1 / 11 | 12 | 2,665 | 37.3 |
-| Eastern | 0 / 0 / 33 | 33 | 5,944 | 34.0 |
-| Northern | 12 / 4 / 0 | 16 | 4,862 | 33.3 |
-| Central | 0 / 0 / 22 | 22 | 4,611 | 27.4 |
-| Bono East | 0 / 2 / 9 | 11 | 1,982 | 27.2 |
-| Ashanti | 0 / 0 / 43 | 43 | 8,351 | 25.3 |
-| Volta | 0 / 3 / 15 | 18 | 1,440 | 14.8 |
-| Greater Accra | 0 / 0 / 29 | 29 | 1,724 | 5.4 |
-| **Ghana** | **47 / 22 / 192** | **261** | **60,515** | **32.4** |
-
-Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at district level; Oti and Bono East are transitional.] The full 261-district list with zone assignment is in the public repository.
 
 ### 3.2 Seasonality
 
