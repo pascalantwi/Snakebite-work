@@ -2,3 +2,4 @@
 analysis/output/*.rds
 analysis/output/placebo_progress/
 analysis/output/lag_grid_progress/
+analysis/output/*.log
