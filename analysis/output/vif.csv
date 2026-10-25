@@ -1,0 +1,15 @@
+set,variable,VIF
+main (raw),rainfall,1.5028879630969985
+main (raw),tmax,1.2078820488013446
+main (raw),tmin,1.255520238364456
+main (raw),ndvi,1.0605208503286438
+all five (raw),rainfall,1.5939192537115319
+all five (raw),tmax,3.988017014444538
+all five (raw),tmin,1.986270135837081
+all five (raw),ndvi,1.288062853971715
+all five (raw),rel_humidity,6.352113410321526
+all five (anomalies),rainfall_anom,1.1598521153229862
+all five (anomalies),tmax_anom,2.1917977932355943
+all five (anomalies),tmin_anom,1.2996981668541374
+all five (anomalies),ndvi_anom,1.02244117901445
+all five (anomalies),rel_humidity_anom,2.2257565144803952

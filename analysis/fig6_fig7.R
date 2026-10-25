@@ -4,7 +4,7 @@
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(ggplot2); library(patchwork) })
 BLUE <- "#1F5F99"; BAND <- "#A9C4DE"
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
-XLAB <- c(rainfall = "Rainfall (mm/day)", tmax = "Maximum temperature (°C)", tmin = "Minimum temperature (°C)", ndvi = "NDVI")
+XLAB <- c(rainfall = "Rainfall (mm/day)", tmax = "Maximum temperature (\u00B0C)", tmin = "Minimum temperature (\u00B0C)", ndvi = "NDVI")
 th <- theme_classic(base_size = 11) + theme(strip.background = element_blank(), strip.text = element_text(face = "bold"))
 save_fig <- function(p, name, w, h) {
   ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")

@@ -1,0 +1,4 @@
+contrast,chisq,df,p,share_of_total
+all climate terms (no climate vs climatology + anomaly),686.0735045730908,32,8.994966645681058e-124,1
+climatology given anomaly,498.94364896861225,16,5.556382989857335e-96,0.7272451794783709
+anomaly given climatology,46.00287004351412,16,9.726308153993356e-5,0.06705239269098347
