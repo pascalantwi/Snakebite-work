@@ -350,7 +350,15 @@ We fitted the four seasonality models to 17,082 district-months from 260 distric
 
 In leave-one-year-out cross-validation, the mean log score was 2.053 for M0, 2.037 for M1, 2.041 for M2 and 2.040 for M3, and the mean CRPS was 1.553, 1.511, 1.513 and 1.511, respectively ([Table 4](#table4)). Relative to M0, the climate model achieved 77% of the improvement in log score and 94% of the improvement in CRPS obtained with calendar-month effects. The climate model had a lower log score than the calendar-month model in two of the six held-out years and a lower CRPS in three.
 
-[PLACEBO: spatial placebo result to be added when the permutation run finishes.] When each district's climate was replaced by its own climate shifted by one to five whole years, −2 log-likelihood increased by 14.7 to 98.3 compared with the climate model with correctly aligned years.
+None of the 1,000 placebo series, in which each district received the climate of a randomly chosen district from a different rainfall regime, fitted as well as the districts' own climate (permutation p = 0.001; [Fig 5B](#fig5)). The increase in −2 log-likelihood with placebo climate ranged from 29.7 to 230.5 (median 135.4). In the 20 permutations refitted with the full mixed model, all 20 placebo fits were worse than the own-climate fit, by 96.8 to 220.9; the statistics from the two models had a correlation of 0.98, and placebo climate reproduced 75–90% (median 83%) of the seasonal signal. When each district's climate was replaced by its own climate shifted by one to five whole years, −2 log-likelihood increased by 14.7 to 98.3 compared with the climate model with correctly aligned years.
+
+Observed and fitted seasonal cycles are shown by rainfall regime in [Fig 5A](#fig5). In unimodal districts, observed incidence in July was 7.93 cases per 100,000 per month, compared with 7.92 fitted by calendar-month effects and 6.83 fitted by own lagged climate.
+
+<a name="fig5"></a>
+
+![Fig 5. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate.](figures/Fig5.png)
+
+**Fig 5. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate, Ghana, July 2020 to December 2025.** (A) Observed incidence per 100,000 population per month by calendar month and rainfall regime (points), and incidence fitted by the model with calendar-month effects (M1, dashed line), the model with each district's own lagged climate (M2, solid line) and the model with placebo climate (dotted line; the median of 20 placebo fits with the full mixed model). (B) Increase in −2 log-likelihood when each district's climate was replaced by that of a randomly chosen district from a different rainfall regime, for 1,000 permutations, computed with the fixed-district negative-binomial model (Section 2.4.5); the vertical line marks the fit with the districts' own climate. Data are 17,082 district-months from 260 districts. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 <a name="table4"></a>
 
@@ -498,7 +506,7 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **[Fig 2](#fig2)** | Monthly snakebite cases and mean rainfall, January 2020 to December 2025. **Done:** `figures/Fig2.png`, placed in 3.1 | 3.1 |
 | **[Fig 3](#fig3)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig2.png`, placed in 3.2 | 3.2 |
 | **[Fig 4](#fig4)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
-| **Fig 5** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
+| **[Fig 5](#fig5)** | Observed and fitted seasonal cycles by regime (M1, M2, placebo climate); placebo permutation distribution. **Done:** `figures/Fig5.png`, placed in 3.3 | 3.3 |
 | **Fig 6** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
 | **Fig 7** | (A) Anomaly lag curves; (B) lag curves by rainfall regime | 3.6–3.7 |
 | **Fig 8** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
@@ -512,7 +520,7 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **Table 1** | Cases and incidence by year and zone (filled in below) | 3.1 |
 | **Table 2** | Regions: districts by rainfall regime (unimodal / transition / bimodal), number of districts, cases, rate per 100,000. Lists all 16 regions; the full 261-district list and zone assignments are in the public repository | 3.1 |
 | **Table 3** | Lag-selection grid: ΔAIC and cross-validated score for every candidate (maximum lag 3/6/9/12 × exposure df 2–4 × lag df 2–4, as a compact 4 × 9 matrix), plus penalized DLNM agreement | 3.4 |
-| **Table 4** | Seasonality models M0–M3: deviance, AIC, CV score, share of seasonality reproduced by climate, residual non-climatic share; placebo and temporal-placebo results with permutation p-values | 3.3 |
+| **[Table 4](#table4)** | Seasonality models M0–M3: −2 log-likelihood, AIC, cross-validated scores and parameter estimates. **Done**, placed in 3.3 | 3.3 |
 | **Table 5** | Lag-specific and cumulative RRs (90th and 99th percentiles vs reference), by exposure and zone | 3.5–3.7 |
 | **Table 6** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
 | **Table 7** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |

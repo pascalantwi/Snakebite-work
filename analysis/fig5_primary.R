@@ -21,7 +21,10 @@ pA <- ggplot(cyc, aes(month, inc, colour = series, linetype = series)) +
   geom_line(data = ~ subset(.x, series != "Observed"), linewidth = 1) +
   geom_point(data = ~ subset(.x, series == "Observed"), size = 2.2) +
   facet_wrap(~ regime, nrow = 1, scales = "free_y") +
-  scale_colour_manual(values = SER_COL, name = NULL) + scale_linetype_manual(values = SER_LT, name = NULL) +
+  scale_colour_manual(values = SER_COL, name = NULL, breaks = names(SER_COL)) +
+  scale_linetype_manual(values = SER_LT, name = NULL, breaks = names(SER_LT)) +
+  guides(colour = guide_legend(override.aes = list(shape = c(16, NA, NA, NA), size = 2.2,
+                                                   linetype = c("blank", "dashed", "solid", "dotted"))), linetype = "none") +
   scale_x_continuous(breaks = 1:12, labels = substr(month.abb, 1, 1)) +
   scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
   labs(x = "Calendar month", y = "Cases per 100,000 per month", tag = "A") +
