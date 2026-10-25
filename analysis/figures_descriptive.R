@@ -15,7 +15,7 @@ d <- read_csv("data/snakebite_unified_district_month.csv", show_col_types = FALS
 
 REG_COL <- c(Unimodal = "#eb6834", Transition = "#1baf7a", Bimodal = "#2a78d6")   # as in the Fig 1 map
 REG_LAB <- c(Unimodal = "Unimodal (47 districts)", Transition = "Transition (22 districts)", Bimodal = "Bimodal (192 districts)")
-CASE_COL <- "#1A1A1A"; RAIN_COL <- "#56B4E9"; RAIN_EST <- "#BFE1F6"
+CASE_COL <- "#1A1A1A"; RAIN_COL <- "#2C7FB8"
 d <- d |> mutate(regime = factor(tools::toTitleCase(regime), levels = names(REG_COL)))
 
 theme_pub <- function(base = 11) {
@@ -30,14 +30,13 @@ save_fig <- function(p, name, w, h) {
 
 # ---- Fig 2: national monthly cases and rainfall --------------------------------------------------------
 nat <- d |> group_by(date) |>
-  summarise(cases = sum(cases_total), rainfall = mean(rainfall, na.rm = TRUE),
-            estimated = any(climate_imputed == 1), .groups = "drop")
+  summarise(cases = sum(cases_total), rainfall = mean(rainfall, na.rm = TRUE), .groups = "drop")
 K <- 140                                           # rainfall (mm/day) x K is drawn on the cases scale
 p2 <- ggplot(nat, aes(date)) +
-  geom_col(aes(y = rainfall * K, fill = ifelse(estimated, "Rainfall (December 2025 estimated)", "Rainfall")), width = 24) +
-  geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 0.7) +
-  geom_point(aes(y = cases, colour = "Snakebite cases"), size = 1.3) +
-  scale_fill_manual(values = c("Rainfall" = RAIN_COL, "Rainfall (December 2025 estimated)" = RAIN_EST), name = NULL) +
+  geom_col(aes(y = rainfall * K, fill = "Rainfall"), width = 24) +
+  geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 0.9) +
+  geom_point(aes(y = cases, colour = "Snakebite cases"), size = 1.6) +
+  scale_fill_manual(values = c("Rainfall" = RAIN_COL), name = NULL) +
   scale_colour_manual(values = c("Snakebite cases" = CASE_COL), name = NULL) +
   scale_y_continuous(name = "Snakebite cases per month", labels = label_comma(), limits = c(0, 1400),
                      breaks = seq(0, 1400, 200), expand = c(0, 0),

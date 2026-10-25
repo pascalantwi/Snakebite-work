@@ -348,7 +348,7 @@ Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (Ju
 
 ![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.png)
 
-**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the mean rainfall across districts in each month (right axis). The lighter bar for December 2025 marks estimated rainfall (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the mean rainfall across districts in each month (right axis). Rainfall for December 2025 was estimated (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 **Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
