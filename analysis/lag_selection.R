@@ -59,12 +59,13 @@ tab <- bind_rows(lapply(list.files(CK, full.names = TRUE), read_csv, show_col_ty
 stopifnot(nrow(tab) == nrow(grid))
 
 # selection rule: the most parsimonious candidate within 2 AIC units of the best, or within one standard error of the
-# best cross-validated log score (standard error of the year-to-year differences from the best candidate)
+# best cross-validated log score (standard error of the year-to-year differences from the best candidate);
+# candidates with the same number of parameters are ranked by their cross-validated log score
 best_cv <- tab[which.min(tab$logS), ]
 yr <- function(s) as.numeric(strsplit(s, ";")[[1]])
 tab$se_vs_best <- sapply(tab$logS_by_year, function(s) sd(yr(s) - yr(best_cv$logS_by_year)) / sqrt(length(yr(s))))
 tab <- tab |> mutate(within_AIC = dAIC <= 2, within_CV = dlogS <= se_vs_best)
-pick <- function(x) x |> arrange(cb_parameters, L) |> slice(1)
+pick <- function(x) x |> arrange(cb_parameters, logS) |> slice(1)
 sel_aic <- pick(filter(tab, within_AIC)); sel_cv <- pick(filter(tab, within_CV))
 sel <- pick(bind_rows(sel_aic, sel_cv))
 write_csv(tab, "analysis/output/lag_grid.csv")
@@ -95,9 +96,13 @@ cbp <- setNames(lapply(MAIN, function(v) crossbasis(d[[v]], lag = 12, group = d$
                 argvar = list(fun = "ps", df = 5), arglag = list(fun = "ps", df = 8))), paste0("pcb_", MAIN))
 datp <- d[rows, ]; for (n in names(cbp)) datp[[n]] <- unclass(cbp[[n]])[rows, , drop = FALSE]
 pen <- lapply(cbp, cbPen)
-gp <- gam(as.formula(paste(BASE, "+", paste(names(cbp), collapse = " + "),
-                           "+ s(region, bs = 're') + s(district, bs = 're') + offset(log(population))")),
-          data = datp, family = nb(), paraPen = pen, method = "REML")
+gp_file <- "analysis/output/penalized_dlnm_fit.rds"
+if (file.exists(gp_file)) gp <- readRDS(gp_file) else {
+  gp <- gam(as.formula(paste(BASE, "+", paste(names(cbp), collapse = " + "),
+                             "+ s(region, bs = 're') + s(district, bs = 're') + offset(log(population))")),
+            data = datp, family = nb(), paraPen = pen, method = "REML")
+  saveRDS(gp, gp_file)
+}
 datsel <- with_cb(d, cb_spec(sel$L, sel$df_var, sel$df_lag), rows); msel <- fit_tmb(form_cb, datsel)
 cmp <- bind_rows(lapply(MAIN, function(v) {
   x90 <- quantile(d[[v]][rows], 0.9); x50 <- median(d[[v]][rows])
