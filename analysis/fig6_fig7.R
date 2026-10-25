@@ -1,6 +1,6 @@
 # Figures 6 and 7 (Results, sections 3.5 and 3.6). Run after analysis/exposure_response.R.
 #   Fig 6: (A) lag-response at the 90th percentile versus the median; (B) cumulative exposure-response over lags 0-9.
-#   Fig 7: lag-response for a 1-SD positive anomaly, from the climatology-anomaly model.
+#   Fig 7: lag-response for a 1-SD positive anomaly, from the climatology-anomaly model (all exposures on one axis).
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(ggplot2); library(patchwork) })
 BLUE <- "#1F5F99"; BAND <- "#A9C4DE"
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
@@ -26,9 +26,18 @@ save_fig(pA / pB, "Fig6", 10, 6.4)
 
 an <- read_csv("analysis/output/anomaly_lag_curves.csv", show_col_types = FALSE) |> filter(anomaly_sd == 1) |>
   mutate(variable = factor(LAB[variable], levels = LAB))
-p7 <- ggplot(an, aes(lag, RR)) + geom_hline(yintercept = 1, linewidth = 0.4) +
-  geom_ribbon(aes(ymin = lo, ymax = hi), fill = BAND, alpha = 0.6) + geom_line(colour = BLUE, linewidth = 1) +
-  geom_point(colour = BLUE, size = 1.6) + facet_wrap(~ variable, nrow = 1) +
-  scale_x_continuous(breaks = 0:9) + labs(x = "Lag (months)", y = "Rate ratio per 1-SD anomaly") + th
-save_fig(p7, "Fig7", 10, 3.4)
+VCOL <- c("Rainfall" = "#1F5F99", "Maximum temperature" = "#D4541F", "Minimum temperature" = "#000000", "NDVI" = "#138A5F")
+VLT  <- c("Rainfall" = "solid", "Maximum temperature" = "dashed", "Minimum temperature" = "dotdash", "NDVI" = "longdash")
+VSH  <- c("Rainfall" = 16, "Maximum temperature" = 17, "Minimum temperature" = 15, "NDVI" = 18)
+dg <- position_dodge(width = 0.55)
+p7 <- ggplot(an, aes(lag, RR, colour = variable, linetype = variable, shape = variable, group = variable)) +
+  geom_hline(yintercept = 1, linewidth = 0.4) +
+  geom_linerange(aes(ymin = lo, ymax = hi), position = dg, linewidth = 0.6, linetype = "solid") +
+  geom_line(position = dg, linewidth = 0.9) + geom_point(position = dg, size = 2.4) +
+  scale_colour_manual(values = VCOL, name = NULL) + scale_linetype_manual(values = VLT, name = NULL) +
+  scale_shape_manual(values = VSH, name = NULL) +
+  scale_x_continuous(breaks = 0:9) +
+  labs(x = "Lag (months)", y = "Rate ratio per 1-SD positive anomaly") +
+  theme_classic(base_size = 11) + theme(legend.position = "top", legend.justification = "left", legend.key.width = unit(2, "lines"))
+save_fig(p7, "Fig7", 7.5, 4.8)
 cat("saved figures/Fig6 and Fig7\n")

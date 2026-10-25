@@ -468,7 +468,7 @@ In a model with same-month climate only, the rate ratio at the 90th percentile c
 
 ![Fig 7. Lag-specific rate ratios of snakebite for a positive weather anomaly.](figures/Fig7.png)
 
-**Fig 7. Lag-specific rate ratios of snakebite for a 1-SD positive weather anomaly, Ghana, October 2020 to December 2025.** Estimates are from the model with separate cross-bases for the climatology and the standardized anomaly of rainfall, maximum and minimum temperature and NDVI (Section 2.4.6; maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, a rainfall-regime effect, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Lines show the estimates and shaded bands the 95% confidence intervals. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 7. Lag-specific rate ratios of snakebite for a 1-SD positive weather anomaly, Ghana, October 2020 to December 2025.** Estimates are from the model with separate cross-bases for the climatology and the standardized anomaly of rainfall, maximum and minimum temperature and NDVI (Section 2.4.6; maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, a rainfall-regime effect, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 ### 3.7 Differences between rainfall regimes
 
