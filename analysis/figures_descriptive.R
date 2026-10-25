@@ -1,34 +1,26 @@
 # Descriptive figures for Results sections 3.1 and 3.2, January 2020 - December 2025.
-#   Fig 2: national monthly snakebite cases (A) and mean district rainfall (B)
+#   Fig 2: national monthly snakebite cases (line, left axis) and mean district rainfall (bars, right axis)
 #   Fig 3: mean monthly rainfall by calendar month and rainfall regime (line = mean over years, band = range over years)
 #   Fig 4: incidence relative to the district mean by months since rainy-season onset (mean and 95% CI over district-years);
 #          onset = first month from February with mean rainfall >= 2 mm/day (section 2.3)
-# Colours: Okabe-Ito colour-blind-safe palette. No titles on the images: captions are in the manuscript.
+# Regime colours match the Fig 1 map. No titles on the images: captions are in the manuscript.
 # Run from the repository root:  Rscript analysis/figures_descriptive.R
 suppressPackageStartupMessages({
-  library(readr); library(dplyr); library(tidyr); library(ggplot2); library(patchwork); library(scales)
+  library(readr); library(dplyr); library(tidyr); library(ggplot2); library(scales)
 })
 
 d <- read_csv("data/snakebite_unified_district_month.csv", show_col_types = FALSE) |>
   filter(include_main == 1) |>
   mutate(date = as.Date(paste0(date, "-01")))
 
-REG_COL <- c(Unimodal = "#D55E00", Transition = "#009E73", Bimodal = "#0072B2")   # Okabe-Ito
+REG_COL <- c(Unimodal = "#eb6834", Transition = "#1baf7a", Bimodal = "#2a78d6")   # as in the Fig 1 map
 REG_LAB <- c(Unimodal = "Unimodal (47 districts)", Transition = "Transition (22 districts)", Bimodal = "Bimodal (192 districts)")
 CASE_COL <- "#1A1A1A"; RAIN_COL <- "#56B4E9"; RAIN_EST <- "#BFE1F6"
 d <- d |> mutate(regime = factor(tools::toTitleCase(regime), levels = names(REG_COL)))
 
-theme_pub <- function(base = 10) {
-  theme_classic(base_size = base, base_family = "sans") +
-    theme(axis.title = element_text(colour = "black"),
-          axis.text = element_text(colour = "grey20"),
-          axis.line = element_line(colour = "grey30", linewidth = 0.4),
-          axis.ticks = element_line(colour = "grey30", linewidth = 0.4),
-          panel.grid.major.y = element_line(colour = "grey90", linewidth = 0.3),
-          legend.position = "top", legend.justification = "left", legend.title = element_text(face = "bold"),
-          legend.key.width = unit(1.4, "lines"),
-          plot.tag = element_text(face = "bold", size = base + 2),
-          plot.margin = margin(6, 10, 6, 6))
+theme_pub <- function(base = 11) {
+  theme_classic(base_size = base) +
+    theme(legend.position = "top", legend.justification = "left")
 }
 save_fig <- function(p, name, w, h) {
   ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")
@@ -40,22 +32,22 @@ save_fig <- function(p, name, w, h) {
 nat <- d |> group_by(date) |>
   summarise(cases = sum(cases_total), rainfall = mean(rainfall, na.rm = TRUE),
             estimated = any(climate_imputed == 1), .groups = "drop")
-yr_lines <- as.Date(paste0(2021:2025, "-01-01"))
-x_scale <- scale_x_date(limits = as.Date(c("2019-12-10", "2025-12-22")), breaks = seq(as.Date("2020-01-01"), as.Date("2025-07-01"), by = "6 months"), date_labels = "%b\n%Y", expand = c(0, 0))
-pA <- ggplot(nat, aes(date, cases)) +
-  geom_vline(xintercept = yr_lines - 15, colour = "grey85", linewidth = 0.3) +
-  geom_line(colour = CASE_COL, linewidth = 0.6) +
-  geom_point(colour = CASE_COL, size = 1.2) +
-  scale_y_continuous(labels = label_comma(), limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
-  x_scale + labs(x = NULL, y = "Snakebite cases per month", tag = "A") + theme_pub() +
-  theme(axis.text.x = element_blank())
-pB <- ggplot(nat, aes(date, rainfall)) +
-  geom_vline(xintercept = yr_lines - 15, colour = "grey85", linewidth = 0.3) +
-  geom_col(aes(fill = estimated), width = 24) +
-  scale_fill_manual(values = c(`FALSE` = RAIN_COL, `TRUE` = RAIN_EST), guide = "none") +
-  scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
-  x_scale + labs(x = "Month", y = "Mean rainfall (mm/day)", tag = "B") + theme_pub()
-save_fig(pA / pB + plot_layout(heights = c(1, 0.8)), "Fig2", 7.2, 5.2)
+K <- 140                                           # rainfall (mm/day) x K is drawn on the cases scale
+p2 <- ggplot(nat, aes(date)) +
+  geom_col(aes(y = rainfall * K, fill = ifelse(estimated, "Rainfall (December 2025 estimated)", "Rainfall")), width = 24) +
+  geom_line(aes(y = cases, colour = "Snakebite cases"), linewidth = 0.7) +
+  geom_point(aes(y = cases, colour = "Snakebite cases"), size = 1.3) +
+  scale_fill_manual(values = c("Rainfall" = RAIN_COL, "Rainfall (December 2025 estimated)" = RAIN_EST), name = NULL) +
+  scale_colour_manual(values = c("Snakebite cases" = CASE_COL), name = NULL) +
+  scale_y_continuous(name = "Snakebite cases per month", labels = label_comma(), limits = c(0, 1400),
+                     breaks = seq(0, 1400, 200), expand = c(0, 0),
+                     sec.axis = sec_axis(~ . / K, name = "Mean rainfall (mm/day)", breaks = 0:10)) +
+  scale_x_date(name = "Month", limits = as.Date(c("2019-12-10", "2025-12-22")),
+               breaks = seq(as.Date("2020-01-01"), as.Date("2025-07-01"), by = "6 months"),
+               date_labels = "%b\n%Y", expand = c(0, 0)) +
+  guides(colour = guide_legend(order = 1), fill = guide_legend(order = 2)) +
+  theme_pub()
+save_fig(p2, "Fig2", 8.0, 4.6)
 
 cat("\nNational monthly totals\n"); print(summary(nat$cases))
 cat("max:"); print(nat[which.max(nat$cases), ]); cat("min:"); print(nat[which.min(nat$cases), ])

@@ -314,7 +314,7 @@ I = \frac{n}{\sum_{i}\sum_{j} w_{ij}}\;\frac{\sum_{i}\sum_{j} w_{ij}\,(\bar{r}_i
 
 where $`n`$ is the number of districts, $`\bar{r}`$ the mean of the $`\bar{r}_i`$, and $`w_{ij} = 1`$ if districts $`i`$ and $`j`$ share a boundary and 0 otherwise. We derived the neighbours from the geoBoundaries district boundaries [[16](https://doi.org/10.1371/journal.pone.0231866)]. A value of $`I`$ near zero indicates no remaining spatial pattern. If spatial autocorrelation remained, the BYM2 model (Section 2.4.11) became the preferred model.
 
-We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew the map (Fig 1) in Python with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)], and the other figures in R with ggplot2 [[56](https://ggplot2.tidyverse.org)], using the colour-blind-safe palette of Okabe and Ito [[57](https://jfly.uni-koeln.de/color/)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
+We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew the map (Fig 1) in Python with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)], and the other figures in R with ggplot2 [[56](https://ggplot2.tidyverse.org)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
 
@@ -327,7 +327,7 @@ We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.o
 
 ### 2.6 Ethics
 
-We used anonymised routine surveillance data aggregated to monthly counts by district and sex, with no personal identifiers and no contact with patients. The Ghana Health Service granted permission to use the DHIMS-2 data [AUTHOR: reference], and its Ethics Review Committee [AUTHOR: approved or exempted] the study [AUTHOR: number]. Because the data were secondary and anonymous, individual consent was not required. We followed the Declaration of Helsinki [[58](https://doi.org/10.1001/jama.2024.21972)]. The climate, vegetation and boundary data are publicly available [[16](https://doi.org/10.1371/journal.pone.0231866),[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
+We used anonymised routine surveillance data aggregated to monthly counts by district and sex, with no personal identifiers and no contact with patients. The Ghana Health Service granted permission to use the DHIMS-2 data [AUTHOR: reference], and its Ethics Review Committee [AUTHOR: approved or exempted] the study [AUTHOR: number]. Because the data were secondary and anonymous, individual consent was not required. We followed the Declaration of Helsinki [[57](https://doi.org/10.1001/jama.2024.21972)]. The climate, vegetation and boundary data are publicly available [[16](https://doi.org/10.1371/journal.pone.0231866),[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
 
 ---
 
@@ -342,13 +342,13 @@ We used anonymised routine surveillance data aggregated to monthly counts by dis
 * **District range.** The median district rate was 26.2 per 100,000 (IQR 12.0–50.7). The highest was 277.5, in Mamprugu Moagduri.
 * **Count distribution.** Monthly counts were overdispersed (mean 3.27, variance 29.1), and 31.9% of district-months had zero cases.
 
-Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2A](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Mean rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2B](#fig2)).
+Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Mean rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2](#fig2)).
 
 <a name="fig2"></a>
 
 ![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.png)
 
-**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** (A) Number of snakebite cases reported each month across all districts. (B) Mean rainfall across districts in each month; the lighter bar for December 2025 marks estimated rainfall (Section 2.2). Vertical lines mark the start of each year. Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the mean rainfall across districts in each month (right axis). The lighter bar for December 2025 marks estimated rainfall (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 **Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
@@ -486,7 +486,7 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [59].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [58].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -656,6 +656,5 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 54. Wood SN. Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models. J R Stat Soc Series B Stat Methodol. 2011;73(1):3–36. doi:10.1111/j.1467-9868.2010.00749.x
 55. Pebesma E. Simple features for R: standardized support for spatial vector data. R J. 2018;10(1):439–446. doi:10.32614/RJ-2018-009
 56. Wickham H. ggplot2: elegant graphics for data analysis. 2nd ed. New York: Springer; 2016. ISBN 978-3-319-24277-4. https://ggplot2.tidyverse.org
-57. Okabe M, Ito K. Color universal design (CUD): how to make figures and presentations that are friendly to colorblind people. J*Fly; 2008. https://jfly.uni-koeln.de/color/
-58. World Medical Association. World Medical Association Declaration of Helsinki: ethical principles for medical research involving human participants. JAMA. 2025;333(1):71–74. doi:10.1001/jama.2024.21972
-59. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+57. World Medical Association. World Medical Association Declaration of Helsinki: ethical principles for medical research involving human participants. JAMA. 2025;333(1):71–74. doi:10.1001/jama.2024.21972
+58. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
