@@ -52,7 +52,8 @@ run_one <- function(i) {
                 logS_by_year = paste(round(cv$logS, 5), collapse = ";"), CRPS_by_year = paste(round(cv$CRPS, 5), collapse = ";"))
   write_csv(res, out); cat("grid", i, "done\n")
 }
-invisible(mclapply(seq_len(nrow(grid)), run_one, mc.cores = 4, mc.preschedule = FALSE))
+# NCORES limits parallel fits: the largest candidates need about 7 GB of memory each
+invisible(mclapply(seq_len(nrow(grid)), run_one, mc.cores = as.integer(Sys.getenv("NCORES", "4")), mc.preschedule = FALSE))
 tab <- bind_rows(lapply(list.files(CK, full.names = TRUE), read_csv, show_col_types = FALSE)) |>
   arrange(L, df_var, df_lag) |> mutate(dAIC = AIC - min(AIC), dlogS = logS - min(logS), dCRPS = CRPS - min(CRPS))
 stopifnot(nrow(tab) == nrow(grid))
