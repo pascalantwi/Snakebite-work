@@ -375,7 +375,56 @@ All models include year effects, a rainfall-regime effect, region and district r
 
 ### 3.4 Lag selection
 
-* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 10B).]
+We fitted the 36 candidate models of the lag-selection grid to the same 15,528 district-months from 260 districts, from January 2021 to December 2025, and all converged ([Table 3](#table3)). AIC was lowest for the most flexible candidate, with a maximum lag of 12 months and 4 degrees of freedom for both the exposure and the lag spline (64 cross-basis parameters), and no other candidate was within 2 AIC units of it. In leave-one-year-out cross-validation, the candidate with a maximum lag of 9 months and 2 degrees of freedom for both splines (16 cross-basis parameters) had the lowest log score (2.0273) and the lowest CRPS (1.4743). Seven candidates were within one standard error of this log score, with maximum lags of 3 or 9 months. Under the pre-specified rule, we selected the model with a maximum lag of 9 months and 2 degrees of freedom for both splines, whose AIC was 65.5 units above that of the most flexible candidate.
+
+In the penalized DLNM with a maximum lag of 12 months, the effective degrees of freedom of the cross-bases were 6.3 for rainfall, 4.1 for maximum temperature, 13.7 for minimum temperature and 10.1 for NDVI, out of 40 each. At the 90th percentile of each exposure compared with its median, the lag-specific rate ratio for rainfall was above 1 from lag 1 to lag 9 in the penalized model and peaked at lag 5 (1.056; 95% CI 1.026–1.086), whereas in the selected model it rose from 1.03 at lag 0 to 1.07 at lag 9. For maximum temperature, the rate ratio was highest at lag 0 in both models (penalized 1.035, 95% CI 0.991–1.081; selected 1.08, 1.04–1.13) and decreased with increasing lag. For NDVI, rate ratios were below 1 at lags 1–3 and above 1 at lags 5–11 in the penalized model (highest 1.042 at lags 8 and 9), and rose from 0.98 at lag 0 to 1.03 at lag 9 in the selected model. For minimum temperature, the 95% confidence intervals included 1 at every lag in both models. Over lags 0–9, the correlations between the log rate ratios of the two models were 0.32 for rainfall, 0.99 for maximum temperature, 0.71 for minimum temperature and 0.87 for NDVI.
+
+Adding climate one and two months ahead to the selected model, fitted to the 15,014 district-months from January 2021 to October 2025, improved the fit (likelihood-ratio χ² = 36.8, 8 df, p < 0.001). Per standard deviation, the rate ratio was 1.08 (95% CI 1.04–1.13) for NDVI one month ahead and 1.04 (1.01–1.07) for rainfall two months ahead. The 95% confidence intervals included 1 for rainfall one month ahead (1.01; 0.98–1.04), NDVI two months ahead (1.02; 0.98–1.06), maximum temperature one and two months ahead (1.03, 0.97–1.10; 0.98, 0.93–1.04) and minimum temperature one and two months ahead (1.01, 0.96–1.06; 1.01, 0.96–1.07).
+
+<a name="table3"></a>
+
+**Table 3. Lag-selection grid: AIC and leave-one-year-out cross-validated scores of the 36 candidate cross-basis specifications, Ghana, January 2021 to December 2025.**
+
+| Maximum lag (months) | Exposure df | Lag df | Cross-basis parameters | ΔAIC | Log score | CRPS | Within selection criterion |
+|---|---|---|---|---|---|---|---|
+| 3 | 2 | 2 | 16 | 91.2 | 2.0309 | 1.4793 | CV |
+| 3 | 2 | 3 | 24 | 85.3 | 2.0312 | 1.4799 | – |
+| 3 | 2 | 4 | 32 | 97.0 | 2.0320 | 1.4811 | – |
+| 3 | 3 | 2 | 24 | 77.7 | 2.0308 | 1.4805 | CV |
+| 3 | 3 | 3 | 36 | 70.5 | 2.0312 | 1.4830 | CV |
+| 3 | 3 | 4 | 48 | 89.4 | 2.0323 | 1.4841 | CV |
+| 3 | 4 | 2 | 32 | 60.6 | 2.0345 | 1.4823 | – |
+| 3 | 4 | 3 | 48 | 53.1 | 2.0351 | 1.4857 | – |
+| 3 | 4 | 4 | 64 | 79.8 | 2.0374 | 1.4880 | – |
+| 6 | 2 | 2 | 16 | 111.7 | 2.0330 | 1.4814 | – |
+| 6 | 2 | 3 | 24 | 81.4 | 2.0329 | 1.4810 | – |
+| 6 | 2 | 4 | 32 | 83.1 | 2.0340 | 1.4823 | – |
+| 6 | 3 | 2 | 24 | 107.5 | 2.0347 | 1.4834 | – |
+| 6 | 3 | 3 | 36 | 72.7 | 2.0343 | 1.4830 | – |
+| 6 | 3 | 4 | 48 | 76.9 | 2.0364 | 1.4864 | – |
+| 6 | 4 | 2 | 32 | 114.3 | 2.0378 | 1.4867 | – |
+| 6 | 4 | 3 | 48 | 60.2 | 2.0377 | 1.4849 | – |
+| 6 | 4 | 4 | 64 | 65.1 | 2.0403 | 1.4895 | – |
+| **9** | **2** | **2** | **16** | **65.5** | **2.0273** | **1.4743** | **CV** |
+| 9 | 2 | 3 | 24 | 48.0 | 2.0283 | 1.4767 | CV |
+| 9 | 2 | 4 | 32 | 44.2 | 2.0295 | 1.4772 | CV |
+| 9 | 3 | 2 | 24 | 65.8 | 2.0292 | 1.4748 | – |
+| 9 | 3 | 3 | 36 | 41.8 | 2.0297 | 1.4777 | – |
+| 9 | 3 | 4 | 48 | 36.0 | 2.0304 | 1.4773 | – |
+| 9 | 4 | 2 | 32 | 68.8 | 2.0319 | 1.4769 | – |
+| 9 | 4 | 3 | 48 | 34.0 | 2.0324 | 1.4802 | – |
+| 9 | 4 | 4 | 64 | 20.6 | 2.0345 | 1.4829 | – |
+| 12 | 2 | 2 | 16 | 81.1 | 2.0303 | 1.4781 | – |
+| 12 | 2 | 3 | 24 | 40.4 | 2.0299 | 1.4776 | – |
+| 12 | 2 | 4 | 32 | 29.9 | 2.0303 | 1.4768 | – |
+| 12 | 3 | 2 | 24 | 77.5 | 2.0343 | 1.4830 | – |
+| 12 | 3 | 3 | 36 | 33.8 | 2.0318 | 1.4823 | – |
+| 12 | 3 | 4 | 48 | 13.0 | 2.0320 | 1.4809 | – |
+| 12 | 4 | 2 | 32 | 73.5 | 2.0390 | 1.4903 | – |
+| 12 | 4 | 3 | 48 | 33.2 | 2.0360 | 1.4885 | – |
+| 12 | 4 | 4 | 64 | 0.0 | 2.0372 | 1.4881 | AIC |
+
+Each candidate contains cross-bases of rainfall, maximum and minimum temperature and NDVI with the stated maximum lag and degrees of freedom (df) of the natural-spline exposure and lag bases, together with year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset. All candidates were fitted to the same 15,528 district-months from 260 districts. ΔAIC is the difference from the lowest AIC. Log score and CRPS are means over held-out district-months in leave-one-year-out cross-validation; lower values indicate better prediction. AIC: within 2 units of the lowest AIC; CV: within one standard error of the lowest cross-validated log score. The selected specification is shown in bold.
 
 ### 3.5 Exposure–lag–response associations
 
@@ -519,7 +568,7 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 |---|---|---|
 | **Table 1** | Cases and incidence by year and zone (filled in below) | 3.1 |
 | **Table 2** | Regions: districts by rainfall regime (unimodal / transition / bimodal), number of districts, cases, rate per 100,000. Lists all 16 regions; the full 261-district list and zone assignments are in the public repository | 3.1 |
-| **Table 3** | Lag-selection grid: ΔAIC and cross-validated score for every candidate (maximum lag 3/6/9/12 × exposure df 2–4 × lag df 2–4, as a compact 4 × 9 matrix), plus penalized DLNM agreement | 3.4 |
+| **[Table 3](#table3)** | Lag-selection grid: ΔAIC and cross-validated scores for all 36 candidates. **Done**, placed in 3.4 | 3.4 |
 | **[Table 4](#table4)** | Seasonality models M0–M3: −2 log-likelihood, AIC, cross-validated scores and parameter estimates. **Done**, placed in 3.3 | 3.3 |
 | **Table 5** | Lag-specific and cumulative RRs (90th and 99th percentiles vs reference), by exposure and zone | 3.5–3.7 |
 | **Table 6** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
