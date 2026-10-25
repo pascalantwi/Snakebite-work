@@ -57,7 +57,7 @@ unmatched = dist[dist.shapeName.isna()].district.tolist()
 print("districts:", len(dist), "| mapped to a polygon:", dist.shapeName.notna().sum(), "| no polygon:", unmatched)
 
 SURFACE, INK, MUTED = "#fcfcfb", "#0b0b0b", "#52514e"
-COL = {"Unimodal": "#eb6834", "Transition": "#1baf7a", "Bimodal": "#2a78d6"}
+COL = {"Unimodal": "#D55E00", "Transition": "#009E73", "Bimodal": "#0072B2"}  # Okabe-Ito
 halo = [pe.withStroke(linewidth=2.4, foreground="white")]
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "text.color": INK})
 fig = plt.figure(figsize=(9.0, 7.0), facecolor=SURFACE)

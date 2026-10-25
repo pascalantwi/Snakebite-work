@@ -98,7 +98,7 @@ In this study we used 72 months of surveillance data, from January 2020 to Decem
 
 ### 2.1 Study setting
 
-Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. Ghana's rainfall changes from two rainy seasons in the south to one in the north [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna of the north has a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The forest and coastal zones of the south have a major and a minor rainy season. Because this change is gradual and does not follow administrative boundaries, we classified each district by its own rainfall rather than by its region. For each year from 2020 to 2024, we counted a district as having two rainy seasons when its lowest monthly rainfall in July–August fell below 80% of both its first peak (April–June) and its second peak (September–October). We classed districts with two rainy seasons in four or five of the five years as bimodal (192 districts), those with two seasons in no more than one year as unimodal (47 districts), and those with two seasons in two or three years as a transition zone (22 districts), because their pattern varies from year to year. To test the stability of this classification, we varied the 80% threshold between 75% and 90%, which reclassified between 3 and 15 districts. Unimodal districts lie in the Upper East, Upper West, North East and most of the Northern Region; the transition zone runs through the Savannah, northern Bono East and Oti Regions, with a few districts in Northern, Volta and Bono; and bimodal districts make up the rest of the south. In bimodal districts the major season peaks around June and the minor season around October ([Fig 2](#fig2)). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. [Fig 1](#fig1) shows the study area, with the districts shaded by rainfall regime, the 16 regions named and the location of Ghana in West Africa. We took district boundaries from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. We matched the boundaries to the surveillance districts by name, reconciling 30 spellings by hand, and deposited the crosswalk in the public repository. We drew the maps in Python with the matplotlib library [[17](https://doi.org/10.1109/MCSE.2007.55)] and the shapely geometry package (https://shapely.readthedocs.io), using the script `analysis/fig1_map.py`.
+Ghana, with a population of about 34 million in 2025, is divided into 16 regions and 261 metropolitan, municipal and district assemblies. Ghana's rainfall changes from two rainy seasons in the south to one in the north [[14](https://ugspace.ug.edu.gh/items/88e8caf1-cdc8-4d5d-9135-697dd61c6932)]. The Guinea and Sudan savanna of the north has a single rainy season, mainly from May to October, followed by a long dry season during which the dry Harmattan wind blows. The forest and coastal zones of the south have a major and a minor rainy season. Because this change is gradual and does not follow administrative boundaries, we classified each district by its own rainfall rather than by its region. For each year from 2020 to 2024, we counted a district as having two rainy seasons when its lowest monthly rainfall in July–August fell below 80% of both its first peak (April–June) and its second peak (September–October). We classed districts with two rainy seasons in four or five of the five years as bimodal (192 districts), those with two seasons in no more than one year as unimodal (47 districts), and those with two seasons in two or three years as a transition zone (22 districts), because their pattern varies from year to year. To test the stability of this classification, we varied the 80% threshold between 75% and 90%, which reclassified between 3 and 15 districts. Unimodal districts lie in the Upper East, Upper West, North East and most of the Northern Region; the transition zone runs through the Savannah, northern Bono East and Oti Regions, with a few districts in Northern, Volta and Bono; and bimodal districts make up the rest of the south. In bimodal districts the major season peaks around June and the minor season around October ([Fig 3](#fig3)). The West African carpet viper (*Echis ocellatus*) causes most severe envenoming in the northern savanna [[6](https://doi.org/10.1371/journal.pntd.0007221)]. A national compendium describes the other medically important snakes of Ghana, their venom activity and the clinical presentations they cause. It also notes that health-facility records rarely characterise the venom or the species responsible [[15](https://doi.org/10.1371/journal.pntd.0011050)]. [Fig 1](#fig1) shows the study area, with the districts shaded by rainfall regime, the 16 regions named and the location of Ghana in West Africa. We took district boundaries from the geoBoundaries database [[16](https://doi.org/10.1371/journal.pone.0231866)], whose Ghana file, sourced from the Ghana Statistical Service, contains 260 districts. We matched the boundaries to the surveillance districts by name, reconciling 30 spellings by hand, and deposited the crosswalk in the public repository. We drew the maps in Python with the matplotlib library [[17](https://doi.org/10.1109/MCSE.2007.55)] and the shapely geometry package (https://shapely.readthedocs.io), using the script `analysis/fig1_map.py`.
 
 <a name="fig1"></a>
 
@@ -252,7 +252,7 @@ We examined how snakebite incidence changes relative to the start of the rains w
 \log \mu_{it} = \log(\text{Pop}_{it}) + \beta_0 + \sum_{k=-2}^{6} \tau_k\, \mathbf{1}(t - O_{i,y(t)} = k) + \gamma_{y(t)} + u_{r(i)} + v_i,
 ```
 
-where $`O_{i,y}`$ is the onset month in district $`i`$ and year $`y`$, and the reference period is three months before onset, so that $`\exp(\tau_k)`$ is the rate ratio $`k`$ months after onset. Months outside the window from −3 to +6 were grouped with the reference period. *Descriptive:* incidence relative to the district mean rose to between 1.25 and 1.59 two months after onset, depending on the regime (Section 3.2). *Theoretical:* aligning the data to onset rather than the calendar allows for onset falling in different months in different districts and years, and links the timing of bites to the agricultural activities that start with the rains [[5](https://doi.org/10.1155/2024/8357312),[6](https://doi.org/10.1371/journal.pntd.0007221)]. Because onset varied little from year to year within districts, this analysis describes the timing of risk around onset and is secondary to the DLNM.
+where $`O_{i,y}`$ is the onset month in district $`i`$ and year $`y`$, and the reference period is three months before onset, so that $`\exp(\tau_k)`$ is the rate ratio $`k`$ months after onset. Months outside the window from −3 to +6 were grouped with the reference period. *Descriptive:* incidence relative to the district mean rose to between 1.25 and 1.58 two months after onset, depending on the regime (Section 3.2). *Theoretical:* aligning the data to onset rather than the calendar allows for onset falling in different months in different districts and years, and links the timing of bites to the agricultural activities that start with the rains [[5](https://doi.org/10.1155/2024/8357312),[6](https://doi.org/10.1371/journal.pntd.0007221)]. Because onset varied little from year to year within districts, this analysis describes the timing of risk around onset and is secondary to the DLNM.
 
 In further secondary analyses, we related the onset month and the occurrence of a false start to the month of the annual snakebite peak, using a linear mixed model with a district random intercept. We also related them to the total number of cases in the rainy season, using a negative-binomial mixed model.
 
@@ -314,7 +314,7 @@ I = \frac{n}{\sum_{i}\sum_{j} w_{ij}}\;\frac{\sum_{i}\sum_{j} w_{ij}\,(\bar{r}_i
 
 where $`n`$ is the number of districts, $`\bar{r}`$ the mean of the $`\bar{r}_i`$, and $`w_{ij} = 1`$ if districts $`i`$ and $`j`$ share a boundary and 0 otherwise. We derived the neighbours from the geoBoundaries district boundaries [[16](https://doi.org/10.1371/journal.pone.0231866)]. A value of $`I`$ near zero indicates no remaining spatial pattern. If spatial autocorrelation remained, the BYM2 model (Section 2.4.11) became the preferred model.
 
-We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew Fig 1 in Python with matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
+We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.org/)]. We used glmmTMB [[34](https://doi.org/10.32614/RJ-2017-066)] because it fits negative-binomial, zero-inflated and hurdle mixed models with autoregressive terms in one framework, so the main and sensitivity models differ only in the feature being tested. We used dlnm for the cross-bases [[36](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2998707/),[39](https://doi.org/10.1111/biom.12645)], mgcv for the penalized DLNM [[54](https://doi.org/10.1111/j.1467-9868.2010.00749.x)], mixmeta for the meta-analysis [[45](https://doi.org/10.1002/sim.8362)], DHARMa for the residual checks [[28](https://CRAN.R-project.org/package=DHARMa)], sf for spatial data [[55](https://doi.org/10.32614/RJ-2018-009)] and R-INLA for the spatial model [[50](https://doi.org/10.1111/j.1467-9868.2008.00700.x)]. We prepared the dataset and drew the map (Fig 1) in Python with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)], and the other figures in R with ggplot2 [[56](https://ggplot2.tidyverse.org)], using the colour-blind-safe palette of Okabe and Ito [[57](https://jfly.uni-koeln.de/color/)]. The code is available at [AUTHOR: GitHub/Zenodo DOI].
 
 ### 2.5 Evidence search (novelty check)
 
@@ -327,7 +327,7 @@ We carried out the analyses in R [AUTHOR: version] [[53](https://www.R-project.o
 
 ### 2.6 Ethics
 
-We used anonymised routine surveillance data aggregated to monthly counts by district and sex, with no personal identifiers and no contact with patients. The Ghana Health Service granted permission to use the DHIMS-2 data [AUTHOR: reference], and its Ethics Review Committee [AUTHOR: approved or exempted] the study [AUTHOR: number]. Because the data were secondary and anonymous, individual consent was not required. We followed the Declaration of Helsinki [[56](https://doi.org/10.1001/jama.2024.21972)]. The climate, vegetation and boundary data are publicly available [[16](https://doi.org/10.1371/journal.pone.0231866),[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
+We used anonymised routine surveillance data aggregated to monthly counts by district and sex, with no personal identifiers and no contact with patients. The Ghana Health Service granted permission to use the DHIMS-2 data [AUTHOR: reference], and its Ethics Review Committee [AUTHOR: approved or exempted] the study [AUTHOR: number]. Because the data were secondary and anonymous, individual consent was not required. We followed the Declaration of Helsinki [[58](https://doi.org/10.1001/jama.2024.21972)]. The climate, vegetation and boundary data are publicly available [[16](https://doi.org/10.1371/journal.pone.0231866),[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
 
 ---
 
@@ -341,6 +341,14 @@ We used anonymised routine surveillance data aggregated to monthly counts by dis
 * **Regional range.** Rates ranged from 5.4 per 100,000 (Greater Accra) to 111.9 (Upper West) and 108.7 (Savannah) (Table 2).
 * **District range.** The median district rate was 26.2 per 100,000 (IQR 12.0–50.7). The highest was 277.5, in Mamprugu Moagduri.
 * **Count distribution.** Monthly counts were overdispersed (mean 3.27, variance 29.1), and 31.9% of district-months had zero cases.
+
+Monthly snakebite cases across Ghana ranged from 416 (January 2025) to 1,353 (July 2020), with a median of 872 per month ([Fig 2A](#fig2)). In every year, the fewest cases were reported between December and February and the most between March and July; the annual peak fell in July in 2020, in May in 2021–2023, in June in 2024 and in March in 2025. Mean rainfall was lowest in December or January of each year and highest in June, September or October ([Fig 2B](#fig2)).
+
+<a name="fig2"></a>
+
+![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.png)
+
+**Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** (A) Number of snakebite cases reported each month across all districts. (B) Mean rainfall across districts in each month; the lighter bar for December 2025 marks estimated rainfall (Section 2.2). Vertical lines mark the start of each year. Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 **Table 1. Snakebite cases and incidence, Ghana, 2020–2025**
 
@@ -394,25 +402,25 @@ Regime is assigned by region here. [AUTHOR: refine by agro-ecological zone at di
 
 ### 3.2 Seasonality
 
-In unimodal districts, snakebite incidence was lowest in January (2.58 cases per 100,000 per month), more than doubled between February (2.74) and March (5.87) and peaked in July (7.98). Rainfall in these districts peaked in September (8.44 mm/day) and was below 0.1 mm/day from December to February ([Fig 2](#fig2)). In bimodal districts, incidence was lowest in February (1.39) and peaked in May (2.58), fell to 1.77 in August and rose again to 2.06–2.11 in September–October. Rainfall in these districts peaked in June (8.79 mm/day) and October (8.45 mm/day), with a dip in August (3.22 mm/day). In the transition zone, incidence peaked in May (4.15), and rainfall exceeded 6 mm/day from June to September.
-
-<a name="fig2"></a>
-
-![Fig 2. Mean monthly rainfall by rainfall regime.](figures/Fig2.png)
-
-**Fig 2. Mean monthly rainfall by rainfall regime, Ghana, January 2020 to December 2025.** Lines show the mean over the six years of the regime's mean district rainfall in each calendar month, and shaded bands the range across years. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Rainfall for December 2025 was estimated (Section 2.2). Rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)].
-
-The median month of rainy-season onset was April in unimodal districts (interquartile range April–May) and March in transition and bimodal districts (March–March). Within districts, the onset month varied from year to year with a mean standard deviation of 0.58 months in unimodal, 0.50 in transition and 0.38 in bimodal districts. False starts occurred in 4 of 281 unimodal district-years (1.4%) and in none elsewhere. Three months before onset, incidence relative to the district mean was 0.49 in unimodal, 0.77 in transition and 0.93 in bimodal districts. Two months after onset it reached 1.59 (95% CI 1.33–1.84), 1.47 (0.91–2.03) and 1.25 (1.16–1.34), respectively, and four months after onset it was 1.07, 1.00 and 1.07 ([Fig 3](#fig3)).
+In unimodal districts, snakebite incidence was lowest in January (2.58 cases per 100,000 per month), more than doubled between February (2.74) and March (5.87) and peaked in July (7.98). Rainfall in these districts peaked in September (8.44 mm/day) and was below 0.1 mm/day from December to February ([Fig 3](#fig3)). In bimodal districts, incidence was lowest in February (1.39) and peaked in May (2.58), fell to 1.77 in August and rose again to 2.06–2.11 in September–October. Rainfall in these districts peaked in June (8.79 mm/day) and October (8.45 mm/day), with a dip in August (3.22 mm/day). In the transition zone, incidence peaked in May (4.15), and rainfall exceeded 6 mm/day from June to September.
 
 <a name="fig3"></a>
 
-![Fig 3. Snakebite incidence relative to the district mean by months since rainy-season onset.](figures/Fig3.png)
+![Fig 3. Mean monthly rainfall by rainfall regime.](figures/Fig3.png)
 
-**Fig 3. Snakebite incidence relative to the district mean by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Lines show the mean over district-years and shaded bands the 95% confidence interval; the dotted vertical line marks onset and the horizontal line a relative incidence of 1. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Figure drawn with Matplotlib [[17](https://doi.org/10.1109/MCSE.2007.55)].
+**Fig 3. Mean monthly rainfall by rainfall regime, Ghana, January 2020 to December 2025.** Lines show the mean over the six years of the regime's mean district rainfall in each calendar month, and shaded bands the range across years. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Rainfall for December 2025 was estimated (Section 2.2). Rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]; figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
+
+The median month of rainy-season onset was April in unimodal districts (interquartile range April–May) and March in transition and bimodal districts (March–March). Within districts, the onset month varied from year to year with a mean standard deviation of 0.58 months in unimodal, 0.50 in transition and 0.38 in bimodal districts. False starts occurred in 4 of 281 unimodal district-years (1.4%) and in none elsewhere. Three months before onset, incidence relative to the district mean was 0.49 in unimodal, 0.77 in transition and 0.93 in bimodal districts. Two months after onset it reached 1.58 (95% CI 1.33–1.84), 1.47 (0.91–2.03) and 1.25 (1.16–1.34), respectively, and four months after onset it was 1.07, 1.00 and 1.07 ([Fig 4](#fig4)).
+
+<a name="fig4"></a>
+
+![Fig 4. Snakebite incidence relative to the district mean by months since rainy-season onset.](figures/Fig4.png)
+
+**Fig 4. Snakebite incidence relative to the district mean by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Lines show the mean over district-years and shaded bands the 95% confidence interval; the dashed vertical line marks onset and the horizontal line a relative incidence of 1. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 ### 3.3 Seasonality is largely lagged local climate (primary result)
 
-* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 4**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
+* [RESULT: final NB GLMM values for M0–M3: deviance, AIC, CV scores; share of seasonality reproduced by own climate; residual non-climatic share; placebo distribution and permutation p-value; temporal placebo (**Table 4**). **Fig 5**: observed seasonal cycle by zone, overlaid with fits from month terms, own climate and placebo climate, plus a histogram of placebo deviances with the own-climate value marked.]
 
 <!-- Screening result (Poisson GLM, district-rate offset, lags 0-3 quadratic; analysis/seasonality_climate_placebo.py):
      seasonal deviance (M0-M1) 2,736; own lagged climate reproduced 108% of it (scaled deviance gain over month terms 88 on 17 extra df);
@@ -423,11 +431,11 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 ### 3.4 Lag selection
 
-* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 9B).]
+* [RESULT: grid of AIC and CV scores (Table 3); selected L and df; agreement of penalized DLNM; falsification test (future lags) RR ≈ 1 (Fig 10B).]
 
 ### 3.5 Exposure–lag–response associations
 
-* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 5; Table 5.]
+* [RESULT: for each exposure, the lag at which RR peaks, the duration of the effect (lags with 95% CI excluding 1) and the cumulative RR at the 90th/99th percentile versus reference. Describe the shape: e.g. hump-shaped for rainfall; threshold for Tmax. Fig 6; Table 5.]
 
 <!-- Preliminary single-lag anomaly screen (REVIEW_DRAFT.md §6.4), for orientation only:
      RH lag0 RR 1.033/SD; Tmin lag0–1 1.031, 1.025; Tmax lag0 south 0.979;
@@ -435,15 +443,15 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 ### 3.6 Seasonal climatology versus weather anomalies
 
-* [RESULT: proportion of the climate effect explained by climatology vs anomaly; anomaly lag curves (Fig 6A); comparison with the concurrent-only model to show why rainfall appears null contemporaneously.]
+* [RESULT: proportion of the climate effect explained by climatology vs anomaly; anomaly lag curves (Fig 7A); comparison with the concurrent-only model to show why rainfall appears null contemporaneously.]
 
 ### 3.7 Differences between rainfall regimes
 
-* [RESULT: regime-specific lag curves (Fig 6B); peak lag in unimodal, transition and bimodal districts; Cochran Q, I²; LRT p-value.]
+* [RESULT: regime-specific lag curves (Fig 7B); peak lag in unimodal, transition and bimodal districts; Cochran Q, I²; LRT p-value.]
 
 ### 3.8 Rainy-season onset
 
-* [RESULT: event-study RRs by months since onset (Fig 7); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
+* [RESULT: event-study RRs by months since onset (Fig 8); effect of earlier/later onset on peak timing and seasonal total; false-start effect.]
 
 ### 3.9 Climate-attributable burden
 
@@ -451,11 +459,11 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 ### 3.10 Predictive performance
 
-* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 8; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
+* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 9; Table 7); gain from lagged climate; detection of high-incidence months; lead time.]
 
 ### 3.11 Sensitivity analyses
 
-* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 9A); sensitivity to the climate product (Fig 9C).]
+* [RESULT: robustness of the cumulative RRs and the seasonality share across all alternatives (Table 8); residual diagnostics (Fig 10A); sensitivity to the climate product (Fig 10C).]
 
 ---
 
@@ -478,7 +486,7 @@ The median month of rainy-season onset was April in unimodal districts (interqua
 
 **¶3 Comparison with previous studies.**
 * *Costa Rica:* temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window [9].
-* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [57].
+* *Sri Lanka:* low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation [59].
 * *Colombia:* rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue [11].
 * *California:* precipitation acted at long lags [10].
 * *Ghana nationwide analysis:* our results reconcile its null rainfall finding with descriptive rainy-season peaks [13]. Rainfall's effect is delayed and seasonal, and temporal and space–time random effects can absorb it.
@@ -551,14 +559,15 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | Item | Content | Section |
 |---|---|---|
 | **[Fig 1](#fig1)** | Study area: districts shaded by rainfall regime (unimodal, transition, bimodal), regions named, West Africa locator. **Done:** `figures/Fig1.png`, placed in 2.1 | 2.1 |
-| **[Fig 2](#fig2)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig2.png`, placed in 3.2 | 3.2 |
-| **[Fig 3](#fig3)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
-| **Fig 4** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
-| **Fig 5** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
-| **Fig 6** | (A) Anomaly lag curves; (B) lag curves by rainfall regime | 3.6–3.7 |
-| **Fig 7** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
-| **Fig 8** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
-| **Fig 9** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
+| **[Fig 2](#fig2)** | Monthly snakebite cases and mean rainfall, January 2020 to December 2025. **Done:** `figures/Fig2.png`, placed in 3.1 | 3.1 |
+| **[Fig 3](#fig3)** | Mean monthly rainfall by rainfall regime. **Done:** `figures/Fig2.png`, placed in 3.2 | 3.2 |
+| **[Fig 4](#fig4)** | Relative incidence by months since rainy-season onset, by rainfall regime. **Done:** `figures/Fig3.png`, placed in 3.2 | 3.2 |
+| **Fig 5** | **Primary:** (A) observed seasonal cycle by zone with fits from month terms, own lagged climate and placebo climate; (B) histogram of the placebo-climate deviances with the own-climate value marked; (C) temporal placebo (same district, different year) | 3.3 |
+| **Fig 6** | Exposure–lag–response: (A) contour plots; (B) overall cumulative curves (rainfall, RH or Tmax, Tmin); (C) exposure–lag–response surfaces by zone | 3.5 |
+| **Fig 7** | (A) Anomaly lag curves; (B) lag curves by rainfall regime | 3.6–3.7 |
+| **Fig 8** | Event-study RR by months since rainy-season onset, by zone | 3.8 |
+| **Fig 9** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
+| **Fig 10** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
 
 **Tables**
 
@@ -577,12 +586,12 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 
 1. Finalise Methods 2.1–2.3 (data details, cleaning log).
 2. Descriptive results → Tables 1–2 and Figs 1–2.
-3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 4.**
+3. **Primary seasonality analysis (2.4.5) → Table 4 and Fig 5.**
 4. Lag selection (2.4.4) → Table 3.
-5. Main DLNM-GLMM → Fig 5 and Table 5.
+5. Main DLNM-GLMM → Fig 6 and Table 5.
 6. Decomposition, regime and onset analyses → Figs 5–6.
-7. Attribution and prediction → Tables 6–7 and Fig 8.
-8. Sensitivity analyses and diagnostics → Table 8 and Fig 9.
+7. Attribution and prediction → Tables 6–7 and Fig 9.
+8. Sensitivity analyses and diagnostics → Table 8 and Fig 10.
 9. Results text, then Discussion.
 10. Evidence search (2.5) and a re-check of the Introduction against the full texts of Nyarko et al. 2026 and Huang et al. 2025.
 11. Abstract, author summary and title last.
@@ -646,5 +655,7 @@ Numbered in order of first citation (Vancouver style). **Only sources whose exis
 53. R Core Team. R: a language and environment for statistical computing. Vienna: R Foundation for Statistical Computing; [AUTHOR: year of the version used]. https://www.R-project.org/
 54. Wood SN. Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models. J R Stat Soc Series B Stat Methodol. 2011;73(1):3–36. doi:10.1111/j.1467-9868.2010.00749.x
 55. Pebesma E. Simple features for R: standardized support for spatial vector data. R J. 2018;10(1):439–446. doi:10.32614/RJ-2018-009
-56. World Medical Association. World Medical Association Declaration of Helsinki: ethical principles for medical research involving human participants. JAMA. 2025;333(1):71–74. doi:10.1001/jama.2024.21972
-57. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
+56. Wickham H. ggplot2: elegant graphics for data analysis. 2nd ed. New York: Springer; 2016. ISBN 978-3-319-24277-4. https://ggplot2.tidyverse.org
+57. Okabe M, Ito K. Color universal design (CUD): how to make figures and presentations that are friendly to colorblind people. J*Fly; 2008. https://jfly.uni-koeln.de/color/
+58. World Medical Association. World Medical Association Declaration of Helsinki: ethical principles for medical research involving human participants. JAMA. 2025;333(1):71–74. doi:10.1001/jama.2024.21972
+59. Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al. Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049–2058. doi:10.1093/ije/dyy188
