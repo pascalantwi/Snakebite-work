@@ -8,7 +8,8 @@
 #   C = B + months 1-6 after rainy-season onset (known one month ahead).
 # High-incidence months (above the district's training 75th percentile) are flagged when the predicted probability of
 # exceeding that value passes a cut-off chosen on the training data (Youden index); AUC is reported.
-# Hold-out 2025 and rolling origin (each year 2022-2025 predicted from all earlier months).
+# Hold-out 2025 and rolling origin (each year 2023-2025 predicted from all earlier months; 2022 is not predicted because
+# the 12-month case history leaves only 2021 for training, in which a trend cannot be separated from month effects).
 # Run from the repository root:  Rscript analysis/prediction.R      (about 15 minutes on 4 cores)
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(tidyr); library(dlnm); library(glmmTMB); library(parallel) })
 source("analysis/primary_common.R")
@@ -63,7 +64,7 @@ one <- function(job) {
            F = pnbinom(cases_total, size = th, mu = mu), Fm1 = pnbinom(cases_total - 1, size = th, mu = mu),
            crps = crps_nb(cases_total, mu, th), pr = pnbinom(thr, size = th, mu = mu, lower.tail = FALSE), cut = cut)
 }
-jobs <- unlist(lapply(2022:2025, function(y) lapply(names(FORMS), function(mm) list(year = y, model = mm))), recursive = FALSE)
+jobs <- unlist(lapply(2023:2025, function(y) lapply(names(FORMS), function(mm) list(year = y, model = mm))), recursive = FALSE)
 pred <- bind_rows(mclapply(jobs, one, mc.cores = 4, mc.preschedule = FALSE))
 write_csv(pred, "analysis/output/predictions.csv")
 
@@ -76,7 +77,7 @@ summ <- function(p) p |> group_by(model) |> summarise(
 h25 <- filter(pred, test_year == 2025)
 tab <- bind_rows(mutate(summ(h25), set = "hold-out 2025"),
                  mutate(summ(filter(h25, climate_imputed == 0)), set = "hold-out 2025, excluding December"),
-                 mutate(summ(pred), set = "rolling origin 2022-2025"))
+                 mutate(summ(pred), set = "rolling origin 2023-2025"))
 print(tab, width = 200); write_csv(tab, "analysis/output/prediction_summary.csv")
 by_year <- pred |> group_by(test_year, model) |> summarise(MAE = mean(abs(cases_total - mu)), CRPS = mean(crps), .groups = "drop")
 print(by_year, n = 20); write_csv(by_year, "analysis/output/prediction_by_year.csv")
@@ -102,7 +103,7 @@ print(dist |> group_by(model) |> summarise(cor = cor(observed, predicted), cor_l
 v1 <- read_csv("analysis/output/predictions_v1.csv", show_col_types = FALSE) |>
   mutate(AUC = NA_real_, pr = NA_real_, cut = NA_real_)
 v1s <- bind_rows(mutate(summ(filter(v1, test_year == 2025) |> mutate(pr = as.numeric(mu > thr), cut = 0.5)), set = "hold-out 2025"),
-                 mutate(summ(v1 |> mutate(pr = as.numeric(mu > thr), cut = 0.5)), set = "rolling origin 2022-2025")) |>
+                 mutate(summ(filter(v1, test_year >= 2023) |> mutate(pr = as.numeric(mu > thr), cut = 0.5)), set = "rolling origin 2023-2025")) |>
   mutate(model = paste0(model, " (version 1)"), AUC = NA_real_)
 print(v1s, width = 200); write_csv(v1s, "analysis/output/prediction_summary_v1_compare.csv")
 cat("done\n")
