@@ -14,6 +14,8 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 
 **`snakebite_unified_district_month_sex.csv`** has one row per district, month and sex: 37,584 rows. Use it for models with sex as a covariate, for example `cases ~ sex + climate terms + (1 | region/district) + offset(log(population_sex))`.
 
+**`district_poverty.csv`** gives one row per district with the poverty variables above and the percentage contribution of each of the 13 MPI indicators (assets, child mortality, cooking fuel, drinking water, electricity, employment, housing, health insurance, overcrowding, school attainment, school attendance, school lag, toilet; GSS table MPI5). It is built by `analysis/build_poverty.py` from the GSS StatsBank files `data/MPI*.xlsx`, matching the 261 districts within region (20 names differ in spelling and are matched by a crosswalk in the script).
+
 **`district_points.csv`** gives one point per district, inside its boundary polygon, for extracting climate. Guan has no polygon and uses the point of Afadjato South, which shares Guan's NASA POWER grid cell.
 
 ## Variables
@@ -33,6 +35,9 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 | `rel_humidity` | Relative humidity at 2 m, % |
 | `t2m`, `tmax`, `tmin` | Mean, maximum and minimum air temperature at 2 m, °C |
 | `ndvi` | District mean NDVI |
+| `poverty_H`, `poverty_A`, `poverty_M0` | District multidimensional poverty from the Ghana Statistical Service 2021 Population and Housing Census (table MPI1): incidence H (% of people who are multidimensionally poor), intensity A (average % of deprivations among the poor) and the index M0 = H × A. Constant over time within a district. Empty until `data/MPI1_*.xlsx` is added and the build is rerun |
+| `H_male_head`, `H_female_head` | Poverty incidence (%) among people in male-headed and female-headed households (GSS table MPI2) |
+| `H_head_no_education`, `H_head_agriculture` | Poverty incidence (%) among people in households whose head has no education (MPI3) or works in agriculture (MPI4) |
 | `climate_available` | 1 if all climate variables are present. Only Ledzokuku and Ayawaso East in 2024–2025 (excluded from the main analysis) lack climate |
 | `climate_imputed` | 1 for December 2025, whose climate is estimated rather than extracted. Rainfall, relative humidity and NDVI are the district's December mean for 2020–2024. Mean, maximum and minimum temperature are that mean plus the November 2025 anomaly scaled by its average carry-over into December (0.50, 1.26 and 0.39). In leave-one-year-out tests on December 2020–2024 the typical (mean absolute) errors were 0.37 mm/day for rainfall, 4.6% for humidity, 0.60, 0.80 and 1.26 °C for mean, maximum and minimum temperature, and 0.03 for NDVI. If the extracted values become available (`analysis/extract_dec2025_climate.R`), they replace the estimates automatically when the build script is rerun. Run a sensitivity analysis that excludes December 2025 |
 | `in_original_csv` | 1 if the district-month was in `data_snake.csv` |

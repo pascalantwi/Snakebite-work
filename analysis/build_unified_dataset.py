@@ -2,6 +2,7 @@
 #   "Snake Bite Data 2020 - 2025.xlsx"  monthly DHIMS-2 snakebite cases by district and sex, Jan 2020 - Dec 2025
 #   data_snake.csv                      district-month cases, population and climate (NASA POWER, NDVI), Jan 2020 - Nov 2025
 #   "Snake Bite Data.xlsx"              annual totals by region/district/facility (2023, 2024, Jan-Jun 2025), used for cross-checks only
+#   data/district_poverty.csv          district multidimensional poverty, GSS 2021 PHC (built by analysis/build_poverty.py)
 # Outputs (in data/):
 #   snakebite_unified_district_month.csv      one row per district x month (cases_male, cases_female, cases_total + covariates)
 #   snakebite_unified_district_month_sex.csv  one row per district x month x sex (for sex as a covariate)
@@ -167,8 +168,17 @@ log.append("Ledzokuku and Ayawaso East: absent from data_snake.csv for 2024-2025
 
 u = u.rename(columns={"Relative Humidity": "rel_humidity", "Maximum Temperature": "tmax", "Minimum Temperature": "tmin",
                       "Rainfall": "rainfall", "T2M": "t2m"})
+# 6. District poverty (time-invariant), if built with analysis/build_poverty.py
+POVERTY = ["poverty_H", "poverty_A", "poverty_M0", "H_male_head", "H_female_head", "H_head_no_education", "H_head_agriculture"]
+if os.path.exists("data/district_poverty.csv"):
+    pv = pd.read_csv("data/district_poverty.csv")[["district"] + POVERTY]
+    u = u.merge(pv, on="district", how="left")
+    log.append(f"Poverty (GSS 2021 PHC MPI) merged for {pv.district.isin(u.district).sum()} districts; "
+               f"overall MPI available for {pv.poverty_H.notna().sum()} districts.")
+else:
+    POVERTY = []
 order = ["district", "region", "regime", "regime_region", "n_bimodal_years", "year", "month", "date", "t", "cases_total", "cases_male", "cases_female",
-         "population", "population_source", "rainfall", "rel_humidity", "t2m", "tmax", "tmin", "ndvi",
+         "population", "population_source", "rainfall", "rel_humidity", "t2m", "tmax", "tmin", "ndvi"] + POVERTY + [
          "climate_available", "climate_imputed", "in_original_csv", "cases_revised_nov2025", "all_zero_district",
          "possible_nonreporting_year", "include_main"]
 u = u[order].sort_values(["district", "year", "month"]).reset_index(drop=True)
