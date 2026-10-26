@@ -14,7 +14,7 @@ for (v in MAIN) for (k in 1:2) d[[paste0(v, "_lead", k)]] <- as.numeric(scale(le
 leads <- paste0(rep(MAIN, each = 2), "_lead", 1:2)
 rows_f <- d$include_main == 1 & d$t > L & d$t <= max(d$t) - 2
 dat <- d[rows_f, ]; for (n in names(cb)) dat[[n]] <- unclass(cb[[n]])[rows_f, , drop = FALSE]
-f0 <- paste("cases_total ~ year_f + region * month_f +", paste(names(cb), collapse = " + "),
+f0 <- paste("cases_total ~ year_f + pov_z + region * month_f +", paste(names(cb), collapse = " + "),
             "+ offset(log(population)) + (1 | district)")
 f1 <- paste(f0, "+", paste(leads, collapse = " + "))
 fits <- mclapply(list(f0, f1), function(f) glmmTMB(as.formula(f), data = dat, family = nbinom2,

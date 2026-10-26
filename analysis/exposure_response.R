@@ -29,13 +29,13 @@ cb_ca   <- c(setNames(lapply(MAIN, function(v) cbx(d[[paste0(v, "_clim")]])), pa
 ns0 <- function(v) paste0("splines::ns(", v, ", df = 2)")
 
 jobs <- list(
-  final   = list(f = paste("cases_total ~ year_f + regime * month_f +", paste(names(cb_main), collapse = " + "), RE), cb = cb_main),
-  rh      = list(f = paste("cases_total ~ year_f + regime * month_f +", paste(names(cb_rh), collapse = " + "), RE), cb = cb_rh),
-  concurrent = list(f = paste("cases_total ~ year_f + regime * month_f +", paste(sapply(MAIN, ns0), collapse = " + "), RE), cb = list()),
-  noclim  = list(f = paste("cases_total ~ year_f + regime", RE), cb = list()),
-  ca_full = list(f = paste("cases_total ~ year_f + regime +", paste(names(cb_ca), collapse = " + "), RE), cb = cb_ca),
-  ca_clim = list(f = paste("cases_total ~ year_f + regime +", paste(grep("^cl_", names(cb_ca), value = TRUE), collapse = " + "), RE), cb = cb_ca),
-  ca_anom = list(f = paste("cases_total ~ year_f + regime +", paste(grep("^an_", names(cb_ca), value = TRUE), collapse = " + "), RE), cb = cb_ca))
+  final   = list(f = paste("cases_total ~ year_f + pov_z + regime * month_f +", paste(names(cb_main), collapse = " + "), RE), cb = cb_main),
+  rh      = list(f = paste("cases_total ~ year_f + pov_z + regime * month_f +", paste(names(cb_rh), collapse = " + "), RE), cb = cb_rh),
+  concurrent = list(f = paste("cases_total ~ year_f + pov_z + regime * month_f +", paste(sapply(MAIN, ns0), collapse = " + "), RE), cb = list()),
+  noclim  = list(f = paste("cases_total ~ year_f + pov_z + regime", RE), cb = list()),
+  ca_full = list(f = paste("cases_total ~ year_f + pov_z + regime +", paste(names(cb_ca), collapse = " + "), RE), cb = cb_ca),
+  ca_clim = list(f = paste("cases_total ~ year_f + pov_z + regime +", paste(grep("^cl_", names(cb_ca), value = TRUE), collapse = " + "), RE), cb = cb_ca),
+  ca_anom = list(f = paste("cases_total ~ year_f + pov_z + regime +", paste(grep("^an_", names(cb_ca), value = TRUE), collapse = " + "), RE), cb = cb_ca))
 fits <- mclapply(names(jobs), function(n) fit(jobs[[n]]$f, attach_cb(jobs[[n]]$cb)), mc.cores = 4, mc.preschedule = FALSE)
 names(fits) <- names(jobs)
 saveRDS(fits, "analysis/output/exposure_response_fits.rds")

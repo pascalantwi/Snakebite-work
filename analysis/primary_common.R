@@ -13,7 +13,16 @@ load_panel <- function(path = "data/snakebite_unified_district_month.csv") {
     # district's calendar-month mean so that shifted or swapped climate series never carry missing values
     group_by(district, month) |>
     mutate(across(all_of(VARS), ~ ifelse(is.na(.x), mean(.x, na.rm = TRUE), .x))) |>
-    ungroup() |> arrange(district, t)
+    ungroup() |> arrange(district, t) |> add_poverty()
+}
+
+# district poverty, standardized (per SD across districts): overall MPI incidence (GSS table MPI1) when available,
+# otherwise the incidence among people in male-headed households (MPI2)
+add_poverty <- function(d) {
+  d$poverty <- if ("poverty_H" %in% names(d) && any(!is.na(d$poverty_H))) d$poverty_H else d$H_male_head
+  one <- d$poverty[!duplicated(d$district)]
+  d$pov_z <- (d$poverty - mean(one)) / sd(one)
+  d
 }
 
 # cross-bases of the five climate variables, lags computed within district (data ordered by district, t)
@@ -32,10 +41,10 @@ analysis_rows <- function(d, cb) {
 }
 
 FORM <- list(
-  M0 = cases_total ~ year_f + regime,
-  M1 = cases_total ~ year_f + regime * month_f,
-  M2 = cases_total ~ year_f + regime + cb_rainfall + cb_rel_humidity + cb_tmax + cb_tmin + cb_ndvi,
-  M3 = cases_total ~ year_f + regime * month_f + cb_rainfall + cb_rel_humidity + cb_tmax + cb_tmin + cb_ndvi)
+  M0 = cases_total ~ year_f + regime + pov_z,
+  M1 = cases_total ~ year_f + pov_z + regime * month_f,
+  M2 = cases_total ~ year_f + regime + pov_z + cb_rainfall + cb_rel_humidity + cb_tmax + cb_tmin + cb_ndvi,
+  M3 = cases_total ~ year_f + pov_z + regime * month_f + cb_rainfall + cb_rel_humidity + cb_tmax + cb_tmin + cb_ndvi)
 RE <- "+ offset(log(population)) + (1 | region) + (1 | region:district)"
 
 fit_model <- function(name, dd, start = NULL) {

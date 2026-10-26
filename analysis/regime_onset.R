@@ -25,7 +25,7 @@ groups <- list(unimodal = "unimodal", transition = "transition", bimodal = "bimo
                `unimodal+transition` = c("unimodal", "transition"), `transition+bimodal` = c("transition", "bimodal"))
 st1 <- mclapply(names(groups), function(g) {
   r <- rows & d$regime %in% groups[[g]]
-  f <- paste("cases_total ~ year_f +", if (length(groups[[g]]) > 1) "regime * month_f" else "month_f", "+", CBS, RE)
+  f <- paste("cases_total ~ year_f + pov_z +", if (length(groups[[g]]) > 1) "regime * month_f" else "month_f", "+", CBS, RE)
   m <- fit(f, with_rows(r))
   red <- lapply(MAIN, function(v) {
     i <- grep(paste0("^cb_", v), names(fixef(m)$cond)); b <- fixef(m)$cond[i]; V <- vcov(m)$cond[i, i]
@@ -76,8 +76,8 @@ ind <- lapply(c("transition", "bimodal"), function(g) as.numeric(d$regime == g))
 xtra <- list()
 for (v in MAIN) for (g in names(ind)) xtra[[paste0("cbx_", v, "_", g)]] <- unclass(cb[[paste0("cb_", v)]]) * ind[[g]]
 dat_all <- with_rows(rows, xtra)
-f0 <- paste("cases_total ~ year_f + regime * month_f +", CBS, RE)
-f1 <- paste("cases_total ~ year_f + regime * month_f +", CBS, "+", paste(names(xtra), collapse = " + "), RE)
+f0 <- paste("cases_total ~ year_f + pov_z + regime * month_f +", CBS, RE)
+f1 <- paste("cases_total ~ year_f + pov_z + regime * month_f +", CBS, "+", paste(names(xtra), collapse = " + "), RE)
 os <- mclapply(list(f0, f1), fit, dat = dat_all, mc.cores = 2)
 lr <- -2 * (as.numeric(logLik(os[[1]])) - as.numeric(logLik(os[[2]])))
 dfl <- attr(logLik(os[[2]]), "df") - attr(logLik(os[[1]]), "df")
@@ -94,7 +94,7 @@ d2 <- d |> left_join(dy, by = c("district", "year")) |>
          ev = factor(ev, levels = c("ref", as.character(-2:6))))
 r2 <- d2$include_main == 1 & !is.na(d2$onset)
 evf <- mclapply(REGS, function(g) {
-  m <- fit(paste("cases_total ~ ev + year_f", RE), d2[r2 & d2$regime == g, ])
+  m <- fit(paste("cases_total ~ ev + year_f + pov_z", RE), d2[r2 & d2$regime == g, ])
   i <- grep("^ev", names(fixef(m)$cond)); b <- fixef(m)$cond[i]; se <- sqrt(diag(vcov(m)$cond))[i]
   tibble(regime = g, k = as.integer(sub("ev", "", names(b))), RR = exp(b), lo = exp(b - 1.96 * se), hi = exp(b + 1.96 * se),
          n = sum(r2 & d2$regime == g), converged = m$fit$convergence == 0 && isTRUE(m$sdr$pdHess))
@@ -102,14 +102,14 @@ evf <- mclapply(REGS, function(g) {
 ev <- bind_rows(evf); print(ev, n = 40); write_csv(ev, "analysis/output/onset_event_study.csv")
 
 # secondary: peak month and rainy-season total (onset month to 5 months after) on onset month and false start
-sy <- d2 |> filter(include_main == 1, !is.na(onset)) |> group_by(district, region, regime, year, year_f, onset, false_start) |>
+sy <- d2 |> filter(include_main == 1, !is.na(onset)) |> group_by(district, region, regime, year, year_f, onset, false_start, pov_z) |>
   summarise(total = sum(cases_total), peak = if (sum(cases_total) > 0) month[which.max(cases_total)] else NA_integer_,
             season = sum(cases_total[month >= first(onset) & month <= first(onset) + 5]),
             population = first(population), months = n(), .groups = "drop") |>
   filter(months == 12 | year == 2025) |>
   group_by(district) |> mutate(onset_c = onset - mean(onset)) |> ungroup()
-pk <- glmmTMB(peak ~ onset + false_start + regime + year_f + (1 | district), data = filter(sy, !is.na(peak)), family = gaussian)
-st <- glmmTMB(season ~ onset + false_start + regime + year_f + offset(log(population)) + (1 | region) + (1 | region:district),
+pk <- glmmTMB(peak ~ onset + false_start + regime + pov_z + year_f + (1 | district), data = filter(sy, !is.na(peak)), family = gaussian)
+st <- glmmTMB(season ~ onset + false_start + regime + pov_z + year_f + offset(log(population)) + (1 | region) + (1 | region:district),
               data = sy, family = nbinom2)
 sec <- bind_rows(
   tibble(model = "peak month (months; linear mixed model)", term = names(fixef(pk)$cond), est = fixef(pk)$cond, se = sqrt(diag(vcov(pk)$cond))),
