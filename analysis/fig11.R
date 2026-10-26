@@ -17,7 +17,7 @@ pA <- ggplot(nat, aes(month)) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) + scale_y_continuous(labels = scales::label_comma(), limits = c(0, NA)) +
   labs(x = "Month of 2025", y = "Snakebite cases per month", tag = "A") + th +
   theme(legend.position = "top", legend.justification = "left", legend.key.width = unit(2, "lines"))
-pit <- read_csv("analysis/output/prediction_pit.csv", show_col_types = FALSE) |> mutate(model = factor(ML[model], levels = ML))
+pit <- read_csv("analysis/output/prediction_pit.csv", show_col_types = FALSE) |> mutate(model = paste("Model", model))
 pB <- ggplot(pit, aes(xmin = lower, xmax = upper, ymin = 0, ymax = density)) + geom_rect(fill = BLUE, colour = "white") +
   geom_hline(yintercept = 1, linetype = "dashed", linewidth = 0.4) + facet_wrap(~ model, nrow = 1) +
   scale_x_continuous(breaks = c(0, 0.5, 1)) + labs(x = "Probability integral transform", y = "Density", tag = "B") + th

@@ -254,13 +254,13 @@ To express the climate effects as numbers of snakebites, we estimated the cases 
 \mathrm{AF}_{it} = 1 - \exp\Big\lbrace -\sum_{\ell=0}^{L} \big[f\cdot w(x_{i,t-\ell},\ell) - f\cdot w(x_0,\ell)\big]\Big\rbrace, \qquad \mathrm{AN}_{it} = \mathrm{AF}_{it}\, n_{it},
 ```
 
-where $`x_0`$ is the minimum-risk value and $`n_{it}`$ the observed number of cases [[47](https://doi.org/10.1186/1471-2288-14-55)]. The total attributable number is $`\sum_{i,t} \mathrm{AN}_{it}`$, and the attributable fraction is this total divided by the total number of cases. We report results by exposure, rainfall regime, region and year. We obtained 95% empirical confidence intervals from 1,000 Monte Carlo samples of the cross-basis coefficients drawn from their estimated multivariate normal distribution [[47](https://doi.org/10.1186/1471-2288-14-55)].
+where $`x_0`$ is the minimum-risk value and $`n_{it}`$ the observed number of cases [[47](https://doi.org/10.1186/1471-2288-14-55)]. The total attributable number is $`\sum_{i,t} \mathrm{AN}_{it}`$, and the attributable fraction is this total divided by the total number of cases. We report results by exposure, rainfall regime, region and year. We obtained 95% empirical confidence intervals from 1,000 Monte Carlo samples of the cross-basis coefficients drawn from their estimated multivariate normal distribution [[47](https://doi. Because the minimum-risk values can lie at the edge of an exposure's range, which makes the reference scenario extreme, we also report a secondary measure: the cases attributable to exposures above the median, with the median as the reference value [[47](https://doi.org/10.1186/1471-2288-14-55)].org/10.1186/1471-2288-14-55)].
 
 #### 2.4.10 Predictive validation
 
 We assessed whether lagged climate improves the prediction of snakebite in data not used to fit the model, which is the test relevant to early warning and the timely distribution of antivenom [[3](https://www.who.int/publications/i/item/9789241515641)]. *Descriptive:* routine surveillance in Ghana has missed snakebite outbreaks [[4](https://doi.org/10.11604/pamj.2021.40.131.28217)], and the seasonal peak varies in size and timing between years and districts (Section 3.2). *Theoretical:* a model can fit past data well yet predict poorly, so predictive skill must be judged on held-out data. With temporally dependent data, the held-out set should be separated in time rather than chosen at random [[37](https://doi.org/10.1111/ecog.02881)].
 
-We trained the models on January 2020 to December 2024 and predicted January to December 2025. We also used rolling-origin validation, in which each year from 2022 onwards was predicted from all earlier years. We compared three nested models. Model A contained the seasonal terms and random effects of the base model. Model B added lagged climate restricted to lags of one month or more, so that every prediction uses only climate already observed, as in real-time use. Model C added the onset terms. Because December 2025 climate was estimated rather than observed (Section 2.2), we repeated the evaluation excluding that month.
+We trained the models on January 2020 to December 2024 and predicted January to December 2025. We also used rolling-origin validation, in which each year from 2022 onwards was predicted from all earlier years. We compared three nested models. Model A contained the seasonal terms and random effects of the base model. Model B added lagged climate restricted to lags of one month or more, so that every prediction uses only climate already observed, as in real-time use. Model C added the onset terms. Because the effect of a year not yet observed is unknown, we averaged each prediction's linear predictor over the estimated effects of the training years. In model C, we used indicators for the first to sixth months after onset, which are known one month in advance, and grouped all other months as the reference. Because December 2025 climate was estimated rather than observed (Section 2.2), we repeated the evaluation excluding that month.
 
 We assessed the predictions with the mean absolute error and the continuous ranked probability score (Section 2.4.4) [[38](https://doi.org/10.1198/016214506000001437)], and the calibration of the predictive distributions with the coverage of 90% prediction intervals and non-randomised probability integral transform (PIT) histograms for count data [[48](https://doi.org/10.1111/j.1541-0420.2009.01191.x)]. A flat PIT histogram indicates a well-calibrated model. To judge usefulness for early warning, we defined a high-incidence month as one in which a district exceeded its own 75th percentile of monthly cases. We calculated the sensitivity and specificity with which each model, predicting one month ahead, identified such months.
 
@@ -517,11 +517,62 @@ The analyses of onset timing included 1,553 district-years. The median onset mon
 
 ### 3.9 Climate-attributable burden
 
-* [RESULT: attributable number and fraction (95% eCI) by exposure, zone and region (Table 7).]
+The minimum-risk values of the cumulative exposure–response curves were 0 mm/day for rainfall, 27.4 °C for maximum temperature, 23.3 °C for minimum temperature and 0.16 for NDVI. With these values as the reference, 47,430 (95% eCI 43,115 to 49,966) of the 53,242 cases reported from October 2020 to December 2025, 89.1% (81.0 to 93.8%), were attributable to the four exposures together ([Table 7](#table7)). The attributable fraction was 44.2% (32.2 to 55.2%) for rainfall, 47.3% (26.6 to 62.2%) for maximum temperature, 15.5% (2.7 to 24.6%) for minimum temperature and 55.2% (37.3 to 67.5%) for NDVI. The combined fraction was 88.6–90.2% in the three rainfall regimes, 78.3% (67.8 to 85.3%) in Greater Accra and 87.3–90.7% in the other regions, and 88.6–89.7% in each year.
+
+With the median of each exposure as the reference and only exposures above the median counted, 13,907 (9,095 to 18,637) cases, 26.1% (17.1 to 35.0%), were attributable to the four exposures together. Of these, 6,682 (3,897 to 9,397) cases, 12.6% (7.3 to 17.6%), were attributable to rainfall and 6,976 (3,000 to 10,371), 13.1% (5.6 to 19.5%), to maximum temperature, whereas the intervals for minimum temperature (−0.7%; −4.6 to 3.4%) and NDVI (3.2%; −2.1 to 8.2%) included zero. On this measure, the combined fraction was 32.2% (19.3 to 43.6%) in unimodal, 27.3% (17.5 to 36.7%) in transition and 23.0% (14.0 to 32.0%) in bimodal districts. It ranged from 14.1% (−2.5 to 29.5%) in Greater Accra to 33.5% (20.6 to 45.0%) in Upper West, and from 20.7% (9.3 to 31.3%) in October–December 2020 to 28.5% (18.7 to 38.2%) in 2024.
+
+<a name="table7"></a>
+
+**Table 7. Snakebite cases attributable to climate, Ghana, October 2020 to December 2025.**
+
+| Exposure | Attributable cases, Ghana (95% eCI) | Attributable fraction, Ghana, % (95% eCI) | Unimodal, % (95% eCI) | Transition, % (95% eCI) | Bimodal, % (95% eCI) |
+|---|---|---|---|---|---|
+| *Reference: minimum-risk value* | | | | | |
+| Rainfall | 23,515 (17,155 to 29,399) | 44.2 (32.2 to 55.2) | 37.5 (26.4 to 47.7) | 41.7 (30.3 to 52.7) | 47.7 (35.1 to 59.2) |
+| Maximum temperature | 25,159 (14,152 to 33,108) | 47.3 (26.6 to 62.2) | 56.6 (33.5 to 71.5) | 52.1 (29.9 to 67.4) | 42.1 (21.9 to 57.2) |
+| Minimum temperature | 8,273 (1,448 to 13,080) | 15.5 (2.7 to 24.6) | 25.4 (10.2 to 36.6) | 16.0 (4.9 to 24.5) | 10.7 (−2.0 to 19.5) |
+| NDVI | 29,382 (19,866 to 35,925) | 55.2 (37.3 to 67.5) | 50.9 (32.4 to 63.5) | 52.5 (34.1 to 65.0) | 57.6 (40.0 to 69.9) |
+| All four exposures | 47,430 (43,115 to 49,966) | 89.1 (81.0 to 93.8) | 90.2 (82.2 to 94.6) | 89.1 (80.6 to 94.0) | 88.6 (79.9 to 93.5) |
+| *Reference: median; exposures above the median* | | | | | |
+| Rainfall | 6,682 (3,897 to 9,397) | 12.6 (7.3 to 17.6) | 10.6 (6.2 to 14.9) | 11.5 (6.9 to 16.0) | 13.6 (7.9 to 19.2) |
+| Maximum temperature | 6,976 (3,000 to 10,371) | 13.1 (5.6 to 19.5) | 23.1 (8.9 to 34.9) | 16.7 (7.4 to 24.7) | 7.8 (3.9 to 11.6) |
+| Minimum temperature | −369 (−2,475 to 1,817) | −0.7 (−4.6 to 3.4) | −0.4 (−3.3 to 2.9) | −0.9 (−6.9 to 5.3) | −0.8 (−5.0 to 3.5) |
+| NDVI | 1,698 (−1,136 to 4,385) | 3.2 (−2.1 to 8.2) | 1.9 (−0.4 to 4.4) | 2.1 (−1.3 to 5.3) | 3.9 (−3.1 to 10.6) |
+| All four exposures | 13,907 (9,095 to 18,637) | 26.1 (17.1 to 35.0) | 32.2 (19.3 to 43.6) | 27.3 (17.5 to 36.7) | 23.0 (14.0 to 32.0) |
+
+Attributable numbers and fractions are from the selected model (maximum lag 9 months), fitted to 16,305 district-months from 260 districts with 53,242 cases (unimodal 15,837; transition 4,533; bimodal 32,872), using the backward perspective (Section 2.4.9). Minimum-risk values: rainfall 0 mm/day, maximum temperature 27.4 °C, minimum temperature 23.3 °C, NDVI 0.16. eCI, empirical confidence interval from 1,000 Monte Carlo samples of the cross-basis coefficients; negative values indicate fewer cases than expected at the reference.
 
 ### 3.10 Predictive performance
 
-* [RESULT: MAE/CRPS/coverage for models A–C on 2025 (Fig 11; Table 8); gain from lagged climate; detection of high-incidence months; lead time.]
+For the 3,084 district-months of 2025, predicted from models trained on October 2020 to December 2024, the mean absolute error was 2.232 for model A (seasonal terms), 2.182 for model B (with lagged climate) and 2.178 for model C (with lagged climate and onset), and the mean CRPS was 1.428, 1.409 and 1.406, respectively ([Table 8](#table8)). The 90% prediction intervals contained 97.0%, 96.9% and 96.9% of the observed counts. Months in which a district exceeded its own 75th percentile of monthly cases were identified with a sensitivity of 32.2%, 32.6% and 33.3% and a specificity of 77.6%, 78.4% and 78.5%. Excluding December 2025, whose climate was estimated, the mean CRPS was 1.457, 1.437 and 1.434.
+
+In rolling-origin validation over 2022–2025 (12,420 district-months), the mean CRPS was 1.519 for model A, 1.522 for model B and 1.523 for model C, and the mean absolute error was 2.259, 2.243 and 2.245. Models B and C had a lower mean CRPS than model A in 2024 and 2025, and a higher mean CRPS in 2022 and 2023.
+
+The 2025 national total was 8,696 cases, compared with 11,376 predicted by model A, 11,080 by model B and 11,040 by model C; the observed national count lay below the 90% prediction interval of model C in 11 of the 12 months ([Fig 11A](#fig11)). The PIT histograms decreased from the lowest to the highest bins, from 1.40 to 0.55 for model A and from 1.35 to 0.62 for models B and C ([Fig 11B](#fig11)). The correlation between observed and predicted district totals for 2025 was 0.81 for all three models, and 0.86 on the logarithmic scale for model C ([Fig 11C](#fig11)).
+
+<a name="table8"></a>
+
+**Table 8. Out-of-sample predictive performance of models A–C, Ghana.**
+
+| Validation | Model | District-months | Mean absolute error | Mean CRPS | 90% prediction-interval coverage (%) | Sensitivity (%) | Specificity (%) |
+|---|---|---|---|---|---|---|---|
+| Hold-out 2025 | A | 3,084 | 2.232 | 1.428 | 97.0 | 32.2 | 77.6 |
+| Hold-out 2025 | B | 3,084 | 2.182 | 1.409 | 96.9 | 32.6 | 78.4 |
+| Hold-out 2025 | C | 3,084 | 2.178 | 1.406 | 96.9 | 33.3 | 78.5 |
+| Hold-out 2025, excluding December | A | 2,827 | 2.273 | 1.457 | 97.1 | 32.7 | 76.5 |
+| Hold-out 2025, excluding December | B | 2,827 | 2.220 | 1.437 | 96.9 | 33.2 | 77.3 |
+| Hold-out 2025, excluding December | C | 2,827 | 2.216 | 1.434 | 97.0 | 33.9 | 77.4 |
+| Rolling origin, 2022–2025 | A | 12,420 | 2.259 | 1.519 | 94.6 | 30.0 | 77.6 |
+| Rolling origin, 2022–2025 | B | 12,420 | 2.243 | 1.522 | 94.4 | 31.5 | 76.9 |
+| Rolling origin, 2022–2025 | C | 12,420 | 2.245 | 1.523 | 94.4 | 32.0 | 76.8 |
+
+Model A: year effects, calendar-month effects by rainfall regime, region and district random intercepts and a log(population) offset. Model B: model A with cross-bases of rainfall, maximum and minimum temperature and NDVI at lags 1–9 months. Model C: model B with indicators of the first to sixth months after rainy-season onset. Hold-out 2025: trained on October 2020 to December 2024. Rolling origin: each year from 2022 to 2025 predicted from all earlier months. Sensitivity and specificity refer to months in which a district exceeded its own 75th percentile of monthly cases in the training data, classified by whether the predicted mean exceeded that value. Lower mean absolute error and CRPS indicate better prediction.
+
+<a name="fig11"></a>
+
+![Fig 11. Out-of-sample prediction of snakebite cases in 2025.](figures/Fig11.png)
+
+**Fig 11. Out-of-sample prediction of snakebite cases in 2025, Ghana.** (A) Monthly national cases observed (points) and predicted by models A, B and C, with the 90% prediction interval of model C (shaded band) obtained by simulation from the district-month predictive distributions. (B) Non-randomised probability integral transform (PIT) histograms for the 3,084 district-months of 2025; a well-calibrated model gives a flat histogram at a density of 1 (dashed line). (C) Observed and predicted (model C) district totals for 2025, plus 1, on logarithmic scales; the dashed line marks equality. Models were trained on October 2020 to December 2024. Figure drawn in R with ggplot2 [[56](https://ggplot2.tidyverse.org)].
 
 ### 3.11 Sensitivity analyses
 
@@ -630,7 +681,7 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **[Fig 8](#fig8)** | Lag-specific rate ratios for a 1-SD weather anomaly. **Done:** `figures/Fig8.png`, placed in 3.6 | 3.6 |
 | **[Fig 9](#fig9)** | Lag-specific and cumulative rate ratios by rainfall regime. **Done:** `figures/Fig9.png`, placed in 3.7 | 3.7 |
 | **[Fig 10](#fig10)** | Event-study rate ratios by months since rainy-season onset, by regime. **Done:** `figures/Fig10.png`, placed in 3.8 | 3.8 |
-| **Fig 11** | Predictive validation: (A) 2025 observed vs predicted for example districts; (B) skill of models A–C; (C) district-level observed vs predicted 2025 totals | 3.10 |
+| **[Fig 11](#fig11)** | Out-of-sample prediction of 2025: national monthly totals, PIT histograms, district totals. **Done:** `figures/Fig11.png`, placed in 3.10 | 3.10 |
 | **Fig 12** | Model checks and robustness: (A) DHARMa residual diagnostics (dispersion, zeros, temporal autocorrelation, Moran's I); (B) falsification test with future climate (lags −1, −2); (C) NASA POWER vs CHIRPS/ERA5-Land exposures and the resulting cumulative RRs | 3.4, 3.11 |
 
 **Tables**
@@ -643,8 +694,8 @@ PLoS NTD sets no limit on figures or tables. Eight figures and eight tables are 
 | **[Table 4](#table4)** | Seasonality models M0–M3: −2 log-likelihood, AIC, cross-validated scores and parameter estimates. **Done**, placed in 3.3 | 3.3 |
 | **[Table 5](#table5)** | Cumulative RRs at the 90th and 99th percentiles, with lags whose 95% CI excludes 1. **Done**, placed in 3.5 | 3.5 |
 | **[Table 6](#table6)** | Cumulative RRs by rainfall regime and heterogeneity tests. **Done**, placed in 3.7 | 3.7 |
-| **Table 7** | Climate-attributable cases and fractions, by exposure, zone and region | 3.9 |
-| **Table 8** | Predictive performance of models A–C on 2025: MAE, CRPS, 90% PI coverage, sensitivity/specificity for high-incidence months | 3.10 |
+| **[Table 7](#table7)** | Climate-attributable cases and fractions by exposure and regime (minimum-risk and median references). **Done**, placed in 3.9 | 3.9 |
+| **[Table 8](#table8)** | Predictive performance of models A–C (hold-out 2025 and rolling origin). **Done**, placed in 3.10 | 3.10 |
 | **Table 9** | Sensitivity analyses: cumulative RRs and the seasonality share under each alternative (max lag; NB1/ZINB/hurdle; outliers excluded; 2020 excluded; Fourier seasonality; CHIRPS/ERA5-Land; grid-cell clustering; monthly population; BYM2 spatial model) | 3.11 |
 
 ## Writing order (suggested)

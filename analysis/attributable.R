@@ -49,8 +49,8 @@ an_by <- function(group, XX = X, label = "minimum-risk reference") {
 }
 res <- bind_rows(an_by("Ghana"), an_by("regime"), an_by("region"), an_by("year"),
                  bind_rows(lapply(c("Ghana", "regime", "region", "year"), an_by, XX = Xmed, label = "above the median")))
-print(res |> filter(group_var %in% c("Ghana", "regime")) |> select(-group_var) |> mutate(across(where(is.numeric), \(x) round(x, 1))), n = 40)
-print(res |> filter(exposure == "all", group_var %in% c("region", "year")) |> select(-group_var) |> mutate(across(where(is.numeric), \(x) round(x, 1))), n = 40)
+print(res |> filter(group_var %in% c("Ghana", "regime")) |> dplyr::select(-group_var) |> mutate(across(where(is.numeric), \(x) round(x, 1))), n = 40)
+print(res |> filter(exposure == "all", group_var %in% c("region", "year")) |> dplyr::select(-group_var) |> mutate(across(where(is.numeric), \(x) round(x, 1))), n = 40)
 write_csv(res, "analysis/output/attributable.csv")
 write_csv(tibble(exposure = names(x0), x0 = x0), "analysis/output/attributable_reference.csv")
 cat("rows", nrow(dd), "cases", sum(dd$cases_total), "\ndone\n")
