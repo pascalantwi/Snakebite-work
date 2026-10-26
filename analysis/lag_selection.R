@@ -19,7 +19,7 @@ cb_spec <- function(L, dfv, dfl, clim = d) {
                                                argvar = list(fun = "ns", df = dfv), arglag = arglag)), paste0("cb_", MAIN))
 }
 rows <- d$include_main == 1 & d$t > 12
-BASE <- "cases_total ~ year_f + regime * month_f"
+BASE <- "cases_total ~ year_f + pov_z + regime * month_f"
 RHS_RE <- "+ offset(log(population)) + (1 | region) + (1 | region:district)"
 form_cb <- as.formula(paste(BASE, "+", paste(paste0("cb_", MAIN), collapse = " + "), RHS_RE))
 fit_tmb <- function(f, dat) glmmTMB(f, data = dat, family = nbinom2, control = glmmTMBControl(profile = TRUE))

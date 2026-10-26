@@ -24,7 +24,7 @@ d <- d |> left_join(on, by = c("district", "year")) |>
   mutate(k = month - onset, ev_rt = factor(ifelse(!is.na(k) & k >= 1 & k <= 6, as.character(k), "ref"), levels = c("ref", 1:6)))
 rows <- d$include_main == 1 & d$t > 12            # a full 12-month case history (January 2021 onwards)
 RE <- "+ offset(log(population)) + (1 | region) + (1 | region:district)"
-BASE <- "cases_total ~ trend + regime * month_f + hist1 + hist12"
+BASE <- "cases_total ~ trend + pov_z + regime * month_f + hist1 + hist12"
 CB <- paste(paste0("an_", MAIN), collapse = " + ")
 FORMS <- c(A = paste(BASE, RE), B = paste(BASE, "+", CB, RE), C = paste(BASE, "+", CB, "+ ev_rt", RE))
 
