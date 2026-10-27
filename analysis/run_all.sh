@@ -33,6 +33,7 @@ echo "$(date -u '+%Y-%m-%d %H:%M:%S') done  lag_selection.R" >> "$LOG"
 # the later steps use the specification selected before poverty was added (lag 9, 2/2 df); stop if it changed
 grep -q '^9,2,2,.*selected$' analysis/output/lag_selected.csv || { echo "$(date -u '+%F %T') STOP selected specification changed; update L and df in the later scripts" >> "$LOG"; exit 1; }
 step Rscript analysis/exposure_response.R            # 3.5-3.6
+step Rscript analysis/overdispersion.R               # 3.5: Poisson vs negative binomial
 step Rscript analysis/covariate_effects.R            # 3.5: all covariates, sex, poverty
 step Rscript analysis/fig5_fig7.R                    # Figs 5-7
 step Rscript analysis/falsification_region.R         # 3.4: falsification with month by region
