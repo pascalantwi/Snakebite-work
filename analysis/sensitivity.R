@@ -66,13 +66,13 @@ fitm <- function(f, dd, family, zi) {
 ok <- function(m) m$fit$convergence == 0 && isTRUE(m$sdr$pdHess)
 run <- function(j) {
   t0 <- Sys.time()
-  d <- d0; if (!is.null(j$regime)) d$regime <- j$regime
-  if (!is.null(j$pop)) d$population <- d[[j$pop]]
-  extra <- if (is.null(j$keep)) rep(TRUE, nrow(d)) else j$keep
-  fam <- if (is.null(j$family)) nbinom2 else j$family; zi <- if (is.null(j$zi)) ~0 else j$zi
-  re <- paste("+ offset(log(population)) +", if (is.null(j$re)) RE0 else j$re)
-  seas <- SEAS[[if (is.null(j$seas)) "month" else j$seas]]
-  L <- if (is.null(j$L)) 9 else j$L; dfv <- if (is.null(j$dfv)) 2 else j$dfv; dfl <- if (is.null(j$dfl)) 2 else j$dfl
+  d <- d0; if (!is.null(j[["regime"]])) d$regime <- j[["regime"]]
+  if (!is.null(j[["pop"]])) d$population <- d[[j[["pop"]]]]
+  extra <- if (is.null(j[["keep"]])) rep(TRUE, nrow(d)) else j[["keep"]]
+  fam <- if (is.null(j[["family"]])) nbinom2 else j[["family"]]; zi <- if (is.null(j[["zi"]])) ~0 else j[["zi"]]
+  re <- paste("+ offset(log(population)) +", if (is.null(j[["re"]])) RE0 else j[["re"]])
+  seas <- SEAS[[if (is.null(j[["seas"]])) "month" else j[["seas"]]]]
+  L <- if (is.null(j[["L"]])) 9 else j[["L"]]; dfv <- if (is.null(j[["dfv"]])) 2 else j[["dfv"]]; dfl <- if (is.null(j[["dfl"]])) 2 else j[["dfl"]]
   # selected model
   cb <- cbs(d, MAIN, L, dfv, dfl); rows <- d$include_main == 1 & d$t > L & extra
   dd <- attach_cb(d, cb, rows)
@@ -83,10 +83,10 @@ run <- function(j) {
     p <- crosspred(cb[[paste0("cb_", v)]], coef = b[i], vcov = V[i, i], model.link = "log", at = Q[[v]][["90%"]], cen = Q[[v]][["50%"]])
     tibble(variable = v, cumRR = p$allRRfit, lo = p$allRRlow, hi = p$allRRhigh)
   }))
-  out <- rr |> mutate(id = j$id, group = j$group, label = j$label, n = nrow(dd), cases = sum(dd$cases_total), converged = ok(m))
+  out <- rr |> mutate(id = j[["id"]], group = j[["group"]], label = j[["label"]], n = nrow(dd), cases = sum(dd$cases_total), converged = ok(m))
   # seasonality models
-  if (!isFALSE(j$sclim)) {
-    if (is.null(j$L)) { cbp <- cbs(d, VARS, 6, 3, NA, knots = TRUE); Lp <- 6 } else { cbp <- cbs(d, VARS, L, dfv, dfl); Lp <- L }
+  if (!isFALSE(j[["sclim"]])) {
+    if (is.null(j[["L"]])) { cbp <- cbs(d, VARS, 6, 3, NA, knots = TRUE); Lp <- 6 } else { cbp <- cbs(d, VARS, L, dfv, dfl); Lp <- L }
     rp <- d$include_main == 1 & d$t > Lp & extra; dp <- attach_cb(d, cbp, rp)
     f0 <- paste("cases_total ~ year_f + regime + pov_z", re)
     f1 <- paste("cases_total ~ year_f + pov_z +", seas, re)
@@ -96,10 +96,10 @@ run <- function(j) {
     out <- out |> mutate(S_clim = (D[1] - D[3]) / (D[1] - D[2]), n_seas = nrow(dp), converged_seas = all(sapply(ms, ok)))
   }
   res <- list(summary = out)
-  if (isTRUE(j$diag)) res$diag <- list(rows = which(rows), mu = as.numeric(fitted(m)), theta = sigma(m), y = dd$cases_total,
+  if (isTRUE(j[["diag"]])) res$diag <- list(rows = which(rows), mu = as.numeric(fitted(m)), theta = sigma(m), y = dd$cases_total,
                                        district = as.character(dd$district), t = dd$t)
-  if (!is.null(j$extra)) res$summary <- res$summary |> mutate(extra = j$extra(m))
-  cat(format(Sys.time()), j$id, "done in", round(as.numeric(difftime(Sys.time(), t0, units = "mins")), 1), "min\n")
+  if (!is.null(j[["extra"]])) res$summary <- res$summary |> mutate(extra = j[["extra"]](m))
+  cat(format(Sys.time()), j[["id"]], "done in", round(as.numeric(difftime(Sys.time(), t0, units = "mins")), 1), "min\n")
   res
 }
 
@@ -129,12 +129,19 @@ jobs <- list(
        regime = factor(ifelse(d0$regime == "transition", "bimodal", as.character(d0$regime)))),
   list(id = "ar1", group = "Dependence", label = "First-order autoregressive district-month effect", re = paste(RE0, "+ ar1(tf + 0 | district)"), diag = TRUE),
   list(id = "spatial", group = "Dependence", label = "Spatially structured district effect", re = paste(RE0, "+ exp(pos + 0 | sp)"), diag = TRUE, extra = spatial_share))
+# ONLY=id1,id2 reruns the named alternatives and replaces their rows in an existing sensitivity_summary.csv
+only <- strsplit(Sys.getenv("ONLY"), ",")[[1]]
+if (length(only)) jobs <- Filter(function(j) j[["id"]] %in% only, jobs)
 ord <- order(sapply(jobs, function(j) j$id %in% c("spatial", "ar1", "hurdle")), decreasing = TRUE)   # slow ones first
 res <- mclapply(jobs[ord], function(j) tryCatch(run(j), error = function(e) { cat(j$id, "FAILED:", conditionMessage(e), "\n"); NULL }),
                 mc.cores = 4, mc.preschedule = FALSE)
 names(res) <- sapply(jobs[ord], `[[`, "id")
 summ <- bind_rows(lapply(res, `[[`, "summary"))
 print(summ |> select(id, variable, cumRR, lo, hi, S_clim, n, converged, converged_seas), n = 120, width = 200)
+if (length(only)) {
+  old <- read_csv("analysis/output/sensitivity_summary.csv", show_col_types = FALSE)
+  write_csv(bind_rows(filter(old, !id %in% only), summ), "analysis/output/sensitivity_summary.csv"); cat("done\n"); quit(save = "no")
+}
 write_csv(summ, "analysis/output/sensitivity_summary.csv")
 
 # ---- standard errors clustered by grid cell (fixed-district NB model, theta from the selected model) ------------------
