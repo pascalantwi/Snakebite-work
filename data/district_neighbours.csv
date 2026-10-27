@@ -1,0 +1,1441 @@
+district,neighbour
+ablekuma central,ablekuma north
+ablekuma central,ablekuma west
+ablekuma central,accra
+ablekuma central,korle klottey
+ablekuma north,ablekuma central
+ablekuma north,ablekuma west
+ablekuma north,accra
+ablekuma north,ayawaso central
+ablekuma north,ayawaso north
+ablekuma north,ayawaso west
+ablekuma north,ga central
+ablekuma north,ga west
+ablekuma north,korle klottey
+ablekuma north,okai koi north
+ablekuma north,weija gbawe
+ablekuma west,ablekuma central
+ablekuma west,ablekuma north
+ablekuma west,accra
+ablekuma west,weija gbawe
+abuakwa north,abuakwa south
+abuakwa north,fanteakwa south
+abuakwa north,new juaben north
+abuakwa north,yilo krobo
+abuakwa south,abuakwa north
+abuakwa south,atiwa west
+abuakwa south,ayensuano
+abuakwa south,fanteakwa south
+abuakwa south,new juaben north
+abuakwa south,suhum
+abura asebu kwamankese,ajumako enyan essiam
+abura asebu kwamankese,assin south
+abura asebu kwamankese,cape coast
+abura asebu kwamankese,mfantseman
+abura asebu kwamankese,twifo hemang lower denkyira
+accra,ablekuma central
+accra,ablekuma north
+accra,ablekuma west
+accra,korle klottey
+achiase,agona west
+achiase,asene manso akroso
+achiase,asikuma odoben brakwa
+achiase,assin north
+achiase,birim south
+ada east,ada west
+ada east,anloga
+ada east,south tongu
+ada west,ada east
+ada west,ningo prampram
+ada west,north tongu
+ada west,shai osudoku
+ada west,south tongu
+adaklu,agortime ziope
+adaklu,central tongu
+adaklu,ho
+adaklu,ho west
+adansi akrofuom,adansi asokwa
+adansi akrofuom,adansi south
+adansi akrofuom,amansie central
+adansi akrofuom,assin north
+adansi akrofuom,obuasi
+adansi akrofuom,obuasi east
+adansi akrofuom,upper denkyira east
+adansi akrofuom,upper denkyira west
+adansi asokwa,adansi akrofuom
+adansi asokwa,adansi north
+adansi asokwa,adansi south
+adansi asokwa,asante akim south
+adansi asokwa,bosome freho
+adansi asokwa,obuasi east
+adansi north,adansi asokwa
+adansi north,amansie central
+adansi north,bekwai
+adansi north,bosome freho
+adansi north,obuasi
+adansi north,obuasi east
+adansi south,adansi akrofuom
+adansi south,adansi asokwa
+adansi south,akyemansa
+adansi south,assin north
+adansi south,birim south
+adansi south,bosome freho
+adentan,ayawaso west
+adentan,kpone katamanso
+adentan,krowor
+adentan,la nkwantanang madina
+adentan,ledzokuku
+adentan,tema west
+afadjato south,guan
+afadjato south,ho west
+afadjato south,hohoe
+afadjato south,kpando
+afadjato south,north dayi
+afadjato south,south dayi
+afigya kwabre north,afigya kwabre south
+afigya kwabre north,ejura sekyedumase
+afigya kwabre north,offinso
+afigya kwabre north,sekyere south
+afigya kwabre south,afigya kwabre north
+afigya kwabre south,atwima nwabiagya north
+afigya kwabre south,kwabre east
+afigya kwabre south,offinso
+afigya kwabre south,old tafo
+afigya kwabre south,sekyere south
+afigya kwabre south,suame
+agona east,agona west
+agona east,asene manso akroso
+agona east,awutu senya
+agona east,gomoa east
+agona east,upper west akim
+agona west,achiase
+agona west,agona east
+agona west,asene manso akroso
+agona west,asikuma odoben brakwa
+agona west,gomoa east
+agona west,gomoa west
+agortime ziope,adaklu
+agortime ziope,akatsi north
+agortime ziope,akatsi south
+agortime ziope,central tongu
+agortime ziope,ho
+ahafo ano north,ahafo ano south west
+ahafo ano north,asutifi south
+ahafo ano north,tano north
+ahafo ano north,tano south
+ahafo ano south east,ahafo ano south west
+ahafo ano south east,atwima mponua
+ahafo ano south east,atwima nwabiagya
+ahafo ano south east,atwima nwabiagya north
+ahafo ano south east,offinso
+ahafo ano south east,offinso north
+ahafo ano south east,tano south
+ahafo ano south west,ahafo ano north
+ahafo ano south west,ahafo ano south east
+ahafo ano south west,asutifi south
+ahafo ano south west,atwima mponua
+ahafo ano south west,offinso north
+ahafo ano south west,tano south
+ahanta west,effia kwesimintsim
+ahanta west,mpohor
+ahanta west,nzema east
+ahanta west,sekondi takoradi
+ahanta west,tarkwa nsuaem
+ajumako enyan essiam,abura asebu kwamankese
+ajumako enyan essiam,asikuma odoben brakwa
+ajumako enyan essiam,assin south
+ajumako enyan essiam,ekumfi
+ajumako enyan essiam,gomoa west
+ajumako enyan essiam,mfantseman
+akatsi north,agortime ziope
+akatsi north,akatsi south
+akatsi north,ketu north
+akatsi south,agortime ziope
+akatsi south,akatsi north
+akatsi south,central tongu
+akatsi south,keta
+akatsi south,ketu north
+akatsi south,south tongu
+akwapim north,akwapim south
+akwapim north,ayensuano
+akwapim north,kpone katamanso
+akwapim north,new juaben south
+akwapim north,okere
+akwapim north,shai osudoku
+akwapim north,suhum
+akwapim south,akwapim north
+akwapim south,ayensuano
+akwapim south,ga east
+akwapim south,ga north
+akwapim south,kpone katamanso
+akwapim south,la nkwantanang madina
+akwapim south,nsawam adoagyiri
+akyemansa,adansi south
+akyemansa,asante akim south
+akyemansa,birim central
+akyemansa,birim north
+akyemansa,birim south
+akyemansa,bosome freho
+akyemansa,denkyembour
+akyemansa,kwaebibirem
+amansie central,adansi akrofuom
+amansie central,adansi north
+amansie central,amansie south
+amansie central,amansie west
+amansie central,bekwai
+amansie central,obuasi
+amansie central,upper denkyira west
+amansie south,amansie central
+amansie south,amansie west
+amansie south,atwima mponua
+amansie south,bibiani anhwiaso bekwai
+amansie south,upper denkyira west
+amansie west,amansie central
+amansie west,amansie south
+amansie west,atwima kwanwoma
+amansie west,atwima mponua
+amansie west,atwima nwabiagya
+amansie west,bekwai
+anloga,ada east
+anloga,keta
+anloga,south tongu
+aowin,jomoro
+aowin,sefwi akontombra
+aowin,suaman
+aowin,wassa amenfi west
+asante akim central,asante akim north
+asante akim central,asante akim south
+asante akim central,bosome freho
+asante akim central,ejisu
+asante akim central,juaben
+asante akim central,sekyere east
+asante akim north,asante akim central
+asante akim north,asante akim south
+asante akim north,kwahu afram plains south
+asante akim north,kwahu east
+asante akim north,sekyere afram plains
+asante akim north,sekyere east
+asante akim north,sekyere kumawu
+asante akim south,adansi asokwa
+asante akim south,akyemansa
+asante akim south,asante akim central
+asante akim south,asante akim north
+asante akim south,birim north
+asante akim south,bosome freho
+asante akim south,kwahu east
+asante akim south,kwahu west
+asante mampong,ejura sekyedumase
+asante mampong,sekyere central
+asante mampong,sekyere kumawu
+asante mampong,sekyere south
+asene manso akroso,achiase
+asene manso akroso,agona east
+asene manso akroso,agona west
+asene manso akroso,birim central
+asene manso akroso,birim south
+asene manso akroso,denkyembour
+asene manso akroso,upper west akim
+asene manso akroso,west akim
+ashaiman,kpone katamanso
+ashaiman,tema
+ashaiman,tema west
+asikuma odoben brakwa,achiase
+asikuma odoben brakwa,agona west
+asikuma odoben brakwa,ajumako enyan essiam
+asikuma odoben brakwa,assin foso
+asikuma odoben brakwa,assin north
+asikuma odoben brakwa,assin south
+asikuma odoben brakwa,gomoa west
+asokore mampong,ejisu
+asokore mampong,kumasi
+asokore mampong,kwabre east
+asokore mampong,oforikrom
+asokore mampong,old tafo
+asokwa,atwima kwanwoma
+asokwa,bosomtwe
+asokwa,kumasi
+asokwa,kwadaso
+asokwa,oforikrom
+assin foso,asikuma odoben brakwa
+assin foso,assin north
+assin foso,assin south
+assin foso,twifo ati morkwa
+assin north,achiase
+assin north,adansi akrofuom
+assin north,adansi south
+assin north,asikuma odoben brakwa
+assin north,assin foso
+assin north,birim south
+assin north,twifo ati morkwa
+assin north,upper denkyira east
+assin south,abura asebu kwamankese
+assin south,ajumako enyan essiam
+assin south,asikuma odoben brakwa
+assin south,assin foso
+assin south,twifo ati morkwa
+assin south,twifo hemang lower denkyira
+asunafo north,asunafo south
+asunafo north,asutifi north
+asunafo north,asutifi south
+asunafo north,bia east
+asunafo north,dormaa
+asunafo north,dormaa west
+asunafo north,juaboso
+asunafo south,asunafo north
+asunafo south,asutifi south
+asunafo south,atwima mponua
+asunafo south,juaboso
+asunafo south,sefwi wiawso
+asuogyaman,ho west
+asuogyaman,kwahu afram plains north
+asuogyaman,lower manya krobo
+asuogyaman,north tongu
+asuogyaman,south dayi
+asuogyaman,upper manya krobo
+asutifi north,asunafo north
+asutifi north,asutifi south
+asutifi north,dormaa
+asutifi north,dormaa east
+asutifi north,sunyani
+asutifi north,tano north
+asutifi south,ahafo ano north
+asutifi south,ahafo ano south west
+asutifi south,asunafo north
+asutifi south,asunafo south
+asutifi south,asutifi north
+asutifi south,atwima mponua
+asutifi south,tano north
+atebubu amanten,ejura sekyedumase
+atebubu amanten,nkoranza north
+atebubu amanten,pru
+atebubu amanten,pru west
+atebubu amanten,sekyere afram plains
+atebubu amanten,sekyere central
+atebubu amanten,sene west
+atiwa east,atiwa west
+atiwa east,birim north
+atiwa east,fanteakwa north
+atiwa east,fanteakwa south
+atiwa east,kwaebibirem
+atiwa east,kwahu south
+atiwa east,kwahu west
+atiwa west,abuakwa south
+atiwa west,atiwa east
+atiwa west,ayensuano
+atiwa west,denkyembour
+atiwa west,fanteakwa south
+atiwa west,kwaebibirem
+atiwa west,west akim
+atwima kwanwoma,amansie west
+atwima kwanwoma,asokwa
+atwima kwanwoma,atwima nwabiagya
+atwima kwanwoma,bekwai
+atwima kwanwoma,bosomtwe
+atwima kwanwoma,kwadaso
+atwima mponua,ahafo ano south east
+atwima mponua,ahafo ano south west
+atwima mponua,amansie south
+atwima mponua,amansie west
+atwima mponua,asunafo south
+atwima mponua,asutifi south
+atwima mponua,atwima nwabiagya
+atwima mponua,bibiani anhwiaso bekwai
+atwima mponua,sefwi wiawso
+atwima nwabiagya,ahafo ano south east
+atwima nwabiagya,amansie west
+atwima nwabiagya,atwima kwanwoma
+atwima nwabiagya,atwima mponua
+atwima nwabiagya,atwima nwabiagya north
+atwima nwabiagya,kwadaso
+atwima nwabiagya,suame
+atwima nwabiagya north,afigya kwabre south
+atwima nwabiagya north,ahafo ano south east
+atwima nwabiagya north,atwima nwabiagya
+atwima nwabiagya north,offinso
+atwima nwabiagya north,suame
+awutu senya,agona east
+awutu senya,awutu senya east
+awutu senya,ga south
+awutu senya,gomoa east
+awutu senya,upper west akim
+awutu senya,weija gbawe
+awutu senya east,awutu senya
+awutu senya east,efutu
+awutu senya east,ga south
+awutu senya east,gomoa east
+awutu senya east,weija gbawe
+ayawaso central,ablekuma north
+ayawaso central,ayawaso east
+ayawaso central,ayawaso north
+ayawaso central,korle klottey
+ayawaso east,ayawaso central
+ayawaso east,ayawaso north
+ayawaso east,ayawaso west
+ayawaso east,korle klottey
+ayawaso east,la dade kotopon
+ayawaso north,ablekuma north
+ayawaso north,ayawaso central
+ayawaso north,ayawaso east
+ayawaso north,ayawaso west
+ayawaso north,korle klottey
+ayawaso north,okai koi north
+ayawaso west,ablekuma north
+ayawaso west,adentan
+ayawaso west,ayawaso east
+ayawaso west,ayawaso north
+ayawaso west,ga east
+ayawaso west,la dade kotopon
+ayawaso west,la nkwantanang madina
+ayawaso west,ledzokuku
+ayawaso west,okai koi north
+ayensuano,abuakwa south
+ayensuano,akwapim north
+ayensuano,akwapim south
+ayensuano,atiwa west
+ayensuano,nsawam adoagyiri
+ayensuano,suhum
+ayensuano,upper west akim
+ayensuano,west akim
+banda,bole
+banda,jaman north
+banda,kintampo south
+banda,tain
+banda,wenchi
+bawku,binduri
+bawku,garu
+bawku,pusiga
+bawku,tempane
+bawku west,binduri
+bawku west,east mamprusi
+bawku west,garu
+bawku west,nabdam
+bawku west,talensi
+bekwai,adansi north
+bekwai,amansie central
+bekwai,amansie west
+bekwai,atwima kwanwoma
+bekwai,bosome freho
+bekwai,bosomtwe
+berekum,berekum west
+berekum,dormaa east
+berekum,jaman north
+berekum,jaman south
+berekum,sunyani west
+berekum,tain
+berekum west,berekum
+berekum west,dormaa
+berekum west,dormaa east
+berekum west,jaman south
+bia east,asunafo north
+bia east,bia west
+bia east,dormaa west
+bia east,juaboso
+bia west,bia east
+bia west,juaboso
+biakoye,hohoe
+biakoye,jasikan
+biakoye,kadjebi
+biakoye,kpando
+biakoye,krachi east
+biakoye,kwahu afram plains north
+biakoye,sene east
+bibiani anhwiaso bekwai,amansie south
+bibiani anhwiaso bekwai,atwima mponua
+bibiani anhwiaso bekwai,sefwi wiawso
+bibiani anhwiaso bekwai,upper denkyira west
+bibiani anhwiaso bekwai,wassa amenfi central
+bibiani anhwiaso bekwai,wassa amenfi east
+binduri,bawku
+binduri,bawku west
+binduri,garu
+birim central,akyemansa
+birim central,asene manso akroso
+birim central,birim south
+birim central,denkyembour
+birim north,akyemansa
+birim north,asante akim south
+birim north,atiwa east
+birim north,kwaebibirem
+birim north,kwahu west
+birim south,achiase
+birim south,adansi south
+birim south,akyemansa
+birim south,asene manso akroso
+birim south,assin north
+birim south,birim central
+bodi,juaboso
+bodi,sefwi akontombra
+bodi,sefwi wiawso
+bodi,suaman
+bole,banda
+bole,central gonja
+bole,kintampo north
+bole,kintampo south
+bole,sawla tuna kalba
+bole,west gonja
+bolgatanga,bolgatanga east
+bolgatanga,bongo
+bolgatanga,kasena nankana
+bolgatanga,kasena nankana west
+bolgatanga,talensi
+bolgatanga east,bolgatanga
+bolgatanga east,bongo
+bolgatanga east,nabdam
+bolgatanga east,talensi
+bongo,bolgatanga
+bongo,bolgatanga east
+bongo,kasena nankana west
+bongo,nabdam
+bosome freho,adansi asokwa
+bosome freho,adansi north
+bosome freho,adansi south
+bosome freho,akyemansa
+bosome freho,asante akim central
+bosome freho,asante akim south
+bosome freho,bekwai
+bosome freho,bosomtwe
+bosome freho,ejisu
+bosomtwe,asokwa
+bosomtwe,atwima kwanwoma
+bosomtwe,bekwai
+bosomtwe,bosome freho
+bosomtwe,ejisu
+bosomtwe,kwadaso
+bosomtwe,oforikrom
+builsa north,builsa south
+builsa north,kasena nankana
+builsa north,kasena nankana west
+builsa south,builsa north
+builsa south,kasena nankana
+builsa south,kasena nankana west
+builsa south,mamprugu moagduri
+builsa south,sissala east
+builsa south,west mamprusi
+bunkpurugu nakpanduri,chereponi
+bunkpurugu nakpanduri,east mamprusi
+bunkpurugu nakpanduri,garu
+bunkpurugu nakpanduri,gushiegu
+bunkpurugu nakpanduri,yunyoo nasuan
+cape coast,abura asebu kwamankese
+cape coast,komenda edna eguafo abirem
+cape coast,twifo hemang lower denkyira
+central gonja,bole
+central gonja,east gonja
+central gonja,kintampo north
+central gonja,north east gonja
+central gonja,north gonja
+central gonja,tamale
+central gonja,tolon
+central gonja,west gonja
+central tongu,adaklu
+central tongu,agortime ziope
+central tongu,akatsi south
+central tongu,ho west
+central tongu,north tongu
+central tongu,south tongu
+chereponi,bunkpurugu nakpanduri
+chereponi,gushiegu
+chereponi,saboba
+daffiama bussie issa,jirapa
+daffiama bussie issa,nadowli kaleo
+daffiama bussie issa,sissala east
+daffiama bussie issa,sissala west
+daffiama bussie issa,wa
+daffiama bussie issa,wa east
+denkyembour,akyemansa
+denkyembour,asene manso akroso
+denkyembour,atiwa west
+denkyembour,birim central
+denkyembour,kwaebibirem
+denkyembour,west akim
+dormaa,asunafo north
+dormaa,asutifi north
+dormaa,berekum west
+dormaa,dormaa east
+dormaa,dormaa west
+dormaa,jaman south
+dormaa east,asutifi north
+dormaa east,berekum
+dormaa east,berekum west
+dormaa east,dormaa
+dormaa east,sunyani
+dormaa east,sunyani west
+dormaa west,asunafo north
+dormaa west,bia east
+dormaa west,dormaa
+east gonja,central gonja
+east gonja,kintampo north
+east gonja,north east gonja
+east gonja,pru
+east gonja,pru west
+east mamprusi,bawku west
+east mamprusi,bunkpurugu nakpanduri
+east mamprusi,garu
+east mamprusi,gushiegu
+east mamprusi,karaga
+east mamprusi,talensi
+east mamprusi,west mamprusi
+east mamprusi,yunyoo nasuan
+effia kwesimintsim,ahanta west
+effia kwesimintsim,mpohor
+effia kwesimintsim,sekondi takoradi
+efutu,awutu senya east
+efutu,gomoa central
+efutu,gomoa east
+ejisu,asante akim central
+ejisu,asokore mampong
+ejisu,bosome freho
+ejisu,bosomtwe
+ejisu,juaben
+ejisu,kwabre east
+ejisu,oforikrom
+ejura sekyedumase,afigya kwabre north
+ejura sekyedumase,asante mampong
+ejura sekyedumase,atebubu amanten
+ejura sekyedumase,nkoranza north
+ejura sekyedumase,nkoranza south
+ejura sekyedumase,offinso
+ejura sekyedumase,offinso north
+ejura sekyedumase,sekyere central
+ejura sekyedumase,sekyere south
+ekumfi,ajumako enyan essiam
+ekumfi,gomoa west
+ekumfi,mfantseman
+ellembelle,jomoro
+ellembelle,nzema east
+ellembelle,wassa amenfi central
+ellembelle,wassa amenfi west
+fanteakwa north,atiwa east
+fanteakwa north,fanteakwa south
+fanteakwa north,kwahu afram plains south
+fanteakwa north,kwahu south
+fanteakwa north,upper manya krobo
+fanteakwa south,abuakwa north
+fanteakwa south,abuakwa south
+fanteakwa south,atiwa east
+fanteakwa south,atiwa west
+fanteakwa south,fanteakwa north
+fanteakwa south,upper manya krobo
+fanteakwa south,yilo krobo
+ga central,ablekuma north
+ga central,ga south
+ga central,ga west
+ga central,okai koi north
+ga central,weija gbawe
+ga east,akwapim south
+ga east,ayawaso west
+ga east,ga north
+ga east,la nkwantanang madina
+ga east,okai koi north
+ga north,akwapim south
+ga north,ga east
+ga north,ga west
+ga north,nsawam adoagyiri
+ga north,okai koi north
+ga south,awutu senya
+ga south,awutu senya east
+ga south,ga central
+ga south,ga west
+ga south,upper west akim
+ga south,weija gbawe
+ga west,ablekuma north
+ga west,ga central
+ga west,ga north
+ga west,ga south
+ga west,nsawam adoagyiri
+ga west,okai koi north
+ga west,upper west akim
+ga west,weija gbawe
+garu,bawku
+garu,bawku west
+garu,binduri
+garu,bunkpurugu nakpanduri
+garu,east mamprusi
+garu,tempane
+gomoa central,efutu
+gomoa central,gomoa east
+gomoa central,gomoa west
+gomoa east,agona east
+gomoa east,agona west
+gomoa east,awutu senya
+gomoa east,awutu senya east
+gomoa east,efutu
+gomoa east,gomoa central
+gomoa east,gomoa west
+gomoa east,weija gbawe
+gomoa west,agona west
+gomoa west,ajumako enyan essiam
+gomoa west,asikuma odoben brakwa
+gomoa west,ekumfi
+gomoa west,gomoa central
+gomoa west,gomoa east
+guan,afadjato south
+guan,ho west
+guan,hohoe
+guan,kpando
+guan,north dayi
+guan,south dayi
+gushiegu,bunkpurugu nakpanduri
+gushiegu,chereponi
+gushiegu,east mamprusi
+gushiegu,karaga
+gushiegu,mion
+gushiegu,saboba
+gushiegu,yunyoo nasuan
+ho,adaklu
+ho,agortime ziope
+ho,ho west
+ho west,adaklu
+ho west,afadjato south
+ho west,asuogyaman
+ho west,central tongu
+ho west,guan
+ho west,ho
+ho west,north tongu
+ho west,south dayi
+hohoe,afadjato south
+hohoe,biakoye
+hohoe,guan
+hohoe,jasikan
+hohoe,kpando
+jaman north,banda
+jaman north,berekum
+jaman north,jaman south
+jaman north,tain
+jaman south,berekum
+jaman south,berekum west
+jaman south,dormaa
+jaman south,jaman north
+jasikan,biakoye
+jasikan,hohoe
+jasikan,kadjebi
+jirapa,daffiama bussie issa
+jirapa,lambussie
+jirapa,lawra
+jirapa,nadowli kaleo
+jirapa,sissala west
+jomoro,aowin
+jomoro,ellembelle
+jomoro,wassa amenfi west
+juaben,asante akim central
+juaben,ejisu
+juaben,kwabre east
+juaben,sekyere east
+juaben,sekyere south
+juaboso,asunafo north
+juaboso,asunafo south
+juaboso,bia east
+juaboso,bia west
+juaboso,bodi
+juaboso,sefwi wiawso
+juaboso,suaman
+kadjebi,biakoye
+kadjebi,jasikan
+kadjebi,krachi east
+kadjebi,nkwanta south
+karaga,east mamprusi
+karaga,gushiegu
+karaga,mion
+karaga,nanton
+karaga,savelugu
+karaga,west mamprusi
+kasena nankana,bolgatanga
+kasena nankana,builsa north
+kasena nankana,builsa south
+kasena nankana,kasena nankana west
+kasena nankana,talensi
+kasena nankana,west mamprusi
+kasena nankana west,bolgatanga
+kasena nankana west,bongo
+kasena nankana west,builsa north
+kasena nankana west,builsa south
+kasena nankana west,kasena nankana
+kasena nankana west,sissala east
+keta,akatsi south
+keta,anloga
+keta,ketu north
+keta,ketu south
+keta,south tongu
+ketu north,akatsi north
+ketu north,akatsi south
+ketu north,keta
+ketu north,ketu south
+ketu south,keta
+ketu south,ketu north
+kintampo north,bole
+kintampo north,central gonja
+kintampo north,east gonja
+kintampo north,kintampo south
+kintampo north,pru west
+kintampo south,banda
+kintampo south,bole
+kintampo south,kintampo north
+kintampo south,nkoranza north
+kintampo south,pru west
+kintampo south,techiman north
+kintampo south,wenchi
+komenda edna eguafo abirem,cape coast
+komenda edna eguafo abirem,shama
+komenda edna eguafo abirem,twifo hemang lower denkyira
+komenda edna eguafo abirem,wassa east
+korle klottey,ablekuma central
+korle klottey,ablekuma north
+korle klottey,accra
+korle klottey,ayawaso central
+korle klottey,ayawaso east
+korle klottey,ayawaso north
+korle klottey,la dade kotopon
+kpandai,krachi nchumuru
+kpandai,nanumba south
+kpandai,nkwanta north
+kpandai,nkwanta south
+kpandai,north east gonja
+kpando,afadjato south
+kpando,biakoye
+kpando,guan
+kpando,hohoe
+kpando,kwahu afram plains north
+kpando,north dayi
+kpone katamanso,adentan
+kpone katamanso,akwapim north
+kpone katamanso,akwapim south
+kpone katamanso,ashaiman
+kpone katamanso,la nkwantanang madina
+kpone katamanso,ningo prampram
+kpone katamanso,shai osudoku
+kpone katamanso,tema
+kpone katamanso,tema west
+krachi east,biakoye
+krachi east,kadjebi
+krachi east,krachi nchumuru
+krachi east,krachi west
+krachi east,nkwanta south
+krachi east,sene east
+krachi nchumuru,kpandai
+krachi nchumuru,krachi east
+krachi nchumuru,krachi west
+krachi nchumuru,nkwanta south
+krachi nchumuru,north east gonja
+krachi nchumuru,sene east
+krachi west,krachi east
+krachi west,krachi nchumuru
+krachi west,sene east
+krowor,adentan
+krowor,ledzokuku
+krowor,tema west
+kumasi,asokore mampong
+kumasi,asokwa
+kumasi,kwadaso
+kumasi,oforikrom
+kumasi,old tafo
+kumasi,suame
+kumbungu,mamprugu moagduri
+kumbungu,north gonja
+kumbungu,sagnarigu
+kumbungu,savelugu
+kumbungu,tolon
+kumbungu,west mamprusi
+kwabre east,afigya kwabre south
+kwabre east,asokore mampong
+kwabre east,ejisu
+kwabre east,juaben
+kwabre east,old tafo
+kwabre east,sekyere south
+kwadaso,asokwa
+kwadaso,atwima kwanwoma
+kwadaso,atwima nwabiagya
+kwadaso,bosomtwe
+kwadaso,kumasi
+kwadaso,suame
+kwaebibirem,akyemansa
+kwaebibirem,atiwa east
+kwaebibirem,atiwa west
+kwaebibirem,birim north
+kwaebibirem,denkyembour
+kwahu afram plains north,asuogyaman
+kwahu afram plains north,biakoye
+kwahu afram plains north,kpando
+kwahu afram plains north,kwahu afram plains south
+kwahu afram plains north,north dayi
+kwahu afram plains north,sene east
+kwahu afram plains north,south dayi
+kwahu afram plains north,upper manya krobo
+kwahu afram plains south,asante akim north
+kwahu afram plains south,fanteakwa north
+kwahu afram plains south,kwahu afram plains north
+kwahu afram plains south,kwahu east
+kwahu afram plains south,kwahu south
+kwahu afram plains south,sekyere afram plains
+kwahu afram plains south,sene east
+kwahu afram plains south,upper manya krobo
+kwahu east,asante akim north
+kwahu east,asante akim south
+kwahu east,kwahu afram plains south
+kwahu east,kwahu south
+kwahu east,kwahu west
+kwahu south,atiwa east
+kwahu south,fanteakwa north
+kwahu south,kwahu afram plains south
+kwahu south,kwahu east
+kwahu south,kwahu west
+kwahu west,asante akim south
+kwahu west,atiwa east
+kwahu west,birim north
+kwahu west,kwahu east
+kwahu west,kwahu south
+la dade kotopon,ayawaso east
+la dade kotopon,ayawaso west
+la dade kotopon,korle klottey
+la dade kotopon,ledzokuku
+la nkwantanang madina,adentan
+la nkwantanang madina,akwapim south
+la nkwantanang madina,ayawaso west
+la nkwantanang madina,ga east
+la nkwantanang madina,kpone katamanso
+lambussie,jirapa
+lambussie,lawra
+lambussie,nandom
+lambussie,sissala west
+lawra,jirapa
+lawra,lambussie
+lawra,nandom
+ledzokuku,adentan
+ledzokuku,ayawaso west
+ledzokuku,krowor
+ledzokuku,la dade kotopon
+ledzokuku,tema west
+lower manya krobo,asuogyaman
+lower manya krobo,north tongu
+lower manya krobo,shai osudoku
+lower manya krobo,upper manya krobo
+lower manya krobo,yilo krobo
+mamprugu moagduri,builsa south
+mamprugu moagduri,kumbungu
+mamprugu moagduri,north gonja
+mamprugu moagduri,sissala east
+mamprugu moagduri,wa east
+mamprugu moagduri,west mamprusi
+mfantseman,abura asebu kwamankese
+mfantseman,ajumako enyan essiam
+mfantseman,ekumfi
+mion,gushiegu
+mion,karaga
+mion,nanton
+mion,nanumba north
+mion,north east gonja
+mion,saboba
+mion,tamale
+mion,yendi
+mion,zabzugu
+mpohor,ahanta west
+mpohor,effia kwesimintsim
+mpohor,sekondi takoradi
+mpohor,shama
+mpohor,tarkwa nsuaem
+mpohor,wassa east
+nabdam,bawku west
+nabdam,bolgatanga east
+nabdam,bongo
+nabdam,talensi
+nadowli kaleo,daffiama bussie issa
+nadowli kaleo,jirapa
+nadowli kaleo,wa
+nadowli kaleo,wa west
+nandom,lambussie
+nandom,lawra
+nanton,karaga
+nanton,mion
+nanton,sagnarigu
+nanton,savelugu
+nanton,tamale
+nanumba north,mion
+nanumba north,nanumba south
+nanumba north,north east gonja
+nanumba north,yendi
+nanumba north,zabzugu
+nanumba south,kpandai
+nanumba south,nanumba north
+nanumba south,nkwanta north
+nanumba south,north east gonja
+nanumba south,tatale sangule
+nanumba south,zabzugu
+new juaben north,abuakwa north
+new juaben north,abuakwa south
+new juaben north,new juaben south
+new juaben north,suhum
+new juaben north,yilo krobo
+new juaben south,akwapim north
+new juaben south,new juaben north
+new juaben south,okere
+new juaben south,suhum
+new juaben south,yilo krobo
+ningo prampram,ada west
+ningo prampram,kpone katamanso
+ningo prampram,shai osudoku
+nkoranza north,atebubu amanten
+nkoranza north,ejura sekyedumase
+nkoranza north,kintampo south
+nkoranza north,nkoranza south
+nkoranza north,pru west
+nkoranza north,techiman
+nkoranza north,techiman north
+nkoranza south,ejura sekyedumase
+nkoranza south,nkoranza north
+nkoranza south,offinso north
+nkoranza south,techiman
+nkwanta north,kpandai
+nkwanta north,nanumba south
+nkwanta north,nkwanta south
+nkwanta south,kadjebi
+nkwanta south,kpandai
+nkwanta south,krachi east
+nkwanta south,krachi nchumuru
+nkwanta south,nkwanta north
+north dayi,afadjato south
+north dayi,guan
+north dayi,kpando
+north dayi,kwahu afram plains north
+north dayi,south dayi
+north east gonja,central gonja
+north east gonja,east gonja
+north east gonja,kpandai
+north east gonja,krachi nchumuru
+north east gonja,mion
+north east gonja,nanumba north
+north east gonja,nanumba south
+north east gonja,pru
+north east gonja,sene east
+north east gonja,sene west
+north east gonja,tamale
+north gonja,central gonja
+north gonja,kumbungu
+north gonja,mamprugu moagduri
+north gonja,sawla tuna kalba
+north gonja,tolon
+north gonja,wa east
+north gonja,west gonja
+north tongu,ada west
+north tongu,asuogyaman
+north tongu,central tongu
+north tongu,ho west
+north tongu,lower manya krobo
+north tongu,shai osudoku
+north tongu,south tongu
+nsawam adoagyiri,akwapim south
+nsawam adoagyiri,ayensuano
+nsawam adoagyiri,ga north
+nsawam adoagyiri,ga west
+nsawam adoagyiri,upper west akim
+nzema east,ahanta west
+nzema east,ellembelle
+nzema east,prestea huni valley
+nzema east,tarkwa nsuaem
+nzema east,wassa amenfi central
+obuasi,adansi akrofuom
+obuasi,adansi north
+obuasi,amansie central
+obuasi,obuasi east
+obuasi east,adansi akrofuom
+obuasi east,adansi asokwa
+obuasi east,adansi north
+obuasi east,obuasi
+offinso,afigya kwabre north
+offinso,afigya kwabre south
+offinso,ahafo ano south east
+offinso,atwima nwabiagya north
+offinso,ejura sekyedumase
+offinso,offinso north
+offinso north,ahafo ano south east
+offinso north,ahafo ano south west
+offinso north,ejura sekyedumase
+offinso north,nkoranza south
+offinso north,offinso
+offinso north,sunyani west
+offinso north,tano north
+offinso north,tano south
+offinso north,techiman
+oforikrom,asokore mampong
+oforikrom,asokwa
+oforikrom,bosomtwe
+oforikrom,ejisu
+oforikrom,kumasi
+okai koi north,ablekuma north
+okai koi north,ayawaso north
+okai koi north,ayawaso west
+okai koi north,ga central
+okai koi north,ga east
+okai koi north,ga north
+okai koi north,ga west
+okere,akwapim north
+okere,new juaben south
+okere,shai osudoku
+okere,yilo krobo
+old tafo,afigya kwabre south
+old tafo,asokore mampong
+old tafo,kumasi
+old tafo,kwabre east
+old tafo,suame
+prestea huni valley,nzema east
+prestea huni valley,tarkwa nsuaem
+prestea huni valley,twifo ati morkwa
+prestea huni valley,wassa amenfi central
+prestea huni valley,wassa amenfi east
+prestea huni valley,wassa east
+pru,atebubu amanten
+pru,east gonja
+pru,north east gonja
+pru,pru west
+pru,sene west
+pru west,atebubu amanten
+pru west,east gonja
+pru west,kintampo north
+pru west,kintampo south
+pru west,nkoranza north
+pru west,pru
+pusiga,bawku
+pusiga,tempane
+saboba,chereponi
+saboba,gushiegu
+saboba,mion
+saboba,tatale sangule
+saboba,yendi
+sagnarigu,kumbungu
+sagnarigu,nanton
+sagnarigu,savelugu
+sagnarigu,tamale
+sagnarigu,tolon
+savelugu,karaga
+savelugu,kumbungu
+savelugu,nanton
+savelugu,sagnarigu
+savelugu,west mamprusi
+sawla tuna kalba,bole
+sawla tuna kalba,north gonja
+sawla tuna kalba,wa east
+sawla tuna kalba,wa west
+sawla tuna kalba,west gonja
+sefwi akontombra,aowin
+sefwi akontombra,bodi
+sefwi akontombra,sefwi wiawso
+sefwi akontombra,suaman
+sefwi akontombra,wassa amenfi west
+sefwi wiawso,asunafo south
+sefwi wiawso,atwima mponua
+sefwi wiawso,bibiani anhwiaso bekwai
+sefwi wiawso,bodi
+sefwi wiawso,juaboso
+sefwi wiawso,sefwi akontombra
+sefwi wiawso,wassa amenfi central
+sefwi wiawso,wassa amenfi west
+sekondi takoradi,ahanta west
+sekondi takoradi,effia kwesimintsim
+sekondi takoradi,mpohor
+sekondi takoradi,shama
+sekyere afram plains,asante akim north
+sekyere afram plains,atebubu amanten
+sekyere afram plains,kwahu afram plains south
+sekyere afram plains,sekyere central
+sekyere afram plains,sekyere kumawu
+sekyere afram plains,sene east
+sekyere afram plains,sene west
+sekyere central,asante mampong
+sekyere central,atebubu amanten
+sekyere central,ejura sekyedumase
+sekyere central,sekyere afram plains
+sekyere central,sekyere kumawu
+sekyere east,asante akim central
+sekyere east,asante akim north
+sekyere east,juaben
+sekyere east,sekyere kumawu
+sekyere east,sekyere south
+sekyere kumawu,asante akim north
+sekyere kumawu,asante mampong
+sekyere kumawu,sekyere afram plains
+sekyere kumawu,sekyere central
+sekyere kumawu,sekyere east
+sekyere kumawu,sekyere south
+sekyere south,afigya kwabre north
+sekyere south,afigya kwabre south
+sekyere south,asante mampong
+sekyere south,ejura sekyedumase
+sekyere south,juaben
+sekyere south,kwabre east
+sekyere south,sekyere east
+sekyere south,sekyere kumawu
+sene east,biakoye
+sene east,krachi east
+sene east,krachi nchumuru
+sene east,krachi west
+sene east,kwahu afram plains north
+sene east,kwahu afram plains south
+sene east,north east gonja
+sene east,sekyere afram plains
+sene east,sene west
+sene west,atebubu amanten
+sene west,north east gonja
+sene west,pru
+sene west,sekyere afram plains
+sene west,sene east
+shai osudoku,ada west
+shai osudoku,akwapim north
+shai osudoku,kpone katamanso
+shai osudoku,lower manya krobo
+shai osudoku,ningo prampram
+shai osudoku,north tongu
+shai osudoku,okere
+shai osudoku,yilo krobo
+shama,komenda edna eguafo abirem
+shama,mpohor
+shama,sekondi takoradi
+shama,wassa east
+sissala east,builsa south
+sissala east,daffiama bussie issa
+sissala east,kasena nankana west
+sissala east,mamprugu moagduri
+sissala east,sissala west
+sissala east,wa east
+sissala west,daffiama bussie issa
+sissala west,jirapa
+sissala west,lambussie
+sissala west,sissala east
+south dayi,afadjato south
+south dayi,asuogyaman
+south dayi,guan
+south dayi,ho west
+south dayi,kwahu afram plains north
+south dayi,north dayi
+south tongu,ada east
+south tongu,ada west
+south tongu,akatsi south
+south tongu,anloga
+south tongu,central tongu
+south tongu,keta
+south tongu,north tongu
+suaman,aowin
+suaman,bodi
+suaman,juaboso
+suaman,sefwi akontombra
+suame,afigya kwabre south
+suame,atwima nwabiagya
+suame,atwima nwabiagya north
+suame,kumasi
+suame,kwadaso
+suame,old tafo
+suhum,abuakwa south
+suhum,akwapim north
+suhum,ayensuano
+suhum,new juaben north
+suhum,new juaben south
+sunyani,asutifi north
+sunyani,dormaa east
+sunyani,sunyani west
+sunyani,tano north
+sunyani west,berekum
+sunyani west,dormaa east
+sunyani west,offinso north
+sunyani west,sunyani
+sunyani west,tain
+sunyani west,tano north
+sunyani west,techiman
+sunyani west,wenchi
+tain,banda
+tain,berekum
+tain,jaman north
+tain,sunyani west
+tain,wenchi
+talensi,bawku west
+talensi,bolgatanga
+talensi,bolgatanga east
+talensi,east mamprusi
+talensi,kasena nankana
+talensi,nabdam
+talensi,west mamprusi
+tamale,central gonja
+tamale,mion
+tamale,nanton
+tamale,north east gonja
+tamale,sagnarigu
+tamale,tolon
+tano north,ahafo ano north
+tano north,asutifi north
+tano north,asutifi south
+tano north,offinso north
+tano north,sunyani
+tano north,sunyani west
+tano north,tano south
+tano south,ahafo ano north
+tano south,ahafo ano south east
+tano south,ahafo ano south west
+tano south,offinso north
+tano south,tano north
+tarkwa nsuaem,ahanta west
+tarkwa nsuaem,mpohor
+tarkwa nsuaem,nzema east
+tarkwa nsuaem,prestea huni valley
+tarkwa nsuaem,wassa east
+tatale sangule,nanumba south
+tatale sangule,saboba
+tatale sangule,yendi
+tatale sangule,zabzugu
+techiman,nkoranza north
+techiman,nkoranza south
+techiman,offinso north
+techiman,sunyani west
+techiman,techiman north
+techiman,wenchi
+techiman north,kintampo south
+techiman north,nkoranza north
+techiman north,techiman
+techiman north,wenchi
+tema,ashaiman
+tema,kpone katamanso
+tema,tema west
+tema west,adentan
+tema west,ashaiman
+tema west,kpone katamanso
+tema west,krowor
+tema west,ledzokuku
+tema west,tema
+tempane,bawku
+tempane,garu
+tempane,pusiga
+tolon,central gonja
+tolon,kumbungu
+tolon,north gonja
+tolon,sagnarigu
+tolon,tamale
+tolon,west gonja
+twifo ati morkwa,assin foso
+twifo ati morkwa,assin north
+twifo ati morkwa,assin south
+twifo ati morkwa,prestea huni valley
+twifo ati morkwa,twifo hemang lower denkyira
+twifo ati morkwa,upper denkyira east
+twifo ati morkwa,wassa amenfi east
+twifo ati morkwa,wassa east
+twifo hemang lower denkyira,abura asebu kwamankese
+twifo hemang lower denkyira,assin south
+twifo hemang lower denkyira,cape coast
+twifo hemang lower denkyira,komenda edna eguafo abirem
+twifo hemang lower denkyira,twifo ati morkwa
+twifo hemang lower denkyira,wassa east
+upper denkyira east,adansi akrofuom
+upper denkyira east,assin north
+upper denkyira east,twifo ati morkwa
+upper denkyira east,upper denkyira west
+upper denkyira east,wassa amenfi east
+upper denkyira west,adansi akrofuom
+upper denkyira west,amansie central
+upper denkyira west,amansie south
+upper denkyira west,bibiani anhwiaso bekwai
+upper denkyira west,upper denkyira east
+upper denkyira west,wassa amenfi east
+upper manya krobo,asuogyaman
+upper manya krobo,fanteakwa north
+upper manya krobo,fanteakwa south
+upper manya krobo,kwahu afram plains north
+upper manya krobo,kwahu afram plains south
+upper manya krobo,lower manya krobo
+upper manya krobo,yilo krobo
+upper west akim,agona east
+upper west akim,asene manso akroso
+upper west akim,awutu senya
+upper west akim,ayensuano
+upper west akim,ga south
+upper west akim,ga west
+upper west akim,nsawam adoagyiri
+upper west akim,west akim
+wa,daffiama bussie issa
+wa,nadowli kaleo
+wa,wa east
+wa,wa west
+wa east,daffiama bussie issa
+wa east,mamprugu moagduri
+wa east,north gonja
+wa east,sawla tuna kalba
+wa east,sissala east
+wa east,wa
+wa east,wa west
+wa west,nadowli kaleo
+wa west,sawla tuna kalba
+wa west,wa
+wa west,wa east
+wassa amenfi central,bibiani anhwiaso bekwai
+wassa amenfi central,ellembelle
+wassa amenfi central,nzema east
+wassa amenfi central,prestea huni valley
+wassa amenfi central,sefwi wiawso
+wassa amenfi central,wassa amenfi east
+wassa amenfi central,wassa amenfi west
+wassa amenfi east,bibiani anhwiaso bekwai
+wassa amenfi east,prestea huni valley
+wassa amenfi east,twifo ati morkwa
+wassa amenfi east,upper denkyira east
+wassa amenfi east,upper denkyira west
+wassa amenfi east,wassa amenfi central
+wassa amenfi west,aowin
+wassa amenfi west,ellembelle
+wassa amenfi west,jomoro
+wassa amenfi west,sefwi akontombra
+wassa amenfi west,sefwi wiawso
+wassa amenfi west,wassa amenfi central
+wassa east,komenda edna eguafo abirem
+wassa east,mpohor
+wassa east,prestea huni valley
+wassa east,shama
+wassa east,tarkwa nsuaem
+wassa east,twifo ati morkwa
+wassa east,twifo hemang lower denkyira
+weija gbawe,ablekuma north
+weija gbawe,ablekuma west
+weija gbawe,awutu senya
+weija gbawe,awutu senya east
+weija gbawe,ga central
+weija gbawe,ga south
+weija gbawe,ga west
+weija gbawe,gomoa east
+wenchi,banda
+wenchi,kintampo south
+wenchi,sunyani west
+wenchi,tain
+wenchi,techiman
+wenchi,techiman north
+west akim,asene manso akroso
+west akim,atiwa west
+west akim,ayensuano
+west akim,denkyembour
+west akim,upper west akim
+west gonja,bole
+west gonja,central gonja
+west gonja,north gonja
+west gonja,sawla tuna kalba
+west gonja,tolon
+west mamprusi,builsa south
+west mamprusi,east mamprusi
+west mamprusi,karaga
+west mamprusi,kasena nankana
+west mamprusi,kumbungu
+west mamprusi,mamprugu moagduri
+west mamprusi,savelugu
+west mamprusi,talensi
+yendi,mion
+yendi,nanumba north
+yendi,saboba
+yendi,tatale sangule
+yendi,zabzugu
+yilo krobo,abuakwa north
+yilo krobo,fanteakwa south
+yilo krobo,lower manya krobo
+yilo krobo,new juaben north
+yilo krobo,new juaben south
+yilo krobo,okere
+yilo krobo,shai osudoku
+yilo krobo,upper manya krobo
+yunyoo nasuan,bunkpurugu nakpanduri
+yunyoo nasuan,east mamprusi
+yunyoo nasuan,gushiegu
+zabzugu,mion
+zabzugu,nanumba north
+zabzugu,nanumba south
+zabzugu,tatale sangule
+zabzugu,yendi
