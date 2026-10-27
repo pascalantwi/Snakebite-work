@@ -129,7 +129,8 @@ jobs <- list(
        regime = factor(ifelse(d0$regime == "transition", "bimodal", as.character(d0$regime)))),
   list(id = "ar1", group = "Dependence", label = "First-order autoregressive district-month effect", re = paste(RE0, "+ ar1(tf + 0 | district)"), diag = TRUE),
   list(id = "spatial", group = "Dependence", label = "Spatially structured district effect", re = paste(RE0, "+ exp(pos + 0 | sp)"), diag = TRUE, extra = spatial_share))
-# ONLY=id1,id2 reruns the named alternatives and replaces their rows in an existing sensitivity_summary.csv
+# ONLY=id1,id2 reruns the named alternatives and replaces their rows in an existing sensitivity_summary.csv; the
+# clustered standard errors and the diagnostics need "main" (and "ar1", "spatial") among them
 only <- strsplit(Sys.getenv("ONLY"), ",")[[1]]
 if (length(only)) jobs <- Filter(function(j) j[["id"]] %in% only, jobs)
 ord <- order(sapply(jobs, function(j) j$id %in% c("spatial", "ar1", "hurdle")), decreasing = TRUE)   # slow ones first
@@ -140,7 +141,7 @@ summ <- bind_rows(lapply(res, `[[`, "summary"))
 print(summ |> select(id, variable, cumRR, lo, hi, S_clim, n, converged, converged_seas), n = 120, width = 200)
 if (length(only)) {
   old <- read_csv("analysis/output/sensitivity_summary.csv", show_col_types = FALSE)
-  write_csv(bind_rows(filter(old, !id %in% only), summ), "analysis/output/sensitivity_summary.csv"); cat("done\n"); quit(save = "no")
+  summ <- bind_rows(filter(old, !id %in% only), summ)
 }
 write_csv(summ, "analysis/output/sensitivity_summary.csv")
 
