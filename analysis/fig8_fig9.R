@@ -1,9 +1,9 @@
-# Figures 9 and 10 (Results, sections 3.7 and 3.8). Run after analysis/regime_onset.R.
-#   Fig 9: (A) lag-specific rate ratios at the national 90th percentile versus the median, by rainfall regime;
+# Figures 8 and 9 (Results, sections 3.7 and 3.8). Run after analysis/regime_onset.R.
+#   Fig 8: (A) lag-specific rate ratios at the national 90th percentile versus the median, by rainfall regime;
 #          (B) cumulative exposure-response over lags 0-9 by regime.
-#   Fig 10: event-study rate ratios by months since rainy-season onset, by regime (one axis).
+#   Fig 9: event-study rate ratios by months since rainy-season onset, by regime (one axis).
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(ggplot2); library(patchwork) })
-REG_COL <- c(Unimodal = "#D4541F", Transition = "#138A5F", Bimodal = "#1C5DAF")   # as in Figs 3-4
+REG_COL <- c(Unimodal = "#D4541F", Transition = "#138A5F", Bimodal = "#1C5DAF")   # as in Fig 3 and S1 Fig
 REG_SH  <- c(Unimodal = 16, Transition = 17, Bimodal = 15)
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
 XLAB <- c(rainfall = "Rainfall (mm/day)", tmax = "Maximum temperature (°C)", tmin = "Minimum temperature (°C)", ndvi = "NDVI")
@@ -34,7 +34,7 @@ pB <- wrap_plots(lapply(names(LAB), function(v) {
     labs(x = XLAB[[v]], y = if (v == "rainfall") "Cumulative rate ratio (log scale)" else NULL, tag = if (v == "rainfall") "B" else NULL) +
     theme_classic(base_size = 11)
 }), nrow = 1)
-save_fig(pA / pB + plot_layout(heights = c(1, 1)), "Fig9", 11, 7)
+save_fig(pA / pB + plot_layout(heights = c(1, 1)), "Fig8", 11, 7)
 
 ev <- read_csv("analysis/output/onset_event_study.csv", show_col_types = FALSE) |> mutate(regime = tc(regime))
 ev <- bind_rows(ev, tibble(regime = factor(names(REG_COL), levels = names(REG_COL)), k = -3L, RR = 1, lo = 1, hi = 1))
@@ -44,5 +44,5 @@ p9 <- ggplot(ev, aes(k, RR, colour = regime, shape = regime)) + geom_hline(yinte
   geom_line(position = dg, linewidth = 0.9) + geom_point(position = dg, size = 2.4) +
   scale_colour_manual(values = REG_COL, name = "Rainfall regime") + scale_shape_manual(values = REG_SH, name = "Rainfall regime") +
   scale_x_continuous(breaks = -3:6) + labs(x = "Months since rainy-season onset", y = "Rate ratio (reference: 3 months before onset)") + th
-save_fig(p9, "Fig10", 7.5, 4.8)
+save_fig(p9, "Fig9", 7.5, 4.8)
 cat("saved figures/Fig9 and Fig10\n")

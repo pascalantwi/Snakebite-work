@@ -2,7 +2,7 @@
 #   Fig 2: national monthly snakebite cases (line, left axis) and monthly rainfall of the average district (bars, right axis)
 #   Fig 3: monthly rainfall by calendar month and rainfall regime (line = mean over years, band = range over years)
 #   Rainfall is the monthly total in mm (NASA POWER daily mean x days in the month), averaged over districts.
-#   Fig 4: incidence relative to the district mean by months since rainy-season onset (mean and 95% CI over district-years);
+#   S1 Fig: incidence relative to the district mean by months since rainy-season onset (mean and 95% CI over district-years);
 #          onset = first month from February with mean rainfall >= 2 mm/day (section 2.3)
 # Regime colours match the Fig 1 map. No titles on the images: captions are in the manuscript.
 # Run from the repository root:  Rscript analysis/figures_descriptive.R
@@ -92,5 +92,5 @@ p4 <- ggplot(ev, aes(k, m, colour = regime, fill = regime)) +
   scale_fill_manual(values = REG_COL, labels = REG_LAB, name = "Rainfall regime") +
   scale_x_continuous(breaks = -3:6) +
   labs(x = "Months since rainy-season onset", y = "Incidence relative to district mean") + theme_pub()
-save_fig(p4, "Fig4", 7.0, 4.4)
+save_fig(p4, "S1_Fig", 7.0, 4.4)
 cat("\nRelative incidence by months since onset\n"); print(as.data.frame(ev |> mutate(across(c(m, lo, hi), \(x) round(x, 2)))))

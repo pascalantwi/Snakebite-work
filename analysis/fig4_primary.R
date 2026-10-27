@@ -1,7 +1,7 @@
-# Figure 5 (Results, section 3.3): (A) observed seasonal cycle of incidence by rainfall regime with the cycles fitted by
+# Figure 4 (Results, section 3.3): (A) observed seasonal cycle of incidence by rainfall regime with the cycles fitted by
 # calendar-month terms (M1), own lagged climate (M2) and placebo climate (median of the GLMM placebo fits);
 # (B) distribution of the placebo-climate statistic relative to the own-climate fit.
-# Run after analysis/primary_models.R and analysis/primary_placebo.R:  Rscript analysis/fig5_primary.R
+# Run after analysis/primary_models.R and analysis/primary_placebo.R:  Rscript analysis/fig4_primary.R
 source("analysis/primary_common.R")
 suppressPackageStartupMessages({ library(ggplot2); library(patchwork); library(tidyr) })
 
@@ -42,7 +42,7 @@ pB <- ggplot(pl, aes(diff_vs_own)) +
   theme_classic(base_size = 11)
 
 p <- pA / pB + plot_layout(heights = c(1.15, 1))
-ggsave("figures/Fig5.png", p, width = 8.5, height = 7.2, dpi = 300, bg = "white")
-ggsave("figures/Fig5.pdf", p, width = 8.5, height = 7.2, device = cairo_pdf, bg = "white")
+ggsave("figures/Fig4.png", p, width = 8.5, height = 7.2, dpi = 300, bg = "white")
+ggsave("figures/Fig4.pdf", p, width = 8.5, height = 7.2, device = cairo_pdf, bg = "white")
 print(cyc |> pivot_wider(names_from = series, values_from = inc) |> mutate(across(where(is.numeric), \(x) round(x, 2))), n = 40)
-cat("saved figures/Fig5.png and .pdf\n")
+cat("saved figures/Fig4.png and .pdf\n")

@@ -1,7 +1,7 @@
-# Figures 6, 7 and 8 (Results, sections 3.5 and 3.6). Run after analysis/exposure_response.R.
-#   Fig 6: lag-response at the 90th percentile versus the median, all exposures on one axis.
-#   Fig 7: cumulative exposure-response over lags 0-9, one panel per exposure.
-#   Fig 8: lag-response for a 1-SD positive anomaly, from the climatology-anomaly model (all exposures on one axis).
+# Figures 5, 6 and 7 (Results, sections 3.5 and 3.6). Run after analysis/exposure_response.R.
+#   Fig 5: lag-response at the 90th percentile versus the median, all exposures on one axis.
+#   Fig 6: cumulative exposure-response over lags 0-9, one panel per exposure.
+#   Fig 7: lag-response for a 1-SD positive anomaly, from the climatology-anomaly model (all exposures on one axis).
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(ggplot2); library(patchwork) })
 BLUE <- "#1F5F99"; BAND <- "#A9C4DE"
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
@@ -27,7 +27,7 @@ one_axis <- function(dat, ylab) {
 }
 lc <- read_csv("analysis/output/rr_lag_curves.csv", show_col_types = FALSE) |> filter(percentile == "90th") |>
   mutate(variable = factor(LAB[variable], levels = LAB))
-save_fig(one_axis(lc, "Rate ratio (90th percentile vs median)"), "Fig6", 7.5, 4.8)
+save_fig(one_axis(lc, "Rate ratio (90th percentile vs median)"), "Fig5", 7.5, 4.8)
 cc <- read_csv("analysis/output/rr_cumulative_curves.csv", show_col_types = FALSE)
 p7 <- wrap_plots(lapply(names(LAB), function(v) {
   ggplot(filter(cc, variable == v), aes(x, RR)) + geom_hline(yintercept = 1, linewidth = 0.4) +
@@ -35,9 +35,9 @@ p7 <- wrap_plots(lapply(names(LAB), function(v) {
     labs(x = XLAB[[v]], y = if (v == "rainfall") "Cumulative rate ratio" else NULL, title = LAB[[v]]) + th +
     theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5))
 }), nrow = 1)
-save_fig(p7, "Fig7", 10, 3.6)
+save_fig(p7, "Fig6", 10, 3.6)
 
 an <- read_csv("analysis/output/anomaly_lag_curves.csv", show_col_types = FALSE) |> filter(anomaly_sd == 1) |>
   mutate(variable = factor(LAB[variable], levels = LAB))
-save_fig(one_axis(an, "Rate ratio per 1-SD positive anomaly"), "Fig8", 7.5, 4.8)
+save_fig(one_axis(an, "Rate ratio per 1-SD positive anomaly"), "Fig7", 7.5, 4.8)
 cat("saved figures/Fig6, Fig7 and Fig8\n")
