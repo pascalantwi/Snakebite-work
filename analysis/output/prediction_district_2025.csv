@@ -1,772 +1,772 @@
 model,district,regime,observed,predicted
-A,ablekuma central,bimodal,0,2.482056918674685
-A,ablekuma north,bimodal,1,5.034825164750797
-A,ablekuma west,bimodal,1,1.4204219488127034
-A,abuakwa north,bimodal,4,6.118355131353838
-A,abuakwa south,bimodal,16,12.87105024610227
-A,abura asebu kwamankese,bimodal,20,19.656362849794494
-A,achiase,bimodal,19,10.080626825331384
-A,ada east,bimodal,3,3.2234529317466576
-A,ada west,bimodal,4,13.725959877175939
-A,adaklu,bimodal,2,2.8121515365751173
-A,adansi akrofuom,bimodal,5,9.79741532355584
-A,adansi asokwa,bimodal,23,21.821514203710795
-A,adansi north,bimodal,8,12.039374590904423
-A,adansi south,bimodal,33,35.522364853620786
-A,adentan,bimodal,35,40.9419253169747
-A,afadjato south,transition,8,8.881654162828523
-A,afigya kwabre north,bimodal,27,41.07340322397805
-A,afigya kwabre south,bimodal,23,28.576076390034363
-A,agona east,bimodal,29,33.4054619883497
-A,agona west,bimodal,46,45.75203167745703
-A,agortime ziope,bimodal,1,2.2075790302049576
-A,ahafo ano north,bimodal,40,86.88104415691919
-A,ahafo ano south east,bimodal,23,15.702119075739855
-A,ahafo ano south west,bimodal,50,32.084103834301224
-A,ahanta west,bimodal,56,50.11799506512928
-A,ajumako enyan essiam,bimodal,23,21.18369596738079
-A,akatsi north,bimodal,2,1.669484451586357
-A,akatsi south,bimodal,12,25.019387810391063
-A,akwapim north,bimodal,17,26.267648721506934
-A,akwapim south,bimodal,7,6.391155535501354
-A,akyemansa,bimodal,32,47.08889577972983
-A,amansie central,bimodal,22,32.50458842818622
-A,amansie south,bimodal,68,45.78096734433509
-A,amansie west,bimodal,9,11.297711507820484
-A,anloga,bimodal,2,2.9236867609065653
-A,aowin,bimodal,51,61.06757541041833
-A,asante akim central,bimodal,20,19.89706210364298
-A,asante akim north,bimodal,39,24.006992144251736
-A,asante akim south,bimodal,48,48.97215470163219
-A,asante mampong,bimodal,36,54.491453184871254
-A,asene manso akroso,bimodal,4,10.73446080853437
-A,ashaiman,bimodal,7,5.691330352232202
-A,asikuma odoben brakwa,bimodal,33,45.28286956781393
-A,asokore mampong,bimodal,1,2.5836939970700636
-A,asokwa,bimodal,8,7.649724420409836
-A,assin foso,bimodal,26,51.45839926596677
-A,assin north,bimodal,56,41.4696694915639
-A,assin south,bimodal,83,71.89337265459444
-A,asunafo north,bimodal,65,68.1048649818907
-A,asunafo south,bimodal,20,21.598301245747287
-A,asuogyaman,bimodal,44,25.547730983493157
-A,asutifi north,bimodal,9,6.576716826755982
-A,asutifi south,bimodal,22,31.903838051715937
-A,atebubu amanten,bimodal,12,19.890573399271698
-A,atiwa east,bimodal,22,13.01776415547297
-A,atiwa west,bimodal,23,24.627331291648584
-A,atwima kwanwoma,bimodal,20,25.968278386493896
-A,atwima mponua,bimodal,44,47.15448171152562
-A,atwima nwabiagya,bimodal,46,110.76823694542674
-A,atwima nwabiagya north,bimodal,33,36.18304437494441
-A,awutu senya,bimodal,17,21.993885553032946
-A,awutu senya east,bimodal,12,14.241519331671883
-A,ayawaso central,bimodal,1,1.5303184082110906
-A,ayawaso north,bimodal,1,1.1680887036959338
-A,ayawaso west,bimodal,2,3.257122665982411
-A,ayensuano,bimodal,30,47.53368929190626
-A,banda,transition,16,31.492494536136263
-A,bawku,unimodal,18,27.83982464781882
-A,bawku west,unimodal,88,83.89891814729465
-A,bekwai,bimodal,78,74.9121650185785
-A,berekum,bimodal,21,28.120175687854747
-A,berekum west,bimodal,2,8.02312363891932
-A,bia east,bimodal,64,70.48660780587785
-A,bia west,bimodal,136,92.578014850623
-A,biakoye,transition,17,11.41323954008806
-A,bibiani anhwiaso bekwai,bimodal,38,52.669747941035105
-A,binduri,unimodal,7,6.93267015338686
-A,birim central,bimodal,52,53.73986959024321
-A,birim north,bimodal,28,17.348284270603063
-A,birim south,bimodal,5,8.974657674873042
-A,bodi,bimodal,109,77.71827125967829
-A,bole,bimodal,199,220.7678248346771
-A,bolgatanga,unimodal,4,10.98332357823526
-A,bolgatanga east,unimodal,1,3.496057607612273
-A,bongo,unimodal,32,44.50764105803093
-A,bosome freho,bimodal,35,36.213385573988326
-A,bosomtwe,bimodal,16,26.61453977138291
-A,builsa north,unimodal,30,43.32889022066416
-A,builsa south,unimodal,46,47.828447625390545
-A,bunkpurugu nakpanduri,unimodal,79,84.89930301630979
-A,cape coast,bimodal,6,12.132699456215342
-A,central gonja,transition,154,171.71091314585084
-A,central tongu,bimodal,5,11.930168734810835
-A,chereponi,unimodal,5,37.93556873118894
-A,daffiama bussie issa,unimodal,77,72.72054976578889
-A,denkyembour,bimodal,5,13.456462307182893
-A,dormaa,bimodal,56,58.696405844260404
-A,dormaa east,bimodal,19,22.162486399220143
-A,dormaa west,bimodal,35,41.60263101148104
-A,east gonja,transition,100,98.14193564695358
-A,east mamprusi,unimodal,46,78.64618963827314
-A,effia kwesimintsim,bimodal,8,18.05084613694009
-A,efutu,bimodal,10,7.504850045494471
-A,ejisu,bimodal,24,29.15337861452587
-A,ejura sekyedumase,bimodal,69,85.60539054226578
-A,ekumfi,bimodal,4,3.01714375631374
-A,ellembelle,bimodal,126,115.23831304398263
-A,fanteakwa north,bimodal,119,50.006424431229576
-A,fanteakwa south,bimodal,18,15.451437458487819
-A,ga central,bimodal,4,9.014781763283946
-A,ga east,bimodal,6,9.024809349737032
-A,ga north,bimodal,0,5.014123418914194
-A,ga south,bimodal,12,24.078969855751588
-A,ga west,bimodal,14,16.892620565618397
-A,garu,unimodal,50,53.444163003884775
-A,gomoa central,bimodal,24,9.61801195515691
-A,gomoa east,bimodal,50,63.33590026895282
-A,gomoa west,bimodal,36,38.594561836313765
-A,guan,transition,4,4.314797327039027
-A,gushiegu,unimodal,47,38.14335546520848
-A,ho,bimodal,6,11.243273495257887
-A,ho west,bimodal,5,13.305026112613389
-A,hohoe,transition,37,34.2836400402164
-A,jaman north,bimodal,16,21.955511172694084
-A,jaman south,bimodal,20,34.964902642222846
-A,jirapa,unimodal,107,78.82717994115293
-A,jomoro,bimodal,35,44.28184727679294
-A,juaben,bimodal,8,12.669437261847651
-A,juaboso,bimodal,86,92.87298177044742
-A,kadjebi,transition,12,15.910074191752713
-A,karaga,unimodal,12,25.156016983707403
-A,kasena nankana,unimodal,59,41.97575262450586
-A,kasena nankana west,unimodal,83,60.38400163648382
-A,keta,bimodal,11,16.04662717613493
-A,ketu north,bimodal,12,20.00377401474312
-A,ketu south,bimodal,1,3.8533270229659395
-A,kintampo north,bimodal,30,47.44086678723447
-A,kintampo south,bimodal,8,8.707347478543845
-A,komenda edna eguafo abirem,bimodal,9,13.723777228370011
-A,korle klottey,bimodal,2,2.73952422106718
-A,kpandai,unimodal,91,107.39854261912924
-A,kpando,transition,33,25.136554465816474
-A,kpone katamanso,bimodal,26,28.52107867461246
-A,krachi east,transition,44,52.644628454289474
-A,krachi nchumuru,transition,116,107.37139432439884
-A,krachi west,transition,86,75.972645146642
-A,krowor,bimodal,0,1.9435152946914784
-A,kumasi,bimodal,105,44.00991525411321
-A,kumbungu,unimodal,15,12.288349781862326
-A,kwabre east,bimodal,17,17.512956132449965
-A,kwadaso,bimodal,13,17.10505339634524
-A,kwaebibirem,bimodal,12,20.462376153195457
-A,kwahu afram plains north,bimodal,5,17.437295925686833
-A,kwahu afram plains south,bimodal,76,57.46446406841186
-A,kwahu east,bimodal,5,3.705360969873509
-A,kwahu south,bimodal,15,27.581407853373026
-A,kwahu west,bimodal,12,26.248453604032257
-A,la dade kotopon,bimodal,17,2.7961795905360662
-A,la nkwantanang madina,bimodal,8,11.304649504389785
-A,lambussie,unimodal,18,25.103102489131462
-A,lawra,unimodal,34,28.14105989918182
-A,lower manya krobo,bimodal,11,23.171886901619406
-A,mamprugu moagduri,unimodal,143,172.95761158271222
-A,mfantseman,bimodal,6,13.509617225271123
-A,mion,transition,9,9.72552353791433
-A,mpohor,bimodal,24,28.110972890767467
-A,nabdam,unimodal,56,51.51878892858332
-A,nadowli kaleo,unimodal,88,88.49494388570574
-A,nandom,unimodal,13,20.70822354908571
-A,nanton,transition,2,1.2202118446690149
-A,nanumba north,unimodal,129,98.36653475752425
-A,nanumba south,unimodal,30,29.49809501132574
-A,new juaben north,bimodal,7,10.030306715210694
-A,new juaben south,bimodal,6,13.876605569652316
-A,ningo prampram,bimodal,16,24.333166915431118
-A,nkoranza north,bimodal,12,16.136132675792425
-A,nkoranza south,bimodal,19,25.995917042321356
-A,nkwanta north,unimodal,68,61.585925862171116
-A,nkwanta south,transition,12,20.73468712674474
-A,north dayi,bimodal,0,3.784771352706893
-A,north east gonja,transition,77,62.22352932266742
-A,north gonja,unimodal,54,68.91378729542126
-A,north tongu,bimodal,17,23.736604591781433
-A,nsawam adoagyiri,bimodal,73,120.20530836915049
-A,nzema east,bimodal,49,27.97797446849767
-A,obuasi,bimodal,22,31.612464029521714
-A,obuasi east,bimodal,14,16.817459827262816
-A,offinso,bimodal,38,54.42773152725499
-A,offinso north,bimodal,8,13.996028716262249
-A,oforikrom,bimodal,17,29.62897740523647
-A,okai koi north,bimodal,0,2.6395124961543908
-A,okere,bimodal,3,1.487622838509221
-A,old tafo,bimodal,3,6.7593664870896335
-A,prestea huni valley,bimodal,154,118.13794423200089
-A,pru,transition,26,7.707618044832604
-A,pru west,bimodal,47,41.61313106468724
-A,pusiga,unimodal,10,29.080427152558215
-A,saboba,unimodal,40,25.282988598289236
-A,sagnarigu,transition,7,12.549834333742298
-A,savelugu,unimodal,95,76.02166160515137
-A,sawla tuna kalba,unimodal,155,180.50415150947714
-A,sefwi akontombra,bimodal,11,14.634724700113685
-A,sefwi wiawso,bimodal,86,84.21993414632492
-A,sekondi takoradi,bimodal,14,21.154006778580406
-A,sekyere afram plains,bimodal,10,15.356771648960706
-A,sekyere central,bimodal,23,27.233442181456507
-A,sekyere east,bimodal,6,10.872212692419797
-A,sekyere kumawu,bimodal,9,9.248298891729132
-A,sekyere south,bimodal,3,17.37858689683475
-A,sene east,transition,27,41.015424485406974
-A,sene west,bimodal,37,26.215626070315416
-A,shai osudoku,bimodal,15,14.553133277696299
-A,shama,bimodal,29,30.238649801013835
-A,sissala east,unimodal,96,104.81441556203413
-A,sissala west,unimodal,23,33.479431228079356
-A,south dayi,bimodal,8,11.959662213012638
-A,south tongu,bimodal,4,11.433357645316445
-A,suaman,bimodal,10,14.786968755433277
-A,suame,bimodal,1,4.693307357555967
-A,suhum,bimodal,27,44.17194435961908
-A,sunyani,bimodal,41,59.148116258655534
-A,sunyani west,bimodal,7,14.741729444398064
-A,tain,bimodal,41,44.2265389649117
-A,talensi,unimodal,55,45.563974963003375
-A,tamale,transition,124,104.1960554823866
-A,tano north,bimodal,16,24.55427406749627
-A,tano south,bimodal,49,41.60366894746622
-A,tarkwa nsuaem,bimodal,106,120.44231148872775
-A,tatale sangule,unimodal,79,67.78763972887836
-A,techiman,bimodal,48,53.121900557922764
-A,techiman north,bimodal,25,23.639160014797547
-A,tema,bimodal,6,2.6774530521538455
-A,tema west,bimodal,3,3.3088175581631263
-A,tempane,unimodal,4,3.1581624008287372
-A,tolon,unimodal,28,41.26624986430551
-A,twifo ati morkwa,bimodal,16,20.06322852895285
-A,twifo hemang lower denkyira,bimodal,29,36.918906487426085
-A,upper denkyira east,bimodal,31,53.5577440284819
-A,upper denkyira west,bimodal,58,55.61296520323683
-A,upper manya krobo,bimodal,16,25.576699367950884
-A,upper west akim,bimodal,24,25.424829938398975
-A,wa,unimodal,67,141.84915159589548
-A,wa east,unimodal,81,132.07225926335565
-A,wa west,unimodal,137,137.1849309230906
-A,wassa amenfi central,bimodal,67,84.52002991953509
-A,wassa amenfi east,bimodal,47,64.59343779189007
-A,wassa amenfi west,bimodal,41,59.093697459681756
-A,wassa east,bimodal,94,90.96362186803641
-A,weija gbawe,bimodal,3,7.298103682966636
-A,wenchi,bimodal,37,30.828792655999155
-A,west akim,bimodal,13,18.983567241590496
-A,west gonja,transition,4,8.392615962469215
-A,west mamprusi,unimodal,68,89.52599890612225
-A,yendi,unimodal,8,20.34284769472548
-A,yilo krobo,bimodal,37,38.91606980597033
-A,yunyoo nasuan,unimodal,19,7.803149231109543
-A,zabzugu,unimodal,101,104.066678072267
-B,ablekuma central,bimodal,0,2.3822940620872908
-B,ablekuma north,bimodal,1,4.821313437210326
-B,ablekuma west,bimodal,1,1.33414418054964
-B,abuakwa north,bimodal,4,5.662728579854056
-B,abuakwa south,bimodal,16,11.984577647630354
-B,abura asebu kwamankese,bimodal,20,19.041007748897556
-B,achiase,bimodal,19,9.263341798044602
-B,ada east,bimodal,3,2.982586929505595
-B,ada west,bimodal,4,12.409947119147095
-B,adaklu,bimodal,2,2.651173995821044
-B,adansi akrofuom,bimodal,5,8.724556795155157
-B,adansi asokwa,bimodal,23,20.765734237631314
-B,adansi north,bimodal,8,10.715540961060395
-B,adansi south,bimodal,33,33.726311698091855
-B,adentan,bimodal,35,38.53635514857527
-B,afadjato south,transition,8,8.43423650424142
-B,afigya kwabre north,bimodal,27,34.536158236950705
-B,afigya kwabre south,bimodal,23,23.643239381580194
-B,agona east,bimodal,29,32.47842684557936
-B,agona west,bimodal,46,44.08628816852003
-B,agortime ziope,bimodal,1,2.061883907784612
-B,ahafo ano north,bimodal,40,73.88177591561389
-B,ahafo ano south east,bimodal,23,13.352589900325276
-B,ahafo ano south west,bimodal,50,27.585915813483567
-B,ahanta west,bimodal,56,47.39771161009742
-B,ajumako enyan essiam,bimodal,23,20.78681285598613
-B,akatsi north,bimodal,2,1.5503217827961628
-B,akatsi south,bimodal,12,23.097808076274717
-B,akwapim north,bimodal,17,24.576455488413128
-B,akwapim south,bimodal,7,6.0444267983402025
-B,akyemansa,bimodal,32,44.078246810076735
-B,amansie central,bimodal,22,28.34981078194129
-B,amansie south,bimodal,68,40.2937092804638
-B,amansie west,bimodal,9,10.02167489164189
-B,anloga,bimodal,2,2.7116321098357314
-B,aowin,bimodal,51,55.06064080705446
-B,asante akim central,bimodal,20,17.199320678483222
-B,asante akim north,bimodal,39,21.685999327011306
-B,asante akim south,bimodal,48,43.83183951220767
-B,asante mampong,bimodal,36,48.205640021421225
-B,asene manso akroso,bimodal,4,9.860696125583207
-B,ashaiman,bimodal,7,5.45079972811868
-B,asikuma odoben brakwa,bimodal,33,43.42378904201156
-B,asokore mampong,bimodal,1,2.3034186238182333
-B,asokwa,bimodal,8,6.850631344843713
-B,assin foso,bimodal,26,49.40270568814972
-B,assin north,bimodal,56,39.11234054656123
-B,assin south,bimodal,83,68.81454907253288
-B,asunafo north,bimodal,65,57.85792202846429
-B,asunafo south,bimodal,20,18.7971770334085
-B,asuogyaman,bimodal,44,24.655375488417906
-B,asutifi north,bimodal,9,5.526743181291562
-B,asutifi south,bimodal,22,26.790664640879054
-B,atebubu amanten,bimodal,12,17.394210379811398
-B,atiwa east,bimodal,22,11.584521853696698
-B,atiwa west,bimodal,23,22.306863573529462
-B,atwima kwanwoma,bimodal,20,22.45223935605307
-B,atwima mponua,bimodal,44,42.40435633820398
-B,atwima nwabiagya,bimodal,46,98.2617286074416
-B,atwima nwabiagya north,bimodal,33,30.299040469385368
-B,awutu senya,bimodal,17,21.227381330713985
-B,awutu senya east,bimodal,12,13.707762311685748
-B,ayawaso central,bimodal,1,1.474071304080605
-B,ayawaso north,bimodal,1,1.120969929129061
-B,ayawaso west,bimodal,2,3.137209055885663
-B,ayensuano,bimodal,30,44.5436389680258
-B,banda,transition,16,27.03339192873524
-B,bawku,unimodal,18,27.67351729746426
-B,bawku west,unimodal,88,82.93560702015442
-B,bekwai,bimodal,78,65.97811324924172
-B,berekum,bimodal,21,22.36325988746865
-B,berekum west,bimodal,2,6.477557615169803
-B,bia east,bimodal,64,60.322935412675164
-B,bia west,bimodal,136,80.11886531869928
-B,biakoye,transition,17,10.812529490598905
-B,bibiani anhwiaso bekwai,bimodal,38,46.444387356596614
-B,binduri,unimodal,7,6.990898386419637
-B,birim central,bimodal,52,48.74852258030767
-B,birim north,bimodal,28,15.528072699738216
-B,birim south,bimodal,5,8.241061282822383
-B,bodi,bimodal,109,68.75461667628572
-B,bole,bimodal,199,206.56866399382358
-B,bolgatanga,unimodal,4,10.426761116183297
-B,bolgatanga east,unimodal,1,3.395399697256757
-B,bongo,unimodal,32,43.47971340331745
-B,bosome freho,bimodal,35,32.981893743061
-B,bosomtwe,bimodal,16,23.517819066008002
-B,builsa north,unimodal,30,40.500435509468545
-B,builsa south,unimodal,46,44.57510997806172
-B,bunkpurugu nakpanduri,unimodal,79,80.69260963595053
-B,cape coast,bimodal,6,11.64053255870465
-B,central gonja,transition,154,159.70554947824985
-B,central tongu,bimodal,5,11.19669149226265
-B,chereponi,unimodal,5,33.48252769708636
-B,daffiama bussie issa,unimodal,77,72.62152124085802
-B,denkyembour,bimodal,5,12.35759016855534
-B,dormaa,bimodal,56,50.67260840108923
-B,dormaa east,bimodal,19,17.79084976569423
-B,dormaa west,bimodal,35,35.9129250735014
-B,east gonja,transition,100,93.75274385502497
-B,east mamprusi,unimodal,46,73.50258750999906
-B,effia kwesimintsim,bimodal,8,17.381035765259956
-B,efutu,bimodal,10,7.075510847026463
-B,ejisu,bimodal,24,25.19299551266909
-B,ejura sekyedumase,bimodal,69,74.4530100747432
-B,ekumfi,bimodal,4,2.85056184864266
-B,ellembelle,bimodal,126,108.12794942520419
-B,fanteakwa north,bimodal,119,47.2051049014666
-B,fanteakwa south,bimodal,18,14.183536309954711
-B,ga central,bimodal,4,8.603323536786801
-B,ga east,bimodal,6,8.677493576389077
-B,ga north,bimodal,0,4.800625314452419
-B,ga south,bimodal,12,23.193229267350375
-B,ga west,bimodal,14,16.096814632337548
-B,garu,unimodal,50,54.05288475225707
-B,gomoa central,bimodal,24,9.328799213383238
-B,gomoa east,bimodal,50,59.222388222642635
-B,gomoa west,bimodal,36,37.324349394863326
-B,guan,transition,4,4.0657230585334165
-B,gushiegu,unimodal,47,33.129719124789055
-B,ho,bimodal,6,10.581771670803752
-B,ho west,bimodal,5,12.666831901887159
-B,hohoe,transition,37,32.09458948560493
-B,jaman north,bimodal,16,17.75941521102098
-B,jaman south,bimodal,20,28.299423255716633
-B,jirapa,unimodal,107,78.55388811584487
-B,jomoro,bimodal,35,41.47474818782659
-B,juaben,bimodal,8,11.023602694086199
-B,juaboso,bimodal,86,81.23295467230389
-B,kadjebi,transition,12,15.120058904835762
-B,karaga,unimodal,12,23.854496158005723
-B,kasena nankana,unimodal,59,40.43914296235295
-B,kasena nankana west,unimodal,83,57.73017569795423
-B,keta,bimodal,11,14.729758389193046
-B,ketu north,bimodal,12,18.45100012638335
-B,ketu south,bimodal,1,3.547692231422933
-B,kintampo north,bimodal,30,43.86623453347388
-B,kintampo south,bimodal,8,7.528294134048378
-B,komenda edna eguafo abirem,bimodal,9,13.06693430906518
-B,korle klottey,bimodal,2,2.581120550239124
-B,kpandai,unimodal,91,103.39988386176923
-B,kpando,transition,33,23.93096133032205
-B,kpone katamanso,bimodal,26,26.52401110619545
-B,krachi east,transition,44,50.42256238356207
-B,krachi nchumuru,transition,116,103.23594052446597
-B,krachi west,transition,86,73.06194192108327
-B,krowor,bimodal,0,1.825230202095459
-B,kumasi,bimodal,105,39.5588005968152
-B,kumbungu,unimodal,15,11.52314018355227
-B,kwabre east,bimodal,17,14.791403775055738
-B,kwadaso,bimodal,13,15.050333767136252
-B,kwaebibirem,bimodal,12,18.47592404492406
-B,kwahu afram plains north,bimodal,5,16.56806922850551
-B,kwahu afram plains south,bimodal,76,52.74451023629272
-B,kwahu east,bimodal,5,3.3458173920796392
-B,kwahu south,bimodal,15,25.365997916919795
-B,kwahu west,bimodal,12,24.217920877453288
-B,la dade kotopon,bimodal,17,2.638084254676226
-B,la nkwantanang madina,bimodal,8,10.582867092917535
-B,lambussie,unimodal,18,25.43463734582473
-B,lawra,unimodal,34,27.964150575172656
-B,lower manya krobo,bimodal,11,22.30165247217261
-B,mamprugu moagduri,unimodal,143,159.7897111757126
-B,mfantseman,bimodal,6,13.01906802902066
-B,mion,transition,9,8.89543849695201
-B,mpohor,bimodal,24,27.344723499931092
-B,nabdam,unimodal,56,51.12330064644153
-B,nadowli kaleo,unimodal,88,88.6578183961832
-B,nandom,unimodal,13,21.164713793635656
-B,nanton,transition,2,1.1283994270072168
-B,nanumba north,unimodal,129,93.74125420131999
-B,nanumba south,unimodal,30,27.89696535669508
-B,new juaben north,bimodal,7,9.38837623721785
-B,new juaben south,bimodal,6,13.041227461933264
-B,ningo prampram,bimodal,16,21.995183571963377
-B,nkoranza north,bimodal,12,13.366771030276668
-B,nkoranza south,bimodal,19,21.643187500453017
-B,nkwanta north,unimodal,68,58.58534462463848
-B,nkwanta south,transition,12,19.57981548867975
-B,north dayi,bimodal,0,3.6097768501014427
-B,north east gonja,transition,77,58.83333336158819
-B,north gonja,unimodal,54,65.00972395118757
-B,north tongu,bimodal,17,22.529194119278085
-B,nsawam adoagyiri,bimodal,73,113.95392255420722
-B,nzema east,bimodal,49,26.14448785130025
-B,obuasi,bimodal,22,28.322495335439715
-B,obuasi east,bimodal,14,15.242567206129182
-B,offinso,bimodal,38,46.36850836307635
-B,offinso north,bimodal,8,11.618573999155739
-B,oforikrom,bimodal,17,26.57877487416613
-B,okai koi north,bimodal,0,2.5502484335404842
-B,okere,bimodal,3,1.3826264487559978
-B,old tafo,bimodal,3,6.1248572135226675
-B,prestea huni valley,bimodal,154,107.93311844457014
-B,pru,transition,26,7.159936010198463
-B,pru west,bimodal,47,37.277461689315295
-B,pusiga,unimodal,10,29.1007996389759
-B,saboba,unimodal,40,23.318168663485828
-B,sagnarigu,transition,7,11.590422348816075
-B,savelugu,unimodal,95,72.35873269289426
-B,sawla tuna kalba,unimodal,155,174.68735143543645
-B,sefwi akontombra,bimodal,11,13.119748014124799
-B,sefwi wiawso,bimodal,86,73.49934706098526
-B,sekondi takoradi,bimodal,14,19.994559934122957
-B,sekyere afram plains,bimodal,10,14.138176333499718
-B,sekyere central,bimodal,23,23.90140806759719
-B,sekyere east,bimodal,6,9.388531149432438
-B,sekyere kumawu,bimodal,9,8.001809233842735
-B,sekyere south,bimodal,3,15.053683740249792
-B,sene east,transition,27,39.40976699022028
-B,sene west,bimodal,37,24.635061079769883
-B,shai osudoku,bimodal,15,13.68780208116168
-B,shama,bimodal,29,29.378805477166008
-B,sissala east,unimodal,96,100.20682808222539
-B,sissala west,unimodal,23,33.39867361900586
-B,south dayi,bimodal,8,11.373745695744576
-B,south tongu,bimodal,4,10.416116817521342
-B,suaman,bimodal,10,12.747044277387715
-B,suame,bimodal,1,4.237326559212194
-B,suhum,bimodal,27,42.04630939893661
-B,sunyani,bimodal,41,49.50273137010219
-B,sunyani west,bimodal,7,12.036237031431648
-B,tain,bimodal,41,36.385158296408605
-B,talensi,unimodal,55,43.48739261726318
-B,tamale,transition,124,95.09552406307431
-B,tano north,bimodal,16,20.361692769519113
-B,tano south,bimodal,49,35.847631210486114
-B,tarkwa nsuaem,bimodal,106,113.52363874910121
-B,tatale sangule,unimodal,79,62.62612314601035
-B,techiman,bimodal,48,44.25676402536464
-B,techiman north,bimodal,25,19.617079177654873
-B,tema,bimodal,6,2.505368713834297
-B,tema west,bimodal,3,3.085967101824108
-B,tempane,unimodal,4,3.188419238251829
-B,tolon,unimodal,28,39.06279784587144
-B,twifo ati morkwa,bimodal,16,18.686544177471827
-B,twifo hemang lower denkyira,bimodal,29,35.01880202008229
-B,upper denkyira east,bimodal,31,48.42559927020785
-B,upper denkyira west,bimodal,58,49.87072310858909
-B,upper manya krobo,bimodal,16,24.668517756929127
-B,upper west akim,bimodal,24,24.074593284731733
-B,wa,unimodal,67,138.0170991810257
-B,wa east,unimodal,81,127.63972418540963
-B,wa west,unimodal,137,135.21910845569457
-B,wassa amenfi central,bimodal,67,75.55785070562077
-B,wassa amenfi east,bimodal,47,56.703478441837376
-B,wassa amenfi west,bimodal,41,52.60402719651293
-B,wassa east,bimodal,94,86.27821975122097
-B,weija gbawe,bimodal,3,6.906731937902175
-B,wenchi,bimodal,37,26.567243677367266
-B,west akim,bimodal,13,17.622114043319353
-B,west gonja,transition,4,8.184459897357675
-B,west mamprusi,unimodal,68,83.50244689805682
-B,yendi,unimodal,8,18.427405775488445
-B,yilo krobo,bimodal,37,36.87503699797157
-B,yunyoo nasuan,unimodal,19,7.447405074787148
-B,zabzugu,unimodal,101,97.12868639653168
-C,ablekuma central,bimodal,0,2.3849394019835493
-C,ablekuma north,bimodal,1,4.809907892021051
-C,ablekuma west,bimodal,1,1.3364490029871388
-C,abuakwa north,bimodal,4,5.665434366057659
-C,abuakwa south,bimodal,16,11.9433676988233
-C,abura asebu kwamankese,bimodal,20,19.045335407396774
-C,achiase,bimodal,19,9.254085141403577
-C,ada east,bimodal,3,2.9833624644097956
-C,ada west,bimodal,4,12.435198299128812
-C,adaklu,bimodal,2,2.6455965798116483
-C,adansi akrofuom,bimodal,5,8.752486620583063
-C,adansi asokwa,bimodal,23,20.78731564210073
-C,adansi north,bimodal,8,10.709665507867594
-C,adansi south,bimodal,33,33.75488094179182
-C,adentan,bimodal,35,38.513820059387534
-C,afadjato south,transition,8,8.409762961249166
-C,afigya kwabre north,bimodal,27,34.54298994599997
-C,afigya kwabre south,bimodal,23,23.59878917496971
-C,agona east,bimodal,29,32.55372604512699
-C,agona west,bimodal,46,44.14322030935121
-C,agortime ziope,bimodal,1,2.0590216566705952
-C,ahafo ano north,bimodal,40,74.11591879997256
-C,ahafo ano south east,bimodal,23,13.347094126994683
-C,ahafo ano south west,bimodal,50,27.635218518297087
-C,ahanta west,bimodal,56,47.52585230640713
-C,ajumako enyan essiam,bimodal,23,20.782213905235444
-C,akatsi north,bimodal,2,1.5471202531804222
-C,akatsi south,bimodal,12,23.06837033632234
-C,akwapim north,bimodal,17,24.61740039743089
-C,akwapim south,bimodal,7,6.0518469546933
-C,akyemansa,bimodal,32,44.128308133349826
-C,amansie central,bimodal,22,28.35141559671066
-C,amansie south,bimodal,68,40.30459050342469
-C,amansie west,bimodal,9,10.004977895448368
-C,anloga,bimodal,2,2.7138047941662733
-C,aowin,bimodal,51,55.16798650962775
-C,asante akim central,bimodal,20,17.178258951912174
-C,asante akim north,bimodal,39,21.65273097697964
-C,asante akim south,bimodal,48,43.82593391937836
-C,asante mampong,bimodal,36,48.264848450694316
-C,asene manso akroso,bimodal,4,9.878628089066154
-C,ashaiman,bimodal,7,5.4631801167061544
-C,asikuma odoben brakwa,bimodal,33,43.43821780333771
-C,asokore mampong,bimodal,1,2.3051717109021643
-C,asokwa,bimodal,8,6.85382266770081
-C,assin foso,bimodal,26,49.361580671242095
-C,assin north,bimodal,56,39.11102290528525
-C,assin south,bimodal,83,68.87852856758037
-C,asunafo north,bimodal,65,58.191960617907895
-C,asunafo south,bimodal,20,18.873522198915865
-C,asuogyaman,bimodal,44,24.507993238450233
-C,asutifi north,bimodal,9,5.5295156807415555
-C,asutifi south,bimodal,22,26.827968003296455
-C,atebubu amanten,bimodal,12,17.39135667492995
-C,atiwa east,bimodal,22,11.54612429194645
-C,atiwa west,bimodal,23,22.30108005451928
-C,atwima kwanwoma,bimodal,20,22.519704960711792
-C,atwima mponua,bimodal,44,42.41072378704463
-C,atwima nwabiagya,bimodal,46,98.19049859451654
-C,atwima nwabiagya north,bimodal,33,30.37679910774356
-C,awutu senya,bimodal,17,21.226012446852977
-C,awutu senya east,bimodal,12,13.709855770302662
-C,ayawaso central,bimodal,1,1.4731440043716166
-C,ayawaso north,bimodal,1,1.1241643269998693
-C,ayawaso west,bimodal,2,3.133302875843862
-C,ayensuano,bimodal,30,44.36180163575225
-C,banda,transition,16,26.98594249404879
-C,bawku,unimodal,18,27.54541340444221
-C,bawku west,unimodal,88,82.92090563594242
-C,bekwai,bimodal,78,65.80955293131774
-C,berekum,bimodal,21,22.408205444342055
-C,berekum west,bimodal,2,6.498646633677795
-C,bia east,bimodal,64,60.51330624747615
-C,bia west,bimodal,136,80.20326981158826
-C,biakoye,transition,17,10.814305027581325
-C,bibiani anhwiaso bekwai,bimodal,38,46.456242608855305
-C,binduri,unimodal,7,6.958869280010528
-C,birim central,bimodal,52,48.86283799386458
-C,birim north,bimodal,28,15.534767510217332
-C,birim south,bimodal,5,8.242741788370932
-C,bodi,bimodal,109,68.84821656514502
-C,bole,bimodal,199,207.61776713138963
-C,bolgatanga,unimodal,4,10.444789299604652
-C,bolgatanga east,unimodal,1,3.395051104122941
-C,bongo,unimodal,32,43.529762083047856
-C,bosome freho,bimodal,35,32.96082813503495
-C,bosomtwe,bimodal,16,23.48606800788632
-C,builsa north,unimodal,30,40.442241196567615
-C,builsa south,unimodal,46,44.52267900574995
-C,bunkpurugu nakpanduri,unimodal,79,80.384436085141
-C,cape coast,bimodal,6,11.655097132391147
-C,central gonja,transition,154,160.44500041891652
-C,central tongu,bimodal,5,11.198692431290114
-C,chereponi,unimodal,5,33.14232573053004
-C,daffiama bussie issa,unimodal,77,72.93223353061187
-C,denkyembour,bimodal,5,12.392133950063782
-C,dormaa,bimodal,56,50.84805481010987
-C,dormaa east,bimodal,19,17.849392011926376
-C,dormaa west,bimodal,35,36.01059888508526
-C,east gonja,transition,100,93.76538842801797
-C,east mamprusi,unimodal,46,73.3059151331241
-C,effia kwesimintsim,bimodal,8,17.368371664447327
-C,efutu,bimodal,10,7.068965534571088
-C,ejisu,bimodal,24,25.166883823933787
-C,ejura sekyedumase,bimodal,69,74.54222158612441
-C,ekumfi,bimodal,4,2.8600796907015376
-C,ellembelle,bimodal,126,107.96290481150723
-C,fanteakwa north,bimodal,119,47.10689571822766
-C,fanteakwa south,bimodal,18,14.151956512582247
-C,ga central,bimodal,4,8.601236264280178
-C,ga east,bimodal,6,8.712265462957046
-C,ga north,bimodal,0,4.809599540516045
-C,ga south,bimodal,12,23.27538451432243
-C,ga west,bimodal,14,16.091962942838514
-C,garu,unimodal,50,53.79249044267387
-C,gomoa central,bimodal,24,9.32806438665541
-C,gomoa east,bimodal,50,59.31706966689942
-C,gomoa west,bimodal,36,37.23946771689692
-C,guan,transition,4,4.058601358000255
-C,gushiegu,unimodal,47,32.73084648442495
-C,ho,bimodal,6,10.543722395688533
-C,ho west,bimodal,5,12.636146044170792
-C,hohoe,transition,37,32.08913959692776
-C,jaman north,bimodal,16,17.807154133618322
-C,jaman south,bimodal,20,28.40430558171698
-C,jirapa,unimodal,107,78.74856893261244
-C,jomoro,bimodal,35,41.36528973224192
-C,juaben,bimodal,8,11.025547972906088
-C,juaboso,bimodal,86,80.9870616462846
-C,kadjebi,transition,12,15.094616985319215
-C,karaga,unimodal,12,23.777503808556148
-C,kasena nankana,unimodal,59,40.415769630238906
-C,kasena nankana west,unimodal,83,57.64780260440691
-C,keta,bimodal,11,14.69980667971246
-C,ketu north,bimodal,12,18.42191414203669
-C,ketu south,bimodal,1,3.552963968901407
-C,kintampo north,bimodal,30,44.075173615254535
-C,kintampo south,bimodal,8,7.548772059906034
-C,komenda edna eguafo abirem,bimodal,9,13.076621159109335
-C,korle klottey,bimodal,2,2.5896477125463373
-C,kpandai,unimodal,91,102.78398009623801
-C,kpando,transition,33,23.91732262231925
-C,kpone katamanso,bimodal,26,26.498850882103195
-C,krachi east,transition,44,50.377496416400774
-C,krachi nchumuru,transition,116,103.12123849568206
-C,krachi west,transition,86,73.1130749632308
-C,krowor,bimodal,0,1.827332102821096
-C,kumasi,bimodal,105,39.605849924343104
-C,kumbungu,unimodal,15,11.542196873550603
-C,kwabre east,bimodal,17,14.744879029319724
-C,kwadaso,bimodal,13,14.981540191483749
-C,kwaebibirem,bimodal,12,18.465778486210404
-C,kwahu afram plains north,bimodal,5,16.53315742041195
-C,kwahu afram plains south,bimodal,76,52.97847154957894
-C,kwahu east,bimodal,5,3.341045043064791
-C,kwahu south,bimodal,15,25.31297370831251
-C,kwahu west,bimodal,12,24.20650588910423
-C,la dade kotopon,bimodal,17,2.6413064290239943
-C,la nkwantanang madina,bimodal,8,10.613630171926541
-C,lambussie,unimodal,18,25.43263474667719
-C,lawra,unimodal,34,27.864600300295464
-C,lower manya krobo,bimodal,11,22.230421724257358
-C,mamprugu moagduri,unimodal,143,159.7103347563368
-C,mfantseman,bimodal,6,13.060764136875447
-C,mion,transition,9,8.885439483388778
-C,mpohor,bimodal,24,27.43960863989239
-C,nabdam,unimodal,56,51.00614242807339
-C,nadowli kaleo,unimodal,88,88.75642179070996
-C,nandom,unimodal,13,21.166385688514204
-C,nanton,transition,2,1.1280856513088662
-C,nanumba north,unimodal,129,93.16066213750929
-C,nanumba south,unimodal,30,27.780270477098394
-C,new juaben north,bimodal,7,9.388457825667366
-C,new juaben south,bimodal,6,13.047910900566215
-C,ningo prampram,bimodal,16,21.97954060726659
-C,nkoranza north,bimodal,12,13.408677536656674
-C,nkoranza south,bimodal,19,21.746537835950082
-C,nkwanta north,unimodal,68,58.49055321583887
-C,nkwanta south,transition,12,19.55002992427043
-C,north dayi,bimodal,0,3.6083023759808666
-C,north east gonja,transition,77,58.97248391469109
-C,north gonja,unimodal,54,64.91330915213216
-C,north tongu,bimodal,17,22.47427705072706
-C,nsawam adoagyiri,bimodal,73,113.50758345319524
-C,nzema east,bimodal,49,26.12237726146632
-C,obuasi,bimodal,22,28.26065707695883
-C,obuasi east,bimodal,14,15.26305018979224
-C,offinso,bimodal,38,46.377198999061186
-C,offinso north,bimodal,8,11.661326140462196
-C,oforikrom,bimodal,17,26.533522765406314
-C,okai koi north,bimodal,0,2.55512551332997
-C,okere,bimodal,3,1.381231512223946
-C,old tafo,bimodal,3,6.121935378811936
-C,prestea huni valley,bimodal,154,108.01258158353762
-C,pru,transition,26,7.16226461928676
-C,pru west,bimodal,47,37.297963040912116
-C,pusiga,unimodal,10,29.000520747831914
-C,saboba,unimodal,40,23.04293928176102
-C,sagnarigu,transition,7,11.63881776547594
-C,savelugu,unimodal,95,71.88595681812907
-C,sawla tuna kalba,unimodal,155,172.86896120655038
-C,sefwi akontombra,bimodal,11,13.149615837271693
-C,sefwi wiawso,bimodal,86,73.72081553268806
-C,sekondi takoradi,bimodal,14,20.01877337034589
-C,sekyere afram plains,bimodal,10,14.183884452843767
-C,sekyere central,bimodal,23,23.925313557608096
-C,sekyere east,bimodal,6,9.39188760566295
-C,sekyere kumawu,bimodal,9,7.995133438027443
-C,sekyere south,bimodal,3,15.015976628940098
-C,sene east,transition,27,39.438693011840975
-C,sene west,bimodal,37,24.64759612806251
-C,shai osudoku,bimodal,15,13.658994588229572
-C,shama,bimodal,29,29.45428008773686
-C,sissala east,unimodal,96,100.4780243479464
-C,sissala west,unimodal,23,33.591315433310804
-C,south dayi,bimodal,8,11.37284272445451
-C,south tongu,bimodal,4,10.420227462990693
-C,suaman,bimodal,10,12.746181691990481
-C,suame,bimodal,1,4.236531361274427
-C,suhum,bimodal,27,42.14600380287106
-C,sunyani,bimodal,41,49.62287223510535
-C,sunyani west,bimodal,7,12.0758754970198
-C,tain,bimodal,41,36.48591779343338
-C,talensi,unimodal,55,43.580677564677636
-C,tamale,transition,124,95.56002015244839
-C,tano north,bimodal,16,20.434783359510057
-C,tano south,bimodal,49,35.876774898449455
-C,tarkwa nsuaem,bimodal,106,113.61319949144067
-C,tatale sangule,unimodal,79,62.52100806375479
-C,techiman,bimodal,48,44.41128778074933
-C,techiman north,bimodal,25,19.650485605319208
-C,tema,bimodal,6,2.499596675491138
-C,tema west,bimodal,3,3.091565106423152
-C,tempane,unimodal,4,3.178074219571946
-C,tolon,unimodal,28,39.11006645780813
-C,twifo ati morkwa,bimodal,16,18.77029693044528
-C,twifo hemang lower denkyira,bimodal,29,34.99193948048975
-C,upper denkyira east,bimodal,31,48.30711027341835
-C,upper denkyira west,bimodal,58,49.85006172622484
-C,upper manya krobo,bimodal,16,24.702581485631747
-C,upper west akim,bimodal,24,24.090131322409746
-C,wa,unimodal,67,136.80321679592316
-C,wa east,unimodal,81,128.00909595498476
-C,wa west,unimodal,137,134.1107552952775
-C,wassa amenfi central,bimodal,67,75.92979749220306
-C,wassa amenfi east,bimodal,47,56.84265157863791
-C,wassa amenfi west,bimodal,41,52.803435542037185
-C,wassa east,bimodal,94,86.49339825816271
-C,weija gbawe,bimodal,3,6.904234912816985
-C,wenchi,bimodal,37,26.6716562057908
-C,west akim,bimodal,13,17.60165285496549
-C,west gonja,transition,4,8.237354010710666
-C,west mamprusi,unimodal,68,83.21699895508286
-C,yendi,unimodal,8,18.430037517416892
-C,yilo krobo,bimodal,37,36.80938077912741
-C,yunyoo nasuan,unimodal,19,7.3945909714458296
-C,zabzugu,unimodal,101,96.5989881151161
+A,ablekuma central,bimodal,0,2.5247941362202266
+A,ablekuma north,bimodal,1,4.898754940411453
+A,ablekuma west,bimodal,1,1.4437496065868265
+A,abuakwa north,bimodal,4,6.055084836504411
+A,abuakwa south,bimodal,16,12.866978412523979
+A,abura asebu kwamankese,bimodal,20,19.763040159059678
+A,achiase,bimodal,19,10.306048090395212
+A,ada east,bimodal,3,3.469088024252856
+A,ada west,bimodal,4,14.328576729060389
+A,adaklu,bimodal,2,3.0763196393311003
+A,adansi akrofuom,bimodal,5,10.257837659657069
+A,adansi asokwa,bimodal,23,22.2556963583617
+A,adansi north,bimodal,8,11.923625595547225
+A,adansi south,bimodal,33,36.20117121497384
+A,adentan,bimodal,35,40.354993349573995
+A,afadjato south,transition,8,8.836243548146482
+A,afigya kwabre north,bimodal,27,40.89384515212144
+A,afigya kwabre south,bimodal,23,28.217100996682618
+A,agona east,bimodal,29,33.31431548469236
+A,agona west,bimodal,46,45.422177765971696
+A,agortime ziope,bimodal,1,2.2863862748892747
+A,ahafo ano north,bimodal,40,86.7794876788877
+A,ahafo ano south east,bimodal,23,16.14130608038511
+A,ahafo ano south west,bimodal,50,32.56922489870383
+A,ahanta west,bimodal,56,50.14975394208745
+A,ajumako enyan essiam,bimodal,23,21.386893600613057
+A,akatsi north,bimodal,2,1.9760736893694861
+A,akatsi south,bimodal,12,24.97856640120422
+A,akwapim north,bimodal,17,25.97317232082065
+A,akwapim south,bimodal,7,6.382460127026237
+A,akyemansa,bimodal,32,46.81755047303094
+A,amansie central,bimodal,22,32.694495076881466
+A,amansie south,bimodal,68,46.21256726222847
+A,amansie west,bimodal,9,11.60427294020138
+A,anloga,bimodal,2,3.0781267763010147
+A,aowin,bimodal,51,61.90542159605374
+A,asante akim central,bimodal,20,19.655855375190505
+A,asante akim north,bimodal,39,24.16214535548772
+A,asante akim south,bimodal,48,48.983339253214965
+A,asante mampong,bimodal,36,54.374383238997126
+A,asene manso akroso,bimodal,4,10.791621933025052
+A,ashaiman,bimodal,7,5.660475455413713
+A,asikuma odoben brakwa,bimodal,33,45.3930246080258
+A,asokore mampong,bimodal,1,2.6070094074877215
+A,asokwa,bimodal,8,7.342988892906407
+A,assin foso,bimodal,26,50.66703824674993
+A,assin north,bimodal,56,41.93922880340946
+A,assin south,bimodal,83,71.87130053749719
+A,asunafo north,bimodal,65,68.09936005997946
+A,asunafo south,bimodal,20,21.731232202647945
+A,asuogyaman,bimodal,44,25.617915399973267
+A,asutifi north,bimodal,9,6.660498950456956
+A,asutifi south,bimodal,22,31.774279139668625
+A,atebubu amanten,bimodal,12,20.07651239624621
+A,atiwa east,bimodal,22,12.926795719078466
+A,atiwa west,bimodal,23,24.330070542138696
+A,atwima kwanwoma,bimodal,20,25.646061687703632
+A,atwima mponua,bimodal,44,47.36603651259998
+A,atwima nwabiagya,bimodal,46,108.71698964798341
+A,atwima nwabiagya north,bimodal,33,35.67713030561261
+A,awutu senya,bimodal,17,21.76709317383824
+A,awutu senya east,bimodal,12,14.044200419808492
+A,ayawaso central,bimodal,1,1.6421812473185393
+A,ayawaso north,bimodal,1,1.2243573645201822
+A,ayawaso west,bimodal,2,3.207753290890418
+A,ayensuano,bimodal,30,47.60539278699597
+A,banda,transition,16,31.339639073303903
+A,bawku,unimodal,18,26.945707155637393
+A,bawku west,unimodal,88,84.29821574232479
+A,bekwai,bimodal,78,74.28002282757373
+A,berekum,bimodal,21,27.762258867681105
+A,berekum west,bimodal,2,7.928875646661114
+A,bia east,bimodal,64,70.92695790043005
+A,bia west,bimodal,136,93.35215527777788
+A,biakoye,transition,17,11.4335242664031
+A,bibiani anhwiaso bekwai,bimodal,38,51.96780957091492
+A,binduri,unimodal,7,7.347675482764239
+A,birim central,bimodal,52,52.55866685254346
+A,birim north,bimodal,28,17.23457737891945
+A,birim south,bimodal,5,8.996693880750021
+A,bodi,bimodal,109,77.48998488601882
+A,bole,bimodal,199,219.90933296118763
+A,bolgatanga,unimodal,4,10.39759780946843
+A,bolgatanga east,unimodal,1,3.1727375228861305
+A,bongo,unimodal,32,45.167954005462164
+A,bosome freho,bimodal,35,36.42193693671962
+A,bosomtwe,bimodal,16,26.25807134009115
+A,builsa north,unimodal,30,42.7590153491209
+A,builsa south,unimodal,46,48.186466234752466
+A,bunkpurugu nakpanduri,unimodal,79,83.8236751098497
+A,cape coast,bimodal,6,11.916999785832974
+A,central gonja,transition,154,174.65256866706287
+A,central tongu,bimodal,5,12.161765249934149
+A,chereponi,unimodal,5,38.40717936721794
+A,daffiama bussie issa,unimodal,77,72.14225744290002
+A,denkyembour,bimodal,5,13.281224357219433
+A,dormaa,bimodal,56,58.38816736177694
+A,dormaa east,bimodal,19,22.179815773304924
+A,dormaa west,bimodal,35,41.62236067745583
+A,east gonja,transition,100,97.49102374265195
+A,east mamprusi,unimodal,46,79.47907844241914
+A,effia kwesimintsim,bimodal,8,17.58901969888933
+A,efutu,bimodal,10,7.6824737676287
+A,ejisu,bimodal,24,28.706035245760066
+A,ejura sekyedumase,bimodal,69,85.66928574653281
+A,ekumfi,bimodal,4,3.13512063889271
+A,ellembelle,bimodal,126,115.50876486373497
+A,fanteakwa north,bimodal,119,50.33803004365402
+A,fanteakwa south,bimodal,18,15.414307519668807
+A,ga central,bimodal,4,8.929078905118264
+A,ga east,bimodal,6,9.014553976483143
+A,ga north,bimodal,0,5.010647557312938
+A,ga south,bimodal,12,24.104833081245463
+A,ga west,bimodal,14,16.790510750481744
+A,garu,unimodal,50,53.18670196370665
+A,gomoa central,bimodal,24,9.480604434554154
+A,gomoa east,bimodal,50,62.73820529228657
+A,gomoa west,bimodal,36,38.64117545954352
+A,guan,transition,4,4.117624829436199
+A,gushiegu,unimodal,47,38.706868383280344
+A,ho,bimodal,6,10.986549789121035
+A,ho west,bimodal,5,13.322271185736295
+A,hohoe,transition,37,33.14658578152079
+A,jaman north,bimodal,16,21.79706532584234
+A,jaman south,bimodal,20,34.61518701478022
+A,jirapa,unimodal,107,80.19201010635925
+A,jomoro,bimodal,35,44.37151785666852
+A,juaben,bimodal,8,12.561725151352505
+A,juaboso,bimodal,86,92.19445153290756
+A,kadjebi,transition,12,15.58008223822709
+A,karaga,unimodal,12,25.363528134900644
+A,kasena nankana,unimodal,59,41.32543752638479
+A,kasena nankana west,unimodal,83,60.8143319837316
+A,keta,bimodal,11,15.853945142060368
+A,ketu north,bimodal,12,19.94161741682221
+A,ketu south,bimodal,1,3.999194922459546
+A,kintampo north,bimodal,30,47.53935415642258
+A,kintampo south,bimodal,8,8.784340882762091
+A,komenda edna eguafo abirem,bimodal,9,13.806401785847662
+A,korle klottey,bimodal,2,2.7385036289191866
+A,kpandai,unimodal,91,107.30626644596316
+A,kpando,transition,33,24.382740677961763
+A,kpone katamanso,bimodal,26,28.434979733487605
+A,krachi east,transition,44,52.88371670273709
+A,krachi nchumuru,transition,116,108.10682643163257
+A,krachi west,transition,86,75.84350548668924
+A,krowor,bimodal,0,2.017982918986607
+A,kumasi,bimodal,105,43.64098277245364
+A,kumbungu,unimodal,15,12.467259805529519
+A,kwabre east,bimodal,17,17.285356196395686
+A,kwadaso,bimodal,13,16.785490970729604
+A,kwaebibirem,bimodal,12,20.275513517409994
+A,kwahu afram plains north,bimodal,5,18.256622283543496
+A,kwahu afram plains south,bimodal,76,58.591791609534894
+A,kwahu east,bimodal,5,4.045540501725662
+A,kwahu south,bimodal,15,27.71022163949204
+A,kwahu west,bimodal,12,25.85965299993228
+A,la dade kotopon,bimodal,17,2.8347970486689418
+A,la nkwantanang madina,bimodal,8,11.247675962365209
+A,lambussie,unimodal,18,25.335702192246092
+A,lawra,unimodal,34,28.178698738217584
+A,lower manya krobo,bimodal,11,23.013374919879904
+A,mamprugu moagduri,unimodal,143,170.60374061600913
+A,mfantseman,bimodal,6,13.57234905333678
+A,mion,transition,9,10.315842935218994
+A,mpohor,bimodal,24,28.021066640443014
+A,nabdam,unimodal,56,53.051105821841325
+A,nadowli kaleo,unimodal,88,88.44891140633007
+A,nandom,unimodal,13,20.444654369399007
+A,nanton,transition,2,1.4192102083510743
+A,nanumba north,unimodal,129,97.98348425829187
+A,nanumba south,unimodal,30,29.602175111708785
+A,new juaben north,bimodal,7,9.79175523914844
+A,new juaben south,bimodal,6,13.526113065317924
+A,ningo prampram,bimodal,16,24.34155315211191
+A,nkoranza north,bimodal,12,16.125996307283057
+A,nkoranza south,bimodal,19,25.6884653873488
+A,nkwanta north,unimodal,68,62.597992986802346
+A,nkwanta south,transition,12,21.145738781781365
+A,north dayi,bimodal,0,3.8453256625038783
+A,north east gonja,transition,77,63.30699308172606
+A,north gonja,unimodal,54,68.91669079644431
+A,north tongu,bimodal,17,24.090090201969367
+A,nsawam adoagyiri,bimodal,73,117.97161839150502
+A,nzema east,bimodal,49,28.621266287836562
+A,obuasi,bimodal,22,30.98613172553963
+A,obuasi east,bimodal,14,16.497978277356165
+A,offinso,bimodal,38,54.30177503411238
+A,offinso north,bimodal,8,14.464155554651182
+A,oforikrom,bimodal,17,29.173703850648423
+A,okai koi north,bimodal,0,2.682161825772153
+A,okere,bimodal,3,1.6021183575135745
+A,old tafo,bimodal,3,6.449426095081451
+A,prestea huni valley,bimodal,154,118.53552274618701
+A,pru,transition,26,7.728781884503172
+A,pru west,bimodal,47,42.21966227136934
+A,pusiga,unimodal,10,28.730886714376176
+A,saboba,unimodal,40,25.33172566581901
+A,sagnarigu,transition,7,12.147154595192546
+A,savelugu,unimodal,95,75.22894952496237
+A,sawla tuna kalba,unimodal,155,179.72796821625977
+A,sefwi akontombra,bimodal,11,14.811425839078957
+A,sefwi wiawso,bimodal,86,83.27563199039504
+A,sekondi takoradi,bimodal,14,20.65577761703517
+A,sekyere afram plains,bimodal,10,16.268855148508514
+A,sekyere central,bimodal,23,28.08014778718553
+A,sekyere east,bimodal,6,10.729204093207892
+A,sekyere kumawu,bimodal,9,9.464599216070205
+A,sekyere south,bimodal,3,17.316431475905382
+A,sene east,transition,27,41.66965874043426
+A,sene west,bimodal,37,26.265088674745165
+A,shai osudoku,bimodal,15,14.74238288133112
+A,shama,bimodal,29,29.894965722109916
+A,sissala east,unimodal,96,103.06640683015053
+A,sissala west,unimodal,23,32.99148898798136
+A,south dayi,bimodal,8,11.931033064968636
+A,south tongu,bimodal,4,11.49460425213937
+A,suaman,bimodal,10,14.655731320886963
+A,suame,bimodal,1,4.546882921850791
+A,suhum,bimodal,27,43.6729521306675
+A,sunyani,bimodal,41,58.57238992617087
+A,sunyani west,bimodal,7,14.782637969351049
+A,tain,bimodal,41,44.37309930584815
+A,talensi,unimodal,55,46.42936656140204
+A,tamale,transition,124,102.80086588404855
+A,tano north,bimodal,16,24.353290060154208
+A,tano south,bimodal,49,41.473809638822345
+A,tarkwa nsuaem,bimodal,106,119.11408413635795
+A,tatale sangule,unimodal,79,68.04652396624773
+A,techiman,bimodal,48,52.08794182895652
+A,techiman north,bimodal,25,23.13939392988215
+A,tema,bimodal,6,2.82042766894837
+A,tema west,bimodal,3,3.354702338072968
+A,tempane,unimodal,4,3.644080784566869
+A,tolon,unimodal,28,41.89471338061323
+A,twifo ati morkwa,bimodal,16,20.455535037203838
+A,twifo hemang lower denkyira,bimodal,29,37.06185452371964
+A,upper denkyira east,bimodal,31,53.33701974164592
+A,upper denkyira west,bimodal,58,55.395788798374326
+A,upper manya krobo,bimodal,16,26.11916125685138
+A,upper west akim,bimodal,24,25.67630576741795
+A,wa,unimodal,67,137.83185639967382
+A,wa east,unimodal,81,132.50637267430304
+A,wa west,unimodal,137,139.84935741044683
+A,wassa amenfi central,bimodal,67,85.16375684922103
+A,wassa amenfi east,bimodal,47,65.28288484270129
+A,wassa amenfi west,bimodal,41,58.72344915993786
+A,wassa east,bimodal,94,91.70366382204456
+A,weija gbawe,bimodal,3,7.195840576425658
+A,wenchi,bimodal,37,31.1755905255389
+A,west akim,bimodal,13,19.083936782853414
+A,west gonja,transition,4,8.340169571251122
+A,west mamprusi,unimodal,68,88.91140393225695
+A,yendi,unimodal,8,20.140662044175237
+A,yilo krobo,bimodal,37,38.91975442543392
+A,yunyoo nasuan,unimodal,19,8.637385302444285
+A,zabzugu,unimodal,101,103.01217876148178
+B,ablekuma central,bimodal,0,2.4247931510797076
+B,ablekuma north,bimodal,1,4.691147838014936
+B,ablekuma west,bimodal,1,1.3573746524921269
+B,abuakwa north,bimodal,4,5.60431324170804
+B,abuakwa south,bimodal,16,11.983672769220739
+B,abura asebu kwamankese,bimodal,20,19.160660029625465
+B,achiase,bimodal,19,9.484749308281657
+B,ada east,bimodal,3,3.21280668271703
+B,ada west,bimodal,4,12.977054250852069
+B,adaklu,bimodal,2,2.9022811411831633
+B,adansi akrofuom,bimodal,5,9.15616805460468
+B,adansi asokwa,bimodal,23,21.204557300880175
+B,adansi north,bimodal,8,10.600106493565749
+B,adansi south,bimodal,33,34.42741490420031
+B,adentan,bimodal,35,38.001554050517775
+B,afadjato south,transition,8,8.400463085481327
+B,afigya kwabre north,bimodal,27,34.298013138164166
+B,afigya kwabre south,bimodal,23,23.29007303165004
+B,agona east,bimodal,29,32.39963753022852
+B,agona west,bimodal,46,43.82418520877133
+B,agortime ziope,bimodal,1,2.136291961637597
+B,ahafo ano north,bimodal,40,73.59106456643947
+B,ahafo ano south east,bimodal,23,13.704240128974698
+B,ahafo ano south west,bimodal,50,27.896695240346904
+B,ahanta west,bimodal,56,47.460852937651275
+B,ajumako enyan essiam,bimodal,23,21.011191006145783
+B,akatsi north,bimodal,2,1.8371683790935516
+B,akatsi south,bimodal,12,23.07114619689025
+B,akwapim north,bimodal,17,24.33007724751307
+B,akwapim south,bimodal,7,6.043580070140069
+B,akyemansa,bimodal,32,43.86985720948919
+B,amansie central,bimodal,22,28.572442122868154
+B,amansie south,bimodal,68,40.69843464613769
+B,amansie west,bimodal,9,10.279946430697247
+B,anloga,bimodal,2,2.8601205446011515
+B,aowin,bimodal,51,55.86595446930693
+B,asante akim central,bimodal,20,16.99542032661242
+B,asante akim north,bimodal,39,21.812253740928245
+B,asante akim south,bimodal,48,43.81742376862745
+B,asante mampong,bimodal,36,47.97257812419082
+B,asene manso akroso,bimodal,4,9.924763805257017
+B,ashaiman,bimodal,7,5.423830829813505
+B,asikuma odoben brakwa,bimodal,33,43.611597438294176
+B,asokore mampong,bimodal,1,2.3223348912220616
+B,asokwa,bimodal,8,6.572220013369714
+B,assin foso,bimodal,26,48.71735959915691
+B,assin north,bimodal,56,39.56702590385087
+B,assin south,bimodal,83,68.92269157748035
+B,asunafo north,bimodal,65,57.69342747466735
+B,asunafo south,bimodal,20,18.91085584474215
+B,asuogyaman,bimodal,44,24.74825254919459
+B,asutifi north,bimodal,9,5.5757222028784765
+B,asutifi south,bimodal,22,26.601170384149462
+B,atebubu amanten,bimodal,12,17.47674209806624
+B,atiwa east,bimodal,22,11.530898454983767
+B,atiwa west,bimodal,23,22.079438070829244
+B,atwima kwanwoma,bimodal,20,22.16326345046064
+B,atwima mponua,bimodal,44,42.53287533682993
+B,atwima nwabiagya,bimodal,46,96.32017670655055
+B,atwima nwabiagya north,bimodal,33,29.79280747324111
+B,awutu senya,bimodal,17,20.999058141792908
+B,awutu senya east,bimodal,12,13.522478430568075
+B,ayawaso central,bimodal,1,1.5831739051488989
+B,ayawaso north,bimodal,1,1.1754856531488838
+B,ayawaso west,bimodal,2,3.0884836952278363
+B,ayensuano,bimodal,30,44.69272716426107
+B,banda,transition,16,26.791474493667522
+B,bawku,unimodal,18,26.792937557899283
+B,bawku west,unimodal,88,83.37740544292718
+B,bekwai,bimodal,78,65.37052065475307
+B,berekum,bimodal,21,21.940611007742426
+B,berekum west,bimodal,2,6.35481096036761
+B,bia east,bimodal,64,60.53183934783626
+B,bia west,bimodal,136,80.72938381925216
+B,biakoye,transition,17,10.832128252069985
+B,bibiani anhwiaso bekwai,bimodal,38,45.741742945139215
+B,binduri,unimodal,7,7.409219160827697
+B,birim central,bimodal,52,47.74787501863597
+B,birim north,bimodal,28,15.420917301581639
+B,birim south,bimodal,5,8.272114333207622
+B,bodi,bimodal,109,68.67623966297431
+B,bole,bimodal,199,205.01123232721167
+B,bolgatanga,unimodal,4,9.890962149511115
+B,bolgatanga east,unimodal,1,3.082861659195379
+B,bongo,unimodal,32,44.15657588713522
+B,bosome freho,bimodal,35,33.1575845735988
+B,bosomtwe,bimodal,16,23.203671543955185
+B,builsa north,unimodal,30,40.02484567914717
+B,builsa south,unimodal,46,44.97269581723063
+B,bunkpurugu nakpanduri,unimodal,79,79.84406006874622
+B,cape coast,bimodal,6,11.430853220511041
+B,central gonja,transition,154,162.34636388927944
+B,central tongu,bimodal,5,11.418753556669108
+B,chereponi,unimodal,5,34.039697111490156
+B,daffiama bussie issa,unimodal,77,72.08927738734182
+B,denkyembour,bimodal,5,12.202037425338556
+B,dormaa,bimodal,56,50.23271693339426
+B,dormaa east,bimodal,19,17.6891056313372
+B,dormaa west,bimodal,35,35.85877959295146
+B,east gonja,transition,100,93.06347133490569
+B,east mamprusi,unimodal,46,74.45459720998048
+B,effia kwesimintsim,bimodal,8,16.963523367808307
+B,efutu,bimodal,10,7.251445523707842
+B,ejisu,bimodal,24,24.79190993155915
+B,ejura sekyedumase,bimodal,69,74.26298067950067
+B,ekumfi,bimodal,4,2.963090954508612
+B,ellembelle,bimodal,126,108.59181795363561
+B,fanteakwa north,bimodal,119,47.47054367350515
+B,fanteakwa south,bimodal,18,14.146526223142436
+B,ga central,bimodal,4,8.519235606881526
+B,ga east,bimodal,6,8.668648296590463
+B,ga north,bimodal,0,4.797306377419097
+B,ga south,bimodal,12,23.22203191525899
+B,ga west,bimodal,14,16.002310497604558
+B,garu,unimodal,50,53.7915036211759
+B,gomoa central,bimodal,24,9.189653914001479
+B,gomoa east,bimodal,50,58.69604581684036
+B,gomoa west,bimodal,36,37.374178560149666
+B,guan,transition,4,3.882353225711067
+B,gushiegu,unimodal,47,33.75487954036584
+B,ho,bimodal,6,10.352443353126716
+B,ho west,bimodal,5,12.695616055967845
+B,hohoe,transition,37,31.053912148639185
+B,jaman north,bimodal,16,17.491926694810072
+B,jaman south,bimodal,20,27.80940722869231
+B,jirapa,unimodal,107,80.03914253190534
+B,jomoro,bimodal,35,41.598729310502776
+B,juaben,bimodal,8,10.922551784930864
+B,juaboso,bimodal,86,80.58428357783689
+B,kadjebi,transition,12,14.82082324842291
+B,karaga,unimodal,12,24.07231066700495
+B,kasena nankana,unimodal,59,39.837465395764696
+B,kasena nankana west,unimodal,83,58.17797974880839
+B,keta,bimodal,11,14.571985059765495
+B,ketu north,bimodal,12,18.42263748886987
+B,ketu south,bimodal,1,3.6869320969197763
+B,kintampo north,bimodal,30,43.797593215532025
+B,kintampo south,bimodal,8,7.547460376724364
+B,komenda edna eguafo abirem,bimodal,9,13.157268205930322
+B,korle klottey,bimodal,2,2.583794551944859
+B,kpandai,unimodal,91,103.2749971297114
+B,kpando,transition,33,23.216297181702995
+B,kpone katamanso,bimodal,26,26.470498764795998
+B,krachi east,transition,44,50.6822454334419
+B,krachi nchumuru,transition,116,103.94053381712187
+B,krachi west,transition,86,73.00237987336408
+B,krowor,bimodal,0,1.8974236099655442
+B,kumasi,bimodal,105,39.19993391220717
+B,kumbungu,unimodal,15,11.695279305418701
+B,kwabre east,bimodal,17,14.576227126553833
+B,kwadaso,bimodal,13,14.759112235934676
+B,kwaebibirem,bimodal,12,18.314878093052048
+B,kwahu afram plains north,bimodal,5,17.344424622313557
+B,kwahu afram plains south,bimodal,76,53.74068723424205
+B,kwahu east,bimodal,5,3.6566019419526423
+B,kwahu south,bimodal,15,25.489274706809784
+B,kwahu west,bimodal,12,23.881228059768617
+B,la dade kotopon,bimodal,17,2.6766965568977055
+B,la nkwantanang madina,bimodal,8,10.53453502646384
+B,lambussie,unimodal,18,25.689523288987754
+B,lawra,unimodal,34,28.018012915164192
+B,lower manya krobo,bimodal,11,22.182725641662817
+B,mamprugu moagduri,unimodal,143,157.8538410345399
+B,mfantseman,bimodal,6,13.08403437018454
+B,mion,transition,9,9.423250553216045
+B,mpohor,bimodal,24,27.248102932118243
+B,nabdam,unimodal,56,52.67782675129861
+B,nadowli kaleo,unimodal,88,88.68595705109995
+B,nandom,unimodal,13,20.905148448633557
+B,nanton,transition,2,1.3108555816065484
+B,nanumba north,unimodal,129,93.38596158573621
+B,nanumba south,unimodal,30,28.00221795426804
+B,new juaben north,bimodal,7,9.172819200113372
+B,new juaben south,bimodal,6,12.719032493066868
+B,ningo prampram,bimodal,16,22.05381885081158
+B,nkoranza north,bimodal,12,13.267440598364459
+B,nkoranza south,bimodal,19,21.223111182414915
+B,nkwanta north,unimodal,68,59.54643608438445
+B,nkwanta south,transition,12,19.977132365711867
+B,north dayi,bimodal,0,3.6648546127661157
+B,north east gonja,transition,77,59.869437690832626
+B,north gonja,unimodal,54,64.93436486051479
+B,north tongu,bimodal,17,22.892691054394227
+B,nsawam adoagyiri,bimodal,73,111.93499563763936
+B,nzema east,bimodal,49,26.78537170839058
+B,obuasi,bimodal,22,27.79621201447556
+B,obuasi east,bimodal,14,14.97092630619513
+B,offinso,bimodal,38,46.12885858209906
+B,offinso north,bimodal,8,11.922773846256044
+B,oforikrom,bimodal,17,26.136970316347284
+B,okai koi north,bimodal,0,2.5920825038137525
+B,okere,bimodal,3,1.4925680151719782
+B,old tafo,bimodal,3,5.839050833525976
+B,prestea huni valley,bimodal,154,108.46649072927836
+B,pru,transition,26,7.170104115224697
+B,pru west,bimodal,47,37.662605730902655
+B,pusiga,unimodal,10,28.75083379951119
+B,saboba,unimodal,40,23.29789434769159
+B,sagnarigu,transition,7,11.20049831515099
+B,savelugu,unimodal,95,71.66560628917063
+B,sawla tuna kalba,unimodal,155,173.86774939939275
+B,sefwi akontombra,bimodal,11,13.280518960652726
+B,sefwi wiawso,bimodal,86,72.5959404130843
+B,sekondi takoradi,bimodal,14,19.551943819034797
+B,sekyere afram plains,bimodal,10,14.962229985642866
+B,sekyere central,bimodal,23,24.576621986281854
+B,sekyere east,bimodal,6,9.231069319225984
+B,sekyere kumawu,bimodal,9,8.171591397153934
+B,sekyere south,bimodal,3,14.976862900612108
+B,sene east,transition,27,40.03438327831311
+B,sene west,bimodal,37,24.607541317597796
+B,shai osudoku,bimodal,15,13.884376361168062
+B,shama,bimodal,29,29.103411634268422
+B,sissala east,unimodal,96,98.62032104506618
+B,sissala west,unimodal,23,32.948161947731585
+B,south dayi,bimodal,8,11.360393127493323
+B,south tongu,bimodal,4,10.479022466497824
+B,suaman,bimodal,10,12.674284104745553
+B,suame,bimodal,1,4.102150995315487
+B,suhum,bimodal,27,41.61279274692712
+B,sunyani,bimodal,41,48.84012123266623
+B,sunyani west,bimodal,7,11.98028547253621
+B,tain,bimodal,41,36.20304998311476
+B,talensi,unimodal,55,44.40693679675041
+B,tamale,transition,124,93.76304313585176
+B,tano north,bimodal,16,20.13805396753667
+B,tano south,bimodal,49,35.64676642359312
+B,tarkwa nsuaem,bimodal,106,112.43515976892455
+B,tatale sangule,unimodal,79,62.7694701069732
+B,techiman,bimodal,48,43.04870381712613
+B,techiman north,bimodal,25,19.076036025148895
+B,tema,bimodal,6,2.6429605324549055
+B,tema west,bimodal,3,3.1329813537338422
+B,tempane,unimodal,4,3.6821723082091062
+B,tolon,unimodal,28,39.59923765136007
+B,twifo ati morkwa,bimodal,16,19.067347856753592
+B,twifo hemang lower denkyira,bimodal,29,35.21668429339917
+B,upper denkyira east,bimodal,31,48.318459373267835
+B,upper denkyira west,bimodal,58,49.81696109972786
+B,upper manya krobo,bimodal,16,25.215095644030917
+B,upper west akim,bimodal,24,24.353599508657222
+B,wa,unimodal,67,134.08915518649806
+B,wa east,unimodal,81,128.02164570157154
+B,wa west,unimodal,137,137.95208669378263
+B,wassa amenfi central,bimodal,67,76.29074261077952
+B,wassa amenfi east,bimodal,47,57.47280542420779
+B,wassa amenfi west,bimodal,41,52.37369826529286
+B,wassa east,bimodal,94,87.04066681388058
+B,weija gbawe,bimodal,3,6.814803163725837
+B,wenchi,bimodal,37,26.721294065566614
+B,west akim,bimodal,13,17.73255716414107
+B,west gonja,transition,4,8.0895884255154
+B,west mamprusi,unimodal,68,83.1276176458636
+B,yendi,unimodal,8,18.200330827116247
+B,yilo krobo,bimodal,37,36.953598131300744
+B,yunyoo nasuan,unimodal,19,8.26311888458099
+B,zabzugu,unimodal,101,96.19920649253785
+C,ablekuma central,bimodal,0,2.4276346004108387
+C,ablekuma north,bimodal,1,4.680425242869382
+C,ablekuma west,bimodal,1,1.359741193816165
+C,abuakwa north,bimodal,4,5.6070219901601055
+C,abuakwa south,bimodal,16,11.941716929941267
+C,abura asebu kwamankese,bimodal,20,19.16410661965187
+C,achiase,bimodal,19,9.475154347141089
+C,ada east,bimodal,3,3.2136945496698837
+C,ada west,bimodal,4,13.003305927709889
+C,adaklu,bimodal,2,2.895967582119821
+C,adansi akrofuom,bimodal,5,9.18531260275502
+C,adansi asokwa,bimodal,23,21.22687506708217
+C,adansi north,bimodal,8,10.594230651053932
+C,adansi south,bimodal,33,34.455120560649924
+C,adentan,bimodal,35,37.978473631305306
+C,afadjato south,transition,8,8.375921626818236
+C,afigya kwabre north,bimodal,27,34.305852219222736
+C,afigya kwabre south,bimodal,23,23.246892194358193
+C,agona east,bimodal,29,32.47599491315062
+C,agona west,bimodal,46,43.88321359598591
+C,agortime ziope,bimodal,1,2.1332391703635043
+C,ahafo ano north,bimodal,40,73.82965691355497
+C,ahafo ano south east,bimodal,23,13.699189210077508
+C,ahafo ano south west,bimodal,50,27.946537584140543
+C,ahanta west,bimodal,56,47.59301784028364
+C,ajumako enyan essiam,bimodal,23,21.00767107162469
+C,akatsi north,bimodal,2,1.8332727748788058
+C,akatsi south,bimodal,12,23.039919944651356
+C,akwapim north,bimodal,17,24.372359038742808
+C,akwapim south,bimodal,7,6.050958090075322
+C,akyemansa,bimodal,32,43.919896813195066
+C,amansie central,bimodal,22,28.574656815550775
+C,amansie south,bimodal,68,40.70827382467864
+C,amansie west,bimodal,9,10.263170832702471
+C,anloga,bimodal,2,2.8626525290252505
+C,aowin,bimodal,51,55.971422946242036
+C,asante akim central,bimodal,20,16.97481530969485
+C,asante akim north,bimodal,39,21.777988590261177
+C,asante akim south,bimodal,48,43.81083762735728
+C,asante mampong,bimodal,36,48.032009395006305
+C,asene manso akroso,bimodal,4,9.942392100219836
+C,ashaiman,bimodal,7,5.436422059617007
+C,asikuma odoben brakwa,bimodal,33,43.62862906035613
+C,asokore mampong,bimodal,1,2.3244448082050204
+C,asokwa,bimodal,8,6.576523208030828
+C,assin foso,bimodal,26,48.68113051452376
+C,assin north,bimodal,56,39.56283178181343
+C,assin south,bimodal,83,68.98485241005277
+C,asunafo north,bimodal,65,58.030516958384254
+C,asunafo south,bimodal,20,18.98752753905476
+C,asuogyaman,bimodal,44,24.600253623912145
+C,asutifi north,bimodal,9,5.578803115346254
+C,asutifi south,bimodal,22,26.641025749132165
+C,atebubu amanten,bimodal,12,17.473902496831073
+C,atiwa east,bimodal,22,11.493064872406125
+C,atiwa west,bimodal,23,22.074509057477744
+C,atwima kwanwoma,bimodal,20,22.230569240200275
+C,atwima mponua,bimodal,44,42.536681462023
+C,atwima nwabiagya,bimodal,46,96.2587843609298
+C,atwima nwabiagya north,bimodal,33,29.870483668712765
+C,awutu senya,bimodal,17,20.99919909012923
+C,awutu senya east,bimodal,12,13.526102723898324
+C,ayawaso central,bimodal,1,1.5822318015837749
+C,ayawaso north,bimodal,1,1.1789030912617513
+C,ayawaso west,bimodal,2,3.0845066487614012
+C,ayensuano,bimodal,30,44.51296350125105
+C,banda,transition,16,26.745365692572275
+C,bawku,unimodal,18,26.669228116978992
+C,bawku west,unimodal,88,83.36483532101781
+C,bekwai,bimodal,78,65.20556711332237
+C,berekum,bimodal,21,21.986855355129634
+C,berekum west,bimodal,2,6.375906698055715
+C,bia east,bimodal,64,60.72628536593369
+C,bia west,bimodal,136,80.81241854175678
+C,biakoye,transition,17,10.833860520059224
+C,bibiani anhwiaso bekwai,bimodal,38,45.75492438221299
+C,binduri,unimodal,7,7.376372398354152
+C,birim central,bimodal,52,47.865597899379026
+C,birim north,bimodal,28,15.427367324512439
+C,birim south,bimodal,5,8.274340756711235
+C,bodi,bimodal,109,68.77079522040943
+C,bole,bimodal,199,206.0610027778686
+C,bolgatanga,unimodal,4,9.908723043818604
+C,bolgatanga east,unimodal,1,3.0825545314306257
+C,bongo,unimodal,32,44.20830503326119
+C,bosome freho,bimodal,35,33.13672555477873
+C,bosomtwe,bimodal,16,23.173089198944293
+C,builsa north,unimodal,30,39.973243195522805
+C,builsa south,unimodal,46,44.9200420743893
+C,bunkpurugu nakpanduri,unimodal,79,79.53880656150874
+C,cape coast,bimodal,6,11.445600568551681
+C,central gonja,transition,154,163.09698794451532
+C,central tongu,bimodal,5,11.420746055147324
+C,chereponi,unimodal,5,33.697680984992026
+C,daffiama bussie issa,unimodal,77,72.39618980034584
+C,denkyembour,bimodal,5,12.23704990094105
+C,dormaa,bimodal,56,50.40912996523189
+C,dormaa east,bimodal,19,17.74854676342165
+C,dormaa west,bimodal,35,35.9583267607348
+C,east gonja,transition,100,93.07707153183246
+C,east mamprusi,unimodal,46,74.25370949031772
+C,effia kwesimintsim,bimodal,8,16.95112068239125
+C,efutu,bimodal,10,7.245003555844217
+C,ejisu,bimodal,24,24.766746308981006
+C,ejura sekyedumase,bimodal,69,74.35480878518712
+C,ekumfi,bimodal,4,2.9730747595657254
+C,ellembelle,bimodal,126,108.42509287576733
+C,fanteakwa north,bimodal,119,47.37112539512838
+C,fanteakwa south,bimodal,18,14.115103280781273
+C,ga central,bimodal,4,8.517082198177103
+C,ga east,bimodal,6,8.703748044199779
+C,ga north,bimodal,0,4.806269587331325
+C,ga south,bimodal,12,23.305394780634128
+C,ga west,bimodal,14,15.996764008087414
+C,garu,unimodal,50,53.53441171725077
+C,gomoa central,bimodal,24,9.188713634838336
+C,gomoa east,bimodal,50,58.79161122619396
+C,gomoa west,bimodal,36,37.28841177676452
+C,guan,transition,4,3.8753557064814492
+C,gushiegu,unimodal,47,33.35542780570831
+C,ho,bimodal,6,10.315383158934026
+C,ho west,bimodal,5,12.664937060729763
+C,hohoe,transition,37,31.05027052601744
+C,jaman north,bimodal,16,17.540436182998267
+C,jaman south,bimodal,20,27.914607035218015
+C,jirapa,unimodal,107,80.24056600013125
+C,jomoro,bimodal,35,41.48886262169018
+C,juaben,bimodal,8,10.924477578061092
+C,juaboso,bimodal,86,80.34010953828258
+C,kadjebi,transition,12,14.79644266411478
+C,karaga,unimodal,12,23.993691692566056
+C,kasena nankana,unimodal,59,39.81371139178755
+C,kasena nankana west,unimodal,83,58.09396119691662
+C,keta,bimodal,11,14.543251307381484
+C,ketu north,bimodal,12,18.39354716878953
+C,ketu south,bimodal,1,3.6925218436688905
+C,kintampo north,bimodal,30,44.006097308400314
+C,kintampo south,bimodal,8,7.568092305970564
+C,komenda edna eguafo abirem,bimodal,9,13.167765663568389
+C,korle klottey,bimodal,2,2.592376298316675
+C,kpandai,unimodal,91,102.6564877387795
+C,kpando,transition,33,23.20349878901113
+C,kpone katamanso,bimodal,26,26.446435456940943
+C,krachi east,transition,44,50.63675936442529
+C,krachi nchumuru,transition,116,103.82533054946043
+C,krachi west,transition,86,73.05610761879915
+C,krowor,bimodal,0,1.8996014304700761
+C,kumasi,bimodal,105,39.2479841142832
+C,kumbungu,unimodal,15,11.714124903066136
+C,kwabre east,bimodal,17,14.53100441891594
+C,kwadaso,bimodal,13,14.692344063644782
+C,kwaebibirem,bimodal,12,18.304174625883647
+C,kwahu afram plains north,bimodal,5,17.307178571061247
+C,kwahu afram plains south,bimodal,76,53.9831408047721
+C,kwahu east,bimodal,5,3.651270440986408
+C,kwahu south,bimodal,15,25.436162404520246
+C,kwahu west,bimodal,12,23.87058399734149
+C,la dade kotopon,bimodal,17,2.6800323864512596
+C,la nkwantanang madina,bimodal,8,10.565576442193928
+C,lambussie,unimodal,18,25.68702183768458
+C,lawra,unimodal,34,27.917441890835548
+C,lower manya krobo,bimodal,11,22.113065041797515
+C,mamprugu moagduri,unimodal,143,157.79002657733355
+C,mfantseman,bimodal,6,13.125623546090475
+C,mion,transition,9,9.412785282840034
+C,mpohor,bimodal,24,27.341147024658227
+C,nabdam,unimodal,56,52.553143824977
+C,nadowli kaleo,unimodal,88,88.78559250040338
+C,nandom,unimodal,13,20.906971487145817
+C,nanton,transition,2,1.3105451717423022
+C,nanumba north,unimodal,129,92.80864229110975
+C,nanumba south,unimodal,30,27.88503605553919
+C,new juaben north,bimodal,7,9.172929234902075
+C,new juaben south,bimodal,6,12.725755216380781
+C,ningo prampram,bimodal,16,22.03998030980811
+C,nkoranza north,bimodal,12,13.309380070725217
+C,nkoranza south,bimodal,19,21.324666153563548
+C,nkwanta north,unimodal,68,59.451460582305906
+C,nkwanta south,transition,12,19.9472229422603
+C,north dayi,bimodal,0,3.663376617535592
+C,north east gonja,transition,77,60.01693152008315
+C,north gonja,unimodal,54,64.8404537649752
+C,north tongu,bimodal,17,22.8363395272136
+C,nsawam adoagyiri,bimodal,73,111.49745787809873
+C,nzema east,bimodal,49,26.763649429846378
+C,obuasi,bimodal,22,27.737188738323745
+C,obuasi east,bimodal,14,14.991832443667734
+C,offinso,bimodal,38,46.139200726577656
+C,offinso north,bimodal,8,11.966351549081475
+C,oforikrom,bimodal,17,26.093319391617353
+C,okai koi north,bimodal,0,2.596934553011109
+C,okere,bimodal,3,1.4910932185892591
+C,old tafo,bimodal,3,5.837160661860752
+C,prestea huni valley,bimodal,154,108.54289178548329
+C,pru,transition,26,7.172479003440706
+C,pru west,bimodal,47,37.68499553243524
+C,pusiga,unimodal,10,28.65256159369889
+C,saboba,unimodal,40,23.021486099397908
+C,sagnarigu,transition,7,11.247425358453723
+C,savelugu,unimodal,95,71.19979955554665
+C,sawla tuna kalba,unimodal,155,172.04454857061765
+C,sefwi akontombra,bimodal,11,13.310428736147111
+C,sefwi wiawso,bimodal,86,72.81985353790677
+C,sekondi takoradi,bimodal,14,19.57667808470903
+C,sekyere afram plains,bimodal,10,15.009896498867782
+C,sekyere central,bimodal,23,24.599715347665125
+C,sekyere east,bimodal,6,9.233960186199816
+C,sekyere kumawu,bimodal,9,8.16470488193562
+C,sekyere south,bimodal,3,14.939637549270259
+C,sene east,transition,27,40.064251333584004
+C,sene west,bimodal,37,24.62071416559754
+C,shai osudoku,bimodal,15,13.85471352239006
+C,shama,bimodal,29,29.180606284974772
+C,sissala east,unimodal,96,98.89623278463709
+C,sissala west,unimodal,23,33.138514359498416
+C,south dayi,bimodal,8,11.359117242488557
+C,south tongu,bimodal,4,10.483274594699488
+C,suaman,bimodal,10,12.674017574140064
+C,suame,bimodal,1,4.1021019508645225
+C,suhum,bimodal,27,41.71443894170295
+C,sunyani,bimodal,41,48.961202062355696
+C,sunyani west,bimodal,7,12.020256584980013
+C,tain,bimodal,41,36.305362802505194
+C,talensi,unimodal,55,44.50102174057898
+C,tamale,transition,124,94.22555472709689
+C,tano north,bimodal,16,20.21075374315946
+C,tano south,bimodal,49,35.67720095145455
+C,tarkwa nsuaem,bimodal,106,112.52784859581823
+C,tatale sangule,unimodal,79,62.663615000725244
+C,techiman,bimodal,48,43.20028227226521
+C,techiman north,bimodal,25,19.108644224001488
+C,tema,bimodal,6,2.6369149505382943
+C,tema west,bimodal,3,3.1387754204157936
+C,tempane,unimodal,4,3.67054893272692
+C,tolon,unimodal,28,39.64448029709699
+C,twifo ati morkwa,bimodal,16,19.151047906077196
+C,twifo hemang lower denkyira,bimodal,29,35.1899026233028
+C,upper denkyira east,bimodal,31,48.20485850696848
+C,upper denkyira west,bimodal,58,49.79858208601673
+C,upper manya krobo,bimodal,16,25.250577400008073
+C,upper west akim,bimodal,24,24.370127679290476
+C,wa,unimodal,67,132.91886695848186
+C,wa east,unimodal,81,128.39607833868195
+C,wa west,unimodal,137,136.81722490173004
+C,wassa amenfi central,bimodal,67,76.67234549982624
+C,wassa amenfi east,bimodal,47,57.61509799336634
+C,wassa amenfi west,bimodal,41,52.57671366143166
+C,wassa east,bimodal,94,87.26049239451089
+C,weija gbawe,bimodal,3,6.812305581329658
+C,wenchi,bimodal,37,26.826629848784144
+C,west akim,bimodal,13,17.712297387858033
+C,west gonja,transition,4,8.142083578575004
+C,west mamprusi,unimodal,68,82.84478662967472
+C,yendi,unimodal,8,18.204386460552165
+C,yilo krobo,bimodal,37,36.887471395246216
+C,yunyoo nasuan,unimodal,19,8.204145179449284
+C,zabzugu,unimodal,101,95.68139320531665
