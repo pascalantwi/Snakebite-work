@@ -92,7 +92,7 @@ Ghana, with a population of about 34 million in 2025, is divided into 16 regions
 
 <a name="fig1"></a>
 
-![Fig 1. Study area and rainfall regimes of Ghana.](figures/Fig1.png)
+![Fig 1. Study area and rainfall regimes of Ghana.](figures/Fig1.pdf)
 
 **Fig 1. Study area and rainfall regimes of the 261 districts of Ghana, 2020–2024.** The 261 districts are shaded by rainfall regime, classified from each district's own monthly rainfall in 2020–2024 (Section 2.1): unimodal, one rainy season (47 districts); transition, one or two rainy seasons depending on the year (22 districts); and bimodal, two rainy seasons (192 districts). Thin white lines mark district boundaries and black lines the 16 named regions. The inset shows the location of Ghana in West Africa. Rainfall is NASA POWER precipitation [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)]. District and regional boundaries are from geoBoundaries (gbOpen, Ghana ADM2 and ADM1; source USAID Ghana HPNO and Ghana Statistical Service; CC BY 4.0) [[16](https://doi.org/10.1371/journal.pone.0231866)]. Country outlines are from Natural Earth at 1:50 million scale (public domain; https://www.naturalearthdata.com).
 
@@ -293,7 +293,7 @@ From January 2020 to December 2025, the 261 districts reported 61,625 snakebite 
 
 <a name="fig2"></a>
 
-![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.png)
+![Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.](figures/Fig2.pdf)
 
 **Fig 2. Monthly snakebite cases and rainfall, Ghana, January 2020 to December 2025.** The line shows the number of snakebite cases reported each month across all districts (left axis), and the bars the monthly rainfall of the average district (right axis), calculated as the NASA POWER daily mean multiplied by the number of days in the month. Rainfall for December 2025 was estimated (Section 2.2). Case data from DHIMS-2; rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
 
@@ -323,7 +323,7 @@ In unimodal districts, snakebite incidence was lowest in January (2.58 cases per
 
 <a name="fig3"></a>
 
-![Fig 3. Mean monthly rainfall by rainfall regime.](figures/Fig3.png)
+![Fig 3. Mean monthly rainfall by rainfall regime.](figures/Fig3.pdf)
 
 **Fig 3. Mean monthly rainfall by rainfall regime, Ghana, January 2020 to December 2025.** Lines show the mean over the six years of the monthly rainfall of the average district in each regime, and shaded bands the range across years. Monthly rainfall is the NASA POWER daily mean multiplied by the number of days in the month. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)). Rainfall for December 2025 was estimated (Section 2.2). Rainfall data from NASA POWER [[18](https://power.larc.nasa.gov/docs/methodology/meteorology/)].
 
@@ -341,7 +341,7 @@ Observed and fitted seasonal cycles are shown by rainfall regime in [Fig 4A](#fi
 
 <a name="fig4"></a>
 
-![Fig 4. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate.](figures/Fig4.png)
+![Fig 4. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate.](figures/Fig4.pdf)
 
 **Fig 4. Seasonal cycle of snakebite incidence fitted by calendar-month terms, own lagged climate and placebo climate, Ghana, July 2020 to December 2025.** (A) Observed incidence per 100,000 population per month by calendar month and rainfall regime (points), and incidence fitted by the model with calendar-month effects (M1, dashed line), the model with each district's own lagged climate (M2, solid line) and the model with placebo climate (dotted line; the median of 20 placebo fits with the full mixed model). (B) Increase in −2 log-likelihood when each district's climate was replaced by that of a randomly chosen district from a different rainfall regime, for 1,000 permutations, computed with the fixed-district negative-binomial model (Section 2.4.5); the vertical line marks the fit with the districts' own climate. Data are 17,082 district-months from 260 districts.
 
@@ -378,13 +378,13 @@ In the alternative model in which relative humidity replaced maximum temperature
 
 <a name="fig5"></a>
 
-![Fig 5. Lag-specific rate ratios of snakebite at the 90th percentile of each exposure.](figures/Fig5.png)
+![Fig 5. Lag-specific rate ratios of snakebite at the 90th percentile of each exposure.](figures/Fig5.pdf)
 
 **Fig 5. Lag-specific rate ratios of snakebite at the 90th percentile of each exposure compared with its median, Ghana, October 2020 to December 2025.** Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, calendar-month effects by rainfall regime, district poverty, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. NDVI, normalized difference vegetation index.
 
 <a name="fig6"></a>
 
-![Fig 6. Cumulative exposure–response curves for snakebite over lags of 0–9 months.](figures/Fig6.png)
+![Fig 6. Cumulative exposure–response curves for snakebite over lags of 0–9 months.](figures/Fig6.pdf)
 
 **Fig 6. Cumulative exposure–response curves for snakebite over lags of 0–9 months, Ghana, October 2020 to December 2025.** Cumulative rate ratios across the range of each exposure (1st to 99th percentile), relative to its median. Lines show the estimates and shaded bands the 95% confidence intervals. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, calendar-month effects by rainfall regime, district poverty, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. NDVI, normalized difference vegetation index.
 
@@ -445,7 +445,7 @@ A model with same-month climate only had an AIC 25.4 units higher than that of t
 
 <a name="fig7"></a>
 
-![Fig 7. Lag-specific rate ratios of snakebite for a positive weather anomaly.](figures/Fig7.png)
+![Fig 7. Lag-specific rate ratios of snakebite for a positive weather anomaly.](figures/Fig7.pdf)
 
 **Fig 7. Lag-specific rate ratios of snakebite for a positive weather anomaly of one standard deviation, Ghana, October 2020 to December 2025.** Estimates are from the model with separate cross-bases for the climatology and the standardized anomaly of rainfall, maximum and minimum temperature and NDVI (Section 2.4.6; maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag), with year effects, a rainfall-regime effect, district poverty, region and district random intercepts and a log(population) offset, fitted to 16,305 district-months from 260 districts. Points show the estimates and vertical bars the 95% confidence intervals; at each lag, the four exposures are offset horizontally so that their intervals do not overlap. NDVI, normalized difference vegetation index.
 
@@ -459,7 +459,7 @@ Results with the transition zone merged with each neighbouring regime are given 
 
 <a name="fig8"></a>
 
-![Fig 8. Associations between climate and snakebite incidence by rainfall regime.](figures/Fig8.png)
+![Fig 8. Associations between climate and snakebite incidence by rainfall regime.](figures/Fig8.pdf)
 
 **Fig 8. Associations between climate and snakebite incidence by rainfall regime, Ghana, October 2020 to December 2025.** (A) Lag-specific rate ratios at the national 90th percentile of each exposure compared with the national median, by rainfall regime; points show the estimates and vertical bars the 95% confidence intervals, offset horizontally by regime. (B) Cumulative rate ratios over lags 0–9 across the range of each exposure in each regime (1st to 99th percentile within the regime), relative to the national median, on a logarithmic scale; shaded bands show the 95% confidence intervals. Estimates are from the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag) fitted separately to unimodal (2,949 district-months, 47 districts), transition (1,362; 22) and bimodal districts (11,994; 191). NDVI, normalized difference vegetation index.
 
@@ -484,7 +484,7 @@ The secondary analyses of onset timing and false starts are reported in [S1 Text
 
 <a name="fig9"></a>
 
-![Fig 9. Snakebite incidence by months since rainy-season onset, by rainfall regime.](figures/Fig9.png)
+![Fig 9. Snakebite incidence by months since rainy-season onset, by rainfall regime.](figures/Fig9.pdf)
 
 **Fig 9. Snakebite incidence by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Rate ratios from event-study models fitted separately in each rainfall regime, in which indicators of months since onset replaced calendar-month effects; the reference is three months before onset, together with months outside the window from two months before to six months after onset. Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Models include year effects, district poverty, region and district random intercepts and a log(population) offset, and were fitted to 3,372 district-months in unimodal, 1,560 in transition and 13,704 in bimodal districts. Points show the estimates and vertical bars the 95% confidence intervals, offset horizontally by regime; the dashed vertical line marks the month of onset.
 
@@ -533,7 +533,7 @@ Model A: calendar-month effects by rainfall regime, a linear time trend, distric
 
 <a name="fig10"></a>
 
-![Fig 10. Out-of-sample prediction of snakebite cases in 2025.](figures/Fig10.png)
+![Fig 10. Out-of-sample prediction of snakebite cases in 2025.](figures/Fig10.pdf)
 
 **Fig 10. Out-of-sample prediction of snakebite cases, Ghana, January to December 2025.** (A) Monthly national cases observed (points) and predicted one month ahead by models A, B and C, with the 90% prediction interval of model B (shaded band) obtained by simulation from the district-month predictive distributions. (B) Non-randomised probability integral transform (PIT) histograms for the 3,084 district-months of 2025; a well-calibrated model gives a flat histogram at a density of 1 (dashed line). (C) Observed and predicted (model B) district totals for 2025, plus 1, on logarithmic scales; the dashed line marks equality. Models were trained on data up to December 2024.
 
@@ -551,7 +551,7 @@ In the residual diagnostics of the selected model, the correlation between resid
 
 <a name="fig11"></a>
 
-![Fig 11. Cumulative rate ratios of snakebite under alternative analyses.](figures/Fig11.png)
+![Fig 11. Cumulative rate ratios of snakebite under alternative analyses.](figures/Fig11.pdf)
 
 **Fig 11. Cumulative rate ratios of snakebite under alternative analyses, Ghana, October 2020 to December 2025.** Points show the cumulative rate ratio over all lags at the 90th percentile of each exposure compared with its median, using the reference values of the main analysis (rainfall 9.09 vs 3.77 mm/day, maximum temperature 37.2 vs 31.9 °C, minimum temperature 24.1 vs 21.5 °C, NDVI 0.70 vs 0.52), and horizontal bars the 95% confidence intervals, on a logarithmic scale. The square and the dashed line mark the selected model (maximum lag 9 months; natural splines with 2 degrees of freedom for the exposure and the lag). Each other row changes one feature of the selected model ([S3 Table](#s3table)). The row for standard errors clustered by grid cell is from a model with fixed district effects, whose point estimates differ from those of the mixed model. NDVI, normalized difference vegetation index.
 
@@ -764,13 +764,13 @@ For the selected model, the randomized quantile residuals departed slightly from
 
 <a name="s1fig"></a>
 
-![S1 Fig. Snakebite incidence relative to the district mean by months since rainy-season onset.](figures/S1_Fig.png)
+![S1 Fig. Snakebite incidence relative to the district mean by months since rainy-season onset.](figures/S1_Fig.pdf)
 
 **S1 Fig. Snakebite incidence relative to the district mean by months since rainy-season onset, by rainfall regime, Ghana, January 2020 to December 2025.** Onset is the first month from February with mean rainfall of at least 2 mm/day (Section 2.3). Lines show the mean over district-years and shaded bands the 95% confidence interval; the dashed vertical line marks onset and the horizontal line a relative incidence of 1. Data are the 18,636 analysed district-months from 260 districts; district numbers in the key are those classified in each regime ([Fig 1](#fig1)).
 
 <a name="s2fig"></a>
 
-![S2 Fig. Diagnostics of the selected model.](figures/S2_Fig.png)
+![S2 Fig. Diagnostics of the selected model.](figures/S2_Fig.pdf)
 
 **S2 Fig. Diagnostics of the selected model, Ghana, October 2020 to December 2025.** (A) Quantile–quantile plot of the randomized quantile residuals against the uniform distribution (every tenth residual shown); the dashed line marks equality. (B) Number of district-months with no cases in 1,000 datasets simulated from the fitted model (bars) and in the data (vertical line). (C) Correlation between the normal-transformed residuals of the same district 1–12 months apart, for the selected model, the model with a first-order autoregressive district-month effect and the model with a spatially structured district effect; dashed lines mark ±1.96/√n, where n is the number of pairs of residuals. (D) Moran's I of the district mean residuals in 999 random permutations of the districts (bars) and in the data (vertical line); neighbours are districts that share a boundary. Data are 16,305 district-months from 260 districts.
 
@@ -965,7 +965,7 @@ The main text has 11 figures and 7 tables, each placed directly after the paragr
 
 | Item | Content | Section |
 |---|---|---|
-| **[Fig 1](#fig1)** | Study area: districts shaded by rainfall regime, regions named, West Africa locator (`figures/Fig1.png`) | 2.1 |
+| **[Fig 1](#fig1)** | Study area: districts shaded by rainfall regime, regions named, West Africa locator (`figures/Fig1.pdf`) | 2.1 |
 | **[Fig 2](#fig2)** | Monthly snakebite cases and rainfall, January 2020 to December 2025 | 3.1 |
 | **[Fig 3](#fig3)** | Monthly rainfall by rainfall regime | 3.2 |
 | **[Fig 4](#fig4)** | Observed and fitted seasonal cycles by regime (M1, M2, placebo climate); placebo permutation distribution | 3.3 |

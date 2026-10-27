@@ -26,9 +26,8 @@ theme_pub <- function(base = 11) {
     theme(legend.position = "top", legend.justification = "left")
 }
 save_fig <- function(p, name, w, h) {
-  ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")
   ggsave(file.path("figures", paste0(name, ".pdf")), p, width = w, height = h, device = cairo_pdf, bg = "white")
-  message("saved figures/", name, ".png and .pdf")
+  message("saved figures/", name, ".pdf")
 }
 
 # ---- Fig 2: national monthly cases and rainfall --------------------------------------------------------

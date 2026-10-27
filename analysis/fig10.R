@@ -27,6 +27,5 @@ pC <- ggplot(dist, aes(predicted + 1, observed + 1)) + geom_abline(linetype = "d
   geom_point(colour = BLUE, alpha = 0.7, size = 1.6) + scale_x_log10(limits = lim) + scale_y_log10(limits = lim) +
   labs(x = "Predicted cases in 2025 + 1 (model B, log scale)", y = "Observed cases in 2025 + 1 (log scale)", tag = "C") + th
 p <- pA / (pB | pC + plot_layout(widths = c(2.2, 1))) + plot_layout(heights = c(1.1, 1))
-ggsave("figures/Fig10.png", p, width = 10, height = 8, dpi = 300, bg = "white")
 ggsave("figures/Fig10.pdf", p, width = 10, height = 8, device = cairo_pdf, bg = "white")
 cat("saved figures/Fig11\n")
