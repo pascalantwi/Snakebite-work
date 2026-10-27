@@ -10,7 +10,6 @@ XLAB <- c(rainfall = "Rainfall (mm/day)", tmax = "Maximum temperature (°C)", tm
 th <- theme_classic(base_size = 11) + theme(strip.background = element_blank(), strip.text = element_text(face = "bold"),
                                             legend.position = "top", legend.justification = "left")
 save_fig <- function(p, name, w, h) {
-  ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")
   ggsave(file.path("figures", paste0(name, ".pdf")), p, width = w, height = h, device = cairo_pdf, bg = "white")
 }
 tc <- function(x) factor(tools::toTitleCase(x), levels = names(REG_COL))

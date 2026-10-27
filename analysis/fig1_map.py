@@ -107,6 +107,6 @@ lx.set_facecolor("#ffffff")
 for sp in lx.spines.values(): sp.set_edgecolor(MUTED); sp.set_linewidth(0.6)
 lx.set_title("Location in West Africa", loc="left", fontsize=8.5, fontweight="bold")
 
-for ext in ("png", "pdf"):
+for ext in ("pdf",):
     fig.savefig(f"{out_dir}/Fig1.{ext}", dpi=300, facecolor=SURFACE)
-print("saved", f"{out_dir}/Fig1.png")
+print("saved", f"{out_dir}/Fig1.pdf")

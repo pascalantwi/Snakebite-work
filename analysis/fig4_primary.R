@@ -42,7 +42,6 @@ pB <- ggplot(pl, aes(diff_vs_own)) +
   theme_classic(base_size = 11)
 
 p <- pA / pB + plot_layout(heights = c(1.15, 1))
-ggsave("figures/Fig4.png", p, width = 8.5, height = 7.2, dpi = 300, bg = "white")
 ggsave("figures/Fig4.pdf", p, width = 8.5, height = 7.2, device = cairo_pdf, bg = "white")
 print(cyc |> pivot_wider(names_from = series, values_from = inc) |> mutate(across(where(is.numeric), \(x) round(x, 2))), n = 40)
-cat("saved figures/Fig4.png and .pdf\n")
+cat("saved figures/Fig4.pdf\n")

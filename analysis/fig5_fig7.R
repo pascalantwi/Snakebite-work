@@ -8,7 +8,6 @@ LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum te
 XLAB <- c(rainfall = "Rainfall (mm/day)", tmax = "Maximum temperature (\u00B0C)", tmin = "Minimum temperature (\u00B0C)", ndvi = "NDVI")
 th <- theme_classic(base_size = 11) + theme(strip.background = element_blank(), strip.text = element_text(face = "bold"))
 save_fig <- function(p, name, w, h) {
-  ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")
   ggsave(file.path("figures", paste0(name, ".pdf")), p, width = w, height = h, device = cairo_pdf, bg = "white")
 }
 VCOL <- c("Rainfall" = "#1F5F99", "Maximum temperature" = "#D4541F", "Minimum temperature" = "#000000", "NDVI" = "#138A5F")

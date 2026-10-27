@@ -8,7 +8,6 @@ BLUE <- "#1F5F99"; GREY <- "#9A9A9A"
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
 th <- theme_classic(base_size = 11) + theme(strip.background = element_blank(), strip.text = element_text(face = "bold"))
 save_fig <- function(p, name, w, h) {
-  ggsave(file.path("figures", paste0(name, ".png")), p, width = w, height = h, dpi = 300, bg = "white")
   ggsave(file.path("figures", paste0(name, ".pdf")), p, width = w, height = h, device = cairo_pdf, bg = "white")
 }
 tests <- read_csv("analysis/output/diagnostics.csv", show_col_types = FALSE)
