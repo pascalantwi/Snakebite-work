@@ -29,7 +29,7 @@ Case counts come from the monthly sex-disaggregated file, which is the later and
 | `year`, `month`, `date`, `t` | Calendar year and month, `YYYY-MM`, and a time index from 1 (Jan 2020) to 72 (Dec 2025) |
 | `cases_total`, `cases_male`, `cases_female` | Reported snakebite cases (district-month file) |
 | `sex`, `cases` | Sex and the sex-specific case count (district-month-sex file) |
-| `population` | Annual district population from `data_snake.csv`; for rows absent from that file, carried from the latest available district-year (see `population_source`) |
+| `population` | Annual district population (WorldPop constrained gridded estimates at about 1 km, summed within district boundaries), from `data_snake.csv`; for rows absent from that file, carried from the latest available district-year (see `population_source`) |
 | `population_sex` | Approximate sex-specific population: `population` × 0.493 for males and × 0.507 for females, the national shares in the 2021 Population and Housing Census provisional results. Replace with district census counts by sex when available |
 | `rainfall` | NASA POWER precipitation, monthly mean, mm/day |
 | `rel_humidity` | Relative humidity at 2 m, % |
