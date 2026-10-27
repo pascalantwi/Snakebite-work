@@ -145,6 +145,7 @@ if (length(only)) {
 }
 write_csv(summ, "analysis/output/sensitivity_summary.csv")
 
+if (is.null(res$main)) { cat("done (alternatives only)\n"); quit(save = "no") }
 # ---- standard errors clustered by grid cell (fixed-district NB model, theta from the selected model) ------------------
 dm <- res$main$diag; th <- dm$theta
 cb <- cbs(d0, MAIN, 9, 2, 2); dd <- attach_cb(d0, cb, main_rows)
