@@ -1,8 +1,8 @@
-# Figures 12 and 13 (Results, section 3.11). Run after analysis/sensitivity.R.
-#   Fig 12: diagnostics of the selected model: (A) quantile-quantile plot of the randomized quantile residuals;
+# Figure 11 and S2 Fig (Results, section 3.11). Run after analysis/sensitivity.R.
+#   S2 Fig: diagnostics of the selected model: (A) quantile-quantile plot of the randomized quantile residuals;
 #           (B) simulated number of zero counts with the observed number; (C) residual autocorrelation within districts,
 #           selected model and model with the autoregressive effect; (D) permutation distribution of Moran's I.
-#   Fig 13: cumulative rate ratios (90th percentile vs median, lags 0-9) under each sensitivity analysis.
+#   Fig 11: cumulative rate ratios (90th percentile vs median, lags 0-9) under each sensitivity analysis.
 suppressPackageStartupMessages({ library(readr); library(dplyr); library(ggplot2); library(patchwork) })
 BLUE <- "#1F5F99"; GREY <- "#9A9A9A"
 LAB <- c(rainfall = "Rainfall", tmax = "Maximum temperature", tmin = "Minimum temperature", ndvi = "NDVI")
@@ -34,7 +34,7 @@ mp <- read_csv("analysis/output/diagnostics_moran_perm.csv", show_col_types = FA
 pD <- ggplot(mp, aes(I)) + geom_histogram(bins = 30, fill = BLUE, colour = "white") +
   geom_vline(xintercept = main$moran_I, linewidth = 0.8) +
   labs(x = "Moran's I of district mean residuals", y = "Permutations", tag = "D") + th
-save_fig((pA | pB) / (pC | pD), "Fig12", 9, 7.5)
+save_fig((pA | pB) / (pC | pD), "S2_Fig", 9, 7.5)
 
 s <- read_csv("analysis/output/sensitivity_summary.csv", show_col_types = FALSE)
 cl <- read_csv("analysis/output/sensitivity_clustered_se.csv", show_col_types = FALSE) |> filter(se == "cluster") |>
@@ -52,7 +52,7 @@ p13 <- ggplot(s, aes(cumRR, label)) +
   geom_vline(data = ref, aes(xintercept = ref), linetype = "dashed", colour = BLUE, linewidth = 0.4) +
   geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0, colour = BLUE, linewidth = 0.6) +
   geom_point(aes(shape = is_main), colour = BLUE, size = 2) + scale_shape_manual(values = c(`FALSE` = 16, `TRUE` = 15), guide = "none") +
-  scale_x_log10() + facet_wrap(~ variable, nrow = 1, scales = "free_x") +
+  scale_x_log10(breaks = c(0.6, 0.8, 1, 1.25, 1.5, 2)) + facet_wrap(~ variable, nrow = 1, scales = "free_x") +
   labs(x = "Cumulative rate ratio, 90th percentile vs median (log scale)", y = NULL) + th
-save_fig(p13, "Fig13", 11, 6.5)
-cat("saved figures/Fig12 and Fig13\n")
+save_fig(p13, "Fig11", 11, 6.5)
+cat("saved figures/Fig11 and S2_Fig\n")
