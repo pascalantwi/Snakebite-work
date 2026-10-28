@@ -154,7 +154,7 @@ labels = set(re.findall(r"\\label\{([^}]*)\}", tex))
 targets = set(re.findall(r"\\hyperref\[([^\]]*)\]", tex))
 assert targets <= labels, f"cross-references without label: {sorted(targets - labels)}"
 assert tex.count("{") - tex.count("\\{") == tex.count("}") - tex.count("\\}"), "unbalanced braces"
-non = sorted({ch for ch in tex if ord(ch) > 127} - set("°±¶·×éñøń–—ΔθχᵃΓ−√≈²¹"))
+non = sorted({ch for ch in tex if ord(ch) > 127} - set("°±¶·×éíñøń–—ΔθχᵃΓ−√≈²¹"))
 assert not non, f"unmapped characters: {non}"
 
 out = os.path.join(ROOT, "latex"); os.makedirs(out, exist_ok=True)
