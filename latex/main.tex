@@ -790,155 +790,31 @@ In the residual diagnostics of the selected model, the correlation between resid
 
 \section{Discussion}
 
-\textbf{¶1 Principal findings.} {[}RESULT-driven summary answering each objective in order. Lead with the headline: the seasonal cycle of snakebite in Ghana is largely reproduced by each district's own lagged climate. Placebo climate from a different rainfall regime cannot reproduce it, and only about a tenth of seasonality is non-climatic. Then: rainfall acts with a delay of 1--3 months that is longer in unimodal districts; humidity and night temperature act immediately.{]}
+In six years of surveillance data from all 261 districts of Ghana, the seasonal cycle of snakebite was reproduced almost entirely by each district's own lagged climate. Lagged rainfall, temperature, humidity and vegetation reproduced as much of the seasonal signal as calendar-month effects (\(S_{\text{clim}}\) = 1.02), whereas the climate of districts in a different rainfall regime never fitted as well, and a district's own climate shifted by whole years fitted worse than correctly aligned climate. Higher rainfall was associated with more snakebites over the following nine months, with a cumulative rate ratio of 1.50 at the 90th percentile, and high maximum temperature with more snakebites within about five months (1.38). These associations differed between rainfall regimes, were weaker in poorer districts and accounted for about a quarter of reported cases relative to median conditions. Incidence was higher in males and in poorer districts.
 
-\textbf{¶1b Seasonality is not a confounder of climate here.}
+Our central finding bears on how studies of climate and snakebite are designed. The usual practice is to remove seasonality with calendar-month terms, harmonic functions, case-crossover time strata or temporal random effects before climate effects are estimated \cite{ref30}. This is appropriate when the seasonal cycle reflects influences unrelated to climate. In Ghana, however, the season was almost fully reproduced by lagged local climate, and only about a fifth of the seasonal signal (\(S_{\text{res}}\) = 0.19) remained once climate was included. Adjusting for season therefore removes most of the variation through which climate acts, an over-adjustment that biases climate effects towards the null \cite{ref40}. This offers an explanation for two recent conclusions: that snakebite deaths in India were influenced primarily by seasonality rather than precipitation or temperature \cite{ref12}, and that a nationwide analysis of Ghana found humidity and temperature, but not rainfall, to be associated with risk \cite{ref13}. Both removed seasonal variation before estimating climate effects, the first through case-crossover time strata and the second through temporal random effects. The placebo test guards our conclusion against the objection that any smooth seasonal series would fit as well, because climate taken from districts with a different rainfall regime fitted worse in all 1,000 permutations. We suggest that studies of climate and snakebite report models with and without seasonal adjustment, together with a placebo test of this kind, before concluding that climate does not matter.
 
-\begin{itemize}
-\tightlist
-\item
-  The conclusion that snakebite is driven by ``seasonality rather than precipitation or temperature'' \cite{ref12} and the null rainfall effect in Ghana \cite{ref13} both come from models that remove seasonality before assessing climate.
-\item
-  Our results show that, in Ghana, most of that seasonality \emph{is} lagged climate.
-\item
-  Seasonal adjustment is necessary when seasonality reflects non-climatic drivers. Where climate generates the season, it is over-adjustment that biases climate effects towards the null.
-\item
-  We recommend that climate--snakebite studies report models with and without seasonal adjustment, together with a placebo-climate test, before concluding that climate is unimportant.
-\end{itemize}
+The rainfall association was delayed rather than immediate. The lag-specific rate ratio was close to 1 in the same month and increased steadily to lag 9, and a model with same-month climate only fitted clearly worse than the lagged model. This pattern is consistent with the pathways set out in the Introduction. Rainfall triggers vegetation growth and, over weeks to months, increases in seeds, insects and rodents, the prey of many medically important vipers \cite{ref7}, and it starts the rain-fed farming calendar that brings farmers into contact with snakes \cite{ref5,ref6}. The rise in incidence one to two months after the onset of the rains, which reached 2.66 times the reference level in unimodal districts, matches the timing of land preparation, planting and weeding. Delayed associations have also been reported elsewhere: in Costa Rica, incidence was associated with temperature one month earlier and with rainfall eleven months earlier \cite{ref9}, and in California bites increased after wet 18-month periods \cite{ref10}.
 
-\textbf{¶2 Mechanisms.}
+The rainfall association differed sharply between rainfall regimes. In bimodal districts it was positive and grew with lag (cumulative rate ratio 2.02), whereas in unimodal districts the lag-specific rate ratio fell below 1 from lag 4, giving a cumulative rate ratio of 0.42. In unimodal districts, incidence began to rise before the rains, at 1.76 times the reference level in the month before onset, and peaked in July, before the rainfall peak of August and September. Because the models contained calendar-month effects, these regime-specific estimates describe how months that were wetter or drier than usual for the time of year differed, and in the north the wettest periods fall after the peak of farm activity. In Colombia, rainfall drove snakebite only where the dry season was marked \cite{ref11}, which also points to seasonal structure shaping the rainfall response. Because opposite associations cancel in a pooled estimate (pooled rate ratio 0.93), national estimates can conceal regional effects, and rainfall regime should be considered when climate information is used for planning.
 
-\begin{itemize}
-\tightlist
-\item
-  Short-lag effects of humidity and minimum temperature are consistent with increased nocturnal snake activity and refuge-seeking in humid, warm conditions.
-\item
-  The negative same-month association with high Tmax suggests thermal avoidance at temperatures above the species' optimum, as the systematic review anticipated \cite{ref8}.
-\item
-  The 1--2-month post-onset surge matches the agricultural calendar: land preparation, planting and weeding.
-\item
-  The longer rainfall lag in unimodal districts fits a delayed vegetation--rodent prey pulse after a single prolonged dry season \cite{ref7}.
-\item
-  {[}Discuss the NDVI lag pattern: cover vs prey resource.{]}
-\end{itemize}
+High maximum temperature was associated with more snakebites within about five months, in agreement with the mostly positive associations of temperature summarised in a recent systematic review \cite{ref8} and with the rise in incidence with temperature in Costa Rica \cite{ref9}. Relative humidity was strongly and negatively correlated with maximum temperature, and when it replaced maximum temperature it showed the inverse association, so the two cannot be separated in these data. This negative association with humidity differs from the mostly positive associations in the review \cite{ref8}; in Ghana, the hot and dry months before the rains are also when land is cleared for planting. Minimum temperature and NDVI showed no consistent cumulative association, although NDVI at long lags and positive NDVI anomalies were associated with more snakebites, in keeping with a slower pathway through vegetation and prey.
 
-\textbf{¶3 Comparison with previous studies.}
+Most of the climate signal came from the regular seasonal climate rather than from unusual weather. Removing the climatology increased −2 log-likelihood by 490, compared with 46 for the anomalies. Positive rainfall and NDVI anomalies were still associated with more snakebites, but they accounted for only about 5\% of cases. Consistent with this, adding lagged climate anomalies to a model with seasonal terms and recent case history improved one-month-ahead prediction for 2025 only slightly, and did not improve it over the rolling origin of 2023--2025. For early warning, the predictable part of the climate effect is therefore already contained in the seasonal calendar and in the timing of the rains, whereas year-to-year weather adds little to recent case counts at a one-month horizon.
 
-\begin{itemize}
-\tightlist
-\item
-  \emph{Costa Rica:} temperature at lag 1 agrees; the long rainfall lag (11 months) is outside our window \cite{ref9}.
-\item
-  \emph{Sri Lanka:} low humidity was associated with more bites, opposite in sign to our finding; this may reflect wet-zone saturation \cite{ref55}.
-\item
-  \emph{Colombia:} rainfall mattered where dry seasons are marked; Ghana's unimodal districts are the analogue \cite{ref11}.
-\item
-  \emph{California:} precipitation acted at long lags \cite{ref10}.
-\item
-  \emph{Ghana nationwide analysis:} our results reconcile its null rainfall finding with descriptive rainy-season peaks \cite{ref13}. Rainfall's effect is delayed and seasonal, and temporal and space--time random effects can absorb it.
-\item
-  \emph{India:} ``seasonality rather than climate'' \cite{ref12}. Within case-crossover time strata, the seasonal climate signal is removed by design, leaving only short-term anomalies, which we also find to have small effects. The two results are consistent once the climatic origin of seasonality is recognised.
-\end{itemize}
+Incidence was 39\% higher in males than in females, which is consistent with greater exposure during farm work \cite{ref6}, and it rose by about a third for each 10-percentage-point increase in district poverty, in line with the association between snakebite and poverty reported in Costa Rica \cite{ref9}. The rainfall and temperature associations were weaker in poorer districts (\hyperref[s1text-d]{S1 Text, section D}), which suggests that exposure there depends less on weather. District poverty, however, was concentrated in the unimodal north (correlation with the unimodal regime 0.61), so its effects cannot be fully separated from those of the rainfall regime.
 
-\textbf{¶4 Methodological contribution.}
+About a quarter of reported cases (24.0\%) were attributable to rainfall and maximum temperature above their medians, with higher fractions in unimodal districts (29.4\%) and in the northern regions, up to 30.8\% in Upper West. These figures, together with the timing of the rise around onset, give health services a practical planning window. In the north, incidence rose in the two months before the rains and peaked two months after onset, so antivenom stocks and trained staff need to be in place before the onset month of April. Linking routine surveillance to forecasts of rainy-season onset could support this, in line with the World Health Organization's strategy to bring antivenom and trained staff to the places and times of greatest need \cite{ref3}.
 
-\begin{itemize}
-\tightlist
-\item
-  To our knowledge, this is the first study to test whether snakebite seasonality is itself explained by lagged climate, using a placebo-climate falsification design. This moves ``seasonality'' from a nuisance term to an estimand.
-\item
-  It is also, to our knowledge, the first nationwide exposure--lag--response analysis of snakebite in sub-Saharan Africa. {[}AUTHOR: confirm from the full text of \cite{ref12} whether a DLNM was used before claiming ``first DLNM for snakebite''.{]}
-\item
-  It separates seasonal climatology from weather anomalies and compares lag structures between rainfall regimes.
-\item
-  The pre-specified lag-selection strategy (joint estimation, information-criterion and cross-validated selection, penalized confirmation, falsification with future lags) avoids the seasonal-confounding artefacts of cross-correlation and single-lag testing. The same strategy is transferable to other envenomings and climate-sensitive NTDs.
-\end{itemize}
+Our study has several strengths. It covered every district of Ghana over 72 months, estimated delayed and non-linear associations with a pre-specified lag-selection strategy, tested the climatic explanation of seasonality with placebo and temporal-shift tests, validated predictions on data not used for fitting, and examined 21 alternative specifications, under which the rainfall and maximum-temperature associations persisted.
 
-\textbf{¶5 Public-health implications.}
+It also has limitations. Facility-based surveillance does not capture bites treated only by traditional healers, so it under-counts the burden \cite{ref5}, and completeness may vary between districts and over time; district random effects absorb stable differences but not changes in reporting. The ecological design cannot attribute exposure to individuals. The climate data were coarse: the 261 districts drew on 72 distinct NASA POWER series, and with standard errors clustered by grid cell, the confidence interval for rainfall included 1, so the precision of the mixed-model estimates is likely overstated. Climate one and two months ahead was also associated with snakebite, which indicates that some seasonal confounding remains in the lag-specific estimates, although less with region-specific seasonal control. Residual correlation within districts over time and between neighbouring districts remained, although models allowing for both gave similar rainfall and temperature estimates. Six years are too few to study inter-annual drivers such as the El Niño--Southern Oscillation. District poverty was measured once, in 2021, through poverty among people in male-headed households, and the population denominators were modelled estimates. Finally, the surveillance data record neither the snake species nor the severity of envenoming \cite{ref15}.
 
-\begin{itemize}
-\tightlist
-\item
-  A lag of 1--3 months gives health services a practical window. Antivenom and health-worker training can be pre-positioned in northern districts about two months after onset, and in southern districts earlier, with a second, smaller window in September--October.
-\item
-  Linking the model to Ghana Meteorological Agency seasonal and onset forecasts could create an operational early-warning system, in line with the WHO 2030 roadmap.
-\item
-  High-burden districts with poor treatment access \cite{ref13} should be prioritised.
-\end{itemize}
-
-\textbf{¶6 Strengths and limitations.}
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{Strengths:}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    nationwide coverage of all 261 districts over 71 months;
-  \item
-    a hierarchical count model with a population offset;
-  \item
-    flexible exposure--lag--response estimation;
-  \item
-    explicit control of seasonal confounding;
-  \item
-    out-of-sample validation;
-  \item
-    extensive sensitivity analyses.
-  \end{itemize}
-\item
-  \emph{Limitations:}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    facility-based surveillance under-counts bites treated by traditional healers, and completeness may vary between districts. District random effects absorb stable differences, but not changing ones.
-  \item
-    The ecological design cannot attribute exposure to individuals.
-  \item
-    Climate data are coarse (districts share grid cells), although results were robust to finer products {[}RESULT{]}.
-  \item
-    Six years are too few to study inter-annual drivers such as ENSO, or long (\textgreater{} 12-month) population lags.
-  \item
-    DHIMS-2 lacks species, envenomation severity and outcome data.
-  \item
-    The COVID-19 period may have altered care-seeking.
-  \item
-    Population denominators are projections.
-  \end{itemize}
-\end{itemize}
-
-\textbf{¶7 Future research.}
-
-\begin{itemize}
-\tightlist
-\item
-  Species- and severity-specific outcomes.
-\item
-  Linkage with antivenom stock and distribution data.
-\item
-  Longer series to capture ENSO and Atlantic teleconnections.
-\item
-  Prospective piloting of a climate-informed early-warning tool.
-\item
-  Extension to neighbouring West African countries with similar rainfall regimes.
-\end{itemize}
+Future work should use climate data at finer resolution, link surveillance to antivenom stock and distribution records, extend the series to capture inter-annual variation, and pilot a climate-informed planning calendar in the northern regions, where the burden and the climate-attributable fraction are highest.
 
 \section{Conclusions}
 
-\begin{itemize}
-\tightlist
-\item
-  The seasonal cycle of snakebite in Ghana is largely lagged local climate, so treating seasonality as a confounder hides the effect of climate.
-\item
-  Snakebite risk responds to climate with measurable, regime-specific delays.
-\item
-  Rainfall acts one to three months ahead and through the onset of the rainy season. Humidity and warm nights act within the same month, and extreme daytime heat suppresses risk.
-\item
-  Modelling these delays explains why concurrent rainfall appears unrelated to a strongly rain-seasonal disease. It also provides lead time that can be used for climate-informed snakebite preparedness.
-\end{itemize}
+The seasonal cycle of snakebite in Ghana is largely lagged local climate. Each district's own rainfall, temperature, humidity and vegetation over the preceding months reproduced the seasonal pattern as fully as calendar-month terms, whereas climate borrowed from districts with a different rainfall regime did not. Treating seasonality as a confounder of climate therefore removes much of the climate effect it aims to isolate, and may explain why recent studies concluded that seasonality, rather than rainfall or temperature, drives snakebite risk. Higher rainfall was associated with more snakebites over the following nine months and high maximum temperature within about five months, and together they accounted for about a quarter of reported cases. These associations differed between rainfall regimes, so national estimates can conceal regional effects. Incidence was higher in males and in poorer districts. Unusual weather added little to one-month-ahead prediction beyond the seasonal calendar and recent case counts, so the most useful lead time comes from the timing of the rains: in the unimodal north, incidence rose before onset and peaked two months after it. Aligning antivenom supply and community awareness with the onset of the rainy season, particularly in the north, offers a practical way to reduce the burden of snakebite in Ghana.
 
 \section*{Declarations}
 \addcontentsline{toc}{section}{Declarations}
@@ -946,7 +822,7 @@ In the residual diagnostics of the selected model, the correlation between resid
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Data availability:} DHIMS-2 data are available from the Ghana Health Service on request {[}AUTHOR{]}. Climate data are publicly available (NASA POWER, CHIRPS, ERA5-Land, MODIS). Analysis code: {[}AUTHOR: repository/DOI{]}.
+  \textbf{Data availability:} DHIMS-2 data are available from the Ghana Health Service on request {[}AUTHOR{]}. Climate (NASA POWER), vegetation (MODIS MOD13Q1), population (WorldPop) and poverty (Ghana Statistical Service StatsBank) data are publicly available. Analysis code and district-level data: {[}AUTHOR: GitHub/Zenodo DOI{]}.
 \item
   \textbf{Funding:} {[}AUTHOR{]}
 \item
@@ -1060,7 +936,7 @@ We also report the first version of the models, which had year effects averaged 
 
 \emph{Seasonal adjustment.} Because \(S_{\text{clim}}\) depends on how seasonality is represented in M1 and M3, we replaced the calendar-month effects with Fourier terms, \(\sum_{k=1}^{2}\lbrace \alpha_{gk}\sin(2\pi k m_t/12) + \beta_{gk}\cos(2\pi k m_t/12)\rbrace\), for each regime \(g\) \cite{ref30}. Two harmonics allow either one or two peaks a year, as observed in the unimodal and bimodal regimes, with fewer parameters than twelve month effects.
 
-\emph{Climate data.} NASA POWER is coarse, and the 261 districts drew on only 72 distinct climate series, so neighbouring districts often had identical exposures. Districts that share a grid cell do not contribute independent climate information, and treating them as independent makes the standard errors too small \cite{ref56}. We therefore added a random intercept for the grid cell and, separately, calculated standard errors clustered by grid cell \cite{ref56}. For the clustered standard errors we fitted the selected model with fixed district effects and the dispersion parameter of the mixed model, and computed the sandwich variance from the score contributions summed within each of the 72 grid cells.
+\emph{Climate data.} NASA POWER is coarse, and the 261 districts drew on only 72 distinct climate series, so neighbouring districts often had identical exposures. Districts that share a grid cell do not contribute independent climate information, and treating them as independent makes the standard errors too small \cite{ref55}. We therefore added a random intercept for the grid cell and, separately, calculated standard errors clustered by grid cell \cite{ref55}. For the clustered standard errors we fitted the selected model with fixed district effects and the dispersion parameter of the mixed model, and computed the sandwich variance from the score contributions summed within each of the 72 grid cells.
 
 \emph{Population, classification and definitions.} Annual population figures change in steps from December to January, so we placed each annual figure at July and interpolated linearly to monthly values. We changed the threshold of the rainfall-regime classification from 0.8 to 0.75 and 0.9, which reclassified 15 and 6 districts, respectively. We also merged the transition zone with the neighbouring regime (Section 2.4.7) and used the alternative onset definitions (Section 2.3).
 
@@ -1068,7 +944,7 @@ We also report the first version of the models, which had year effects averaged 
 
 \[\mathbf{s} \sim N\left(\mathbf{0}, \sigma_s^2\,\mathbf{R}\right), \qquad R_{ij} = \exp(-d_{ij}/\rho),\]
 
-where \(d_{ij}\) is the distance in kilometres between the representative points of districts \(i\) and \(j\) and \(\rho\) a range parameter estimated from the data \cite{ref35}. As in the BYM2 model \cite{ref57}, the total district variance is split into a spatially structured and an unstructured part, and we report the spatially structured share \(\sigma_s^2/(\sigma_s^2+\sigma_v^2)\). To address correlation over time, we refitted the selected model with a first-order autoregressive effect for each district, \(\mathrm{Corr}(\varepsilon_{it}, \varepsilon_{i,t+k}) = \rho_t^{|k|}\) \cite{ref35}.
+where \(d_{ij}\) is the distance in kilometres between the representative points of districts \(i\) and \(j\) and \(\rho\) a range parameter estimated from the data \cite{ref35}. As in the BYM2 model \cite{ref56}, the total district variance is split into a spatially structured and an unstructured part, and we report the spatially structured share \(\sigma_s^2/(\sigma_s^2+\sigma_v^2)\). To address correlation over time, we refitted the selected model with a first-order autoregressive effect for each district, \(\mathrm{Corr}(\varepsilon_{it}, \varepsilon_{i,t+k}) = \rho_t^{|k|}\) \cite{ref35}.
 
 \emph{Residual diagnostics.} For each district-month, with \(F_{it}\) the fitted negative-binomial distribution function, we calculated the randomized quantile residual
 
@@ -1503,8 +1379,7 @@ Rolling origin, 2023--2025 & C, version 1 & 9,300 & 2.241 & 1.523 & 94.8 & -- & 
 \bibitem{ref52} Wood SN. Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models. J R Stat Soc Series B Stat Methodol. 2011;73(1):3--36. doi:10.1111/j.1467-9868.2010.00749.x
 \bibitem{ref53} Wickham H. ggplot2: elegant graphics for data analysis. 2nd ed.~New York: Springer; 2016. ISBN 978-3-319-24277-4. \url{https://ggplot2.tidyverse.org}
 \bibitem{ref54} World Medical Association. World Medical Association Declaration of Helsinki: ethical principles for medical research involving human participants. JAMA. 2025;333(1):71--74. doi:10.1001/jama.2024.21972
-\bibitem{ref55} Ediriweera DS, Diggle PJ, Kasturiratne A, Pathmeswaran A, Gunawardena NK, Jayamanne SF, et al.~Evaluating temporal patterns of snakebite in Sri Lanka: the potential for higher snakebite burdens with climate change. Int J Epidemiol. 2018;47(6):2049--2058. doi:10.1093/ije/dyy188
-\bibitem{ref56} Cameron AC, Miller DL. A practitioner's guide to cluster-robust inference. J Hum Resour. 2015;50(2):317--372. doi:10.3368/jhr.50.2.317
-\bibitem{ref57} Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145--1165. \emph{Confirm the volume and issue.}
+\bibitem{ref55} Cameron AC, Miller DL. A practitioner's guide to cluster-robust inference. J Hum Resour. 2015;50(2):317--372. doi:10.3368/jhr.50.2.317
+\bibitem{ref56} Riebler A, Sørbye SH, Simpson D, Rue H. An intuitive Bayesian spatial model for disease mapping that accounts for scaling. Stat Methods Med Res. 2016;25(4):1145--1165. \emph{Confirm the volume and issue.}
 \end{thebibliography}
 \end{document}
